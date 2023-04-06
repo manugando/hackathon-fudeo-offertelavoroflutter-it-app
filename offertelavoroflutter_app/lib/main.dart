@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:http/http.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paginated_list/paginated_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/notion_api_client.dart';
 
 void main() async {
   await dotenv.load(fileName: 'environment/.env');
@@ -53,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: FutureBuilder<PaginatedList<HiringJobOffer>>(
-        future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(),
+        future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(pageSize: 10),
         builder: (context, snapshot) {
           if(snapshot.hasError) return const Text('Errore');
           if(!snapshot.hasData) return const SizedBox();

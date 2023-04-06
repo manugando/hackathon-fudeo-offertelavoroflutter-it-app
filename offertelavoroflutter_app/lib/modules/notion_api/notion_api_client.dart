@@ -57,8 +57,9 @@ class NotionApiClient {
 
   Map<String, String> _getRequestHeaders() {
     return {
+      HttpHeaders.contentTypeHeader: 'application/json',
       HttpHeaders.authorizationHeader: 'Bearer ${Env.notionApiKey}',
-      'Notion-Version': notionApiVersion
+      'Notion-Version': notionApiVersion,
     };
   }
 

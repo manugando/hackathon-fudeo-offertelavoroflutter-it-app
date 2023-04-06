@@ -12,8 +12,16 @@ PaginatedList<HiringJobOffer> parseHiringJobOffersResponse(String responseBody) 
 }
 
 class HiringJobOfferRepository {
-  Future<PaginatedList<HiringJobOffer>> getHiringJobOffers() async {
-    Response response = await NotionApiClient().makeRequest(HttpMethods.post, '/databases/${NotionApiClient.hiringJobOffersDatabase}/query');
+  Future<PaginatedList<HiringJobOffer>> getHiringJobOffers({required int pageSize, String? startCursor}) async {
+    Map<String, dynamic> body = {
+      'page_size': pageSize
+    };
+
+    if(startCursor != null) {
+      body['start_cursor'] = startCursor;
+    }
+
+    Response response = await NotionApiClient().makeRequest(HttpMethods.post, '/databases/${NotionApiClient.hiringJobOffersDatabase}/query', body: body);
     return compute(parseHiringJobOffersResponse, response.body);
   }
 }
