@@ -21,8 +21,11 @@ HiringJobOfferProperties _$HiringJobOfferPropertiesFromJson(
 
 /// @nodoc
 mixin _$HiringJobOfferProperties {
+  @JsonKey(name: 'Job Posted')
+  NotionPagePropertyCreatedTime get jobPosted =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'Name')
-  NotionTitle get name => throw _privateConstructorUsedError;
+  NotionPagePropertyTitle get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,9 +39,12 @@ abstract class $HiringJobOfferPropertiesCopyWith<$Res> {
           $Res Function(HiringJobOfferProperties) then) =
       _$HiringJobOfferPropertiesCopyWithImpl<$Res, HiringJobOfferProperties>;
   @useResult
-  $Res call({@JsonKey(name: 'Name') NotionTitle name});
+  $Res call(
+      {@JsonKey(name: 'Job Posted') NotionPagePropertyCreatedTime jobPosted,
+      @JsonKey(name: 'Name') NotionPagePropertyTitle name});
 
-  $NotionTitleCopyWith<$Res> get name;
+  $NotionPagePropertyCreatedTimeCopyWith<$Res> get jobPosted;
+  $NotionPagePropertyTitleCopyWith<$Res> get name;
 }
 
 /// @nodoc
@@ -55,20 +61,34 @@ class _$HiringJobOfferPropertiesCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? jobPosted = null,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
+      jobPosted: null == jobPosted
+          ? _value.jobPosted
+          : jobPosted // ignore: cast_nullable_to_non_nullable
+              as NotionPagePropertyCreatedTime,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as NotionTitle,
+              as NotionPagePropertyTitle,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionTitleCopyWith<$Res> get name {
-    return $NotionTitleCopyWith<$Res>(_value.name, (value) {
+  $NotionPagePropertyCreatedTimeCopyWith<$Res> get jobPosted {
+    return $NotionPagePropertyCreatedTimeCopyWith<$Res>(_value.jobPosted,
+        (value) {
+      return _then(_value.copyWith(jobPosted: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NotionPagePropertyTitleCopyWith<$Res> get name {
+    return $NotionPagePropertyTitleCopyWith<$Res>(_value.name, (value) {
       return _then(_value.copyWith(name: value) as $Val);
     });
   }
@@ -83,10 +103,14 @@ abstract class _$$_HiringJobOfferPropertiesCopyWith<$Res>
       __$$_HiringJobOfferPropertiesCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'Name') NotionTitle name});
+  $Res call(
+      {@JsonKey(name: 'Job Posted') NotionPagePropertyCreatedTime jobPosted,
+      @JsonKey(name: 'Name') NotionPagePropertyTitle name});
 
   @override
-  $NotionTitleCopyWith<$Res> get name;
+  $NotionPagePropertyCreatedTimeCopyWith<$Res> get jobPosted;
+  @override
+  $NotionPagePropertyTitleCopyWith<$Res> get name;
 }
 
 /// @nodoc
@@ -101,13 +125,18 @@ class __$$_HiringJobOfferPropertiesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? jobPosted = null,
     Object? name = null,
   }) {
     return _then(_$_HiringJobOfferProperties(
+      jobPosted: null == jobPosted
+          ? _value.jobPosted
+          : jobPosted // ignore: cast_nullable_to_non_nullable
+              as NotionPagePropertyCreatedTime,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as NotionTitle,
+              as NotionPagePropertyTitle,
     ));
   }
 }
@@ -116,18 +145,22 @@ class __$$_HiringJobOfferPropertiesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_HiringJobOfferProperties implements _HiringJobOfferProperties {
   const _$_HiringJobOfferProperties(
-      {@JsonKey(name: 'Name') required this.name});
+      {@JsonKey(name: 'Job Posted') required this.jobPosted,
+      @JsonKey(name: 'Name') required this.name});
 
   factory _$_HiringJobOfferProperties.fromJson(Map<String, dynamic> json) =>
       _$$_HiringJobOfferPropertiesFromJson(json);
 
   @override
+  @JsonKey(name: 'Job Posted')
+  final NotionPagePropertyCreatedTime jobPosted;
+  @override
   @JsonKey(name: 'Name')
-  final NotionTitle name;
+  final NotionPagePropertyTitle name;
 
   @override
   String toString() {
-    return 'HiringJobOfferProperties(name: $name)';
+    return 'HiringJobOfferProperties(jobPosted: $jobPosted, name: $name)';
   }
 
   @override
@@ -135,12 +168,14 @@ class _$_HiringJobOfferProperties implements _HiringJobOfferProperties {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HiringJobOfferProperties &&
+            (identical(other.jobPosted, jobPosted) ||
+                other.jobPosted == jobPosted) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, jobPosted, name);
 
   @JsonKey(ignore: true)
   @override
@@ -159,15 +194,21 @@ class _$_HiringJobOfferProperties implements _HiringJobOfferProperties {
 
 abstract class _HiringJobOfferProperties implements HiringJobOfferProperties {
   const factory _HiringJobOfferProperties(
-          {@JsonKey(name: 'Name') required final NotionTitle name}) =
+          {@JsonKey(name: 'Job Posted')
+              required final NotionPagePropertyCreatedTime jobPosted,
+          @JsonKey(name: 'Name')
+              required final NotionPagePropertyTitle name}) =
       _$_HiringJobOfferProperties;
 
   factory _HiringJobOfferProperties.fromJson(Map<String, dynamic> json) =
       _$_HiringJobOfferProperties.fromJson;
 
   @override
+  @JsonKey(name: 'Job Posted')
+  NotionPagePropertyCreatedTime get jobPosted;
+  @override
   @JsonKey(name: 'Name')
-  NotionTitle get name;
+  NotionPagePropertyTitle get name;
   @override
   @JsonKey(ignore: true)
   _$$_HiringJobOfferPropertiesCopyWith<_$_HiringJobOfferProperties>

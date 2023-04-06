@@ -1,23 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'notion_title.dart';
+part of 'notion_page_property_rich_text.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_NotionTitle _$$_NotionTitleFromJson(Map<String, dynamic> json) =>
-    _$_NotionTitle(
+_$_NotionPagePropertyRichText _$$_NotionPagePropertyRichTextFromJson(
+        Map<String, dynamic> json) =>
+    _$_NotionPagePropertyRichText(
       id: json['id'] as String,
       type: json['type'] as String,
-      title: (json['title'] as List<dynamic>)
+      richText: (json['rich_text'] as List<dynamic>)
           .map((e) => NotionRichText.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_NotionTitleToJson(_$_NotionTitle instance) =>
+Map<String, dynamic> _$$_NotionPagePropertyRichTextToJson(
+        _$_NotionPagePropertyRichText instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
-      'title': instance.title,
+      'rich_text': instance.richText,
     };

@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           List<HiringJobOffer> items = snapshot.data!.results;
           return ListView.builder(
-            itemBuilder: (context, index) => ListTile(title: Text(items[index].properties.name.title.first.plainText)),
+            itemBuilder: (context, index) => ListTile(title: Text(items[index].properties.name.title.first.plainText), subtitle: Text(items[index].properties.jobPosted.createdTime.toString())),
             itemCount: items.length,
           );
         },

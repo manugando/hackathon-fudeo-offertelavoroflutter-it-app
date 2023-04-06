@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/rich_text/rich_text_annotations/notion_rich_text_annotations.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/rich_text/rich_text_content/rich_text_content_text/notion_rich_text_content_text.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/models/rich_text/rich_text_annotations/notion_rich_text_annotations.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/models/rich_text/rich_text_content_text/notion_rich_text_content_text.dart';
 
 part 'notion_rich_text.freezed.dart';
 part 'notion_rich_text.g.dart';
