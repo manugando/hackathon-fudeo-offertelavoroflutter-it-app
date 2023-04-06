@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/helpers/notion_color.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/select_option/notion_select_option.dart';
 
 part 'select_option.freezed.dart';
@@ -21,7 +22,7 @@ class SelectOption with _$SelectOption {
     return SelectOption(
       id: notionSelectOption.id,
       name: notionSelectOption.name,
-      color: Colors.red // TODO parse notion colors
+      color: NotionColor.parseNotionColor(notionSelectOption.color),
     );
   }
 }

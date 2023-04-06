@@ -22,7 +22,7 @@ NotionRichTextContentText _$NotionRichTextContentTextFromJson(
 /// @nodoc
 mixin _$NotionRichTextContentText {
   String get content => throw _privateConstructorUsedError;
-  dynamic get link => throw _privateConstructorUsedError;
+  NotionUrl? get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,9 @@ abstract class $NotionRichTextContentTextCopyWith<$Res> {
           $Res Function(NotionRichTextContentText) then) =
       _$NotionRichTextContentTextCopyWithImpl<$Res, NotionRichTextContentText>;
   @useResult
-  $Res call({String content, dynamic link});
+  $Res call({String content, NotionUrl? link});
+
+  $NotionUrlCopyWith<$Res>? get link;
 }
 
 /// @nodoc
@@ -64,8 +66,20 @@ class _$NotionRichTextContentTextCopyWithImpl<$Res,
       link: freezed == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as NotionUrl?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NotionUrlCopyWith<$Res>? get link {
+    if (_value.link == null) {
+      return null;
+    }
+
+    return $NotionUrlCopyWith<$Res>(_value.link!, (value) {
+      return _then(_value.copyWith(link: value) as $Val);
+    });
   }
 }
 
@@ -78,7 +92,10 @@ abstract class _$$_NotionRichTextContentTextCopyWith<$Res>
       __$$_NotionRichTextContentTextCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, dynamic link});
+  $Res call({String content, NotionUrl? link});
+
+  @override
+  $NotionUrlCopyWith<$Res>? get link;
 }
 
 /// @nodoc
@@ -105,7 +122,7 @@ class __$$_NotionRichTextContentTextCopyWithImpl<$Res>
       link: freezed == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as NotionUrl?,
     ));
   }
 }
@@ -122,7 +139,7 @@ class _$_NotionRichTextContentText implements _NotionRichTextContentText {
   @override
   final String content;
   @override
-  final dynamic link;
+  final NotionUrl? link;
 
   @override
   String toString() {
@@ -135,13 +152,12 @@ class _$_NotionRichTextContentText implements _NotionRichTextContentText {
         (other.runtimeType == runtimeType &&
             other is _$_NotionRichTextContentText &&
             (identical(other.content, content) || other.content == content) &&
-            const DeepCollectionEquality().equals(other.link, link));
+            (identical(other.link, link) || other.link == link));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, content, const DeepCollectionEquality().hash(link));
+  int get hashCode => Object.hash(runtimeType, content, link);
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +177,7 @@ class _$_NotionRichTextContentText implements _NotionRichTextContentText {
 abstract class _NotionRichTextContentText implements NotionRichTextContentText {
   const factory _NotionRichTextContentText(
       {required final String content,
-      required final dynamic link}) = _$_NotionRichTextContentText;
+      required final NotionUrl? link}) = _$_NotionRichTextContentText;
 
   factory _NotionRichTextContentText.fromJson(Map<String, dynamic> json) =
       _$_NotionRichTextContentText.fromJson;
@@ -169,7 +185,7 @@ abstract class _NotionRichTextContentText implements NotionRichTextContentText {
   @override
   String get content;
   @override
-  dynamic get link;
+  NotionUrl? get link;
   @override
   @JsonKey(ignore: true)
   _$$_NotionRichTextContentTextCopyWith<_$_NotionRichTextContentText>

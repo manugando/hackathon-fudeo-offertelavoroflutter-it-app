@@ -10,7 +10,9 @@ _$_NotionRichTextContentText _$$_NotionRichTextContentTextFromJson(
         Map<String, dynamic> json) =>
     _$_NotionRichTextContentText(
       content: json['content'] as String,
-      link: json['link'],
+      link: json['link'] == null
+          ? null
+          : NotionUrl.fromJson(json['link'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_NotionRichTextContentTextToJson(

@@ -24,16 +24,14 @@ mixin _$HiringJobOffer {
   SelectOption? get contratto => throw _privateConstructorUsedError;
   SelectOption? get seniority => throw _privateConstructorUsedError;
   SelectOption? get ral => throw _privateConstructorUsedError;
-  List<NotionRichText> get name => throw _privateConstructorUsedError;
-  List<NotionRichText> get qualifica => throw _privateConstructorUsedError;
-  List<NotionRichText> get retribuzione => throw _privateConstructorUsedError;
-  List<NotionRichText> get descrizioneOfferta =>
-      throw _privateConstructorUsedError;
-  List<NotionRichText> get comeCandidarsi => throw _privateConstructorUsedError;
-  List<NotionRichText> get localita => throw _privateConstructorUsedError;
-  List<NotionRichText> get nomeAzienda => throw _privateConstructorUsedError;
-  List<NotionRichText> get statoDiPubblicazione =>
-      throw _privateConstructorUsedError;
+  List<RichText> get name => throw _privateConstructorUsedError;
+  List<RichText> get qualifica => throw _privateConstructorUsedError;
+  List<RichText> get retribuzione => throw _privateConstructorUsedError;
+  List<RichText> get descrizioneOfferta => throw _privateConstructorUsedError;
+  List<RichText> get comeCandidarsi => throw _privateConstructorUsedError;
+  List<RichText> get localita => throw _privateConstructorUsedError;
+  List<RichText> get nomeAzienda => throw _privateConstructorUsedError;
+  List<RichText> get statoDiPubblicazione => throw _privateConstructorUsedError;
   String? get urlSitoWeb => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -56,14 +54,14 @@ abstract class $HiringJobOfferCopyWith<$Res> {
       SelectOption? contratto,
       SelectOption? seniority,
       SelectOption? ral,
-      List<NotionRichText> name,
-      List<NotionRichText> qualifica,
-      List<NotionRichText> retribuzione,
-      List<NotionRichText> descrizioneOfferta,
-      List<NotionRichText> comeCandidarsi,
-      List<NotionRichText> localita,
-      List<NotionRichText> nomeAzienda,
-      List<NotionRichText> statoDiPubblicazione,
+      List<RichText> name,
+      List<RichText> qualifica,
+      List<RichText> retribuzione,
+      List<RichText> descrizioneOfferta,
+      List<RichText> comeCandidarsi,
+      List<RichText> localita,
+      List<RichText> nomeAzienda,
+      List<RichText> statoDiPubblicazione,
       String? urlSitoWeb});
 
   $SelectOptionCopyWith<$Res>? get team;
@@ -139,35 +137,35 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       qualifica: null == qualifica
           ? _value.qualifica
           : qualifica // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       retribuzione: null == retribuzione
           ? _value.retribuzione
           : retribuzione // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       descrizioneOfferta: null == descrizioneOfferta
           ? _value.descrizioneOfferta
           : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       comeCandidarsi: null == comeCandidarsi
           ? _value.comeCandidarsi
           : comeCandidarsi // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       localita: null == localita
           ? _value.localita
           : localita // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       nomeAzienda: null == nomeAzienda
           ? _value.nomeAzienda
           : nomeAzienda // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       statoDiPubblicazione: null == statoDiPubblicazione
           ? _value.statoDiPubblicazione
           : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       urlSitoWeb: freezed == urlSitoWeb
           ? _value.urlSitoWeb
           : urlSitoWeb // ignore: cast_nullable_to_non_nullable
@@ -241,14 +239,14 @@ abstract class _$$_HiringJobOfferCopyWith<$Res>
       SelectOption? contratto,
       SelectOption? seniority,
       SelectOption? ral,
-      List<NotionRichText> name,
-      List<NotionRichText> qualifica,
-      List<NotionRichText> retribuzione,
-      List<NotionRichText> descrizioneOfferta,
-      List<NotionRichText> comeCandidarsi,
-      List<NotionRichText> localita,
-      List<NotionRichText> nomeAzienda,
-      List<NotionRichText> statoDiPubblicazione,
+      List<RichText> name,
+      List<RichText> qualifica,
+      List<RichText> retribuzione,
+      List<RichText> descrizioneOfferta,
+      List<RichText> comeCandidarsi,
+      List<RichText> localita,
+      List<RichText> nomeAzienda,
+      List<RichText> statoDiPubblicazione,
       String? urlSitoWeb});
 
   @override
@@ -326,35 +324,35 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
       name: null == name
           ? _value._name
           : name // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       qualifica: null == qualifica
           ? _value._qualifica
           : qualifica // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       retribuzione: null == retribuzione
           ? _value._retribuzione
           : retribuzione // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       descrizioneOfferta: null == descrizioneOfferta
           ? _value._descrizioneOfferta
           : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       comeCandidarsi: null == comeCandidarsi
           ? _value._comeCandidarsi
           : comeCandidarsi // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       localita: null == localita
           ? _value._localita
           : localita // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       nomeAzienda: null == nomeAzienda
           ? _value._nomeAzienda
           : nomeAzienda // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       statoDiPubblicazione: null == statoDiPubblicazione
           ? _value._statoDiPubblicazione
           : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
-              as List<NotionRichText>,
+              as List<RichText>,
       urlSitoWeb: freezed == urlSitoWeb
           ? _value.urlSitoWeb
           : urlSitoWeb // ignore: cast_nullable_to_non_nullable
@@ -375,14 +373,14 @@ class _$_HiringJobOffer implements _HiringJobOffer {
       required this.contratto,
       required this.seniority,
       required this.ral,
-      required final List<NotionRichText> name,
-      required final List<NotionRichText> qualifica,
-      required final List<NotionRichText> retribuzione,
-      required final List<NotionRichText> descrizioneOfferta,
-      required final List<NotionRichText> comeCandidarsi,
-      required final List<NotionRichText> localita,
-      required final List<NotionRichText> nomeAzienda,
-      required final List<NotionRichText> statoDiPubblicazione,
+      required final List<RichText> name,
+      required final List<RichText> qualifica,
+      required final List<RichText> retribuzione,
+      required final List<RichText> descrizioneOfferta,
+      required final List<RichText> comeCandidarsi,
+      required final List<RichText> localita,
+      required final List<RichText> nomeAzienda,
+      required final List<RichText> statoDiPubblicazione,
       required this.urlSitoWeb})
       : _name = name,
         _qualifica = qualifica,
@@ -409,66 +407,66 @@ class _$_HiringJobOffer implements _HiringJobOffer {
   final SelectOption? seniority;
   @override
   final SelectOption? ral;
-  final List<NotionRichText> _name;
+  final List<RichText> _name;
   @override
-  List<NotionRichText> get name {
+  List<RichText> get name {
     if (_name is EqualUnmodifiableListView) return _name;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_name);
   }
 
-  final List<NotionRichText> _qualifica;
+  final List<RichText> _qualifica;
   @override
-  List<NotionRichText> get qualifica {
+  List<RichText> get qualifica {
     if (_qualifica is EqualUnmodifiableListView) return _qualifica;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_qualifica);
   }
 
-  final List<NotionRichText> _retribuzione;
+  final List<RichText> _retribuzione;
   @override
-  List<NotionRichText> get retribuzione {
+  List<RichText> get retribuzione {
     if (_retribuzione is EqualUnmodifiableListView) return _retribuzione;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_retribuzione);
   }
 
-  final List<NotionRichText> _descrizioneOfferta;
+  final List<RichText> _descrizioneOfferta;
   @override
-  List<NotionRichText> get descrizioneOfferta {
+  List<RichText> get descrizioneOfferta {
     if (_descrizioneOfferta is EqualUnmodifiableListView)
       return _descrizioneOfferta;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_descrizioneOfferta);
   }
 
-  final List<NotionRichText> _comeCandidarsi;
+  final List<RichText> _comeCandidarsi;
   @override
-  List<NotionRichText> get comeCandidarsi {
+  List<RichText> get comeCandidarsi {
     if (_comeCandidarsi is EqualUnmodifiableListView) return _comeCandidarsi;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_comeCandidarsi);
   }
 
-  final List<NotionRichText> _localita;
+  final List<RichText> _localita;
   @override
-  List<NotionRichText> get localita {
+  List<RichText> get localita {
     if (_localita is EqualUnmodifiableListView) return _localita;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_localita);
   }
 
-  final List<NotionRichText> _nomeAzienda;
+  final List<RichText> _nomeAzienda;
   @override
-  List<NotionRichText> get nomeAzienda {
+  List<RichText> get nomeAzienda {
     if (_nomeAzienda is EqualUnmodifiableListView) return _nomeAzienda;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_nomeAzienda);
   }
 
-  final List<NotionRichText> _statoDiPubblicazione;
+  final List<RichText> _statoDiPubblicazione;
   @override
-  List<NotionRichText> get statoDiPubblicazione {
+  List<RichText> get statoDiPubblicazione {
     if (_statoDiPubblicazione is EqualUnmodifiableListView)
       return _statoDiPubblicazione;
     // ignore: implicit_dynamic_type
@@ -556,14 +554,14 @@ abstract class _HiringJobOffer implements HiringJobOffer {
       required final SelectOption? contratto,
       required final SelectOption? seniority,
       required final SelectOption? ral,
-      required final List<NotionRichText> name,
-      required final List<NotionRichText> qualifica,
-      required final List<NotionRichText> retribuzione,
-      required final List<NotionRichText> descrizioneOfferta,
-      required final List<NotionRichText> comeCandidarsi,
-      required final List<NotionRichText> localita,
-      required final List<NotionRichText> nomeAzienda,
-      required final List<NotionRichText> statoDiPubblicazione,
+      required final List<RichText> name,
+      required final List<RichText> qualifica,
+      required final List<RichText> retribuzione,
+      required final List<RichText> descrizioneOfferta,
+      required final List<RichText> comeCandidarsi,
+      required final List<RichText> localita,
+      required final List<RichText> nomeAzienda,
+      required final List<RichText> statoDiPubblicazione,
       required final String? urlSitoWeb}) = _$_HiringJobOffer;
 
   @override
@@ -583,21 +581,21 @@ abstract class _HiringJobOffer implements HiringJobOffer {
   @override
   SelectOption? get ral;
   @override
-  List<NotionRichText> get name;
+  List<RichText> get name;
   @override
-  List<NotionRichText> get qualifica;
+  List<RichText> get qualifica;
   @override
-  List<NotionRichText> get retribuzione;
+  List<RichText> get retribuzione;
   @override
-  List<NotionRichText> get descrizioneOfferta;
+  List<RichText> get descrizioneOfferta;
   @override
-  List<NotionRichText> get comeCandidarsi;
+  List<RichText> get comeCandidarsi;
   @override
-  List<NotionRichText> get localita;
+  List<RichText> get localita;
   @override
-  List<NotionRichText> get nomeAzienda;
+  List<RichText> get nomeAzienda;
   @override
-  List<NotionRichText> get statoDiPubblicazione;
+  List<RichText> get statoDiPubblicazione;
   @override
   String? get urlSitoWeb;
   @override
