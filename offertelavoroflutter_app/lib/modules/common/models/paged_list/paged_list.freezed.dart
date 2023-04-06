@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'paginated_list.dart';
+part of 'paged_list.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,42 +14,30 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-PaginatedList<T> _$PaginatedListFromJson<T>(
-    Map<String, dynamic> json, T Function(Object?) fromJsonT) {
-  return _PaginatedList<T>.fromJson(json, fromJsonT);
-}
-
 /// @nodoc
-mixin _$PaginatedList<T> {
+mixin _$PagedList<T> {
   List<T> get results => throw _privateConstructorUsedError;
-  @JsonKey(name: 'next_cursor')
   String? get nextCursor => throw _privateConstructorUsedError;
-  @JsonKey(name: 'has_more')
   bool get hasMore => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
-      throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PaginatedListCopyWith<T, PaginatedList<T>> get copyWith =>
+  $PagedListCopyWith<T, PagedList<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PaginatedListCopyWith<T, $Res> {
-  factory $PaginatedListCopyWith(
-          PaginatedList<T> value, $Res Function(PaginatedList<T>) then) =
-      _$PaginatedListCopyWithImpl<T, $Res, PaginatedList<T>>;
+abstract class $PagedListCopyWith<T, $Res> {
+  factory $PagedListCopyWith(
+          PagedList<T> value, $Res Function(PagedList<T>) then) =
+      _$PagedListCopyWithImpl<T, $Res, PagedList<T>>;
   @useResult
-  $Res call(
-      {List<T> results,
-      @JsonKey(name: 'next_cursor') String? nextCursor,
-      @JsonKey(name: 'has_more') bool hasMore});
+  $Res call({List<T> results, String? nextCursor, bool hasMore});
 }
 
 /// @nodoc
-class _$PaginatedListCopyWithImpl<T, $Res, $Val extends PaginatedList<T>>
-    implements $PaginatedListCopyWith<T, $Res> {
-  _$PaginatedListCopyWithImpl(this._value, this._then);
+class _$PagedListCopyWithImpl<T, $Res, $Val extends PagedList<T>>
+    implements $PagedListCopyWith<T, $Res> {
+  _$PagedListCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,25 +69,22 @@ class _$PaginatedListCopyWithImpl<T, $Res, $Val extends PaginatedList<T>>
 }
 
 /// @nodoc
-abstract class _$$_PaginatedListCopyWith<T, $Res>
-    implements $PaginatedListCopyWith<T, $Res> {
-  factory _$$_PaginatedListCopyWith(
-          _$_PaginatedList<T> value, $Res Function(_$_PaginatedList<T>) then) =
-      __$$_PaginatedListCopyWithImpl<T, $Res>;
+abstract class _$$_PagedListCopyWith<T, $Res>
+    implements $PagedListCopyWith<T, $Res> {
+  factory _$$_PagedListCopyWith(
+          _$_PagedList<T> value, $Res Function(_$_PagedList<T>) then) =
+      __$$_PagedListCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call(
-      {List<T> results,
-      @JsonKey(name: 'next_cursor') String? nextCursor,
-      @JsonKey(name: 'has_more') bool hasMore});
+  $Res call({List<T> results, String? nextCursor, bool hasMore});
 }
 
 /// @nodoc
-class __$$_PaginatedListCopyWithImpl<T, $Res>
-    extends _$PaginatedListCopyWithImpl<T, $Res, _$_PaginatedList<T>>
-    implements _$$_PaginatedListCopyWith<T, $Res> {
-  __$$_PaginatedListCopyWithImpl(
-      _$_PaginatedList<T> _value, $Res Function(_$_PaginatedList<T>) _then)
+class __$$_PagedListCopyWithImpl<T, $Res>
+    extends _$PagedListCopyWithImpl<T, $Res, _$_PagedList<T>>
+    implements _$$_PagedListCopyWith<T, $Res> {
+  __$$_PagedListCopyWithImpl(
+      _$_PagedList<T> _value, $Res Function(_$_PagedList<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +94,7 @@ class __$$_PaginatedListCopyWithImpl<T, $Res>
     Object? nextCursor = freezed,
     Object? hasMore = null,
   }) {
-    return _then(_$_PaginatedList<T>(
+    return _then(_$_PagedList<T>(
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -127,17 +112,13 @@ class __$$_PaginatedListCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-@JsonSerializable(genericArgumentFactories: true)
-class _$_PaginatedList<T> implements _PaginatedList<T> {
-  const _$_PaginatedList(
-      {required final List<T> results,
-      @JsonKey(name: 'next_cursor') required this.nextCursor,
-      @JsonKey(name: 'has_more') required this.hasMore})
-      : _results = results;
 
-  factory _$_PaginatedList.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
-      _$$_PaginatedListFromJson(json, fromJsonT);
+class _$_PagedList<T> implements _PagedList<T> {
+  const _$_PagedList(
+      {required final List<T> results,
+      required this.nextCursor,
+      required this.hasMore})
+      : _results = results;
 
   final List<T> _results;
   @override
@@ -148,29 +129,26 @@ class _$_PaginatedList<T> implements _PaginatedList<T> {
   }
 
   @override
-  @JsonKey(name: 'next_cursor')
   final String? nextCursor;
   @override
-  @JsonKey(name: 'has_more')
   final bool hasMore;
 
   @override
   String toString() {
-    return 'PaginatedList<$T>(results: $results, nextCursor: $nextCursor, hasMore: $hasMore)';
+    return 'PagedList<$T>(results: $results, nextCursor: $nextCursor, hasMore: $hasMore)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaginatedList<T> &&
+            other is _$_PagedList<T> &&
             const DeepCollectionEquality().equals(other._results, _results) &&
             (identical(other.nextCursor, nextCursor) ||
                 other.nextCursor == nextCursor) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_results), nextCursor, hasMore);
@@ -178,36 +156,24 @@ class _$_PaginatedList<T> implements _PaginatedList<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaginatedListCopyWith<T, _$_PaginatedList<T>> get copyWith =>
-      __$$_PaginatedListCopyWithImpl<T, _$_PaginatedList<T>>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
-    return _$$_PaginatedListToJson<T>(this, toJsonT);
-  }
+  _$$_PagedListCopyWith<T, _$_PagedList<T>> get copyWith =>
+      __$$_PagedListCopyWithImpl<T, _$_PagedList<T>>(this, _$identity);
 }
 
-abstract class _PaginatedList<T> implements PaginatedList<T> {
-  const factory _PaginatedList(
-          {required final List<T> results,
-          @JsonKey(name: 'next_cursor') required final String? nextCursor,
-          @JsonKey(name: 'has_more') required final bool hasMore}) =
-      _$_PaginatedList<T>;
-
-  factory _PaginatedList.fromJson(
-          Map<String, dynamic> json, T Function(Object?) fromJsonT) =
-      _$_PaginatedList<T>.fromJson;
+abstract class _PagedList<T> implements PagedList<T> {
+  const factory _PagedList(
+      {required final List<T> results,
+      required final String? nextCursor,
+      required final bool hasMore}) = _$_PagedList<T>;
 
   @override
   List<T> get results;
   @override
-  @JsonKey(name: 'next_cursor')
   String? get nextCursor;
   @override
-  @JsonKey(name: 'has_more')
   bool get hasMore;
   @override
   @JsonKey(ignore: true)
-  _$$_PaginatedListCopyWith<T, _$_PaginatedList<T>> get copyWith =>
+  _$$_PagedListCopyWith<T, _$_PagedList<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

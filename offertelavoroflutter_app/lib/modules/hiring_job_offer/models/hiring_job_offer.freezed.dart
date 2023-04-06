@@ -14,18 +14,28 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-HiringJobOffer _$HiringJobOfferFromJson(Map<String, dynamic> json) {
-  return _HiringJobOffer.fromJson(json);
-}
-
 /// @nodoc
 mixin _$HiringJobOffer {
   String get id => throw _privateConstructorUsedError;
   bool get archived => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
-  HiringJobOfferProperties get properties => throw _privateConstructorUsedError;
+  DateTime get jobPosted => throw _privateConstructorUsedError;
+  SelectOption? get team => throw _privateConstructorUsedError;
+  SelectOption? get contratto => throw _privateConstructorUsedError;
+  SelectOption? get seniority => throw _privateConstructorUsedError;
+  SelectOption? get ral => throw _privateConstructorUsedError;
+  List<NotionRichText> get name => throw _privateConstructorUsedError;
+  List<NotionRichText> get qualifica => throw _privateConstructorUsedError;
+  List<NotionRichText> get retribuzione => throw _privateConstructorUsedError;
+  List<NotionRichText> get descrizioneOfferta =>
+      throw _privateConstructorUsedError;
+  List<NotionRichText> get comeCandidarsi => throw _privateConstructorUsedError;
+  List<NotionRichText> get localita => throw _privateConstructorUsedError;
+  List<NotionRichText> get nomeAzienda => throw _privateConstructorUsedError;
+  List<NotionRichText> get statoDiPubblicazione =>
+      throw _privateConstructorUsedError;
+  String? get urlSitoWeb => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $HiringJobOfferCopyWith<HiringJobOffer> get copyWith =>
       throw _privateConstructorUsedError;
@@ -41,9 +51,25 @@ abstract class $HiringJobOfferCopyWith<$Res> {
       {String id,
       bool archived,
       String url,
-      HiringJobOfferProperties properties});
+      DateTime jobPosted,
+      SelectOption? team,
+      SelectOption? contratto,
+      SelectOption? seniority,
+      SelectOption? ral,
+      List<NotionRichText> name,
+      List<NotionRichText> qualifica,
+      List<NotionRichText> retribuzione,
+      List<NotionRichText> descrizioneOfferta,
+      List<NotionRichText> comeCandidarsi,
+      List<NotionRichText> localita,
+      List<NotionRichText> nomeAzienda,
+      List<NotionRichText> statoDiPubblicazione,
+      String? urlSitoWeb});
 
-  $HiringJobOfferPropertiesCopyWith<$Res> get properties;
+  $SelectOptionCopyWith<$Res>? get team;
+  $SelectOptionCopyWith<$Res>? get contratto;
+  $SelectOptionCopyWith<$Res>? get seniority;
+  $SelectOptionCopyWith<$Res>? get ral;
 }
 
 /// @nodoc
@@ -62,7 +88,20 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
     Object? id = null,
     Object? archived = null,
     Object? url = null,
-    Object? properties = null,
+    Object? jobPosted = null,
+    Object? team = freezed,
+    Object? contratto = freezed,
+    Object? seniority = freezed,
+    Object? ral = freezed,
+    Object? name = null,
+    Object? qualifica = null,
+    Object? retribuzione = null,
+    Object? descrizioneOfferta = null,
+    Object? comeCandidarsi = null,
+    Object? localita = null,
+    Object? nomeAzienda = null,
+    Object? statoDiPubblicazione = null,
+    Object? urlSitoWeb = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -77,18 +116,110 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      properties: null == properties
-          ? _value.properties
-          : properties // ignore: cast_nullable_to_non_nullable
-              as HiringJobOfferProperties,
+      jobPosted: null == jobPosted
+          ? _value.jobPosted
+          : jobPosted // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      team: freezed == team
+          ? _value.team
+          : team // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      contratto: freezed == contratto
+          ? _value.contratto
+          : contratto // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      seniority: freezed == seniority
+          ? _value.seniority
+          : seniority // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      ral: freezed == ral
+          ? _value.ral
+          : ral // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      qualifica: null == qualifica
+          ? _value.qualifica
+          : qualifica // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      retribuzione: null == retribuzione
+          ? _value.retribuzione
+          : retribuzione // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      descrizioneOfferta: null == descrizioneOfferta
+          ? _value.descrizioneOfferta
+          : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      comeCandidarsi: null == comeCandidarsi
+          ? _value.comeCandidarsi
+          : comeCandidarsi // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      localita: null == localita
+          ? _value.localita
+          : localita // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      nomeAzienda: null == nomeAzienda
+          ? _value.nomeAzienda
+          : nomeAzienda // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      statoDiPubblicazione: null == statoDiPubblicazione
+          ? _value.statoDiPubblicazione
+          : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      urlSitoWeb: freezed == urlSitoWeb
+          ? _value.urlSitoWeb
+          : urlSitoWeb // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $HiringJobOfferPropertiesCopyWith<$Res> get properties {
-    return $HiringJobOfferPropertiesCopyWith<$Res>(_value.properties, (value) {
-      return _then(_value.copyWith(properties: value) as $Val);
+  $SelectOptionCopyWith<$Res>? get team {
+    if (_value.team == null) {
+      return null;
+    }
+
+    return $SelectOptionCopyWith<$Res>(_value.team!, (value) {
+      return _then(_value.copyWith(team: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SelectOptionCopyWith<$Res>? get contratto {
+    if (_value.contratto == null) {
+      return null;
+    }
+
+    return $SelectOptionCopyWith<$Res>(_value.contratto!, (value) {
+      return _then(_value.copyWith(contratto: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SelectOptionCopyWith<$Res>? get seniority {
+    if (_value.seniority == null) {
+      return null;
+    }
+
+    return $SelectOptionCopyWith<$Res>(_value.seniority!, (value) {
+      return _then(_value.copyWith(seniority: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SelectOptionCopyWith<$Res>? get ral {
+    if (_value.ral == null) {
+      return null;
+    }
+
+    return $SelectOptionCopyWith<$Res>(_value.ral!, (value) {
+      return _then(_value.copyWith(ral: value) as $Val);
     });
   }
 }
@@ -105,10 +236,29 @@ abstract class _$$_HiringJobOfferCopyWith<$Res>
       {String id,
       bool archived,
       String url,
-      HiringJobOfferProperties properties});
+      DateTime jobPosted,
+      SelectOption? team,
+      SelectOption? contratto,
+      SelectOption? seniority,
+      SelectOption? ral,
+      List<NotionRichText> name,
+      List<NotionRichText> qualifica,
+      List<NotionRichText> retribuzione,
+      List<NotionRichText> descrizioneOfferta,
+      List<NotionRichText> comeCandidarsi,
+      List<NotionRichText> localita,
+      List<NotionRichText> nomeAzienda,
+      List<NotionRichText> statoDiPubblicazione,
+      String? urlSitoWeb});
 
   @override
-  $HiringJobOfferPropertiesCopyWith<$Res> get properties;
+  $SelectOptionCopyWith<$Res>? get team;
+  @override
+  $SelectOptionCopyWith<$Res>? get contratto;
+  @override
+  $SelectOptionCopyWith<$Res>? get seniority;
+  @override
+  $SelectOptionCopyWith<$Res>? get ral;
 }
 
 /// @nodoc
@@ -125,7 +275,20 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
     Object? id = null,
     Object? archived = null,
     Object? url = null,
-    Object? properties = null,
+    Object? jobPosted = null,
+    Object? team = freezed,
+    Object? contratto = freezed,
+    Object? seniority = freezed,
+    Object? ral = freezed,
+    Object? name = null,
+    Object? qualifica = null,
+    Object? retribuzione = null,
+    Object? descrizioneOfferta = null,
+    Object? comeCandidarsi = null,
+    Object? localita = null,
+    Object? nomeAzienda = null,
+    Object? statoDiPubblicazione = null,
+    Object? urlSitoWeb = freezed,
   }) {
     return _then(_$_HiringJobOffer(
       id: null == id
@@ -140,25 +303,95 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      properties: null == properties
-          ? _value.properties
-          : properties // ignore: cast_nullable_to_non_nullable
-              as HiringJobOfferProperties,
+      jobPosted: null == jobPosted
+          ? _value.jobPosted
+          : jobPosted // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      team: freezed == team
+          ? _value.team
+          : team // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      contratto: freezed == contratto
+          ? _value.contratto
+          : contratto // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      seniority: freezed == seniority
+          ? _value.seniority
+          : seniority // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      ral: freezed == ral
+          ? _value.ral
+          : ral // ignore: cast_nullable_to_non_nullable
+              as SelectOption?,
+      name: null == name
+          ? _value._name
+          : name // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      qualifica: null == qualifica
+          ? _value._qualifica
+          : qualifica // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      retribuzione: null == retribuzione
+          ? _value._retribuzione
+          : retribuzione // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      descrizioneOfferta: null == descrizioneOfferta
+          ? _value._descrizioneOfferta
+          : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      comeCandidarsi: null == comeCandidarsi
+          ? _value._comeCandidarsi
+          : comeCandidarsi // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      localita: null == localita
+          ? _value._localita
+          : localita // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      nomeAzienda: null == nomeAzienda
+          ? _value._nomeAzienda
+          : nomeAzienda // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      statoDiPubblicazione: null == statoDiPubblicazione
+          ? _value._statoDiPubblicazione
+          : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
+              as List<NotionRichText>,
+      urlSitoWeb: freezed == urlSitoWeb
+          ? _value.urlSitoWeb
+          : urlSitoWeb // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_HiringJobOffer implements _HiringJobOffer {
   const _$_HiringJobOffer(
       {required this.id,
       required this.archived,
       required this.url,
-      required this.properties});
-
-  factory _$_HiringJobOffer.fromJson(Map<String, dynamic> json) =>
-      _$$_HiringJobOfferFromJson(json);
+      required this.jobPosted,
+      required this.team,
+      required this.contratto,
+      required this.seniority,
+      required this.ral,
+      required final List<NotionRichText> name,
+      required final List<NotionRichText> qualifica,
+      required final List<NotionRichText> retribuzione,
+      required final List<NotionRichText> descrizioneOfferta,
+      required final List<NotionRichText> comeCandidarsi,
+      required final List<NotionRichText> localita,
+      required final List<NotionRichText> nomeAzienda,
+      required final List<NotionRichText> statoDiPubblicazione,
+      required this.urlSitoWeb})
+      : _name = name,
+        _qualifica = qualifica,
+        _retribuzione = retribuzione,
+        _descrizioneOfferta = descrizioneOfferta,
+        _comeCandidarsi = comeCandidarsi,
+        _localita = localita,
+        _nomeAzienda = nomeAzienda,
+        _statoDiPubblicazione = statoDiPubblicazione;
 
   @override
   final String id;
@@ -167,11 +400,87 @@ class _$_HiringJobOffer implements _HiringJobOffer {
   @override
   final String url;
   @override
-  final HiringJobOfferProperties properties;
+  final DateTime jobPosted;
+  @override
+  final SelectOption? team;
+  @override
+  final SelectOption? contratto;
+  @override
+  final SelectOption? seniority;
+  @override
+  final SelectOption? ral;
+  final List<NotionRichText> _name;
+  @override
+  List<NotionRichText> get name {
+    if (_name is EqualUnmodifiableListView) return _name;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_name);
+  }
+
+  final List<NotionRichText> _qualifica;
+  @override
+  List<NotionRichText> get qualifica {
+    if (_qualifica is EqualUnmodifiableListView) return _qualifica;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_qualifica);
+  }
+
+  final List<NotionRichText> _retribuzione;
+  @override
+  List<NotionRichText> get retribuzione {
+    if (_retribuzione is EqualUnmodifiableListView) return _retribuzione;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_retribuzione);
+  }
+
+  final List<NotionRichText> _descrizioneOfferta;
+  @override
+  List<NotionRichText> get descrizioneOfferta {
+    if (_descrizioneOfferta is EqualUnmodifiableListView)
+      return _descrizioneOfferta;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_descrizioneOfferta);
+  }
+
+  final List<NotionRichText> _comeCandidarsi;
+  @override
+  List<NotionRichText> get comeCandidarsi {
+    if (_comeCandidarsi is EqualUnmodifiableListView) return _comeCandidarsi;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comeCandidarsi);
+  }
+
+  final List<NotionRichText> _localita;
+  @override
+  List<NotionRichText> get localita {
+    if (_localita is EqualUnmodifiableListView) return _localita;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_localita);
+  }
+
+  final List<NotionRichText> _nomeAzienda;
+  @override
+  List<NotionRichText> get nomeAzienda {
+    if (_nomeAzienda is EqualUnmodifiableListView) return _nomeAzienda;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_nomeAzienda);
+  }
+
+  final List<NotionRichText> _statoDiPubblicazione;
+  @override
+  List<NotionRichText> get statoDiPubblicazione {
+    if (_statoDiPubblicazione is EqualUnmodifiableListView)
+      return _statoDiPubblicazione;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_statoDiPubblicazione);
+  }
+
+  @override
+  final String? urlSitoWeb;
 
   @override
   String toString() {
-    return 'HiringJobOffer(id: $id, archived: $archived, url: $url, properties: $properties)';
+    return 'HiringJobOffer(id: $id, archived: $archived, url: $url, jobPosted: $jobPosted, team: $team, contratto: $contratto, seniority: $seniority, ral: $ral, name: $name, qualifica: $qualifica, retribuzione: $retribuzione, descrizioneOfferta: $descrizioneOfferta, comeCandidarsi: $comeCandidarsi, localita: $localita, nomeAzienda: $nomeAzienda, statoDiPubblicazione: $statoDiPubblicazione, urlSitoWeb: $urlSitoWeb)';
   }
 
   @override
@@ -183,26 +492,58 @@ class _$_HiringJobOffer implements _HiringJobOffer {
             (identical(other.archived, archived) ||
                 other.archived == archived) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.properties, properties) ||
-                other.properties == properties));
+            (identical(other.jobPosted, jobPosted) ||
+                other.jobPosted == jobPosted) &&
+            (identical(other.team, team) || other.team == team) &&
+            (identical(other.contratto, contratto) ||
+                other.contratto == contratto) &&
+            (identical(other.seniority, seniority) ||
+                other.seniority == seniority) &&
+            (identical(other.ral, ral) || other.ral == ral) &&
+            const DeepCollectionEquality().equals(other._name, _name) &&
+            const DeepCollectionEquality()
+                .equals(other._qualifica, _qualifica) &&
+            const DeepCollectionEquality()
+                .equals(other._retribuzione, _retribuzione) &&
+            const DeepCollectionEquality()
+                .equals(other._descrizioneOfferta, _descrizioneOfferta) &&
+            const DeepCollectionEquality()
+                .equals(other._comeCandidarsi, _comeCandidarsi) &&
+            const DeepCollectionEquality().equals(other._localita, _localita) &&
+            const DeepCollectionEquality()
+                .equals(other._nomeAzienda, _nomeAzienda) &&
+            const DeepCollectionEquality()
+                .equals(other._statoDiPubblicazione, _statoDiPubblicazione) &&
+            (identical(other.urlSitoWeb, urlSitoWeb) ||
+                other.urlSitoWeb == urlSitoWeb));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, archived, url, properties);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      archived,
+      url,
+      jobPosted,
+      team,
+      contratto,
+      seniority,
+      ral,
+      const DeepCollectionEquality().hash(_name),
+      const DeepCollectionEquality().hash(_qualifica),
+      const DeepCollectionEquality().hash(_retribuzione),
+      const DeepCollectionEquality().hash(_descrizioneOfferta),
+      const DeepCollectionEquality().hash(_comeCandidarsi),
+      const DeepCollectionEquality().hash(_localita),
+      const DeepCollectionEquality().hash(_nomeAzienda),
+      const DeepCollectionEquality().hash(_statoDiPubblicazione),
+      urlSitoWeb);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$_HiringJobOfferCopyWith<_$_HiringJobOffer> get copyWith =>
       __$$_HiringJobOfferCopyWithImpl<_$_HiringJobOffer>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_HiringJobOfferToJson(
-      this,
-    );
-  }
 }
 
 abstract class _HiringJobOffer implements HiringJobOffer {
@@ -210,10 +551,20 @@ abstract class _HiringJobOffer implements HiringJobOffer {
       {required final String id,
       required final bool archived,
       required final String url,
-      required final HiringJobOfferProperties properties}) = _$_HiringJobOffer;
-
-  factory _HiringJobOffer.fromJson(Map<String, dynamic> json) =
-      _$_HiringJobOffer.fromJson;
+      required final DateTime jobPosted,
+      required final SelectOption? team,
+      required final SelectOption? contratto,
+      required final SelectOption? seniority,
+      required final SelectOption? ral,
+      required final List<NotionRichText> name,
+      required final List<NotionRichText> qualifica,
+      required final List<NotionRichText> retribuzione,
+      required final List<NotionRichText> descrizioneOfferta,
+      required final List<NotionRichText> comeCandidarsi,
+      required final List<NotionRichText> localita,
+      required final List<NotionRichText> nomeAzienda,
+      required final List<NotionRichText> statoDiPubblicazione,
+      required final String? urlSitoWeb}) = _$_HiringJobOffer;
 
   @override
   String get id;
@@ -222,7 +573,33 @@ abstract class _HiringJobOffer implements HiringJobOffer {
   @override
   String get url;
   @override
-  HiringJobOfferProperties get properties;
+  DateTime get jobPosted;
+  @override
+  SelectOption? get team;
+  @override
+  SelectOption? get contratto;
+  @override
+  SelectOption? get seniority;
+  @override
+  SelectOption? get ral;
+  @override
+  List<NotionRichText> get name;
+  @override
+  List<NotionRichText> get qualifica;
+  @override
+  List<NotionRichText> get retribuzione;
+  @override
+  List<NotionRichText> get descrizioneOfferta;
+  @override
+  List<NotionRichText> get comeCandidarsi;
+  @override
+  List<NotionRichText> get localita;
+  @override
+  List<NotionRichText> get nomeAzienda;
+  @override
+  List<NotionRichText> get statoDiPubblicazione;
+  @override
+  String? get urlSitoWeb;
   @override
   @JsonKey(ignore: true)
   _$$_HiringJobOfferCopyWith<_$_HiringJobOffer> get copyWith =>

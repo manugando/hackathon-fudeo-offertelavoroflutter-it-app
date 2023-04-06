@@ -2,17 +2,19 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-import 'package:offertelavoroflutter_app/modules/common/models/paginated_list/paginated_list.dart';
+import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/models/paged_response/notion_paged_response.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/notion_api_client.dart';
 
-PaginatedList<HiringJobOffer> parseHiringJobOffersResponse(String responseBody) {
+NotionPagedResponse<NotionPageHiringJobOffer> parseHiringJobOffersResponse(String responseBody) {
   Map<String, dynamic> response = json.decode(responseBody);
-  return PaginatedList.fromJson(response, (p) => HiringJobOffer.fromJson(p));
+  return NotionPagedResponse.fromJson(response, (p) => NotionPageHiringJobOffer.fromJson(p));
 }
 
 class HiringJobOfferRepository {
-  Future<PaginatedList<HiringJobOffer>> getHiringJobOffers({required int pageSize, String? startCursor}) async {
+  Future<PagedList<HiringJobOffer>> getHiringJobOffers({required int pageSize, String? startCursor}) async {
     Map<String, dynamic> body = {
       'page_size': pageSize
     };
@@ -22,6 +24,8 @@ class HiringJobOfferRepository {
     }
 
     Response response = await NotionApiClient().makeRequest(HttpMethods.post, '/databases/${NotionApiClient.hiringJobOffersDatabase}/query', body: body);
-    return compute(parseHiringJobOffersResponse, response.body);
+    NotionPagedResponse<NotionPageHiringJobOffer> notionPageHiringJobOffers = await compute(parseHiringJobOffersResponse, response.body);
+
+    return PagedList.fromNotion(notionPageHiringJobOffers, (notionPageHiringJobOffer) => HiringJobOffer.fromNotion(notionPageHiringJobOffer));
   }
 }

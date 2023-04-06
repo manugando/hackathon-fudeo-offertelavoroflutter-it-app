@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:offertelavoroflutter_app/modules/common/models/paginated_list/paginated_list.dart';
+import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder<PaginatedList<HiringJobOffer>>(
+      body: FutureBuilder<PagedList<HiringJobOffer>>(
         future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(pageSize: 10),
         builder: (context, snapshot) {
           if(snapshot.hasError) return const Text('Errore');
@@ -59,7 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
           List<HiringJobOffer> items = snapshot.data!.results;
           return ListView.builder(
-            itemBuilder: (context, index) => ListTile(title: Text(items[index].properties.name.title.first.plainText), subtitle: Text(items[index].properties.jobPosted.createdTime.toString())),
+            itemBuilder: (context, index) => ListTile(
+              title: Text(items[index].name.first.plainText),
+              subtitle: Text(items[index].contratto?.name ?? ''),
+            ),
             itemCount: items.length,
           );
         },
