@@ -11,6 +11,8 @@ _$_HiringJobOffer _$$_HiringJobOfferFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       archived: json['archived'] as bool,
       url: json['url'] as String,
+      properties: HiringJobOfferProperties.fromJson(
+          json['properties'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_HiringJobOfferToJson(_$_HiringJobOffer instance) =>
@@ -18,4 +20,5 @@ Map<String, dynamic> _$$_HiringJobOfferToJson(_$_HiringJobOffer instance) =>
       'id': instance.id,
       'archived': instance.archived,
       'url': instance.url,
+      'properties': instance.properties,
     };

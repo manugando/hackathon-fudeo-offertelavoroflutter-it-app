@@ -23,6 +23,7 @@ mixin _$HiringJobOffer {
   String get id => throw _privateConstructorUsedError;
   bool get archived => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  HiringJobOfferProperties get properties => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,13 @@ abstract class $HiringJobOfferCopyWith<$Res> {
           HiringJobOffer value, $Res Function(HiringJobOffer) then) =
       _$HiringJobOfferCopyWithImpl<$Res, HiringJobOffer>;
   @useResult
-  $Res call({String id, bool archived, String url});
+  $Res call(
+      {String id,
+      bool archived,
+      String url,
+      HiringJobOfferProperties properties});
+
+  $HiringJobOfferPropertiesCopyWith<$Res> get properties;
 }
 
 /// @nodoc
@@ -55,6 +62,7 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
     Object? id = null,
     Object? archived = null,
     Object? url = null,
+    Object? properties = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,7 +77,19 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      properties: null == properties
+          ? _value.properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as HiringJobOfferProperties,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HiringJobOfferPropertiesCopyWith<$Res> get properties {
+    return $HiringJobOfferPropertiesCopyWith<$Res>(_value.properties, (value) {
+      return _then(_value.copyWith(properties: value) as $Val);
+    });
   }
 }
 
@@ -81,7 +101,14 @@ abstract class _$$_HiringJobOfferCopyWith<$Res>
       __$$_HiringJobOfferCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, bool archived, String url});
+  $Res call(
+      {String id,
+      bool archived,
+      String url,
+      HiringJobOfferProperties properties});
+
+  @override
+  $HiringJobOfferPropertiesCopyWith<$Res> get properties;
 }
 
 /// @nodoc
@@ -98,6 +125,7 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
     Object? id = null,
     Object? archived = null,
     Object? url = null,
+    Object? properties = null,
   }) {
     return _then(_$_HiringJobOffer(
       id: null == id
@@ -112,6 +140,10 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      properties: null == properties
+          ? _value.properties
+          : properties // ignore: cast_nullable_to_non_nullable
+              as HiringJobOfferProperties,
     ));
   }
 }
@@ -120,7 +152,10 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_HiringJobOffer implements _HiringJobOffer {
   const _$_HiringJobOffer(
-      {required this.id, required this.archived, required this.url});
+      {required this.id,
+      required this.archived,
+      required this.url,
+      required this.properties});
 
   factory _$_HiringJobOffer.fromJson(Map<String, dynamic> json) =>
       _$$_HiringJobOfferFromJson(json);
@@ -131,10 +166,12 @@ class _$_HiringJobOffer implements _HiringJobOffer {
   final bool archived;
   @override
   final String url;
+  @override
+  final HiringJobOfferProperties properties;
 
   @override
   String toString() {
-    return 'HiringJobOffer(id: $id, archived: $archived, url: $url)';
+    return 'HiringJobOffer(id: $id, archived: $archived, url: $url, properties: $properties)';
   }
 
   @override
@@ -145,12 +182,14 @@ class _$_HiringJobOffer implements _HiringJobOffer {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.archived, archived) ||
                 other.archived == archived) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.properties, properties) ||
+                other.properties == properties));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, archived, url);
+  int get hashCode => Object.hash(runtimeType, id, archived, url, properties);
 
   @JsonKey(ignore: true)
   @override
@@ -170,7 +209,8 @@ abstract class _HiringJobOffer implements HiringJobOffer {
   const factory _HiringJobOffer(
       {required final String id,
       required final bool archived,
-      required final String url}) = _$_HiringJobOffer;
+      required final String url,
+      required final HiringJobOfferProperties properties}) = _$_HiringJobOffer;
 
   factory _HiringJobOffer.fromJson(Map<String, dynamic> json) =
       _$_HiringJobOffer.fromJson;
@@ -181,6 +221,8 @@ abstract class _HiringJobOffer implements HiringJobOffer {
   bool get archived;
   @override
   String get url;
+  @override
+  HiringJobOfferProperties get properties;
   @override
   @JsonKey(ignore: true)
   _$$_HiringJobOfferCopyWith<_$_HiringJobOffer> get copyWith =>

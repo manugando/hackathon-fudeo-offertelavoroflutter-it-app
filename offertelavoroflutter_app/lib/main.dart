@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart';
+import 'package:offertelavoroflutter_app/modules/common/models/paginated_list/paginated_list.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/notion_api_client.dart';
 
 void main() async {
@@ -12,17 +16,21 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<HiringJobOfferRepository>(create: (context) => HiringJobOfferRepository()),
+      ],
+      child: MaterialApp(
+        title: 'Offerte Lavoro Flutter',
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(title: 'Offerte Lavoro Flutter'),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -44,13 +52,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder<Response>(
-        future: NotionApiClient().makeRequest(HttpMethods.post, '/databases/${NotionApiClient.hiringJobOffersDatabase}/query'),
+      body: FutureBuilder<PaginatedList<HiringJobOffer>>(
+        future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(),
         builder: (context, snapshot) {
           if(snapshot.hasError) return const Text('Errore');
           if(!snapshot.hasData) return const SizedBox();
 
-          return SingleChildScrollView(child: Text(snapshot.data?.body ?? ''));
+
+          List<HiringJobOffer> items = snapshot.data!.results;
+          return ListView.builder(
+            itemBuilder: (context, index) => ListTile(title: Text(items[index].properties.name.title.first.plainText)),
+            itemCount: items.length,
+          );
         },
       ) // This trailing comma makes auto-formatting nicer for build methods.
     );

@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:offertelavoroflutter_app/constants/env.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/notion_api_error.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/models/api_error/notion_api_error.dart';
 
 class NotionApiClient {
   static const notionApiEndpoint = 'https://api.notion.com/v1';
