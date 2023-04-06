@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer_properties.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer_properties/notion_page_hiring_job_offer_properties.dart';
 
 part 'notion_page_hiring_job_offer.freezed.dart';
 part 'notion_page_hiring_job_offer.g.dart';

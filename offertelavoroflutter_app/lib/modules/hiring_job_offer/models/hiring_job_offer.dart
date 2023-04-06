@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/rich_text/rich_text.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/select_option/select_option.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer/notion_page_hiring_job_offer.dart';
 
 part 'hiring_job_offer.freezed.dart';
 
