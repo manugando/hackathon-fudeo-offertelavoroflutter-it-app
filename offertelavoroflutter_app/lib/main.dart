@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(items[index].name.first.text),
+                    Text('${items[index].emoji} ${items[index].name.first.text}'),
                     Text(items[index].contratto?.name ?? '-', style: TextStyle(color: items[index].contratto?.color)),
                     Text(items[index].team?.name ?? '-', style: TextStyle(color: items[index].team?.color)),
                     Text(items[index].seniority?.name ?? '-', style: TextStyle(color: items[index].seniority?.color)),

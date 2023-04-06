@@ -11,6 +11,7 @@ class HiringJobOffer with _$HiringJobOffer {
   const factory HiringJobOffer({
     required String id,
     required bool archived,
+    required String? emoji,
     required String url,
     required DateTime jobPosted,
     required SelectOption? team,
@@ -32,6 +33,7 @@ class HiringJobOffer with _$HiringJobOffer {
     return HiringJobOffer(
       id: notionPageHiringJobOffer.id,
       archived: notionPageHiringJobOffer.archived,
+      emoji: notionPageHiringJobOffer.icon?.maybeMap(emoji: (value) => value.emoji, orElse: () => null),
       url: notionPageHiringJobOffer.url,
       jobPosted: notionPageHiringJobOffer.properties.jobPosted.createdTime,
       team: SelectOption.fromNotion(notionPageHiringJobOffer.properties.team.select),

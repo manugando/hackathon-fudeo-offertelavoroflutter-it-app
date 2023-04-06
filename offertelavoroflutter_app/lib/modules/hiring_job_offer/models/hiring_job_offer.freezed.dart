@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HiringJobOffer {
   String get id => throw _privateConstructorUsedError;
   bool get archived => throw _privateConstructorUsedError;
+  String? get emoji => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   DateTime get jobPosted => throw _privateConstructorUsedError;
   SelectOption? get team => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $HiringJobOfferCopyWith<$Res> {
   $Res call(
       {String id,
       bool archived,
+      String? emoji,
       String url,
       DateTime jobPosted,
       SelectOption? team,
@@ -85,6 +87,7 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
   $Res call({
     Object? id = null,
     Object? archived = null,
+    Object? emoji = freezed,
     Object? url = null,
     Object? jobPosted = null,
     Object? team = freezed,
@@ -110,6 +113,10 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
           ? _value.archived
           : archived // ignore: cast_nullable_to_non_nullable
               as bool,
+      emoji: freezed == emoji
+          ? _value.emoji
+          : emoji // ignore: cast_nullable_to_non_nullable
+              as String?,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -233,6 +240,7 @@ abstract class _$$_HiringJobOfferCopyWith<$Res>
   $Res call(
       {String id,
       bool archived,
+      String? emoji,
       String url,
       DateTime jobPosted,
       SelectOption? team,
@@ -272,6 +280,7 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? archived = null,
+    Object? emoji = freezed,
     Object? url = null,
     Object? jobPosted = null,
     Object? team = freezed,
@@ -297,6 +306,10 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
           ? _value.archived
           : archived // ignore: cast_nullable_to_non_nullable
               as bool,
+      emoji: freezed == emoji
+          ? _value.emoji
+          : emoji // ignore: cast_nullable_to_non_nullable
+              as String?,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -367,6 +380,7 @@ class _$_HiringJobOffer implements _HiringJobOffer {
   const _$_HiringJobOffer(
       {required this.id,
       required this.archived,
+      required this.emoji,
       required this.url,
       required this.jobPosted,
       required this.team,
@@ -395,6 +409,8 @@ class _$_HiringJobOffer implements _HiringJobOffer {
   final String id;
   @override
   final bool archived;
+  @override
+  final String? emoji;
   @override
   final String url;
   @override
@@ -478,7 +494,7 @@ class _$_HiringJobOffer implements _HiringJobOffer {
 
   @override
   String toString() {
-    return 'HiringJobOffer(id: $id, archived: $archived, url: $url, jobPosted: $jobPosted, team: $team, contratto: $contratto, seniority: $seniority, ral: $ral, name: $name, qualifica: $qualifica, retribuzione: $retribuzione, descrizioneOfferta: $descrizioneOfferta, comeCandidarsi: $comeCandidarsi, localita: $localita, nomeAzienda: $nomeAzienda, statoDiPubblicazione: $statoDiPubblicazione, urlSitoWeb: $urlSitoWeb)';
+    return 'HiringJobOffer(id: $id, archived: $archived, emoji: $emoji, url: $url, jobPosted: $jobPosted, team: $team, contratto: $contratto, seniority: $seniority, ral: $ral, name: $name, qualifica: $qualifica, retribuzione: $retribuzione, descrizioneOfferta: $descrizioneOfferta, comeCandidarsi: $comeCandidarsi, localita: $localita, nomeAzienda: $nomeAzienda, statoDiPubblicazione: $statoDiPubblicazione, urlSitoWeb: $urlSitoWeb)';
   }
 
   @override
@@ -489,6 +505,7 @@ class _$_HiringJobOffer implements _HiringJobOffer {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.archived, archived) ||
                 other.archived == archived) &&
+            (identical(other.emoji, emoji) || other.emoji == emoji) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.jobPosted, jobPosted) ||
                 other.jobPosted == jobPosted) &&
@@ -521,6 +538,7 @@ class _$_HiringJobOffer implements _HiringJobOffer {
       runtimeType,
       id,
       archived,
+      emoji,
       url,
       jobPosted,
       team,
@@ -548,6 +566,7 @@ abstract class _HiringJobOffer implements HiringJobOffer {
   const factory _HiringJobOffer(
       {required final String id,
       required final bool archived,
+      required final String? emoji,
       required final String url,
       required final DateTime jobPosted,
       required final SelectOption? team,
@@ -568,6 +587,8 @@ abstract class _HiringJobOffer implements HiringJobOffer {
   String get id;
   @override
   bool get archived;
+  @override
+  String? get emoji;
   @override
   String get url;
   @override

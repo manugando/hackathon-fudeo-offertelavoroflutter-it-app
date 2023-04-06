@@ -13,6 +13,9 @@ _$_NotionPageHiringJobOffer _$$_NotionPageHiringJobOfferFromJson(
       createdTime: DateTime.parse(json['created_time'] as String),
       lastEditedTime: DateTime.parse(json['last_edited_time'] as String),
       archived: json['archived'] as bool,
+      icon: json['icon'] == null
+          ? null
+          : NotionIcon.fromJson(json['icon'] as Map<String, dynamic>),
       url: json['url'] as String,
       properties: NotionPageHiringJobOfferProperties.fromJson(
           json['properties'] as Map<String, dynamic>),
@@ -25,6 +28,7 @@ Map<String, dynamic> _$$_NotionPageHiringJobOfferToJson(
       'created_time': instance.createdTime.toIso8601String(),
       'last_edited_time': instance.lastEditedTime.toIso8601String(),
       'archived': instance.archived,
+      'icon': instance.icon,
       'url': instance.url,
       'properties': instance.properties,
     };

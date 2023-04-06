@@ -27,6 +27,7 @@ mixin _$NotionPageHiringJobOffer {
   @JsonKey(name: 'last_edited_time')
   DateTime get lastEditedTime => throw _privateConstructorUsedError;
   bool get archived => throw _privateConstructorUsedError;
+  NotionIcon? get icon => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   NotionPageHiringJobOfferProperties get properties =>
       throw _privateConstructorUsedError;
@@ -48,9 +49,11 @@ abstract class $NotionPageHiringJobOfferCopyWith<$Res> {
       @JsonKey(name: 'created_time') DateTime createdTime,
       @JsonKey(name: 'last_edited_time') DateTime lastEditedTime,
       bool archived,
+      NotionIcon? icon,
       String url,
       NotionPageHiringJobOfferProperties properties});
 
+  $NotionIconCopyWith<$Res>? get icon;
   $NotionPageHiringJobOfferPropertiesCopyWith<$Res> get properties;
 }
 
@@ -72,6 +75,7 @@ class _$NotionPageHiringJobOfferCopyWithImpl<$Res,
     Object? createdTime = null,
     Object? lastEditedTime = null,
     Object? archived = null,
+    Object? icon = freezed,
     Object? url = null,
     Object? properties = null,
   }) {
@@ -92,6 +96,10 @@ class _$NotionPageHiringJobOfferCopyWithImpl<$Res,
           ? _value.archived
           : archived // ignore: cast_nullable_to_non_nullable
               as bool,
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as NotionIcon?,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -101,6 +109,18 @@ class _$NotionPageHiringJobOfferCopyWithImpl<$Res,
           : properties // ignore: cast_nullable_to_non_nullable
               as NotionPageHiringJobOfferProperties,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NotionIconCopyWith<$Res>? get icon {
+    if (_value.icon == null) {
+      return null;
+    }
+
+    return $NotionIconCopyWith<$Res>(_value.icon!, (value) {
+      return _then(_value.copyWith(icon: value) as $Val);
+    });
   }
 
   @override
@@ -127,9 +147,12 @@ abstract class _$$_NotionPageHiringJobOfferCopyWith<$Res>
       @JsonKey(name: 'created_time') DateTime createdTime,
       @JsonKey(name: 'last_edited_time') DateTime lastEditedTime,
       bool archived,
+      NotionIcon? icon,
       String url,
       NotionPageHiringJobOfferProperties properties});
 
+  @override
+  $NotionIconCopyWith<$Res>? get icon;
   @override
   $NotionPageHiringJobOfferPropertiesCopyWith<$Res> get properties;
 }
@@ -150,6 +173,7 @@ class __$$_NotionPageHiringJobOfferCopyWithImpl<$Res>
     Object? createdTime = null,
     Object? lastEditedTime = null,
     Object? archived = null,
+    Object? icon = freezed,
     Object? url = null,
     Object? properties = null,
   }) {
@@ -170,6 +194,10 @@ class __$$_NotionPageHiringJobOfferCopyWithImpl<$Res>
           ? _value.archived
           : archived // ignore: cast_nullable_to_non_nullable
               as bool,
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as NotionIcon?,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -190,6 +218,7 @@ class _$_NotionPageHiringJobOffer implements _NotionPageHiringJobOffer {
       @JsonKey(name: 'created_time') required this.createdTime,
       @JsonKey(name: 'last_edited_time') required this.lastEditedTime,
       required this.archived,
+      this.icon,
       required this.url,
       required this.properties});
 
@@ -207,13 +236,15 @@ class _$_NotionPageHiringJobOffer implements _NotionPageHiringJobOffer {
   @override
   final bool archived;
   @override
+  final NotionIcon? icon;
+  @override
   final String url;
   @override
   final NotionPageHiringJobOfferProperties properties;
 
   @override
   String toString() {
-    return 'NotionPageHiringJobOffer(id: $id, createdTime: $createdTime, lastEditedTime: $lastEditedTime, archived: $archived, url: $url, properties: $properties)';
+    return 'NotionPageHiringJobOffer(id: $id, createdTime: $createdTime, lastEditedTime: $lastEditedTime, archived: $archived, icon: $icon, url: $url, properties: $properties)';
   }
 
   @override
@@ -228,6 +259,7 @@ class _$_NotionPageHiringJobOffer implements _NotionPageHiringJobOffer {
                 other.lastEditedTime == lastEditedTime) &&
             (identical(other.archived, archived) ||
                 other.archived == archived) &&
+            (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.properties, properties) ||
                 other.properties == properties));
@@ -235,8 +267,8 @@ class _$_NotionPageHiringJobOffer implements _NotionPageHiringJobOffer {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, createdTime, lastEditedTime, archived, url, properties);
+  int get hashCode => Object.hash(runtimeType, id, createdTime, lastEditedTime,
+      archived, icon, url, properties);
 
   @JsonKey(ignore: true)
   @override
@@ -259,6 +291,7 @@ abstract class _NotionPageHiringJobOffer implements NotionPageHiringJobOffer {
       @JsonKey(name: 'created_time') required final DateTime createdTime,
       @JsonKey(name: 'last_edited_time') required final DateTime lastEditedTime,
       required final bool archived,
+      final NotionIcon? icon,
       required final String url,
       required final NotionPageHiringJobOfferProperties
           properties}) = _$_NotionPageHiringJobOffer;
@@ -276,6 +309,8 @@ abstract class _NotionPageHiringJobOffer implements NotionPageHiringJobOffer {
   DateTime get lastEditedTime;
   @override
   bool get archived;
+  @override
+  NotionIcon? get icon;
   @override
   String get url;
   @override
