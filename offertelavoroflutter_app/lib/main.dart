@@ -51,9 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: FutureBuilder<PagedList<HiringJobOffer>>(
-        future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(pageSize: 10),
+        future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(
+          pageSize: 10,
+          contratto: ['Full time'],
+          seniority: ['Junior', 'Mid'],
+          team: ['Ibrido', 'Full Remote'],
+          searchText: 'flutter'
+        ),
         builder: (context, snapshot) {
-          if(snapshot.hasError) return const Text('Errore');
+          if(snapshot.hasError) {
+            print(snapshot.error);
+            return const Text('Errore');
+          }
+
           if(!snapshot.hasData) return const SizedBox();
 
 
