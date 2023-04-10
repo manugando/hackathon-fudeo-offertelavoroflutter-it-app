@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PagedList<T> {
   List<T> get results => throw _privateConstructorUsedError;
-  String? get nextCursor => throw _privateConstructorUsedError;
+  String? get nextPageKey => throw _privateConstructorUsedError;
   bool get hasMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $PagedListCopyWith<T, $Res> {
           PagedList<T> value, $Res Function(PagedList<T>) then) =
       _$PagedListCopyWithImpl<T, $Res, PagedList<T>>;
   @useResult
-  $Res call({List<T> results, String? nextCursor, bool hasMore});
+  $Res call({List<T> results, String? nextPageKey, bool hasMore});
 }
 
 /// @nodoc
@@ -48,7 +48,7 @@ class _$PagedListCopyWithImpl<T, $Res, $Val extends PagedList<T>>
   @override
   $Res call({
     Object? results = null,
-    Object? nextCursor = freezed,
+    Object? nextPageKey = freezed,
     Object? hasMore = null,
   }) {
     return _then(_value.copyWith(
@@ -56,9 +56,9 @@ class _$PagedListCopyWithImpl<T, $Res, $Val extends PagedList<T>>
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
               as List<T>,
-      nextCursor: freezed == nextCursor
-          ? _value.nextCursor
-          : nextCursor // ignore: cast_nullable_to_non_nullable
+      nextPageKey: freezed == nextPageKey
+          ? _value.nextPageKey
+          : nextPageKey // ignore: cast_nullable_to_non_nullable
               as String?,
       hasMore: null == hasMore
           ? _value.hasMore
@@ -76,7 +76,7 @@ abstract class _$$_PagedListCopyWith<T, $Res>
       __$$_PagedListCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({List<T> results, String? nextCursor, bool hasMore});
+  $Res call({List<T> results, String? nextPageKey, bool hasMore});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class __$$_PagedListCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? results = null,
-    Object? nextCursor = freezed,
+    Object? nextPageKey = freezed,
     Object? hasMore = null,
   }) {
     return _then(_$_PagedList<T>(
@@ -99,9 +99,9 @@ class __$$_PagedListCopyWithImpl<T, $Res>
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
               as List<T>,
-      nextCursor: freezed == nextCursor
-          ? _value.nextCursor
-          : nextCursor // ignore: cast_nullable_to_non_nullable
+      nextPageKey: freezed == nextPageKey
+          ? _value.nextPageKey
+          : nextPageKey // ignore: cast_nullable_to_non_nullable
               as String?,
       hasMore: null == hasMore
           ? _value.hasMore
@@ -116,7 +116,7 @@ class __$$_PagedListCopyWithImpl<T, $Res>
 class _$_PagedList<T> implements _PagedList<T> {
   const _$_PagedList(
       {required final List<T> results,
-      required this.nextCursor,
+      required this.nextPageKey,
       required this.hasMore})
       : _results = results;
 
@@ -129,13 +129,13 @@ class _$_PagedList<T> implements _PagedList<T> {
   }
 
   @override
-  final String? nextCursor;
+  final String? nextPageKey;
   @override
   final bool hasMore;
 
   @override
   String toString() {
-    return 'PagedList<$T>(results: $results, nextCursor: $nextCursor, hasMore: $hasMore)';
+    return 'PagedList<$T>(results: $results, nextPageKey: $nextPageKey, hasMore: $hasMore)';
   }
 
   @override
@@ -144,14 +144,14 @@ class _$_PagedList<T> implements _PagedList<T> {
         (other.runtimeType == runtimeType &&
             other is _$_PagedList<T> &&
             const DeepCollectionEquality().equals(other._results, _results) &&
-            (identical(other.nextCursor, nextCursor) ||
-                other.nextCursor == nextCursor) &&
+            (identical(other.nextPageKey, nextPageKey) ||
+                other.nextPageKey == nextPageKey) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_results), nextCursor, hasMore);
+      const DeepCollectionEquality().hash(_results), nextPageKey, hasMore);
 
   @JsonKey(ignore: true)
   @override
@@ -163,13 +163,13 @@ class _$_PagedList<T> implements _PagedList<T> {
 abstract class _PagedList<T> implements PagedList<T> {
   const factory _PagedList(
       {required final List<T> results,
-      required final String? nextCursor,
+      required final String? nextPageKey,
       required final bool hasMore}) = _$_PagedList<T>;
 
   @override
   List<T> get results;
   @override
-  String? get nextCursor;
+  String? get nextPageKey;
   @override
   bool get hasMore;
   @override
