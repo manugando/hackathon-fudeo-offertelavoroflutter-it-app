@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_options.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_db_hiring_job_offer/notion_db_hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer/notion_page_hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/db_query_request/notion_db_query_request.dart';
@@ -83,11 +84,10 @@ class HiringJobOfferRepository {
     return PagedList.fromNotion(notionPageHiringJobOffers, (notionPageHiringJobOffer) => HiringJobOffer.fromNotion(notionPageHiringJobOffer));
   }
 
-  Future<void> getHiringJobOffersOptions() async {
+  Future<HiringJobOfferOptions> getHiringJobOffersOptions() async {
     Response response = await NotionApiClient().makeRequest(HttpMethods.get, '/databases/${NotionApiClient.hiringJobOffersDatabase}');
     NotionDbHiringJobOffer notionDbHiringJobOffer = await compute(parseDbHiringJobOfferResponse, response.body);
 
-    print(notionDbHiringJobOffer.id);
-    // TODO parse into a object with all the options
+    return HiringJobOfferOptions.fromNotion(notionDbHiringJobOffer);
   }
 }

@@ -16,9 +16,12 @@ class SelectOption with _$SelectOption {
     required Color? color,
   }) = _SelectOption;
 
-  static SelectOption? fromNotion(NotionSelectOption? notionSelectOption) {
+  static SelectOption? fromNotionOrNull(NotionSelectOption? notionSelectOption) {
     if(notionSelectOption == null) return null;
+    return fromNotion(notionSelectOption);
+  }
 
+  static SelectOption fromNotion(NotionSelectOption notionSelectOption) {
     return SelectOption(
       id: notionSelectOption.id,
       name: notionSelectOption.name,

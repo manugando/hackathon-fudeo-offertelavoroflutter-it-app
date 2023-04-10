@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_options.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 
 void main() async {
@@ -47,7 +48,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffersOptions();
+    loadOptions();
+  }
+
+  loadOptions() async {
+    HiringJobOfferOptions options = await RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffersOptions();
+    // TODO use options to populate options
+    print(options);
   }
 
   @override
