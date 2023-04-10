@@ -9,13 +9,13 @@ class NotionDbHiringJobOfferProperties with _$NotionDbHiringJobOfferProperties {
 
   const factory NotionDbHiringJobOfferProperties({
     @JsonKey(name: 'Team')
-    required NotionDbPropertySelect team,
+    required NotionDbPropertySelect? team,
     @JsonKey(name: 'Contratto')
-    required NotionDbPropertySelect contratto,
+    required NotionDbPropertySelect? contratto,
     @JsonKey(name: 'Seniority')
-    required NotionDbPropertySelect seniority,
+    required NotionDbPropertySelect? seniority,
     @JsonKey(name: 'RAL')
-    required NotionDbPropertySelect ral,
+    required NotionDbPropertySelect? ral,
   }) = _NotionDbHiringJobOfferProperties;
 
   factory NotionDbHiringJobOfferProperties.fromJson(Map<String, dynamic> json) => _$NotionDbHiringJobOfferPropertiesFromJson(json);

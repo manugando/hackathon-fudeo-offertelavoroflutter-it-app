@@ -22,13 +22,13 @@ NotionDbHiringJobOfferProperties _$NotionDbHiringJobOfferPropertiesFromJson(
 /// @nodoc
 mixin _$NotionDbHiringJobOfferProperties {
   @JsonKey(name: 'Team')
-  NotionDbPropertySelect get team => throw _privateConstructorUsedError;
+  NotionDbPropertySelect? get team => throw _privateConstructorUsedError;
   @JsonKey(name: 'Contratto')
-  NotionDbPropertySelect get contratto => throw _privateConstructorUsedError;
+  NotionDbPropertySelect? get contratto => throw _privateConstructorUsedError;
   @JsonKey(name: 'Seniority')
-  NotionDbPropertySelect get seniority => throw _privateConstructorUsedError;
+  NotionDbPropertySelect? get seniority => throw _privateConstructorUsedError;
   @JsonKey(name: 'RAL')
-  NotionDbPropertySelect get ral => throw _privateConstructorUsedError;
+  NotionDbPropertySelect? get ral => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,15 +45,15 @@ abstract class $NotionDbHiringJobOfferPropertiesCopyWith<$Res> {
           NotionDbHiringJobOfferProperties>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'Team') NotionDbPropertySelect team,
-      @JsonKey(name: 'Contratto') NotionDbPropertySelect contratto,
-      @JsonKey(name: 'Seniority') NotionDbPropertySelect seniority,
-      @JsonKey(name: 'RAL') NotionDbPropertySelect ral});
+      {@JsonKey(name: 'Team') NotionDbPropertySelect? team,
+      @JsonKey(name: 'Contratto') NotionDbPropertySelect? contratto,
+      @JsonKey(name: 'Seniority') NotionDbPropertySelect? seniority,
+      @JsonKey(name: 'RAL') NotionDbPropertySelect? ral});
 
-  $NotionDbPropertySelectCopyWith<$Res> get team;
-  $NotionDbPropertySelectCopyWith<$Res> get contratto;
-  $NotionDbPropertySelectCopyWith<$Res> get seniority;
-  $NotionDbPropertySelectCopyWith<$Res> get ral;
+  $NotionDbPropertySelectCopyWith<$Res>? get team;
+  $NotionDbPropertySelectCopyWith<$Res>? get contratto;
+  $NotionDbPropertySelectCopyWith<$Res>? get seniority;
+  $NotionDbPropertySelectCopyWith<$Res>? get ral;
 }
 
 /// @nodoc
@@ -70,59 +70,75 @@ class _$NotionDbHiringJobOfferPropertiesCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? team = null,
-    Object? contratto = null,
-    Object? seniority = null,
-    Object? ral = null,
+    Object? team = freezed,
+    Object? contratto = freezed,
+    Object? seniority = freezed,
+    Object? ral = freezed,
   }) {
     return _then(_value.copyWith(
-      team: null == team
+      team: freezed == team
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
-      contratto: null == contratto
+              as NotionDbPropertySelect?,
+      contratto: freezed == contratto
           ? _value.contratto
           : contratto // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
-      seniority: null == seniority
+              as NotionDbPropertySelect?,
+      seniority: freezed == seniority
           ? _value.seniority
           : seniority // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
-      ral: null == ral
+              as NotionDbPropertySelect?,
+      ral: freezed == ral
           ? _value.ral
           : ral // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
+              as NotionDbPropertySelect?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionDbPropertySelectCopyWith<$Res> get team {
-    return $NotionDbPropertySelectCopyWith<$Res>(_value.team, (value) {
+  $NotionDbPropertySelectCopyWith<$Res>? get team {
+    if (_value.team == null) {
+      return null;
+    }
+
+    return $NotionDbPropertySelectCopyWith<$Res>(_value.team!, (value) {
       return _then(_value.copyWith(team: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionDbPropertySelectCopyWith<$Res> get contratto {
-    return $NotionDbPropertySelectCopyWith<$Res>(_value.contratto, (value) {
+  $NotionDbPropertySelectCopyWith<$Res>? get contratto {
+    if (_value.contratto == null) {
+      return null;
+    }
+
+    return $NotionDbPropertySelectCopyWith<$Res>(_value.contratto!, (value) {
       return _then(_value.copyWith(contratto: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionDbPropertySelectCopyWith<$Res> get seniority {
-    return $NotionDbPropertySelectCopyWith<$Res>(_value.seniority, (value) {
+  $NotionDbPropertySelectCopyWith<$Res>? get seniority {
+    if (_value.seniority == null) {
+      return null;
+    }
+
+    return $NotionDbPropertySelectCopyWith<$Res>(_value.seniority!, (value) {
       return _then(_value.copyWith(seniority: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionDbPropertySelectCopyWith<$Res> get ral {
-    return $NotionDbPropertySelectCopyWith<$Res>(_value.ral, (value) {
+  $NotionDbPropertySelectCopyWith<$Res>? get ral {
+    if (_value.ral == null) {
+      return null;
+    }
+
+    return $NotionDbPropertySelectCopyWith<$Res>(_value.ral!, (value) {
       return _then(_value.copyWith(ral: value) as $Val);
     });
   }
@@ -138,19 +154,19 @@ abstract class _$$_NotionDbHiringJobOfferPropertiesCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'Team') NotionDbPropertySelect team,
-      @JsonKey(name: 'Contratto') NotionDbPropertySelect contratto,
-      @JsonKey(name: 'Seniority') NotionDbPropertySelect seniority,
-      @JsonKey(name: 'RAL') NotionDbPropertySelect ral});
+      {@JsonKey(name: 'Team') NotionDbPropertySelect? team,
+      @JsonKey(name: 'Contratto') NotionDbPropertySelect? contratto,
+      @JsonKey(name: 'Seniority') NotionDbPropertySelect? seniority,
+      @JsonKey(name: 'RAL') NotionDbPropertySelect? ral});
 
   @override
-  $NotionDbPropertySelectCopyWith<$Res> get team;
+  $NotionDbPropertySelectCopyWith<$Res>? get team;
   @override
-  $NotionDbPropertySelectCopyWith<$Res> get contratto;
+  $NotionDbPropertySelectCopyWith<$Res>? get contratto;
   @override
-  $NotionDbPropertySelectCopyWith<$Res> get seniority;
+  $NotionDbPropertySelectCopyWith<$Res>? get seniority;
   @override
-  $NotionDbPropertySelectCopyWith<$Res> get ral;
+  $NotionDbPropertySelectCopyWith<$Res>? get ral;
 }
 
 /// @nodoc
@@ -166,28 +182,28 @@ class __$$_NotionDbHiringJobOfferPropertiesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? team = null,
-    Object? contratto = null,
-    Object? seniority = null,
-    Object? ral = null,
+    Object? team = freezed,
+    Object? contratto = freezed,
+    Object? seniority = freezed,
+    Object? ral = freezed,
   }) {
     return _then(_$_NotionDbHiringJobOfferProperties(
-      team: null == team
+      team: freezed == team
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
-      contratto: null == contratto
+              as NotionDbPropertySelect?,
+      contratto: freezed == contratto
           ? _value.contratto
           : contratto // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
-      seniority: null == seniority
+              as NotionDbPropertySelect?,
+      seniority: freezed == seniority
           ? _value.seniority
           : seniority // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
-      ral: null == ral
+              as NotionDbPropertySelect?,
+      ral: freezed == ral
           ? _value.ral
           : ral // ignore: cast_nullable_to_non_nullable
-              as NotionDbPropertySelect,
+              as NotionDbPropertySelect?,
     ));
   }
 }
@@ -208,16 +224,16 @@ class _$_NotionDbHiringJobOfferProperties
 
   @override
   @JsonKey(name: 'Team')
-  final NotionDbPropertySelect team;
+  final NotionDbPropertySelect? team;
   @override
   @JsonKey(name: 'Contratto')
-  final NotionDbPropertySelect contratto;
+  final NotionDbPropertySelect? contratto;
   @override
   @JsonKey(name: 'Seniority')
-  final NotionDbPropertySelect seniority;
+  final NotionDbPropertySelect? seniority;
   @override
   @JsonKey(name: 'RAL')
-  final NotionDbPropertySelect ral;
+  final NotionDbPropertySelect? ral;
 
   @override
   String toString() {
@@ -261,13 +277,13 @@ abstract class _NotionDbHiringJobOfferProperties
     implements NotionDbHiringJobOfferProperties {
   const factory _NotionDbHiringJobOfferProperties(
           {@JsonKey(name: 'Team')
-              required final NotionDbPropertySelect team,
+              required final NotionDbPropertySelect? team,
           @JsonKey(name: 'Contratto')
-              required final NotionDbPropertySelect contratto,
+              required final NotionDbPropertySelect? contratto,
           @JsonKey(name: 'Seniority')
-              required final NotionDbPropertySelect seniority,
+              required final NotionDbPropertySelect? seniority,
           @JsonKey(name: 'RAL')
-              required final NotionDbPropertySelect ral}) =
+              required final NotionDbPropertySelect? ral}) =
       _$_NotionDbHiringJobOfferProperties;
 
   factory _NotionDbHiringJobOfferProperties.fromJson(
@@ -275,16 +291,16 @@ abstract class _NotionDbHiringJobOfferProperties
 
   @override
   @JsonKey(name: 'Team')
-  NotionDbPropertySelect get team;
+  NotionDbPropertySelect? get team;
   @override
   @JsonKey(name: 'Contratto')
-  NotionDbPropertySelect get contratto;
+  NotionDbPropertySelect? get contratto;
   @override
   @JsonKey(name: 'Seniority')
-  NotionDbPropertySelect get seniority;
+  NotionDbPropertySelect? get seniority;
   @override
   @JsonKey(name: 'RAL')
-  NotionDbPropertySelect get ral;
+  NotionDbPropertySelect? get ral;
   @override
   @JsonKey(ignore: true)
   _$$_NotionDbHiringJobOfferPropertiesCopyWith<

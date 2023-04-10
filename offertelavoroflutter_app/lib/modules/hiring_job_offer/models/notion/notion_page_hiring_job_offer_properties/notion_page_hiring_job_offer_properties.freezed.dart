@@ -22,40 +22,41 @@ NotionPageHiringJobOfferProperties _$NotionPageHiringJobOfferPropertiesFromJson(
 /// @nodoc
 mixin _$NotionPageHiringJobOfferProperties {
   @JsonKey(name: 'Job Posted')
-  NotionPagePropertyCreatedTime get jobPosted =>
+  NotionPagePropertyCreatedTime? get jobPosted =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'Team')
-  NotionPagePropertySelect get team => throw _privateConstructorUsedError;
+  NotionPagePropertySelect? get team => throw _privateConstructorUsedError;
   @JsonKey(name: 'Contratto')
-  NotionPagePropertySelect get contratto => throw _privateConstructorUsedError;
+  NotionPagePropertySelect? get contratto => throw _privateConstructorUsedError;
   @JsonKey(name: 'Seniority')
-  NotionPagePropertySelect get seniority => throw _privateConstructorUsedError;
+  NotionPagePropertySelect? get seniority => throw _privateConstructorUsedError;
   @JsonKey(name: 'RAL')
-  NotionPagePropertySelect get ral => throw _privateConstructorUsedError;
+  NotionPagePropertySelect? get ral => throw _privateConstructorUsedError;
   @JsonKey(name: 'Name')
-  NotionPagePropertyTitle get name => throw _privateConstructorUsedError;
+  NotionPagePropertyTitle? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'Qualifica')
-  NotionPagePropertyRichText get qualifica =>
+  NotionPagePropertyRichText? get qualifica =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'Retribuzione')
-  NotionPagePropertyRichText get retribuzione =>
+  NotionPagePropertyRichText? get retribuzione =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'Descrizione offerta')
-  NotionPagePropertyRichText get descrizioneOfferta =>
+  NotionPagePropertyRichText? get descrizioneOfferta =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'Come candidarsi')
-  NotionPagePropertyRichText get comeCandidarsi =>
+  NotionPagePropertyRichText? get comeCandidarsi =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'Località')
-  NotionPagePropertyRichText get localita => throw _privateConstructorUsedError;
+  NotionPagePropertyRichText? get localita =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'Nome azienda')
-  NotionPagePropertyRichText get nomeAzienda =>
+  NotionPagePropertyRichText? get nomeAzienda =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'Stato di pubblicazione')
-  NotionPagePropertyRichText get statoDiPubblicazione =>
+  NotionPagePropertyRichText? get statoDiPubblicazione =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'URL sito web')
-  NotionPagePropertyUrl get urlSitoWeb => throw _privateConstructorUsedError;
+  NotionPagePropertyUrl? get urlSitoWeb => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,48 +75,48 @@ abstract class $NotionPageHiringJobOfferPropertiesCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'Job Posted')
-          NotionPagePropertyCreatedTime jobPosted,
+          NotionPagePropertyCreatedTime? jobPosted,
       @JsonKey(name: 'Team')
-          NotionPagePropertySelect team,
+          NotionPagePropertySelect? team,
       @JsonKey(name: 'Contratto')
-          NotionPagePropertySelect contratto,
+          NotionPagePropertySelect? contratto,
       @JsonKey(name: 'Seniority')
-          NotionPagePropertySelect seniority,
+          NotionPagePropertySelect? seniority,
       @JsonKey(name: 'RAL')
-          NotionPagePropertySelect ral,
+          NotionPagePropertySelect? ral,
       @JsonKey(name: 'Name')
-          NotionPagePropertyTitle name,
+          NotionPagePropertyTitle? name,
       @JsonKey(name: 'Qualifica')
-          NotionPagePropertyRichText qualifica,
+          NotionPagePropertyRichText? qualifica,
       @JsonKey(name: 'Retribuzione')
-          NotionPagePropertyRichText retribuzione,
+          NotionPagePropertyRichText? retribuzione,
       @JsonKey(name: 'Descrizione offerta')
-          NotionPagePropertyRichText descrizioneOfferta,
+          NotionPagePropertyRichText? descrizioneOfferta,
       @JsonKey(name: 'Come candidarsi')
-          NotionPagePropertyRichText comeCandidarsi,
+          NotionPagePropertyRichText? comeCandidarsi,
       @JsonKey(name: 'Località')
-          NotionPagePropertyRichText localita,
+          NotionPagePropertyRichText? localita,
       @JsonKey(name: 'Nome azienda')
-          NotionPagePropertyRichText nomeAzienda,
+          NotionPagePropertyRichText? nomeAzienda,
       @JsonKey(name: 'Stato di pubblicazione')
-          NotionPagePropertyRichText statoDiPubblicazione,
+          NotionPagePropertyRichText? statoDiPubblicazione,
       @JsonKey(name: 'URL sito web')
-          NotionPagePropertyUrl urlSitoWeb});
+          NotionPagePropertyUrl? urlSitoWeb});
 
-  $NotionPagePropertyCreatedTimeCopyWith<$Res> get jobPosted;
-  $NotionPagePropertySelectCopyWith<$Res> get team;
-  $NotionPagePropertySelectCopyWith<$Res> get contratto;
-  $NotionPagePropertySelectCopyWith<$Res> get seniority;
-  $NotionPagePropertySelectCopyWith<$Res> get ral;
-  $NotionPagePropertyTitleCopyWith<$Res> get name;
-  $NotionPagePropertyRichTextCopyWith<$Res> get qualifica;
-  $NotionPagePropertyRichTextCopyWith<$Res> get retribuzione;
-  $NotionPagePropertyRichTextCopyWith<$Res> get descrizioneOfferta;
-  $NotionPagePropertyRichTextCopyWith<$Res> get comeCandidarsi;
-  $NotionPagePropertyRichTextCopyWith<$Res> get localita;
-  $NotionPagePropertyRichTextCopyWith<$Res> get nomeAzienda;
-  $NotionPagePropertyRichTextCopyWith<$Res> get statoDiPubblicazione;
-  $NotionPagePropertyUrlCopyWith<$Res> get urlSitoWeb;
+  $NotionPagePropertyCreatedTimeCopyWith<$Res>? get jobPosted;
+  $NotionPagePropertySelectCopyWith<$Res>? get team;
+  $NotionPagePropertySelectCopyWith<$Res>? get contratto;
+  $NotionPagePropertySelectCopyWith<$Res>? get seniority;
+  $NotionPagePropertySelectCopyWith<$Res>? get ral;
+  $NotionPagePropertyTitleCopyWith<$Res>? get name;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get qualifica;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get retribuzione;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get descrizioneOfferta;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get comeCandidarsi;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get localita;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get nomeAzienda;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get statoDiPubblicazione;
+  $NotionPagePropertyUrlCopyWith<$Res>? get urlSitoWeb;
 }
 
 /// @nodoc
@@ -132,85 +133,89 @@ class _$NotionPageHiringJobOfferPropertiesCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? jobPosted = null,
-    Object? team = null,
-    Object? contratto = null,
-    Object? seniority = null,
-    Object? ral = null,
-    Object? name = null,
-    Object? qualifica = null,
-    Object? retribuzione = null,
-    Object? descrizioneOfferta = null,
-    Object? comeCandidarsi = null,
-    Object? localita = null,
-    Object? nomeAzienda = null,
-    Object? statoDiPubblicazione = null,
-    Object? urlSitoWeb = null,
+    Object? jobPosted = freezed,
+    Object? team = freezed,
+    Object? contratto = freezed,
+    Object? seniority = freezed,
+    Object? ral = freezed,
+    Object? name = freezed,
+    Object? qualifica = freezed,
+    Object? retribuzione = freezed,
+    Object? descrizioneOfferta = freezed,
+    Object? comeCandidarsi = freezed,
+    Object? localita = freezed,
+    Object? nomeAzienda = freezed,
+    Object? statoDiPubblicazione = freezed,
+    Object? urlSitoWeb = freezed,
   }) {
     return _then(_value.copyWith(
-      jobPosted: null == jobPosted
+      jobPosted: freezed == jobPosted
           ? _value.jobPosted
           : jobPosted // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyCreatedTime,
-      team: null == team
+              as NotionPagePropertyCreatedTime?,
+      team: freezed == team
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      contratto: null == contratto
+              as NotionPagePropertySelect?,
+      contratto: freezed == contratto
           ? _value.contratto
           : contratto // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      seniority: null == seniority
+              as NotionPagePropertySelect?,
+      seniority: freezed == seniority
           ? _value.seniority
           : seniority // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      ral: null == ral
+              as NotionPagePropertySelect?,
+      ral: freezed == ral
           ? _value.ral
           : ral // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      name: null == name
+              as NotionPagePropertySelect?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyTitle,
-      qualifica: null == qualifica
+              as NotionPagePropertyTitle?,
+      qualifica: freezed == qualifica
           ? _value.qualifica
           : qualifica // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      retribuzione: null == retribuzione
+              as NotionPagePropertyRichText?,
+      retribuzione: freezed == retribuzione
           ? _value.retribuzione
           : retribuzione // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      descrizioneOfferta: null == descrizioneOfferta
+              as NotionPagePropertyRichText?,
+      descrizioneOfferta: freezed == descrizioneOfferta
           ? _value.descrizioneOfferta
           : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      comeCandidarsi: null == comeCandidarsi
+              as NotionPagePropertyRichText?,
+      comeCandidarsi: freezed == comeCandidarsi
           ? _value.comeCandidarsi
           : comeCandidarsi // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      localita: null == localita
+              as NotionPagePropertyRichText?,
+      localita: freezed == localita
           ? _value.localita
           : localita // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      nomeAzienda: null == nomeAzienda
+              as NotionPagePropertyRichText?,
+      nomeAzienda: freezed == nomeAzienda
           ? _value.nomeAzienda
           : nomeAzienda // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      statoDiPubblicazione: null == statoDiPubblicazione
+              as NotionPagePropertyRichText?,
+      statoDiPubblicazione: freezed == statoDiPubblicazione
           ? _value.statoDiPubblicazione
           : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      urlSitoWeb: null == urlSitoWeb
+              as NotionPagePropertyRichText?,
+      urlSitoWeb: freezed == urlSitoWeb
           ? _value.urlSitoWeb
           : urlSitoWeb // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyUrl,
+              as NotionPagePropertyUrl?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyCreatedTimeCopyWith<$Res> get jobPosted {
-    return $NotionPagePropertyCreatedTimeCopyWith<$Res>(_value.jobPosted,
+  $NotionPagePropertyCreatedTimeCopyWith<$Res>? get jobPosted {
+    if (_value.jobPosted == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyCreatedTimeCopyWith<$Res>(_value.jobPosted!,
         (value) {
       return _then(_value.copyWith(jobPosted: value) as $Val);
     });
@@ -218,56 +223,85 @@ class _$NotionPageHiringJobOfferPropertiesCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertySelectCopyWith<$Res> get team {
-    return $NotionPagePropertySelectCopyWith<$Res>(_value.team, (value) {
+  $NotionPagePropertySelectCopyWith<$Res>? get team {
+    if (_value.team == null) {
+      return null;
+    }
+
+    return $NotionPagePropertySelectCopyWith<$Res>(_value.team!, (value) {
       return _then(_value.copyWith(team: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertySelectCopyWith<$Res> get contratto {
-    return $NotionPagePropertySelectCopyWith<$Res>(_value.contratto, (value) {
+  $NotionPagePropertySelectCopyWith<$Res>? get contratto {
+    if (_value.contratto == null) {
+      return null;
+    }
+
+    return $NotionPagePropertySelectCopyWith<$Res>(_value.contratto!, (value) {
       return _then(_value.copyWith(contratto: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertySelectCopyWith<$Res> get seniority {
-    return $NotionPagePropertySelectCopyWith<$Res>(_value.seniority, (value) {
+  $NotionPagePropertySelectCopyWith<$Res>? get seniority {
+    if (_value.seniority == null) {
+      return null;
+    }
+
+    return $NotionPagePropertySelectCopyWith<$Res>(_value.seniority!, (value) {
       return _then(_value.copyWith(seniority: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertySelectCopyWith<$Res> get ral {
-    return $NotionPagePropertySelectCopyWith<$Res>(_value.ral, (value) {
+  $NotionPagePropertySelectCopyWith<$Res>? get ral {
+    if (_value.ral == null) {
+      return null;
+    }
+
+    return $NotionPagePropertySelectCopyWith<$Res>(_value.ral!, (value) {
       return _then(_value.copyWith(ral: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyTitleCopyWith<$Res> get name {
-    return $NotionPagePropertyTitleCopyWith<$Res>(_value.name, (value) {
+  $NotionPagePropertyTitleCopyWith<$Res>? get name {
+    if (_value.name == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyTitleCopyWith<$Res>(_value.name!, (value) {
       return _then(_value.copyWith(name: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyRichTextCopyWith<$Res> get qualifica {
-    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.qualifica, (value) {
+  $NotionPagePropertyRichTextCopyWith<$Res>? get qualifica {
+    if (_value.qualifica == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.qualifica!,
+        (value) {
       return _then(_value.copyWith(qualifica: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyRichTextCopyWith<$Res> get retribuzione {
-    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.retribuzione,
+  $NotionPagePropertyRichTextCopyWith<$Res>? get retribuzione {
+    if (_value.retribuzione == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.retribuzione!,
         (value) {
       return _then(_value.copyWith(retribuzione: value) as $Val);
     });
@@ -275,8 +309,12 @@ class _$NotionPageHiringJobOfferPropertiesCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyRichTextCopyWith<$Res> get descrizioneOfferta {
-    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.descrizioneOfferta,
+  $NotionPagePropertyRichTextCopyWith<$Res>? get descrizioneOfferta {
+    if (_value.descrizioneOfferta == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.descrizioneOfferta!,
         (value) {
       return _then(_value.copyWith(descrizioneOfferta: value) as $Val);
     });
@@ -284,8 +322,12 @@ class _$NotionPageHiringJobOfferPropertiesCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyRichTextCopyWith<$Res> get comeCandidarsi {
-    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.comeCandidarsi,
+  $NotionPagePropertyRichTextCopyWith<$Res>? get comeCandidarsi {
+    if (_value.comeCandidarsi == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.comeCandidarsi!,
         (value) {
       return _then(_value.copyWith(comeCandidarsi: value) as $Val);
     });
@@ -293,16 +335,24 @@ class _$NotionPageHiringJobOfferPropertiesCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyRichTextCopyWith<$Res> get localita {
-    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.localita, (value) {
+  $NotionPagePropertyRichTextCopyWith<$Res>? get localita {
+    if (_value.localita == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.localita!, (value) {
       return _then(_value.copyWith(localita: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyRichTextCopyWith<$Res> get nomeAzienda {
-    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.nomeAzienda,
+  $NotionPagePropertyRichTextCopyWith<$Res>? get nomeAzienda {
+    if (_value.nomeAzienda == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyRichTextCopyWith<$Res>(_value.nomeAzienda!,
         (value) {
       return _then(_value.copyWith(nomeAzienda: value) as $Val);
     });
@@ -310,17 +360,25 @@ class _$NotionPageHiringJobOfferPropertiesCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyRichTextCopyWith<$Res> get statoDiPubblicazione {
+  $NotionPagePropertyRichTextCopyWith<$Res>? get statoDiPubblicazione {
+    if (_value.statoDiPubblicazione == null) {
+      return null;
+    }
+
     return $NotionPagePropertyRichTextCopyWith<$Res>(
-        _value.statoDiPubblicazione, (value) {
+        _value.statoDiPubblicazione!, (value) {
       return _then(_value.copyWith(statoDiPubblicazione: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $NotionPagePropertyUrlCopyWith<$Res> get urlSitoWeb {
-    return $NotionPagePropertyUrlCopyWith<$Res>(_value.urlSitoWeb, (value) {
+  $NotionPagePropertyUrlCopyWith<$Res>? get urlSitoWeb {
+    if (_value.urlSitoWeb == null) {
+      return null;
+    }
+
+    return $NotionPagePropertyUrlCopyWith<$Res>(_value.urlSitoWeb!, (value) {
       return _then(_value.copyWith(urlSitoWeb: value) as $Val);
     });
   }
@@ -337,62 +395,62 @@ abstract class _$$_NotionPageHiringJobOfferPropertiesCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'Job Posted')
-          NotionPagePropertyCreatedTime jobPosted,
+          NotionPagePropertyCreatedTime? jobPosted,
       @JsonKey(name: 'Team')
-          NotionPagePropertySelect team,
+          NotionPagePropertySelect? team,
       @JsonKey(name: 'Contratto')
-          NotionPagePropertySelect contratto,
+          NotionPagePropertySelect? contratto,
       @JsonKey(name: 'Seniority')
-          NotionPagePropertySelect seniority,
+          NotionPagePropertySelect? seniority,
       @JsonKey(name: 'RAL')
-          NotionPagePropertySelect ral,
+          NotionPagePropertySelect? ral,
       @JsonKey(name: 'Name')
-          NotionPagePropertyTitle name,
+          NotionPagePropertyTitle? name,
       @JsonKey(name: 'Qualifica')
-          NotionPagePropertyRichText qualifica,
+          NotionPagePropertyRichText? qualifica,
       @JsonKey(name: 'Retribuzione')
-          NotionPagePropertyRichText retribuzione,
+          NotionPagePropertyRichText? retribuzione,
       @JsonKey(name: 'Descrizione offerta')
-          NotionPagePropertyRichText descrizioneOfferta,
+          NotionPagePropertyRichText? descrizioneOfferta,
       @JsonKey(name: 'Come candidarsi')
-          NotionPagePropertyRichText comeCandidarsi,
+          NotionPagePropertyRichText? comeCandidarsi,
       @JsonKey(name: 'Località')
-          NotionPagePropertyRichText localita,
+          NotionPagePropertyRichText? localita,
       @JsonKey(name: 'Nome azienda')
-          NotionPagePropertyRichText nomeAzienda,
+          NotionPagePropertyRichText? nomeAzienda,
       @JsonKey(name: 'Stato di pubblicazione')
-          NotionPagePropertyRichText statoDiPubblicazione,
+          NotionPagePropertyRichText? statoDiPubblicazione,
       @JsonKey(name: 'URL sito web')
-          NotionPagePropertyUrl urlSitoWeb});
+          NotionPagePropertyUrl? urlSitoWeb});
 
   @override
-  $NotionPagePropertyCreatedTimeCopyWith<$Res> get jobPosted;
+  $NotionPagePropertyCreatedTimeCopyWith<$Res>? get jobPosted;
   @override
-  $NotionPagePropertySelectCopyWith<$Res> get team;
+  $NotionPagePropertySelectCopyWith<$Res>? get team;
   @override
-  $NotionPagePropertySelectCopyWith<$Res> get contratto;
+  $NotionPagePropertySelectCopyWith<$Res>? get contratto;
   @override
-  $NotionPagePropertySelectCopyWith<$Res> get seniority;
+  $NotionPagePropertySelectCopyWith<$Res>? get seniority;
   @override
-  $NotionPagePropertySelectCopyWith<$Res> get ral;
+  $NotionPagePropertySelectCopyWith<$Res>? get ral;
   @override
-  $NotionPagePropertyTitleCopyWith<$Res> get name;
+  $NotionPagePropertyTitleCopyWith<$Res>? get name;
   @override
-  $NotionPagePropertyRichTextCopyWith<$Res> get qualifica;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get qualifica;
   @override
-  $NotionPagePropertyRichTextCopyWith<$Res> get retribuzione;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get retribuzione;
   @override
-  $NotionPagePropertyRichTextCopyWith<$Res> get descrizioneOfferta;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get descrizioneOfferta;
   @override
-  $NotionPagePropertyRichTextCopyWith<$Res> get comeCandidarsi;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get comeCandidarsi;
   @override
-  $NotionPagePropertyRichTextCopyWith<$Res> get localita;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get localita;
   @override
-  $NotionPagePropertyRichTextCopyWith<$Res> get nomeAzienda;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get nomeAzienda;
   @override
-  $NotionPagePropertyRichTextCopyWith<$Res> get statoDiPubblicazione;
+  $NotionPagePropertyRichTextCopyWith<$Res>? get statoDiPubblicazione;
   @override
-  $NotionPagePropertyUrlCopyWith<$Res> get urlSitoWeb;
+  $NotionPagePropertyUrlCopyWith<$Res>? get urlSitoWeb;
 }
 
 /// @nodoc
@@ -408,78 +466,78 @@ class __$$_NotionPageHiringJobOfferPropertiesCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? jobPosted = null,
-    Object? team = null,
-    Object? contratto = null,
-    Object? seniority = null,
-    Object? ral = null,
-    Object? name = null,
-    Object? qualifica = null,
-    Object? retribuzione = null,
-    Object? descrizioneOfferta = null,
-    Object? comeCandidarsi = null,
-    Object? localita = null,
-    Object? nomeAzienda = null,
-    Object? statoDiPubblicazione = null,
-    Object? urlSitoWeb = null,
+    Object? jobPosted = freezed,
+    Object? team = freezed,
+    Object? contratto = freezed,
+    Object? seniority = freezed,
+    Object? ral = freezed,
+    Object? name = freezed,
+    Object? qualifica = freezed,
+    Object? retribuzione = freezed,
+    Object? descrizioneOfferta = freezed,
+    Object? comeCandidarsi = freezed,
+    Object? localita = freezed,
+    Object? nomeAzienda = freezed,
+    Object? statoDiPubblicazione = freezed,
+    Object? urlSitoWeb = freezed,
   }) {
     return _then(_$_NotionPageHiringJobOfferProperties(
-      jobPosted: null == jobPosted
+      jobPosted: freezed == jobPosted
           ? _value.jobPosted
           : jobPosted // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyCreatedTime,
-      team: null == team
+              as NotionPagePropertyCreatedTime?,
+      team: freezed == team
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      contratto: null == contratto
+              as NotionPagePropertySelect?,
+      contratto: freezed == contratto
           ? _value.contratto
           : contratto // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      seniority: null == seniority
+              as NotionPagePropertySelect?,
+      seniority: freezed == seniority
           ? _value.seniority
           : seniority // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      ral: null == ral
+              as NotionPagePropertySelect?,
+      ral: freezed == ral
           ? _value.ral
           : ral // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertySelect,
-      name: null == name
+              as NotionPagePropertySelect?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyTitle,
-      qualifica: null == qualifica
+              as NotionPagePropertyTitle?,
+      qualifica: freezed == qualifica
           ? _value.qualifica
           : qualifica // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      retribuzione: null == retribuzione
+              as NotionPagePropertyRichText?,
+      retribuzione: freezed == retribuzione
           ? _value.retribuzione
           : retribuzione // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      descrizioneOfferta: null == descrizioneOfferta
+              as NotionPagePropertyRichText?,
+      descrizioneOfferta: freezed == descrizioneOfferta
           ? _value.descrizioneOfferta
           : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      comeCandidarsi: null == comeCandidarsi
+              as NotionPagePropertyRichText?,
+      comeCandidarsi: freezed == comeCandidarsi
           ? _value.comeCandidarsi
           : comeCandidarsi // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      localita: null == localita
+              as NotionPagePropertyRichText?,
+      localita: freezed == localita
           ? _value.localita
           : localita // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      nomeAzienda: null == nomeAzienda
+              as NotionPagePropertyRichText?,
+      nomeAzienda: freezed == nomeAzienda
           ? _value.nomeAzienda
           : nomeAzienda // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      statoDiPubblicazione: null == statoDiPubblicazione
+              as NotionPagePropertyRichText?,
+      statoDiPubblicazione: freezed == statoDiPubblicazione
           ? _value.statoDiPubblicazione
           : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyRichText,
-      urlSitoWeb: null == urlSitoWeb
+              as NotionPagePropertyRichText?,
+      urlSitoWeb: freezed == urlSitoWeb
           ? _value.urlSitoWeb
           : urlSitoWeb // ignore: cast_nullable_to_non_nullable
-              as NotionPagePropertyUrl,
+              as NotionPagePropertyUrl?,
     ));
   }
 }
@@ -524,46 +582,46 @@ class _$_NotionPageHiringJobOfferProperties
 
   @override
   @JsonKey(name: 'Job Posted')
-  final NotionPagePropertyCreatedTime jobPosted;
+  final NotionPagePropertyCreatedTime? jobPosted;
   @override
   @JsonKey(name: 'Team')
-  final NotionPagePropertySelect team;
+  final NotionPagePropertySelect? team;
   @override
   @JsonKey(name: 'Contratto')
-  final NotionPagePropertySelect contratto;
+  final NotionPagePropertySelect? contratto;
   @override
   @JsonKey(name: 'Seniority')
-  final NotionPagePropertySelect seniority;
+  final NotionPagePropertySelect? seniority;
   @override
   @JsonKey(name: 'RAL')
-  final NotionPagePropertySelect ral;
+  final NotionPagePropertySelect? ral;
   @override
   @JsonKey(name: 'Name')
-  final NotionPagePropertyTitle name;
+  final NotionPagePropertyTitle? name;
   @override
   @JsonKey(name: 'Qualifica')
-  final NotionPagePropertyRichText qualifica;
+  final NotionPagePropertyRichText? qualifica;
   @override
   @JsonKey(name: 'Retribuzione')
-  final NotionPagePropertyRichText retribuzione;
+  final NotionPagePropertyRichText? retribuzione;
   @override
   @JsonKey(name: 'Descrizione offerta')
-  final NotionPagePropertyRichText descrizioneOfferta;
+  final NotionPagePropertyRichText? descrizioneOfferta;
   @override
   @JsonKey(name: 'Come candidarsi')
-  final NotionPagePropertyRichText comeCandidarsi;
+  final NotionPagePropertyRichText? comeCandidarsi;
   @override
   @JsonKey(name: 'Località')
-  final NotionPagePropertyRichText localita;
+  final NotionPagePropertyRichText? localita;
   @override
   @JsonKey(name: 'Nome azienda')
-  final NotionPagePropertyRichText nomeAzienda;
+  final NotionPagePropertyRichText? nomeAzienda;
   @override
   @JsonKey(name: 'Stato di pubblicazione')
-  final NotionPagePropertyRichText statoDiPubblicazione;
+  final NotionPagePropertyRichText? statoDiPubblicazione;
   @override
   @JsonKey(name: 'URL sito web')
-  final NotionPagePropertyUrl urlSitoWeb;
+  final NotionPagePropertyUrl? urlSitoWeb;
 
   @override
   String toString() {
@@ -641,33 +699,33 @@ abstract class _NotionPageHiringJobOfferProperties
     implements NotionPageHiringJobOfferProperties {
   const factory _NotionPageHiringJobOfferProperties(
           {@JsonKey(name: 'Job Posted')
-              required final NotionPagePropertyCreatedTime jobPosted,
+              required final NotionPagePropertyCreatedTime? jobPosted,
           @JsonKey(name: 'Team')
-              required final NotionPagePropertySelect team,
+              required final NotionPagePropertySelect? team,
           @JsonKey(name: 'Contratto')
-              required final NotionPagePropertySelect contratto,
+              required final NotionPagePropertySelect? contratto,
           @JsonKey(name: 'Seniority')
-              required final NotionPagePropertySelect seniority,
+              required final NotionPagePropertySelect? seniority,
           @JsonKey(name: 'RAL')
-              required final NotionPagePropertySelect ral,
+              required final NotionPagePropertySelect? ral,
           @JsonKey(name: 'Name')
-              required final NotionPagePropertyTitle name,
+              required final NotionPagePropertyTitle? name,
           @JsonKey(name: 'Qualifica')
-              required final NotionPagePropertyRichText qualifica,
+              required final NotionPagePropertyRichText? qualifica,
           @JsonKey(name: 'Retribuzione')
-              required final NotionPagePropertyRichText retribuzione,
+              required final NotionPagePropertyRichText? retribuzione,
           @JsonKey(name: 'Descrizione offerta')
-              required final NotionPagePropertyRichText descrizioneOfferta,
+              required final NotionPagePropertyRichText? descrizioneOfferta,
           @JsonKey(name: 'Come candidarsi')
-              required final NotionPagePropertyRichText comeCandidarsi,
+              required final NotionPagePropertyRichText? comeCandidarsi,
           @JsonKey(name: 'Località')
-              required final NotionPagePropertyRichText localita,
+              required final NotionPagePropertyRichText? localita,
           @JsonKey(name: 'Nome azienda')
-              required final NotionPagePropertyRichText nomeAzienda,
+              required final NotionPagePropertyRichText? nomeAzienda,
           @JsonKey(name: 'Stato di pubblicazione')
-              required final NotionPagePropertyRichText statoDiPubblicazione,
+              required final NotionPagePropertyRichText? statoDiPubblicazione,
           @JsonKey(name: 'URL sito web')
-              required final NotionPagePropertyUrl urlSitoWeb}) =
+              required final NotionPagePropertyUrl? urlSitoWeb}) =
       _$_NotionPageHiringJobOfferProperties;
 
   factory _NotionPageHiringJobOfferProperties.fromJson(
@@ -676,46 +734,46 @@ abstract class _NotionPageHiringJobOfferProperties
 
   @override
   @JsonKey(name: 'Job Posted')
-  NotionPagePropertyCreatedTime get jobPosted;
+  NotionPagePropertyCreatedTime? get jobPosted;
   @override
   @JsonKey(name: 'Team')
-  NotionPagePropertySelect get team;
+  NotionPagePropertySelect? get team;
   @override
   @JsonKey(name: 'Contratto')
-  NotionPagePropertySelect get contratto;
+  NotionPagePropertySelect? get contratto;
   @override
   @JsonKey(name: 'Seniority')
-  NotionPagePropertySelect get seniority;
+  NotionPagePropertySelect? get seniority;
   @override
   @JsonKey(name: 'RAL')
-  NotionPagePropertySelect get ral;
+  NotionPagePropertySelect? get ral;
   @override
   @JsonKey(name: 'Name')
-  NotionPagePropertyTitle get name;
+  NotionPagePropertyTitle? get name;
   @override
   @JsonKey(name: 'Qualifica')
-  NotionPagePropertyRichText get qualifica;
+  NotionPagePropertyRichText? get qualifica;
   @override
   @JsonKey(name: 'Retribuzione')
-  NotionPagePropertyRichText get retribuzione;
+  NotionPagePropertyRichText? get retribuzione;
   @override
   @JsonKey(name: 'Descrizione offerta')
-  NotionPagePropertyRichText get descrizioneOfferta;
+  NotionPagePropertyRichText? get descrizioneOfferta;
   @override
   @JsonKey(name: 'Come candidarsi')
-  NotionPagePropertyRichText get comeCandidarsi;
+  NotionPagePropertyRichText? get comeCandidarsi;
   @override
   @JsonKey(name: 'Località')
-  NotionPagePropertyRichText get localita;
+  NotionPagePropertyRichText? get localita;
   @override
   @JsonKey(name: 'Nome azienda')
-  NotionPagePropertyRichText get nomeAzienda;
+  NotionPagePropertyRichText? get nomeAzienda;
   @override
   @JsonKey(name: 'Stato di pubblicazione')
-  NotionPagePropertyRichText get statoDiPubblicazione;
+  NotionPagePropertyRichText? get statoDiPubblicazione;
   @override
   @JsonKey(name: 'URL sito web')
-  NotionPagePropertyUrl get urlSitoWeb;
+  NotionPagePropertyUrl? get urlSitoWeb;
   @override
   @JsonKey(ignore: true)
   _$$_NotionPageHiringJobOfferPropertiesCopyWith<

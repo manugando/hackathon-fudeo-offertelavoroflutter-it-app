@@ -15,10 +15,10 @@ class HiringJobOfferOptions with _$HiringJobOfferOptions {
 
   factory HiringJobOfferOptions.fromNotion(NotionDbHiringJobOffer notionDbHiringJobOffer) {
     return HiringJobOfferOptions(
-      team: notionDbHiringJobOffer.properties.team.select.options.map(SelectOption.fromNotion).toList(),
-      contratto: notionDbHiringJobOffer.properties.contratto.select.options.map(SelectOption.fromNotion).toList(),
-      seniority: notionDbHiringJobOffer.properties.seniority.select.options.map(SelectOption.fromNotion).toList(),
-      ral: notionDbHiringJobOffer.properties.ral.select.options.map(SelectOption.fromNotion).toList(),
+      team: notionDbHiringJobOffer.properties.team?.select.options.map(SelectOption.fromNotion).toList(),
+      contratto: notionDbHiringJobOffer.properties.contratto?.select.options.map(SelectOption.fromNotion).toList(),
+      seniority: notionDbHiringJobOffer.properties.seniority?.select.options.map(SelectOption.fromNotion).toList(),
+      ral: notionDbHiringJobOffer.properties.ral?.select.options.map(SelectOption.fromNotion).toList(),
     );
   }
 }

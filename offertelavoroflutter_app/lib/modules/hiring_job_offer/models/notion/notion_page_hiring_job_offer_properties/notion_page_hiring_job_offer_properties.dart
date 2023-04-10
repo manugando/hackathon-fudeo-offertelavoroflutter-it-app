@@ -13,33 +13,33 @@ class NotionPageHiringJobOfferProperties with _$NotionPageHiringJobOfferProperti
 
   const factory NotionPageHiringJobOfferProperties({
     @JsonKey(name: 'Job Posted')
-    required NotionPagePropertyCreatedTime jobPosted,
+    required NotionPagePropertyCreatedTime? jobPosted,
     @JsonKey(name: 'Team')
-    required NotionPagePropertySelect team,
+    required NotionPagePropertySelect? team,
     @JsonKey(name: 'Contratto')
-    required NotionPagePropertySelect contratto,
+    required NotionPagePropertySelect? contratto,
     @JsonKey(name: 'Seniority')
-    required NotionPagePropertySelect seniority,
+    required NotionPagePropertySelect? seniority,
     @JsonKey(name: 'RAL')
-    required NotionPagePropertySelect ral,
+    required NotionPagePropertySelect? ral,
     @JsonKey(name: 'Name')
-    required NotionPagePropertyTitle name,
+    required NotionPagePropertyTitle? name,
     @JsonKey(name: 'Qualifica')
-    required NotionPagePropertyRichText qualifica,
+    required NotionPagePropertyRichText? qualifica,
     @JsonKey(name: 'Retribuzione')
-    required NotionPagePropertyRichText retribuzione,
+    required NotionPagePropertyRichText? retribuzione,
     @JsonKey(name: 'Descrizione offerta')
-    required NotionPagePropertyRichText descrizioneOfferta,
+    required NotionPagePropertyRichText? descrizioneOfferta,
     @JsonKey(name: 'Come candidarsi')
-    required NotionPagePropertyRichText comeCandidarsi,
+    required NotionPagePropertyRichText? comeCandidarsi,
     @JsonKey(name: 'Località')
-    required NotionPagePropertyRichText localita,
+    required NotionPagePropertyRichText? localita,
     @JsonKey(name: 'Nome azienda')
-    required NotionPagePropertyRichText nomeAzienda,
+    required NotionPagePropertyRichText? nomeAzienda,
     @JsonKey(name: 'Stato di pubblicazione')
-    required NotionPagePropertyRichText statoDiPubblicazione,
+    required NotionPagePropertyRichText? statoDiPubblicazione,
     @JsonKey(name: 'URL sito web')
-    required NotionPagePropertyUrl urlSitoWeb,
+    required NotionPagePropertyUrl? urlSitoWeb,
   }) = _NotionPageHiringJobOfferProperties;
 
   factory NotionPageHiringJobOfferProperties.fromJson(Map<String, dynamic> json) => _$NotionPageHiringJobOfferPropertiesFromJson(json);
