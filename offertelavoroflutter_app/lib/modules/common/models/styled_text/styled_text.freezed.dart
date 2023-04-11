@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'rich_text.dart';
+part of 'styled_text.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$RichText {
+mixin _$StyledText {
   String get text => throw _privateConstructorUsedError;
   TextStyle get style => throw _privateConstructorUsedError;
   String? get href => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RichTextCopyWith<RichText> get copyWith =>
+  $StyledTextCopyWith<StyledText> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RichTextCopyWith<$Res> {
-  factory $RichTextCopyWith(RichText value, $Res Function(RichText) then) =
-      _$RichTextCopyWithImpl<$Res, RichText>;
+abstract class $StyledTextCopyWith<$Res> {
+  factory $StyledTextCopyWith(
+          StyledText value, $Res Function(StyledText) then) =
+      _$StyledTextCopyWithImpl<$Res, StyledText>;
   @useResult
   $Res call({String text, TextStyle style, String? href});
 }
 
 /// @nodoc
-class _$RichTextCopyWithImpl<$Res, $Val extends RichText>
-    implements $RichTextCopyWith<$Res> {
-  _$RichTextCopyWithImpl(this._value, this._then);
+class _$StyledTextCopyWithImpl<$Res, $Val extends StyledText>
+    implements $StyledTextCopyWith<$Res> {
+  _$StyledTextCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,21 +69,22 @@ class _$RichTextCopyWithImpl<$Res, $Val extends RichText>
 }
 
 /// @nodoc
-abstract class _$$_RichTextCopyWith<$Res> implements $RichTextCopyWith<$Res> {
-  factory _$$_RichTextCopyWith(
-          _$_RichText value, $Res Function(_$_RichText) then) =
-      __$$_RichTextCopyWithImpl<$Res>;
+abstract class _$$_StyledTextCopyWith<$Res>
+    implements $StyledTextCopyWith<$Res> {
+  factory _$$_StyledTextCopyWith(
+          _$_StyledText value, $Res Function(_$_StyledText) then) =
+      __$$_StyledTextCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String text, TextStyle style, String? href});
 }
 
 /// @nodoc
-class __$$_RichTextCopyWithImpl<$Res>
-    extends _$RichTextCopyWithImpl<$Res, _$_RichText>
-    implements _$$_RichTextCopyWith<$Res> {
-  __$$_RichTextCopyWithImpl(
-      _$_RichText _value, $Res Function(_$_RichText) _then)
+class __$$_StyledTextCopyWithImpl<$Res>
+    extends _$StyledTextCopyWithImpl<$Res, _$_StyledText>
+    implements _$$_StyledTextCopyWith<$Res> {
+  __$$_StyledTextCopyWithImpl(
+      _$_StyledText _value, $Res Function(_$_StyledText) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +94,7 @@ class __$$_RichTextCopyWithImpl<$Res>
     Object? style = null,
     Object? href = freezed,
   }) {
-    return _then(_$_RichText(
+    return _then(_$_StyledText(
       text: null == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -111,8 +113,8 @@ class __$$_RichTextCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RichText implements _RichText {
-  const _$_RichText(
+class _$_StyledText implements _StyledText {
+  const _$_StyledText(
       {required this.text, required this.style, required this.href});
 
   @override
@@ -124,14 +126,14 @@ class _$_RichText implements _RichText {
 
   @override
   String toString() {
-    return 'RichText(text: $text, style: $style, href: $href)';
+    return 'StyledText(text: $text, style: $style, href: $href)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RichText &&
+            other is _$_StyledText &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.style, style) || other.style == style) &&
             (identical(other.href, href) || other.href == href));
@@ -143,15 +145,15 @@ class _$_RichText implements _RichText {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RichTextCopyWith<_$_RichText> get copyWith =>
-      __$$_RichTextCopyWithImpl<_$_RichText>(this, _$identity);
+  _$$_StyledTextCopyWith<_$_StyledText> get copyWith =>
+      __$$_StyledTextCopyWithImpl<_$_StyledText>(this, _$identity);
 }
 
-abstract class _RichText implements RichText {
-  const factory _RichText(
+abstract class _StyledText implements StyledText {
+  const factory _StyledText(
       {required final String text,
       required final TextStyle style,
-      required final String? href}) = _$_RichText;
+      required final String? href}) = _$_StyledText;
 
   @override
   String get text;
@@ -161,6 +163,6 @@ abstract class _RichText implements RichText {
   String? get href;
   @override
   @JsonKey(ignore: true)
-  _$$_RichTextCopyWith<_$_RichText> get copyWith =>
+  _$$_StyledTextCopyWith<_$_StyledText> get copyWith =>
       throw _privateConstructorUsedError;
 }

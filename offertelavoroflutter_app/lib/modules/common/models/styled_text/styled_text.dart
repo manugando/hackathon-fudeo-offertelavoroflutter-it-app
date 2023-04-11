@@ -4,30 +4,30 @@ import 'package:offertelavoroflutter_app/modules/notion_api/helpers/notion_color
 import 'package:offertelavoroflutter_app/modules/notion_api/models/rich_text/notion_rich_text.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/rich_text/rich_text_annotations/notion_rich_text_annotations.dart';
 
-part 'rich_text.freezed.dart';
+part 'styled_text.freezed.dart';
 
 @freezed
-class RichText with _$RichText {
+class StyledText with _$StyledText {
 
-  const factory RichText({
+  const factory StyledText({
     required String text,
     required TextStyle style,
     required String? href,
-  }) = _RichText;
+  }) = _StyledText;
 
-  factory RichText.fromNotion(NotionRichText notionRichText) {
-    return notionRichText.map<RichText>(
-      text: (value) => RichText(
+  factory StyledText.fromNotion(NotionRichText notionRichText) {
+    return notionRichText.map<StyledText>(
+      text: (value) => StyledText(
         text: value.text.content,
         style: getTextStyle(value.annotations),
         href: value.href
       ),
-      mention: (value) => RichText(
+      mention: (value) => StyledText(
         text: value.plainText,
         style: getTextStyle(value.annotations),
         href: value.href
       ),
-      equation: (value) => RichText(
+      equation: (value) => StyledText(
         text: value.plainText,
         style: getTextStyle(value.annotations),
         href: value.href

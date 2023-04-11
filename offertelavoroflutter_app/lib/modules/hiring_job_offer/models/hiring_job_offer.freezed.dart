@@ -25,14 +25,15 @@ mixin _$HiringJobOffer {
   SelectOption? get contratto => throw _privateConstructorUsedError;
   SelectOption? get seniority => throw _privateConstructorUsedError;
   SelectOption? get ral => throw _privateConstructorUsedError;
-  List<RichText>? get name => throw _privateConstructorUsedError;
-  List<RichText>? get qualifica => throw _privateConstructorUsedError;
-  List<RichText>? get retribuzione => throw _privateConstructorUsedError;
-  List<RichText>? get descrizioneOfferta => throw _privateConstructorUsedError;
-  List<RichText>? get comeCandidarsi => throw _privateConstructorUsedError;
-  List<RichText>? get localita => throw _privateConstructorUsedError;
-  List<RichText>? get nomeAzienda => throw _privateConstructorUsedError;
-  List<RichText>? get statoDiPubblicazione =>
+  List<StyledText>? get name => throw _privateConstructorUsedError;
+  List<StyledText>? get qualifica => throw _privateConstructorUsedError;
+  List<StyledText>? get retribuzione => throw _privateConstructorUsedError;
+  List<StyledText>? get descrizioneOfferta =>
+      throw _privateConstructorUsedError;
+  List<StyledText>? get comeCandidarsi => throw _privateConstructorUsedError;
+  List<StyledText>? get localita => throw _privateConstructorUsedError;
+  List<StyledText>? get nomeAzienda => throw _privateConstructorUsedError;
+  List<StyledText>? get statoDiPubblicazione =>
       throw _privateConstructorUsedError;
   String? get urlSitoWeb => throw _privateConstructorUsedError;
 
@@ -57,14 +58,14 @@ abstract class $HiringJobOfferCopyWith<$Res> {
       SelectOption? contratto,
       SelectOption? seniority,
       SelectOption? ral,
-      List<RichText>? name,
-      List<RichText>? qualifica,
-      List<RichText>? retribuzione,
-      List<RichText>? descrizioneOfferta,
-      List<RichText>? comeCandidarsi,
-      List<RichText>? localita,
-      List<RichText>? nomeAzienda,
-      List<RichText>? statoDiPubblicazione,
+      List<StyledText>? name,
+      List<StyledText>? qualifica,
+      List<StyledText>? retribuzione,
+      List<StyledText>? descrizioneOfferta,
+      List<StyledText>? comeCandidarsi,
+      List<StyledText>? localita,
+      List<StyledText>? nomeAzienda,
+      List<StyledText>? statoDiPubblicazione,
       String? urlSitoWeb});
 
   $SelectOptionCopyWith<$Res>? get team;
@@ -145,35 +146,35 @@ class _$HiringJobOfferCopyWithImpl<$Res, $Val extends HiringJobOffer>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       qualifica: freezed == qualifica
           ? _value.qualifica
           : qualifica // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       retribuzione: freezed == retribuzione
           ? _value.retribuzione
           : retribuzione // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       descrizioneOfferta: freezed == descrizioneOfferta
           ? _value.descrizioneOfferta
           : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       comeCandidarsi: freezed == comeCandidarsi
           ? _value.comeCandidarsi
           : comeCandidarsi // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       localita: freezed == localita
           ? _value.localita
           : localita // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       nomeAzienda: freezed == nomeAzienda
           ? _value.nomeAzienda
           : nomeAzienda // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       statoDiPubblicazione: freezed == statoDiPubblicazione
           ? _value.statoDiPubblicazione
           : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       urlSitoWeb: freezed == urlSitoWeb
           ? _value.urlSitoWeb
           : urlSitoWeb // ignore: cast_nullable_to_non_nullable
@@ -248,14 +249,14 @@ abstract class _$$_HiringJobOfferCopyWith<$Res>
       SelectOption? contratto,
       SelectOption? seniority,
       SelectOption? ral,
-      List<RichText>? name,
-      List<RichText>? qualifica,
-      List<RichText>? retribuzione,
-      List<RichText>? descrizioneOfferta,
-      List<RichText>? comeCandidarsi,
-      List<RichText>? localita,
-      List<RichText>? nomeAzienda,
-      List<RichText>? statoDiPubblicazione,
+      List<StyledText>? name,
+      List<StyledText>? qualifica,
+      List<StyledText>? retribuzione,
+      List<StyledText>? descrizioneOfferta,
+      List<StyledText>? comeCandidarsi,
+      List<StyledText>? localita,
+      List<StyledText>? nomeAzienda,
+      List<StyledText>? statoDiPubblicazione,
       String? urlSitoWeb});
 
   @override
@@ -338,35 +339,35 @@ class __$$_HiringJobOfferCopyWithImpl<$Res>
       name: freezed == name
           ? _value._name
           : name // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       qualifica: freezed == qualifica
           ? _value._qualifica
           : qualifica // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       retribuzione: freezed == retribuzione
           ? _value._retribuzione
           : retribuzione // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       descrizioneOfferta: freezed == descrizioneOfferta
           ? _value._descrizioneOfferta
           : descrizioneOfferta // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       comeCandidarsi: freezed == comeCandidarsi
           ? _value._comeCandidarsi
           : comeCandidarsi // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       localita: freezed == localita
           ? _value._localita
           : localita // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       nomeAzienda: freezed == nomeAzienda
           ? _value._nomeAzienda
           : nomeAzienda // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       statoDiPubblicazione: freezed == statoDiPubblicazione
           ? _value._statoDiPubblicazione
           : statoDiPubblicazione // ignore: cast_nullable_to_non_nullable
-              as List<RichText>?,
+              as List<StyledText>?,
       urlSitoWeb: freezed == urlSitoWeb
           ? _value.urlSitoWeb
           : urlSitoWeb // ignore: cast_nullable_to_non_nullable
@@ -388,14 +389,14 @@ class _$_HiringJobOffer implements _HiringJobOffer {
       required this.contratto,
       required this.seniority,
       required this.ral,
-      required final List<RichText>? name,
-      required final List<RichText>? qualifica,
-      required final List<RichText>? retribuzione,
-      required final List<RichText>? descrizioneOfferta,
-      required final List<RichText>? comeCandidarsi,
-      required final List<RichText>? localita,
-      required final List<RichText>? nomeAzienda,
-      required final List<RichText>? statoDiPubblicazione,
+      required final List<StyledText>? name,
+      required final List<StyledText>? qualifica,
+      required final List<StyledText>? retribuzione,
+      required final List<StyledText>? descrizioneOfferta,
+      required final List<StyledText>? comeCandidarsi,
+      required final List<StyledText>? localita,
+      required final List<StyledText>? nomeAzienda,
+      required final List<StyledText>? statoDiPubblicazione,
       required this.urlSitoWeb})
       : _name = name,
         _qualifica = qualifica,
@@ -424,9 +425,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
   final SelectOption? seniority;
   @override
   final SelectOption? ral;
-  final List<RichText>? _name;
+  final List<StyledText>? _name;
   @override
-  List<RichText>? get name {
+  List<StyledText>? get name {
     final value = _name;
     if (value == null) return null;
     if (_name is EqualUnmodifiableListView) return _name;
@@ -434,9 +435,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<RichText>? _qualifica;
+  final List<StyledText>? _qualifica;
   @override
-  List<RichText>? get qualifica {
+  List<StyledText>? get qualifica {
     final value = _qualifica;
     if (value == null) return null;
     if (_qualifica is EqualUnmodifiableListView) return _qualifica;
@@ -444,9 +445,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<RichText>? _retribuzione;
+  final List<StyledText>? _retribuzione;
   @override
-  List<RichText>? get retribuzione {
+  List<StyledText>? get retribuzione {
     final value = _retribuzione;
     if (value == null) return null;
     if (_retribuzione is EqualUnmodifiableListView) return _retribuzione;
@@ -454,9 +455,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<RichText>? _descrizioneOfferta;
+  final List<StyledText>? _descrizioneOfferta;
   @override
-  List<RichText>? get descrizioneOfferta {
+  List<StyledText>? get descrizioneOfferta {
     final value = _descrizioneOfferta;
     if (value == null) return null;
     if (_descrizioneOfferta is EqualUnmodifiableListView)
@@ -465,9 +466,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<RichText>? _comeCandidarsi;
+  final List<StyledText>? _comeCandidarsi;
   @override
-  List<RichText>? get comeCandidarsi {
+  List<StyledText>? get comeCandidarsi {
     final value = _comeCandidarsi;
     if (value == null) return null;
     if (_comeCandidarsi is EqualUnmodifiableListView) return _comeCandidarsi;
@@ -475,9 +476,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<RichText>? _localita;
+  final List<StyledText>? _localita;
   @override
-  List<RichText>? get localita {
+  List<StyledText>? get localita {
     final value = _localita;
     if (value == null) return null;
     if (_localita is EqualUnmodifiableListView) return _localita;
@@ -485,9 +486,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<RichText>? _nomeAzienda;
+  final List<StyledText>? _nomeAzienda;
   @override
-  List<RichText>? get nomeAzienda {
+  List<StyledText>? get nomeAzienda {
     final value = _nomeAzienda;
     if (value == null) return null;
     if (_nomeAzienda is EqualUnmodifiableListView) return _nomeAzienda;
@@ -495,9 +496,9 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<RichText>? _statoDiPubblicazione;
+  final List<StyledText>? _statoDiPubblicazione;
   @override
-  List<RichText>? get statoDiPubblicazione {
+  List<StyledText>? get statoDiPubblicazione {
     final value = _statoDiPubblicazione;
     if (value == null) return null;
     if (_statoDiPubblicazione is EqualUnmodifiableListView)
@@ -590,14 +591,14 @@ abstract class _HiringJobOffer implements HiringJobOffer {
       required final SelectOption? contratto,
       required final SelectOption? seniority,
       required final SelectOption? ral,
-      required final List<RichText>? name,
-      required final List<RichText>? qualifica,
-      required final List<RichText>? retribuzione,
-      required final List<RichText>? descrizioneOfferta,
-      required final List<RichText>? comeCandidarsi,
-      required final List<RichText>? localita,
-      required final List<RichText>? nomeAzienda,
-      required final List<RichText>? statoDiPubblicazione,
+      required final List<StyledText>? name,
+      required final List<StyledText>? qualifica,
+      required final List<StyledText>? retribuzione,
+      required final List<StyledText>? descrizioneOfferta,
+      required final List<StyledText>? comeCandidarsi,
+      required final List<StyledText>? localita,
+      required final List<StyledText>? nomeAzienda,
+      required final List<StyledText>? statoDiPubblicazione,
       required final String? urlSitoWeb}) = _$_HiringJobOffer;
 
   @override
@@ -619,21 +620,21 @@ abstract class _HiringJobOffer implements HiringJobOffer {
   @override
   SelectOption? get ral;
   @override
-  List<RichText>? get name;
+  List<StyledText>? get name;
   @override
-  List<RichText>? get qualifica;
+  List<StyledText>? get qualifica;
   @override
-  List<RichText>? get retribuzione;
+  List<StyledText>? get retribuzione;
   @override
-  List<RichText>? get descrizioneOfferta;
+  List<StyledText>? get descrizioneOfferta;
   @override
-  List<RichText>? get comeCandidarsi;
+  List<StyledText>? get comeCandidarsi;
   @override
-  List<RichText>? get localita;
+  List<StyledText>? get localita;
   @override
-  List<RichText>? get nomeAzienda;
+  List<StyledText>? get nomeAzienda;
   @override
-  List<RichText>? get statoDiPubblicazione;
+  List<StyledText>? get statoDiPubblicazione;
   @override
   String? get urlSitoWeb;
   @override

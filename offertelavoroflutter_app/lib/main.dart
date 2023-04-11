@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl_standalone.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:offertelavoroflutter_app/constants/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_options.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
 
 void main() async {
+  await findSystemLocale();
+  GoogleFonts.config.allowRuntimeFetching = false;
   await dotenv.load(fileName: 'environment/.env');
   runApp(const MyApp());
 }
@@ -27,8 +33,31 @@ class MyApp extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Styles.lightBackground,
+          textTheme: _getTextTheme(context),
+          cardTheme: _getCardTheme(context)
         ),
         home: const MyHomePage(title: 'Offerte Lavoro Flutter'),
+      ),
+    );
+  }
+
+  TextTheme _getTextTheme(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return GoogleFonts.montserratTextTheme(textTheme.copyWith(
+      titleLarge: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
+      titleMedium: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
+      titleSmall: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
+      bodyMedium: textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
+      bodySmall: textTheme.bodySmall?.copyWith(color: Styles.lightText),
+    ));
+  }
+  
+  CardTheme _getCardTheme(BuildContext context) {
+    return CardTheme(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
       ),
     );
   }
@@ -66,10 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: FutureBuilder<PagedList<HiringJobOffer>>(
         future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(
           pageSize: 10,
-          contratto: ['Full time'],
-          seniority: ['Junior', 'Mid'],
-          team: ['Ibrido', 'Full Remote'],
-          searchText: 'flutter'
+          // contratto: ['Full time'],
+          // seniority: ['Junior', 'Mid'],
+          // team: ['Ibrido', 'Full Remote'],
+          // searchText: 'flutter'
         ),
         builder: (context, snapshot) {
           if(snapshot.hasError) {
@@ -82,21 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
           List<HiringJobOffer> items = snapshot.data!.results;
           return ListView.builder(
-            itemBuilder: (context, index) => Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('${items[index].emoji} ${items[index].name?.first.text}'),
-                    Text(items[index].contratto?.name ?? '-', style: TextStyle(color: items[index].contratto?.color)),
-                    Text(items[index].team?.name ?? '-', style: TextStyle(color: items[index].team?.color)),
-                    Text(items[index].seniority?.name ?? '-', style: TextStyle(color: items[index].seniority?.color)),
-                  ],
-                ),
-              ),
-            ),
+            padding: const EdgeInsets.only(left: Styles.screenHorizPadding, right: Styles.screenHorizPadding, top: 20),
+            itemBuilder: (context, index) => HiringJobOfferItem(hiringJobOffer: items[index]),
             itemCount: items.length,
           );
         },
