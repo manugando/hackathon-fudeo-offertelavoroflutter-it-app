@@ -5,11 +5,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:offertelavoroflutter_app/constants/styles.dart';
-import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_options.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_screen/hiring_job_offer_screen.dart';
 
 void main() async {
   await findSystemLocale();
@@ -37,7 +34,7 @@ class MyApp extends StatelessWidget {
           textTheme: _getTextTheme(context),
           cardTheme: _getCardTheme(context)
         ),
-        home: const MyHomePage(title: 'Offerte Lavoro Flutter'),
+        home: const HiringJobOfferScreen(),
       ),
     );
   }
@@ -59,64 +56,6 @@ class MyApp extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  void initState() {
-    super.initState();
-    loadOptions();
-  }
-
-  loadOptions() async {
-    HiringJobOfferOptions options = await RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffersOptions();
-    // TODO use options to populate options
-    print(options);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: FutureBuilder<PagedList<HiringJobOffer>>(
-        future: RepositoryProvider.of<HiringJobOfferRepository>(context).getHiringJobOffers(
-          pageSize: 10,
-          // contratto: ['Full time'],
-          // seniority: ['Junior', 'Mid'],
-          // team: ['Ibrido', 'Full Remote'],
-          // searchText: 'flutter'
-        ),
-        builder: (context, snapshot) {
-          if(snapshot.hasError) {
-            print(snapshot.error);
-            return const Text('Errore');
-          }
-
-          if(!snapshot.hasData) return const SizedBox();
-
-
-          List<HiringJobOffer> items = snapshot.data!.results;
-          return ListView.builder(
-            padding: const EdgeInsets.only(left: Styles.screenHorizPadding, right: Styles.screenHorizPadding, top: 20),
-            itemBuilder: (context, index) => HiringJobOfferItem(hiringJobOffer: items[index]),
-            itemCount: items.length,
-          );
-        },
-      ) // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
