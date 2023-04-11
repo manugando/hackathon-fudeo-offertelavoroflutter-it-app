@@ -1,4 +1,5 @@
 {
   "genericErrorMessage" : "Sì è verificato un errore",
-  "notItemsFoundMessage" : "Nessun elemento"
+  "notItemsFoundMessage" : "Nessun elemento",
+  "retry" : "Riprova"
 }

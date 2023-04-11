@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:offertelavoroflutter_app/constants/styles.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/select_option_badge.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
@@ -12,20 +13,7 @@ class HiringJobOfferItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(0, 4),
-            blurRadius: 60,
-            color: const Color(0xFF99ABC6).withAlpha(45)
-          )
-        ]
-      ),
-      padding: const EdgeInsets.all(20.0),
-      margin: const EdgeInsets.only(bottom: 20.0),
+    return ContentCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,

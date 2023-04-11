@@ -29,7 +29,12 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          colorScheme: const ColorScheme.light(
+            primary: Styles.primaryDark,
+            secondary: Styles.accent,
+            onPrimary: Colors.white,
+            onSecondary: Colors.white,
+          ),
           scaffoldBackgroundColor: Styles.lightBackground,
           textTheme: _getTextTheme(context),
           cardTheme: _getCardTheme(context)

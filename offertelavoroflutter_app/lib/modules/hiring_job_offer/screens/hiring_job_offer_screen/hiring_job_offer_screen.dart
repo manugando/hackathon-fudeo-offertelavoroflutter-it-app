@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/styles.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_screen/bloc/hiring_job_offer_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
 
 class HiringJobOfferScreen extends StatelessWidget {
   const HiringJobOfferScreen({Key? key}) : super(key: key);
@@ -51,18 +54,35 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
       },
       child: Scaffold(
           appBar: AppBar(title: const Text('Offerte di lavoro per assunzione')),
-          body: PagedListView(
-            padding: const EdgeInsets.only(top: 20, right: Styles.screenHorizPadding, left: Styles.screenHorizPadding),
-            pagingController: _pagingController,
-            builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
-              itemBuilder: (context, item, index) => HiringJobOfferItem(hiringJobOffer: item),
-              firstPageProgressIndicatorBuilder: (context) => const Text('First page is loading...'),
-              newPageProgressIndicatorBuilder: (context) => const Text('New page is loading...'),
-              noMoreItemsIndicatorBuilder: (context) => const Text('No more items...'),
-              noItemsFoundIndicatorBuilder: (context) => const Text('No items found...'),
-            )
+          body: RefreshIndicator(
+            onRefresh: () => Future.sync(_pagingController.refresh),
+            child: PagedListView(
+              padding: const EdgeInsets.only(top: 20, right: Styles.screenHorizPadding, left: Styles.screenHorizPadding),
+              pagingController: _pagingController,
+              builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
+                itemBuilder: (context, item, index) => HiringJobOfferItem(hiringJobOffer: item),
+                firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
+                newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
+                noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
+                firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
+                newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
+              )
+            ),
           ),
         ),
+    );
+  }
+
+  Widget _buildFirstPageProgressIndicator() {
+    return Column(
+      children: const [
+        HiringJobOfferItemSkeleton(),
+        HiringJobOfferItemSkeleton(),
+        HiringJobOfferItemSkeleton(),
+        HiringJobOfferItemSkeleton(),
+        HiringJobOfferItemSkeleton(),
+        HiringJobOfferItemSkeleton(),
+      ],
     );
   }
 }
