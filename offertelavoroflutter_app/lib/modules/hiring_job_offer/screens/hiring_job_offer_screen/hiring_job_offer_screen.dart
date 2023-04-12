@@ -31,7 +31,6 @@ class HiringJobOfferView extends StatefulWidget {
 }
 
 class _HiringJobOfferViewState extends State<HiringJobOfferView> {
-  final double bottomBorderRadius = 30;
   final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
 
   @override
@@ -55,22 +54,22 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
         _pagingController.value = state.pagingState;
       },
       child: Scaffold(
-          body: RefreshIndicator(
-            onRefresh: () => Future.sync(_pagingController.refresh),
-            child: NestedScrollView(
-              headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return [
-                  HeaderWithSearch(
-                    forceElevated: innerBoxIsScrolled,
-                    title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
-                    switchBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
-                    onSwitch: () {
-                      // TODO
-                    },
-                  )
-                ];
-              },
-              body: PagedListView(
+          body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                HeaderWithSearch(
+                  forceElevated: innerBoxIsScrolled,
+                  title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
+                  switchBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
+                  onSwitch: () {
+                    // TODO
+                  },
+                )
+              ];
+            },
+            body: RefreshIndicator(
+              onRefresh: () => Future.sync(_pagingController.refresh),
+              child: PagedListView(
                 padding: const EdgeInsets.only(top: 20),
                 pagingController: _pagingController,
                 builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
