@@ -37,7 +37,9 @@ class MyApp extends StatelessWidget {
           ),
           scaffoldBackgroundColor: Styles.lightBackground,
           textTheme: _getTextTheme(context),
-          cardTheme: _getCardTheme(context)
+          cardTheme: _getCardTheme(context),
+          inputDecorationTheme: _getInputDecoratorTheme(context),
+          elevatedButtonTheme: _getElevatedBtnThemeData(context)
         ),
         home: const HiringJobOfferScreen(),
       ),
@@ -61,6 +63,27 @@ class MyApp extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
+    );
+  }
+
+  ElevatedButtonThemeData _getElevatedBtnThemeData(BuildContext context) {
+    return ElevatedButtonThemeData(style: ButtonStyle(
+      minimumSize: MaterialStateProperty.all(const Size(48, 48)),
+      elevation: MaterialStateProperty.all(0),
+      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+    ));
+  }
+
+  InputDecorationTheme _getInputDecoratorTheme(BuildContext context) {
+    return const InputDecorationTheme(
+      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      filled: true,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderSide: BorderSide.none,
+      )
     );
   }
 }

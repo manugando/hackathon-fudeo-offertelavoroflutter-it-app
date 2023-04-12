@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:offertelavoroflutter_app/constants/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
@@ -30,6 +31,7 @@ class HiringJobOfferView extends StatefulWidget {
 }
 
 class _HiringJobOfferViewState extends State<HiringJobOfferView> {
+  final double bottomBorderRadius = 30;
   final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
 
   @override
@@ -53,20 +55,33 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
         _pagingController.value = state.pagingState;
       },
       child: Scaffold(
-          appBar: AppBar(title: const Text('Offerte di lavoro per assunzione')),
           body: RefreshIndicator(
             onRefresh: () => Future.sync(_pagingController.refresh),
-            child: PagedListView(
-              padding: const EdgeInsets.only(top: 20, right: Styles.screenHorizPadding, left: Styles.screenHorizPadding),
-              pagingController: _pagingController,
-              builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
-                itemBuilder: (context, item, index) => HiringJobOfferItem(hiringJobOffer: item),
-                firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
-                newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
-                noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
-                firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
-                newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
-              )
+            child: NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
+                return [
+                  HeaderWithSearch(
+                    forceElevated: innerBoxIsScrolled,
+                    title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
+                    switchBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
+                    onSwitch: () {
+                      // TODO
+                    },
+                  )
+                ];
+              },
+              body: PagedListView(
+                padding: const EdgeInsets.only(top: 20),
+                pagingController: _pagingController,
+                builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
+                  itemBuilder: (context, item, index) => HiringJobOfferItem(hiringJobOffer: item),
+                  firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
+                  newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
+                  noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
+                  firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
+                  newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
+                )
+              ),
             ),
           ),
         ),
@@ -86,4 +101,5 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
     );
   }
 }
+
 

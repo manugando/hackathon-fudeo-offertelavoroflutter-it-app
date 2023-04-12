@@ -1,5 +1,10 @@
 {
+  "appName": "offertelavoroflutter.it",
   "genericErrorMessage" : "Sì è verificato un errore",
   "notItemsFoundMessage" : "Nessun elemento",
-  "retry" : "Riprova"
+  "retry" : "Riprova",
+
+  "hiringJobOfferScreenTitle": "Offerte di lavoro per\nassunzione",
+  "hiringJobOfferScreenSwitch": "Passa alle offerte per freelance",
+  "hiringJobOfferSearchPlaceholder": "Cerca annunci per titolo, città..."
 }

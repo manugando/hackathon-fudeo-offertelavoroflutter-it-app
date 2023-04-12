@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:offertelavoroflutter_app/constants/styles.dart';
 
 class ContentCard extends StatelessWidget {
   final Widget child;
@@ -21,7 +22,11 @@ class ContentCard extends StatelessWidget {
         ]
       ),
       padding: padding ?? const EdgeInsets.all(20),
-      margin: const EdgeInsets.only(bottom: 20),
+      margin: const EdgeInsets.only(
+        right: Styles.screenHorizPadding,
+        left: Styles.screenHorizPadding,
+        bottom: 20
+      ),
       child: child,
     );
   }
