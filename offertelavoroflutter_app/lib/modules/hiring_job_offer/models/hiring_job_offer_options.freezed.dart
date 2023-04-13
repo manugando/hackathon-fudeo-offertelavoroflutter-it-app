@@ -189,27 +189,6 @@ class _$_HiringJobOfferOptions implements _HiringJobOfferOptions {
     return 'HiringJobOfferOptions(team: $team, contratto: $contratto, seniority: $seniority, ral: $ral)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_HiringJobOfferOptions &&
-            const DeepCollectionEquality().equals(other._team, _team) &&
-            const DeepCollectionEquality()
-                .equals(other._contratto, _contratto) &&
-            const DeepCollectionEquality()
-                .equals(other._seniority, _seniority) &&
-            const DeepCollectionEquality().equals(other._ral, _ral));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_team),
-      const DeepCollectionEquality().hash(_contratto),
-      const DeepCollectionEquality().hash(_seniority),
-      const DeepCollectionEquality().hash(_ral));
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

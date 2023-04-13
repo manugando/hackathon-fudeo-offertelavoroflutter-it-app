@@ -126,19 +126,6 @@ class _$_NotionDbPropertySelectOptions
     return 'NotionDbPropertySelectOptions(options: $options)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionDbPropertySelectOptions &&
-            const DeepCollectionEquality().equals(other._options, _options));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_options));
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

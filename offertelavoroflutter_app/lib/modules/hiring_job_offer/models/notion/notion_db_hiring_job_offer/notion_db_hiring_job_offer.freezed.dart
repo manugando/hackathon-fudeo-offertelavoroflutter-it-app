@@ -183,25 +183,6 @@ class _$_NotionDbHiringJobOffer implements _NotionDbHiringJobOffer {
     return 'NotionDbHiringJobOffer(id: $id, createdTime: $createdTime, lastEditedTime: $lastEditedTime, properties: $properties)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionDbHiringJobOffer &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.createdTime, createdTime) ||
-                other.createdTime == createdTime) &&
-            (identical(other.lastEditedTime, lastEditedTime) ||
-                other.lastEditedTime == lastEditedTime) &&
-            (identical(other.properties, properties) ||
-                other.properties == properties));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, createdTime, lastEditedTime, properties);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

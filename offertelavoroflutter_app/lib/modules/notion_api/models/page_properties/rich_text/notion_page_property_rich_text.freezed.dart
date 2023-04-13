@@ -159,21 +159,6 @@ class _$_NotionPagePropertyRichText implements _NotionPagePropertyRichText {
     return 'NotionPagePropertyRichText(id: $id, type: $type, richText: $richText)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPagePropertyRichText &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._richText, _richText));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, type, const DeepCollectionEquality().hash(_richText));
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

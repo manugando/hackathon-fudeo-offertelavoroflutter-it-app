@@ -240,23 +240,6 @@ class _$_NotionDbHiringJobOfferProperties
     return 'NotionDbHiringJobOfferProperties(team: $team, contratto: $contratto, seniority: $seniority, ral: $ral)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionDbHiringJobOfferProperties &&
-            (identical(other.team, team) || other.team == team) &&
-            (identical(other.contratto, contratto) ||
-                other.contratto == contratto) &&
-            (identical(other.seniority, seniority) ||
-                other.seniority == seniority) &&
-            (identical(other.ral, ral) || other.ral == ral));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, team, contratto, seniority, ral);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

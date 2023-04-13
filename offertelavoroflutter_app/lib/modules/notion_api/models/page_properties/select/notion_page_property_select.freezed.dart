@@ -158,20 +158,6 @@ class _$_NotionPagePropertySelect implements _NotionPagePropertySelect {
     return 'NotionPagePropertySelect(id: $id, type: $type, select: $select)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPagePropertySelect &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.select, select) || other.select == select));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, type, select);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

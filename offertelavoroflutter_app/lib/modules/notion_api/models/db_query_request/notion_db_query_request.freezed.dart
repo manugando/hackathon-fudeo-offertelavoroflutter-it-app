@@ -179,22 +179,6 @@ class _$_NotionDbQueryRequest implements _NotionDbQueryRequest {
     return 'NotionDbQueryRequest(pageSize: $pageSize, startCursor: $startCursor, filter: $filter)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionDbQueryRequest &&
-            (identical(other.pageSize, pageSize) ||
-                other.pageSize == pageSize) &&
-            (identical(other.startCursor, startCursor) ||
-                other.startCursor == startCursor) &&
-            (identical(other.filter, filter) || other.filter == filter));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, pageSize, startCursor, filter);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

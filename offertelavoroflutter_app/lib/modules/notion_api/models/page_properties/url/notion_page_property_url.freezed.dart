@@ -139,20 +139,6 @@ class _$_NotionPagePropertyUrl implements _NotionPagePropertyUrl {
     return 'NotionPagePropertyUrl(id: $id, type: $type, url: $url)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPagePropertyUrl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.url, url) || other.url == url));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, type, url);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

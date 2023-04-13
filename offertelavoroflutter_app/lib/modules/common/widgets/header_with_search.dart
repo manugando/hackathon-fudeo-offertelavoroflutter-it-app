@@ -8,9 +8,10 @@ class HeaderWithSearch extends StatelessWidget {
   final String switchBtnTitle;
   final Function() onSwitch;
   final bool forceElevated;
+  final TextEditingController searchController;
 
   const HeaderWithSearch({Key? key, required this.forceElevated, required this.title,
-    required this.switchBtnTitle, required this.onSwitch}) : super(key: key);
+    required this.switchBtnTitle, required this.onSwitch, required this.searchController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class HeaderWithSearch extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
       pinned: true,
       floating: true,
-      bottom: const BottomAppBar(),
+      bottom: BottomAppBar(searchController: searchController),
       forceElevated: forceElevated,
       flexibleSpace: ClipRRect(
         borderRadius: borderRadius,
@@ -67,7 +68,8 @@ class HeaderWithSearch extends StatelessWidget {
 }
 
 class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
-  const BottomAppBar({Key? key}) : super(key: key);
+  final TextEditingController searchController;
+  const BottomAppBar({Key? key, required this.searchController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +79,7 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
         children: [
           Expanded(
             child: TextFormField(
+              controller: searchController,
               decoration: InputDecoration(
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12.0),

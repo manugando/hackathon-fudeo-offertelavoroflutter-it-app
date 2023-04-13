@@ -146,19 +146,6 @@ class _$_NotionRichTextContentText implements _NotionRichTextContentText {
     return 'NotionRichTextContentText(content: $content, link: $link)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionRichTextContentText &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.link, link) || other.link == link));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, content, link);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

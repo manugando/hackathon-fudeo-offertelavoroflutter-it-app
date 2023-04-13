@@ -515,64 +515,6 @@ class _$_HiringJobOffer implements _HiringJobOffer {
     return 'HiringJobOffer(id: $id, archived: $archived, emoji: $emoji, url: $url, jobPosted: $jobPosted, team: $team, contratto: $contratto, seniority: $seniority, ral: $ral, name: $name, qualifica: $qualifica, retribuzione: $retribuzione, descrizioneOfferta: $descrizioneOfferta, comeCandidarsi: $comeCandidarsi, localita: $localita, nomeAzienda: $nomeAzienda, statoDiPubblicazione: $statoDiPubblicazione, urlSitoWeb: $urlSitoWeb)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_HiringJobOffer &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.archived, archived) ||
-                other.archived == archived) &&
-            (identical(other.emoji, emoji) || other.emoji == emoji) &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.jobPosted, jobPosted) ||
-                other.jobPosted == jobPosted) &&
-            (identical(other.team, team) || other.team == team) &&
-            (identical(other.contratto, contratto) ||
-                other.contratto == contratto) &&
-            (identical(other.seniority, seniority) ||
-                other.seniority == seniority) &&
-            (identical(other.ral, ral) || other.ral == ral) &&
-            const DeepCollectionEquality().equals(other._name, _name) &&
-            const DeepCollectionEquality()
-                .equals(other._qualifica, _qualifica) &&
-            const DeepCollectionEquality()
-                .equals(other._retribuzione, _retribuzione) &&
-            const DeepCollectionEquality()
-                .equals(other._descrizioneOfferta, _descrizioneOfferta) &&
-            const DeepCollectionEquality()
-                .equals(other._comeCandidarsi, _comeCandidarsi) &&
-            const DeepCollectionEquality().equals(other._localita, _localita) &&
-            const DeepCollectionEquality()
-                .equals(other._nomeAzienda, _nomeAzienda) &&
-            const DeepCollectionEquality()
-                .equals(other._statoDiPubblicazione, _statoDiPubblicazione) &&
-            (identical(other.urlSitoWeb, urlSitoWeb) ||
-                other.urlSitoWeb == urlSitoWeb));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      archived,
-      emoji,
-      url,
-      jobPosted,
-      team,
-      contratto,
-      seniority,
-      ral,
-      const DeepCollectionEquality().hash(_name),
-      const DeepCollectionEquality().hash(_qualifica),
-      const DeepCollectionEquality().hash(_retribuzione),
-      const DeepCollectionEquality().hash(_descrizioneOfferta),
-      const DeepCollectionEquality().hash(_comeCandidarsi),
-      const DeepCollectionEquality().hash(_localita),
-      const DeepCollectionEquality().hash(_nomeAzienda),
-      const DeepCollectionEquality().hash(_statoDiPubblicazione),
-      urlSitoWeb);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

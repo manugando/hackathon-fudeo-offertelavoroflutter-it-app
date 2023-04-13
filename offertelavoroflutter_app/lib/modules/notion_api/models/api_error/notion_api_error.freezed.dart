@@ -123,19 +123,6 @@ class _$_NotionApiError implements _NotionApiError {
     return 'NotionApiError(code: $code, message: $message)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionApiError &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, code, message);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

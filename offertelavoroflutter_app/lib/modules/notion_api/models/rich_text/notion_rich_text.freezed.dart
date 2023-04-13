@@ -269,24 +269,6 @@ class _$NotionRichTextTypeText implements NotionRichTextTypeText {
     return 'NotionRichText.text(text: $text, annotations: $annotations, plainText: $plainText, href: $href)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionRichTextTypeText &&
-            (identical(other.text, text) || other.text == text) &&
-            (identical(other.annotations, annotations) ||
-                other.annotations == annotations) &&
-            (identical(other.plainText, plainText) ||
-                other.plainText == plainText) &&
-            (identical(other.href, href) || other.href == href));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, text, annotations, plainText, href);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -512,28 +494,6 @@ class _$NotionRichTextTypeMention implements NotionRichTextTypeMention {
     return 'NotionRichText.mention(mention: $mention, annotations: $annotations, plainText: $plainText, href: $href)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionRichTextTypeMention &&
-            const DeepCollectionEquality().equals(other.mention, mention) &&
-            (identical(other.annotations, annotations) ||
-                other.annotations == annotations) &&
-            (identical(other.plainText, plainText) ||
-                other.plainText == plainText) &&
-            (identical(other.href, href) || other.href == href));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(mention),
-      annotations,
-      plainText,
-      href);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -758,28 +718,6 @@ class _$NotionRichTextTypeEquation implements NotionRichTextTypeEquation {
   String toString() {
     return 'NotionRichText.equation(equation: $equation, annotations: $annotations, plainText: $plainText, href: $href)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionRichTextTypeEquation &&
-            const DeepCollectionEquality().equals(other.equation, equation) &&
-            (identical(other.annotations, annotations) ||
-                other.annotations == annotations) &&
-            (identical(other.plainText, plainText) ||
-                other.plainText == plainText) &&
-            (identical(other.href, href) || other.href == href));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(equation),
-      annotations,
-      plainText,
-      href);
 
   @JsonKey(ignore: true)
   @override

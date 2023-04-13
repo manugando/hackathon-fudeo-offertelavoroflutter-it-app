@@ -193,24 +193,6 @@ class _$_NotionPagedResponse<T> implements _NotionPagedResponse<T> {
     return 'NotionPagedResponse<$T>(object: $object, type: $type, results: $results, nextCursor: $nextCursor, hasMore: $hasMore)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPagedResponse<T> &&
-            (identical(other.object, object) || other.object == object) &&
-            (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._results, _results) &&
-            (identical(other.nextCursor, nextCursor) ||
-                other.nextCursor == nextCursor) &&
-            (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, object, type,
-      const DeepCollectionEquality().hash(_results), nextCursor, hasMore);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

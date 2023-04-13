@@ -148,21 +148,6 @@ class _$_NotionPagePropertyTitle implements _NotionPagePropertyTitle {
     return 'NotionPagePropertyTitle(id: $id, type: $type, title: $title)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPagePropertyTitle &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._title, _title));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, type, const DeepCollectionEquality().hash(_title));
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

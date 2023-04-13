@@ -178,21 +178,6 @@ class _$_NotionDbPropertySelect implements _NotionDbPropertySelect {
     return 'NotionDbPropertySelect(id: $id, name: $name, type: $type, select: $select)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionDbPropertySelect &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.select, select) || other.select == select));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, type, select);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

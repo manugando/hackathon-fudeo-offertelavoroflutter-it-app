@@ -147,18 +147,6 @@ class _$NotionFilterConditionEquals implements NotionFilterConditionEquals {
     return 'NotionFilterCondition.equals(equals: $equals)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionFilterConditionEquals &&
-            (identical(other.equals, equals) || other.equals == equals));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, equals);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -302,19 +290,6 @@ class _$NotionFilterConditionContains implements NotionFilterConditionContains {
   String toString() {
     return 'NotionFilterCondition.contains(contains: $contains)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionFilterConditionContains &&
-            (identical(other.contains, contains) ||
-                other.contains == contains));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, contains);
 
   @JsonKey(ignore: true)
   @override

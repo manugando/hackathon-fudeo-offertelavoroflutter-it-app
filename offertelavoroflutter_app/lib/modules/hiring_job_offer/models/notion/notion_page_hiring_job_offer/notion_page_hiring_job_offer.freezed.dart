@@ -247,29 +247,6 @@ class _$_NotionPageHiringJobOffer implements _NotionPageHiringJobOffer {
     return 'NotionPageHiringJobOffer(id: $id, createdTime: $createdTime, lastEditedTime: $lastEditedTime, archived: $archived, icon: $icon, url: $url, properties: $properties)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPageHiringJobOffer &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.createdTime, createdTime) ||
-                other.createdTime == createdTime) &&
-            (identical(other.lastEditedTime, lastEditedTime) ||
-                other.lastEditedTime == lastEditedTime) &&
-            (identical(other.archived, archived) ||
-                other.archived == archived) &&
-            (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.properties, properties) ||
-                other.properties == properties));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, createdTime, lastEditedTime,
-      archived, icon, url, properties);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

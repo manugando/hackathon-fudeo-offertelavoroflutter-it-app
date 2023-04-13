@@ -129,19 +129,6 @@ class _$_SelectOption implements _SelectOption {
     return 'SelectOption(id: $id, name: $name, color: $color)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SelectOption &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.color, color) || other.color == color));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, color);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

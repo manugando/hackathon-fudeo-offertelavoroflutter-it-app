@@ -200,20 +200,6 @@ class _$NotionFilterSelect implements NotionFilterSelect {
     return 'NotionFilter.select(property: $property, select: $select)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionFilterSelect &&
-            (identical(other.property, property) ||
-                other.property == property) &&
-            (identical(other.select, select) || other.select == select));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, property, select);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -422,21 +408,6 @@ class _$NotionFilterRichText implements NotionFilterRichText {
     return 'NotionFilter.richText(property: $property, richText: $richText)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionFilterRichText &&
-            (identical(other.property, property) ||
-                other.property == property) &&
-            (identical(other.richText, richText) ||
-                other.richText == richText));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, property, richText);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -627,19 +598,6 @@ class _$NotionFilterAnd implements NotionFilterAnd {
     return 'NotionFilter.and(and: $and)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionFilterAnd &&
-            const DeepCollectionEquality().equals(other._and, _and));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_and));
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -824,19 +782,6 @@ class _$NotionFilterOr implements NotionFilterOr {
   String toString() {
     return 'NotionFilter.or(or: $or)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionFilterOr &&
-            const DeepCollectionEquality().equals(other._or, _or));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_or));
 
   @JsonKey(ignore: true)
   @override

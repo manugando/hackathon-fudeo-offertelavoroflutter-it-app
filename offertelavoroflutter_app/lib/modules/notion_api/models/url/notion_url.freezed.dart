@@ -108,18 +108,6 @@ class _$_NotionUrl implements _NotionUrl {
     return 'NotionUrl(url: $url)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionUrl &&
-            (identical(other.url, url) || other.url == url));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, url);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

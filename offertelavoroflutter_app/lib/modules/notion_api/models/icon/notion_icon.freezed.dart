@@ -139,18 +139,6 @@ class _$NotionIconEmoji implements NotionIconEmoji {
     return 'NotionIcon.emoji(emoji: $emoji)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionIconEmoji &&
-            (identical(other.emoji, emoji) || other.emoji == emoji));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, emoji);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -289,18 +277,6 @@ class _$NotionIconExternal implements NotionIconExternal {
   String toString() {
     return 'NotionIcon.external(url: $url)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NotionIconExternal &&
-            (identical(other.url, url) || other.url == url));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, url);
 
   @JsonKey(ignore: true)
   @override

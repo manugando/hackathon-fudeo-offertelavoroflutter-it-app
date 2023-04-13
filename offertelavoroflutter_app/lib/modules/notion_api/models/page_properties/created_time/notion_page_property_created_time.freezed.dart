@@ -156,21 +156,6 @@ class _$_NotionPagePropertyCreatedTime
     return 'NotionPagePropertyCreatedTime(id: $id, type: $type, createdTime: $createdTime)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPagePropertyCreatedTime &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.createdTime, createdTime) ||
-                other.createdTime == createdTime));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, type, createdTime);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

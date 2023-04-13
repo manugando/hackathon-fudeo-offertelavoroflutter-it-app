@@ -628,57 +628,6 @@ class _$_NotionPageHiringJobOfferProperties
     return 'NotionPageHiringJobOfferProperties(jobPosted: $jobPosted, team: $team, contratto: $contratto, seniority: $seniority, ral: $ral, name: $name, qualifica: $qualifica, retribuzione: $retribuzione, descrizioneOfferta: $descrizioneOfferta, comeCandidarsi: $comeCandidarsi, localita: $localita, nomeAzienda: $nomeAzienda, statoDiPubblicazione: $statoDiPubblicazione, urlSitoWeb: $urlSitoWeb)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionPageHiringJobOfferProperties &&
-            (identical(other.jobPosted, jobPosted) ||
-                other.jobPosted == jobPosted) &&
-            (identical(other.team, team) || other.team == team) &&
-            (identical(other.contratto, contratto) ||
-                other.contratto == contratto) &&
-            (identical(other.seniority, seniority) ||
-                other.seniority == seniority) &&
-            (identical(other.ral, ral) || other.ral == ral) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.qualifica, qualifica) ||
-                other.qualifica == qualifica) &&
-            (identical(other.retribuzione, retribuzione) ||
-                other.retribuzione == retribuzione) &&
-            (identical(other.descrizioneOfferta, descrizioneOfferta) ||
-                other.descrizioneOfferta == descrizioneOfferta) &&
-            (identical(other.comeCandidarsi, comeCandidarsi) ||
-                other.comeCandidarsi == comeCandidarsi) &&
-            (identical(other.localita, localita) ||
-                other.localita == localita) &&
-            (identical(other.nomeAzienda, nomeAzienda) ||
-                other.nomeAzienda == nomeAzienda) &&
-            (identical(other.statoDiPubblicazione, statoDiPubblicazione) ||
-                other.statoDiPubblicazione == statoDiPubblicazione) &&
-            (identical(other.urlSitoWeb, urlSitoWeb) ||
-                other.urlSitoWeb == urlSitoWeb));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      jobPosted,
-      team,
-      contratto,
-      seniority,
-      ral,
-      name,
-      qualifica,
-      retribuzione,
-      descrizioneOfferta,
-      comeCandidarsi,
-      localita,
-      nomeAzienda,
-      statoDiPubblicazione,
-      urlSitoWeb);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

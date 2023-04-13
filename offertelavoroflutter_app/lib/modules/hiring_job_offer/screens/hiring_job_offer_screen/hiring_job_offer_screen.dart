@@ -31,6 +31,7 @@ class HiringJobOfferView extends StatefulWidget {
 }
 
 class _HiringJobOfferViewState extends State<HiringJobOfferView> {
+  final TextEditingController _searchFieldController = TextEditingController();
   final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
 
   @override
@@ -38,13 +39,21 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
     _pagingController.addPageRequestListener((pageKey) {
       context.read<HiringJobOfferScreenBloc>().add(HiringJobOfferScreenEvent.pageRequested(pageKey));
     });
+    _searchFieldController.addListener(() {
+      context.read<HiringJobOfferScreenBloc>().add(HiringJobOfferScreenEvent.searchQueryChanged(_searchFieldController.text));
+    });
     super.initState();
   }
 
   @override
   void dispose() {
+    _searchFieldController.dispose();
     _pagingController.dispose();
     super.dispose();
+  }
+
+  refresh() {
+    context.read<HiringJobOfferScreenBloc>().add(const HiringJobOfferScreenEvent.refreshRequested());
   }
 
   @override
@@ -61,6 +70,7 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
                   forceElevated: innerBoxIsScrolled,
                   title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
                   switchBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
+                  searchController: _searchFieldController,
                   onSwitch: () {
                     // TODO
                   },
@@ -68,7 +78,7 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
               ];
             },
             body: RefreshIndicator(
-              onRefresh: () => Future.sync(_pagingController.refresh),
+              onRefresh: () => Future.sync(refresh),
               child: PagedListView(
                 padding: const EdgeInsets.only(top: 20),
                 pagingController: _pagingController,
@@ -77,8 +87,8 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
                   firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
                   newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
                   noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
-                  firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
-                  newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: _pagingController.refresh),
+                  firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
+                  newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
                 )
               ),
             ),

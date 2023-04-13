@@ -137,20 +137,6 @@ class _$_NotionSelectOption implements _NotionSelectOption {
     return 'NotionSelectOption(id: $id, name: $name, color: $color)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionSelectOption &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.color, color) || other.color == color));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, color);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

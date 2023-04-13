@@ -138,21 +138,6 @@ class _$_PagedList<T> implements _PagedList<T> {
     return 'PagedList<$T>(results: $results, nextPageKey: $nextPageKey, hasMore: $hasMore)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PagedList<T> &&
-            const DeepCollectionEquality().equals(other._results, _results) &&
-            (identical(other.nextPageKey, nextPageKey) ||
-                other.nextPageKey == nextPageKey) &&
-            (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_results), nextPageKey, hasMore);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

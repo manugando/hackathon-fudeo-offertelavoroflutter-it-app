@@ -198,26 +198,6 @@ class _$_NotionRichTextAnnotations implements _NotionRichTextAnnotations {
     return 'NotionRichTextAnnotations(bold: $bold, italic: $italic, strikethrough: $strikethrough, underline: $underline, code: $code, color: $color)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_NotionRichTextAnnotations &&
-            (identical(other.bold, bold) || other.bold == bold) &&
-            (identical(other.italic, italic) || other.italic == italic) &&
-            (identical(other.strikethrough, strikethrough) ||
-                other.strikethrough == strikethrough) &&
-            (identical(other.underline, underline) ||
-                other.underline == underline) &&
-            (identical(other.code, code) || other.code == code) &&
-            (identical(other.color, color) || other.color == color));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, bold, italic, strikethrough, underline, code, color);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')

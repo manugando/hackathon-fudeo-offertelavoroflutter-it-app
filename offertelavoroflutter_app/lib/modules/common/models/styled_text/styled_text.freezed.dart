@@ -129,19 +129,6 @@ class _$_StyledText implements _StyledText {
     return 'StyledText(text: $text, style: $style, href: $href)';
   }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_StyledText &&
-            (identical(other.text, text) || other.text == text) &&
-            (identical(other.style, style) || other.style == style) &&
-            (identical(other.href, href) || other.href == href));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, text, style, href);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
