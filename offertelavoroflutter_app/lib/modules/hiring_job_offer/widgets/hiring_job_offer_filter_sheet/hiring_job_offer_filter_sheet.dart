@@ -115,7 +115,7 @@ class _HiringJobOfferFilterView extends StatelessWidget {
     return FilterButtons<String>(
       onSelected: (optionName) => context.read<HiringJobOfferFilterSheetBloc>()
         .add(HiringJobOfferFilterSheetEvent.teamOptionToggled(optionName)),
-      selectedOptionsValues: state.teamSelectedNames,
+      selectedOptionsValues: state.teamSelectedOptions,
       options: state.teamOptions?.map((option) => FilterButtonsOption(option.name, option.name)).toList(),
     );
   }
@@ -124,7 +124,7 @@ class _HiringJobOfferFilterView extends StatelessWidget {
     return FilterButtons<String>(
       onSelected: (optionName) => context.read<HiringJobOfferFilterSheetBloc>()
         .add(HiringJobOfferFilterSheetEvent.seniorityOptionToggled(optionName)),
-      selectedOptionsValues: state.senioritySelectedNames,
+      selectedOptionsValues: state.senioritySelectedOptions,
       options: state.seniorityOptions?.map((option) => FilterButtonsOption(option.name, option.name)).toList(),
     );
   }
@@ -133,7 +133,7 @@ class _HiringJobOfferFilterView extends StatelessWidget {
     return FilterButtons<String>(
       onSelected: (optionName) => context.read<HiringJobOfferFilterSheetBloc>()
         .add(HiringJobOfferFilterSheetEvent.contrattoOptionToggled(optionName)),
-      selectedOptionsValues: state.contrattoSelectedNames,
+      selectedOptionsValues: state.contrattoSelectedOptions,
       options: state.contrattoOptions?.map((option) => FilterButtonsOption(option.name, option.name)).toList(),
     );
   }

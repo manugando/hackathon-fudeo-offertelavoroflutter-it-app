@@ -766,12 +766,14 @@ mixin _$HiringJobOfferFilterSheetState {
   dynamic get error => throw _privateConstructorUsedError;
   List<SelectOption>? get contrattoOptions =>
       throw _privateConstructorUsedError;
-  List<String> get contrattoSelectedNames => throw _privateConstructorUsedError;
+  List<String> get contrattoSelectedOptions =>
+      throw _privateConstructorUsedError;
   List<SelectOption>? get teamOptions => throw _privateConstructorUsedError;
-  List<String> get teamSelectedNames => throw _privateConstructorUsedError;
+  List<String> get teamSelectedOptions => throw _privateConstructorUsedError;
   List<SelectOption>? get seniorityOptions =>
       throw _privateConstructorUsedError;
-  List<String> get senioritySelectedNames => throw _privateConstructorUsedError;
+  List<String> get senioritySelectedOptions =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HiringJobOfferFilterSheetStateCopyWith<HiringJobOfferFilterSheetState>
@@ -790,11 +792,11 @@ abstract class $HiringJobOfferFilterSheetStateCopyWith<$Res> {
       {HiringJobOfferFilterSheetStatus status,
       dynamic error,
       List<SelectOption>? contrattoOptions,
-      List<String> contrattoSelectedNames,
+      List<String> contrattoSelectedOptions,
       List<SelectOption>? teamOptions,
-      List<String> teamSelectedNames,
+      List<String> teamSelectedOptions,
       List<SelectOption>? seniorityOptions,
-      List<String> senioritySelectedNames});
+      List<String> senioritySelectedOptions});
 }
 
 /// @nodoc
@@ -814,11 +816,11 @@ class _$HiringJobOfferFilterSheetStateCopyWithImpl<$Res,
     Object? status = null,
     Object? error = freezed,
     Object? contrattoOptions = freezed,
-    Object? contrattoSelectedNames = null,
+    Object? contrattoSelectedOptions = null,
     Object? teamOptions = freezed,
-    Object? teamSelectedNames = null,
+    Object? teamSelectedOptions = null,
     Object? seniorityOptions = freezed,
-    Object? senioritySelectedNames = null,
+    Object? senioritySelectedOptions = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -833,25 +835,25 @@ class _$HiringJobOfferFilterSheetStateCopyWithImpl<$Res,
           ? _value.contrattoOptions
           : contrattoOptions // ignore: cast_nullable_to_non_nullable
               as List<SelectOption>?,
-      contrattoSelectedNames: null == contrattoSelectedNames
-          ? _value.contrattoSelectedNames
-          : contrattoSelectedNames // ignore: cast_nullable_to_non_nullable
+      contrattoSelectedOptions: null == contrattoSelectedOptions
+          ? _value.contrattoSelectedOptions
+          : contrattoSelectedOptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
       teamOptions: freezed == teamOptions
           ? _value.teamOptions
           : teamOptions // ignore: cast_nullable_to_non_nullable
               as List<SelectOption>?,
-      teamSelectedNames: null == teamSelectedNames
-          ? _value.teamSelectedNames
-          : teamSelectedNames // ignore: cast_nullable_to_non_nullable
+      teamSelectedOptions: null == teamSelectedOptions
+          ? _value.teamSelectedOptions
+          : teamSelectedOptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
       seniorityOptions: freezed == seniorityOptions
           ? _value.seniorityOptions
           : seniorityOptions // ignore: cast_nullable_to_non_nullable
               as List<SelectOption>?,
-      senioritySelectedNames: null == senioritySelectedNames
-          ? _value.senioritySelectedNames
-          : senioritySelectedNames // ignore: cast_nullable_to_non_nullable
+      senioritySelectedOptions: null == senioritySelectedOptions
+          ? _value.senioritySelectedOptions
+          : senioritySelectedOptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ) as $Val);
   }
@@ -870,11 +872,11 @@ abstract class _$$_HiringJobOfferFilterSheetStateCopyWith<$Res>
       {HiringJobOfferFilterSheetStatus status,
       dynamic error,
       List<SelectOption>? contrattoOptions,
-      List<String> contrattoSelectedNames,
+      List<String> contrattoSelectedOptions,
       List<SelectOption>? teamOptions,
-      List<String> teamSelectedNames,
+      List<String> teamSelectedOptions,
       List<SelectOption>? seniorityOptions,
-      List<String> senioritySelectedNames});
+      List<String> senioritySelectedOptions});
 }
 
 /// @nodoc
@@ -893,11 +895,11 @@ class __$$_HiringJobOfferFilterSheetStateCopyWithImpl<$Res>
     Object? status = null,
     Object? error = freezed,
     Object? contrattoOptions = freezed,
-    Object? contrattoSelectedNames = null,
+    Object? contrattoSelectedOptions = null,
     Object? teamOptions = freezed,
-    Object? teamSelectedNames = null,
+    Object? teamSelectedOptions = null,
     Object? seniorityOptions = freezed,
-    Object? senioritySelectedNames = null,
+    Object? senioritySelectedOptions = null,
   }) {
     return _then(_$_HiringJobOfferFilterSheetState(
       status: null == status
@@ -912,25 +914,25 @@ class __$$_HiringJobOfferFilterSheetStateCopyWithImpl<$Res>
           ? _value._contrattoOptions
           : contrattoOptions // ignore: cast_nullable_to_non_nullable
               as List<SelectOption>?,
-      contrattoSelectedNames: null == contrattoSelectedNames
-          ? _value._contrattoSelectedNames
-          : contrattoSelectedNames // ignore: cast_nullable_to_non_nullable
+      contrattoSelectedOptions: null == contrattoSelectedOptions
+          ? _value._contrattoSelectedOptions
+          : contrattoSelectedOptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
       teamOptions: freezed == teamOptions
           ? _value._teamOptions
           : teamOptions // ignore: cast_nullable_to_non_nullable
               as List<SelectOption>?,
-      teamSelectedNames: null == teamSelectedNames
-          ? _value._teamSelectedNames
-          : teamSelectedNames // ignore: cast_nullable_to_non_nullable
+      teamSelectedOptions: null == teamSelectedOptions
+          ? _value._teamSelectedOptions
+          : teamSelectedOptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
       seniorityOptions: freezed == seniorityOptions
           ? _value._seniorityOptions
           : seniorityOptions // ignore: cast_nullable_to_non_nullable
               as List<SelectOption>?,
-      senioritySelectedNames: null == senioritySelectedNames
-          ? _value._senioritySelectedNames
-          : senioritySelectedNames // ignore: cast_nullable_to_non_nullable
+      senioritySelectedOptions: null == senioritySelectedOptions
+          ? _value._senioritySelectedOptions
+          : senioritySelectedOptions // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
@@ -944,17 +946,17 @@ class _$_HiringJobOfferFilterSheetState
       {this.status = HiringJobOfferFilterSheetStatus.initial,
       this.error,
       final List<SelectOption>? contrattoOptions,
-      final List<String> contrattoSelectedNames = const [],
+      final List<String> contrattoSelectedOptions = const [],
       final List<SelectOption>? teamOptions,
-      final List<String> teamSelectedNames = const [],
+      final List<String> teamSelectedOptions = const [],
       final List<SelectOption>? seniorityOptions,
-      final List<String> senioritySelectedNames = const []})
+      final List<String> senioritySelectedOptions = const []})
       : _contrattoOptions = contrattoOptions,
-        _contrattoSelectedNames = contrattoSelectedNames,
+        _contrattoSelectedOptions = contrattoSelectedOptions,
         _teamOptions = teamOptions,
-        _teamSelectedNames = teamSelectedNames,
+        _teamSelectedOptions = teamSelectedOptions,
         _seniorityOptions = seniorityOptions,
-        _senioritySelectedNames = senioritySelectedNames;
+        _senioritySelectedOptions = senioritySelectedOptions;
 
   @override
   @JsonKey()
@@ -972,14 +974,14 @@ class _$_HiringJobOfferFilterSheetState
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String> _contrattoSelectedNames;
+  final List<String> _contrattoSelectedOptions;
   @override
   @JsonKey()
-  List<String> get contrattoSelectedNames {
-    if (_contrattoSelectedNames is EqualUnmodifiableListView)
-      return _contrattoSelectedNames;
+  List<String> get contrattoSelectedOptions {
+    if (_contrattoSelectedOptions is EqualUnmodifiableListView)
+      return _contrattoSelectedOptions;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_contrattoSelectedNames);
+    return EqualUnmodifiableListView(_contrattoSelectedOptions);
   }
 
   final List<SelectOption>? _teamOptions;
@@ -992,14 +994,14 @@ class _$_HiringJobOfferFilterSheetState
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String> _teamSelectedNames;
+  final List<String> _teamSelectedOptions;
   @override
   @JsonKey()
-  List<String> get teamSelectedNames {
-    if (_teamSelectedNames is EqualUnmodifiableListView)
-      return _teamSelectedNames;
+  List<String> get teamSelectedOptions {
+    if (_teamSelectedOptions is EqualUnmodifiableListView)
+      return _teamSelectedOptions;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_teamSelectedNames);
+    return EqualUnmodifiableListView(_teamSelectedOptions);
   }
 
   final List<SelectOption>? _seniorityOptions;
@@ -1013,19 +1015,19 @@ class _$_HiringJobOfferFilterSheetState
     return EqualUnmodifiableListView(value);
   }
 
-  final List<String> _senioritySelectedNames;
+  final List<String> _senioritySelectedOptions;
   @override
   @JsonKey()
-  List<String> get senioritySelectedNames {
-    if (_senioritySelectedNames is EqualUnmodifiableListView)
-      return _senioritySelectedNames;
+  List<String> get senioritySelectedOptions {
+    if (_senioritySelectedOptions is EqualUnmodifiableListView)
+      return _senioritySelectedOptions;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_senioritySelectedNames);
+    return EqualUnmodifiableListView(_senioritySelectedOptions);
   }
 
   @override
   String toString() {
-    return 'HiringJobOfferFilterSheetState(status: $status, error: $error, contrattoOptions: $contrattoOptions, contrattoSelectedNames: $contrattoSelectedNames, teamOptions: $teamOptions, teamSelectedNames: $teamSelectedNames, seniorityOptions: $seniorityOptions, senioritySelectedNames: $senioritySelectedNames)';
+    return 'HiringJobOfferFilterSheetState(status: $status, error: $error, contrattoOptions: $contrattoOptions, contrattoSelectedOptions: $contrattoSelectedOptions, teamOptions: $teamOptions, teamSelectedOptions: $teamSelectedOptions, seniorityOptions: $seniorityOptions, senioritySelectedOptions: $senioritySelectedOptions)';
   }
 
   @JsonKey(ignore: true)
@@ -1042,11 +1044,11 @@ abstract class _HiringJobOfferFilterSheetState
           {final HiringJobOfferFilterSheetStatus status,
           final dynamic error,
           final List<SelectOption>? contrattoOptions,
-          final List<String> contrattoSelectedNames,
+          final List<String> contrattoSelectedOptions,
           final List<SelectOption>? teamOptions,
-          final List<String> teamSelectedNames,
+          final List<String> teamSelectedOptions,
           final List<SelectOption>? seniorityOptions,
-          final List<String> senioritySelectedNames}) =
+          final List<String> senioritySelectedOptions}) =
       _$_HiringJobOfferFilterSheetState;
 
   @override
@@ -1056,15 +1058,15 @@ abstract class _HiringJobOfferFilterSheetState
   @override
   List<SelectOption>? get contrattoOptions;
   @override
-  List<String> get contrattoSelectedNames;
+  List<String> get contrattoSelectedOptions;
   @override
   List<SelectOption>? get teamOptions;
   @override
-  List<String> get teamSelectedNames;
+  List<String> get teamSelectedOptions;
   @override
   List<SelectOption>? get seniorityOptions;
   @override
-  List<String> get senioritySelectedNames;
+  List<String> get senioritySelectedOptions;
   @override
   @JsonKey(ignore: true)
   _$$_HiringJobOfferFilterSheetStateCopyWith<_$_HiringJobOfferFilterSheetState>

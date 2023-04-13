@@ -47,27 +47,27 @@ class HiringJobOfferFilterSheetBloc extends Bloc<HiringJobOfferFilterSheetEvent,
 
   _contrattoOptionToggled(String optionName, Emitter<HiringJobOfferFilterSheetState> emit) async {
     emit(state.copyWith(
-      contrattoSelectedNames: _toggleItemInList(optionName, state.contrattoSelectedNames)
+      contrattoSelectedOptions: _toggleItemInList(optionName, state.contrattoSelectedOptions)
     ));
   }
 
   _teamOptionToggled(String optionName, Emitter<HiringJobOfferFilterSheetState> emit) async {
     emit(state.copyWith(
-      teamSelectedNames: _toggleItemInList(optionName, state.teamSelectedNames)
+      teamSelectedOptions: _toggleItemInList(optionName, state.teamSelectedOptions)
     ));
   }
 
   _seniorityOptionToggled(String optionName, Emitter<HiringJobOfferFilterSheetState> emit) async {
     emit(state.copyWith(
-      senioritySelectedNames: _toggleItemInList(optionName, state.senioritySelectedNames)
+      senioritySelectedOptions: _toggleItemInList(optionName, state.senioritySelectedOptions)
     ));
   }
 
   _filtersCleared(Emitter<HiringJobOfferFilterSheetState> emit) {
     emit(state.copyWith(
-      contrattoSelectedNames: [],
-      senioritySelectedNames: [],
-      teamSelectedNames: []
+      contrattoSelectedOptions: [],
+      senioritySelectedOptions: [],
+      teamSelectedOptions: []
     ));
   }
 

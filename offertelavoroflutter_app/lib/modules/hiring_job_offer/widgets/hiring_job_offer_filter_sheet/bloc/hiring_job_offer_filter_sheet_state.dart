@@ -9,15 +9,15 @@ class HiringJobOfferFilterSheetState with _$HiringJobOfferFilterSheetState {
 
     List<SelectOption>? contrattoOptions,
     @Default([])
-    List<String> contrattoSelectedNames,
+    List<String> contrattoSelectedOptions,
 
     List<SelectOption>? teamOptions,
     @Default([])
-    List<String> teamSelectedNames,
+    List<String> teamSelectedOptions,
 
     List<SelectOption>? seniorityOptions,
     @Default([])
-    List<String> senioritySelectedNames,
+    List<String> senioritySelectedOptions,
   }) = _HiringJobOfferFilterSheetState;
 }
 
