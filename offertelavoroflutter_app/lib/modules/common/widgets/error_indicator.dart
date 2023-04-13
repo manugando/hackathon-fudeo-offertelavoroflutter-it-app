@@ -12,7 +12,7 @@ class ErrorIndicator extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(message ?? AppLocalizations.of(context)!.genericErrorMessage,
               style: Theme.of(context).textTheme.titleMedium

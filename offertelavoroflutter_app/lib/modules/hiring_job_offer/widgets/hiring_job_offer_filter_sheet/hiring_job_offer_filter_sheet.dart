@@ -64,11 +64,12 @@ class _HiringJobOfferFilterView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(AppLocalizations.of(context)!.advancedSearch, style: Theme.of(context).textTheme.titleLarge),
-        const SizedBox(height: 10),
-        ErrorIndicator(
-          onRetry: () => context.read<HiringJobOfferFilterSheetBloc>().add(const HiringJobOfferFilterSheetEvent.optionsRequested())
+        SizedBox(
+          height: 480,
+          child: ErrorIndicator(
+            onRetry: () => context.read<HiringJobOfferFilterSheetBloc>().add(const HiringJobOfferFilterSheetEvent.optionsRequested())
+          ),
         ),
-        const SizedBox(height: 10),
       ],
     );
   }
