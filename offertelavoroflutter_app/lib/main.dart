@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
           textTheme: _getTextTheme(context),
           cardTheme: _getCardTheme(context),
           inputDecorationTheme: _getInputDecoratorTheme(context),
-          elevatedButtonTheme: _getElevatedBtnThemeData(context)
+          elevatedButtonTheme: _getElevatedBtnThemeData(context),
+          toggleButtonsTheme: _getToggleButtonsTheme(context)
         ),
         home: const HiringJobOfferScreen(),
       ),
@@ -84,6 +85,17 @@ class MyApp extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(10)),
         borderSide: BorderSide.none,
       )
+    );
+  }
+
+  ToggleButtonsThemeData _getToggleButtonsTheme(BuildContext context) {
+    return ToggleButtonsThemeData(
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      borderColor: Styles.primaryDark,
+      selectedBorderColor: Styles.primaryDark,
+      color: Styles.lightText,
+      selectedColor: Colors.white,
+      fillColor: Styles.primaryDark.withAlpha(180)
     );
   }
 }

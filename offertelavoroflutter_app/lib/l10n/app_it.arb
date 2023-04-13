@@ -6,6 +6,10 @@
   "advancedSearch" : "Ricerca avanzata",
   "applyFilter" : "Applica filtri",
 
+  "qualificaAttribute" : "Qualifica",
+  "retribuzioneAttribute" : "Retribuzione",
+  "teamAttribute" : "Team",
+
   "hiringJobOfferScreenTitle": "Offerte di lavoro per\nassunzione",
   "hiringJobOfferScreenSwitch": "Passa alle offerte per freelance",
   "hiringJobOfferSearchPlaceholder": "Cerca annunci per titolo, città..."

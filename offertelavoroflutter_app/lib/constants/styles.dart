@@ -9,4 +9,10 @@ class Styles {
 
   // Other
   static const double screenHorizPadding = 20;
+
+  // Button themes
+  static ButtonStyle? getLightButtonTheme(BuildContext context) => Theme.of(context).elevatedButtonTheme.style?.copyWith(
+    backgroundColor: const MaterialStatePropertyAll(Styles.lightBackground),
+    foregroundColor: const MaterialStatePropertyAll(Styles.primaryDark)
+  );
 }
