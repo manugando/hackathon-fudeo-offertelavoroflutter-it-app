@@ -116,14 +116,15 @@ class __$$_HiringJobOfferFiltersCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HiringJobOfferFilters implements _HiringJobOfferFilters {
+class _$_HiringJobOfferFilters extends _HiringJobOfferFilters {
   const _$_HiringJobOfferFilters(
       {final List<String> seniority = const [],
       final List<String> team = const [],
       final List<String> contratto = const []})
       : _seniority = seniority,
         _team = team,
-        _contratto = contratto;
+        _contratto = contratto,
+        super._();
 
   final List<String> _seniority;
   @override
@@ -165,11 +166,12 @@ class _$_HiringJobOfferFilters implements _HiringJobOfferFilters {
           this, _$identity);
 }
 
-abstract class _HiringJobOfferFilters implements HiringJobOfferFilters {
+abstract class _HiringJobOfferFilters extends HiringJobOfferFilters {
   const factory _HiringJobOfferFilters(
       {final List<String> seniority,
       final List<String> team,
       final List<String> contratto}) = _$_HiringJobOfferFilters;
+  const _HiringJobOfferFilters._() : super._();
 
   @override
   List<String> get seniority;

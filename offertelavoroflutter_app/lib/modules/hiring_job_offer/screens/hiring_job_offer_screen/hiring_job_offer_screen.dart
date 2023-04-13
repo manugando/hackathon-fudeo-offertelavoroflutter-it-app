@@ -88,6 +88,7 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
                 onSwitchList: () {
                   // TODO
                 },
+                showActiveFiltersBadge: state.filters.active,
                 onShowFilters: () => showFiltersSheet(state.filters),
               )
             ];

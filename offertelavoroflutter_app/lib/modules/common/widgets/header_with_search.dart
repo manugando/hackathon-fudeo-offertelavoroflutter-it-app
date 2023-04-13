@@ -8,12 +8,13 @@ class HeaderWithSearch extends StatelessWidget {
   final String switchListBtnTitle;
   final Function() onSwitchList;
   final Function() onShowFilters;
+  final bool showActiveFiltersBadge;
   final bool forceElevated;
   final TextEditingController searchController;
 
   const HeaderWithSearch({Key? key, required this.forceElevated, required this.title,
     required this.switchListBtnTitle, required this.onSwitchList, required this.searchController,
-    required this.onShowFilters }) : super(key: key);
+    required this.onShowFilters, required this.showActiveFiltersBadge }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class HeaderWithSearch extends StatelessWidget {
       bottom: BottomAppBar(
         searchController: searchController,
         onShowFilters: onShowFilters,
+        showActiveFiltersBadge: showActiveFiltersBadge,
       ),
       forceElevated: forceElevated,
       flexibleSpace: ClipRRect(
@@ -77,7 +79,10 @@ class HeaderWithSearch extends StatelessWidget {
 class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
   final TextEditingController searchController;
   final Function() onShowFilters;
-  const BottomAppBar({Key? key, required this.searchController, required this.onShowFilters}) : super(key: key);
+  final bool showActiveFiltersBadge;
+
+  const BottomAppBar({Key? key, required this.searchController, required this.onShowFilters,
+    required this.showActiveFiltersBadge}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,12 +105,28 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
             )
           ),
           const SizedBox(width: 15),
-          ElevatedButton(
-            onPressed: onShowFilters,
-            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-              backgroundColor: MaterialStateProperty.all(Styles.accent),
-            ),
-            child: SvgPicture.asset('assets/icons/slider.svg')
+          Stack(
+            children: [
+              ElevatedButton(
+                onPressed: onShowFilters,
+                style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                  backgroundColor: MaterialStateProperty.all(Styles.accent),
+                ),
+                child: SvgPicture.asset('assets/icons/slider.svg')
+              ),
+              if(showActiveFiltersBadge) Positioned(
+                top: 5,
+                right: 6,
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Styles.primaryDark
+                  )
+                )
+              )
+            ],
           )
         ],
       ),

@@ -32,24 +32,24 @@ class HiringJobOfferRepository {
 
   Future<PagedList<HiringJobOffer>> getHiringJobOffers({
     required int pageSize, String? startCursor,
-    required HiringJobOfferFilters filters,
+    HiringJobOfferFilters? filters,
     String? searchText
   }) async {
 
     List<NotionFilter> notionFilters = [];
-    if(filters.seniority.isNotEmpty) {
+    if(filters != null && filters.seniority.isNotEmpty) {
       notionFilters.add(NotionFilter.or(filters.seniority.map((value) =>
         NotionFilter.select('Seniority', NotionFilterCondition.equals(value))
       ).toList()));
     }
 
-    if(filters.team.isNotEmpty) {
+    if(filters != null && filters.team.isNotEmpty) {
       notionFilters.add(NotionFilter.or(filters.team.map((value) =>
         NotionFilter.select('Team', NotionFilterCondition.equals(value))
       ).toList()));
     }
 
-    if(filters.contratto.isNotEmpty) {
+    if(filters != null && filters.contratto.isNotEmpty) {
       notionFilters.add(NotionFilter.or(filters.contratto.map((value) =>
         NotionFilter.select('Contratto', NotionFilterCondition.equals(value))
       ).toList()));
