@@ -63,7 +63,7 @@ class HiringJobOfferFilterSheetBloc extends Bloc<HiringJobOfferFilterSheetEvent,
     ));
   }
 
-  _filtersCleared(Emitter<HiringJobOfferFilterSheetState> emit) {
+  _filtersCleared(Emitter<HiringJobOfferFilterSheetState> emit) async {
     emit(state.copyWith(
       contrattoSelectedOptions: [],
       senioritySelectedOptions: [],
