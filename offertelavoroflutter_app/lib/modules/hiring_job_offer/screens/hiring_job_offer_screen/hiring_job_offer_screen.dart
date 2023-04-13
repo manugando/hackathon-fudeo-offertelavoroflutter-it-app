@@ -8,6 +8,7 @@ import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_in
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_screen/bloc/hiring_job_offer_screen_bloc.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
 
@@ -52,6 +53,14 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
     super.dispose();
   }
 
+  showFiltersSheet() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) => const HiringJobOfferFilterSheet(),
+    );
+  }
+
   refresh() {
     context.read<HiringJobOfferScreenBloc>().add(const HiringJobOfferScreenEvent.refreshRequested());
   }
@@ -69,11 +78,12 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
                 HeaderWithSearch(
                   forceElevated: innerBoxIsScrolled,
                   title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
-                  switchBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
+                  switchListBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
                   searchController: _searchFieldController,
-                  onSwitch: () {
+                  onSwitchList: () {
                     // TODO
                   },
+                  onShowFilters: showFiltersSheet,
                 )
               ];
             },

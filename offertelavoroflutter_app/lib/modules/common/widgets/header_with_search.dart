@@ -5,13 +5,15 @@ import 'package:offertelavoroflutter_app/constants/styles.dart';
 
 class HeaderWithSearch extends StatelessWidget {
   final String title;
-  final String switchBtnTitle;
-  final Function() onSwitch;
+  final String switchListBtnTitle;
+  final Function() onSwitchList;
+  final Function() onShowFilters;
   final bool forceElevated;
   final TextEditingController searchController;
 
   const HeaderWithSearch({Key? key, required this.forceElevated, required this.title,
-    required this.switchBtnTitle, required this.onSwitch, required this.searchController}) : super(key: key);
+    required this.switchListBtnTitle, required this.onSwitchList, required this.searchController,
+    required this.onShowFilters }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,10 @@ class HeaderWithSearch extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
       pinned: true,
       floating: true,
-      bottom: BottomAppBar(searchController: searchController),
+      bottom: BottomAppBar(
+        searchController: searchController,
+        onShowFilters: onShowFilters,
+      ),
       forceElevated: forceElevated,
       flexibleSpace: ClipRRect(
         borderRadius: borderRadius,
@@ -51,13 +56,15 @@ class HeaderWithSearch extends StatelessWidget {
           const SizedBox(height: 14),
           GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: onSwitch,
+            onTap: onSwitchList,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset('assets/icons/transaction-horizontal.svg', width: 16),
                 const SizedBox(width: 6),
-                Text(switchBtnTitle, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.accent)),
+                Text(switchListBtnTitle,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.accent)
+                ),
               ],
             ),
           ),
@@ -69,7 +76,8 @@ class HeaderWithSearch extends StatelessWidget {
 
 class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
   final TextEditingController searchController;
-  const BottomAppBar({Key? key, required this.searchController}) : super(key: key);
+  final Function() onShowFilters;
+  const BottomAppBar({Key? key, required this.searchController, required this.onShowFilters}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +101,7 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
           const SizedBox(width: 15),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: onShowFilters,
             style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
               backgroundColor: MaterialStateProperty.all(Styles.accent),
             ),

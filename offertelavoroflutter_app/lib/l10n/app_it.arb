@@ -3,6 +3,8 @@
   "genericErrorMessage" : "Sì è verificato un errore",
   "notItemsFoundMessage" : "Nessun elemento",
   "retry" : "Riprova",
+  "advancedSearch" : "Ricerca avanzata",
+  "applyFilter" : "Applica filtri",
 
   "hiringJobOfferScreenTitle": "Offerte di lavoro per\nassunzione",
   "hiringJobOfferScreenSwitch": "Passa alle offerte per freelance",
