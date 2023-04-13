@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:offertelavoroflutter_app/constants/styles.dart';
 
 class FilterButtons<T> extends StatelessWidget {
-  final List<FilterButtonsOption<T>> options;
-  final List<T> selectedOptionsValues;
+  final List<FilterButtonsOption<T>>? options;
+  final List<T>? selectedOptionsValues;
   final Function(T) onSelected;
   final int optionsPerRow;
 
-  const FilterButtons({Key? key, required this.options, required this.selectedOptionsValues,
+  const FilterButtons({Key? key, this.options, this.selectedOptionsValues,
     required this.onSelected, this.optionsPerRow = 3 }) : super(key: key);
 
-  bool isSelected(T optionValue) => selectedOptionsValues.any((selectedOptionsValue) => selectedOptionsValue == optionValue);
+  bool isSelected(T optionValue) => selectedOptionsValues?.any((selectedOptionsValue) => selectedOptionsValue == optionValue) ?? false;
 
   @override
   Widget build(BuildContext context) {
-    if(options.isEmpty) return const SizedBox();
-    List<List<FilterButtonsOption<T>>> chunks = options.slices(optionsPerRow).toList();
+    if(options == null || options!.isEmpty) return const SizedBox();
+    List<List<FilterButtonsOption<T>>> chunks = options!.slices(optionsPerRow).toList();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -68,7 +68,7 @@ class _FilterButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onTap,
       style: selected ? null : Styles.getLightButtonTheme(context),
-      child: Text(label),
+      child: Text(label, textAlign: TextAlign.center),
     );
   }
 }

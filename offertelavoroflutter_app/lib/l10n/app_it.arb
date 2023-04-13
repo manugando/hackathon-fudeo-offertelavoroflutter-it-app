@@ -4,10 +4,11 @@
   "notItemsFoundMessage" : "Nessun elemento",
   "retry" : "Riprova",
   "advancedSearch" : "Ricerca avanzata",
-  "applyFilter" : "Applica filtri",
+  "applyFilters" : "Applica",
+  "removeFilters" : "Rimuovi filtri",
 
-  "qualificaAttribute" : "Qualifica",
-  "retribuzioneAttribute" : "Retribuzione",
+  "contrattoAttribute" : "Contratto",
+  "seniorityAttribute" : "Seniority",
   "teamAttribute" : "Team",
 
   "hiringJobOfferScreenTitle": "Offerte di lavoro per\nassunzione",

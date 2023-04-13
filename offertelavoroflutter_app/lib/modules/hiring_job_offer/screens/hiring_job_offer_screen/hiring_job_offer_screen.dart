@@ -8,7 +8,7 @@ import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_in
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_screen/bloc/hiring_job_offer_screen_bloc.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet/hiring_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
 
@@ -19,19 +19,19 @@ class HiringJobOfferScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HiringJobOfferScreenBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)),
-      child: const HiringJobOfferView(),
+      child: const _HiringJobOfferView(),
     );
   }
 }
 
-class HiringJobOfferView extends StatefulWidget {
-  const HiringJobOfferView({Key? key}) : super(key: key);
+class _HiringJobOfferView extends StatefulWidget {
+  const _HiringJobOfferView({Key? key}) : super(key: key);
 
   @override
-  State<HiringJobOfferView> createState() => _HiringJobOfferViewState();
+  State<_HiringJobOfferView> createState() => _HiringJobOfferViewState();
 }
 
-class _HiringJobOfferViewState extends State<HiringJobOfferView> {
+class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
   final TextEditingController _searchFieldController = TextEditingController();
   final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
 
@@ -55,6 +55,7 @@ class _HiringJobOfferViewState extends State<HiringJobOfferView> {
 
   showFiltersSheet() {
     showModalBottomSheet(
+      isScrollControlled: true,
       backgroundColor: Colors.transparent,
       context: context,
       builder: (context) => const HiringJobOfferFilterSheet(),
