@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/select_option/select_option.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_options.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 
@@ -16,6 +17,7 @@ class HiringJobOfferFilterSheetBloc extends Bloc<HiringJobOfferFilterSheetEvent,
   }) : _hiringJobOfferRepository = hiringJobOfferRepository, super(const HiringJobOfferFilterSheetState()) {
     on<HiringJobOfferFilterSheetEvent>((event, emit) async {
       await event.when<Future>(
+        initialized: (initialFilters) => _initialized(initialFilters, emit),
         optionsRequested: () => _optionsRequested(emit),
         contrattoOptionToggled: (optionName) => _contrattoOptionToggled(optionName, emit),
         teamOptionToggled: (optionName) => _teamOptionToggled(optionName, emit),
@@ -23,6 +25,15 @@ class HiringJobOfferFilterSheetBloc extends Bloc<HiringJobOfferFilterSheetEvent,
         filtersCleared: () => _filtersCleared(emit)
       );
     });
+  }
+
+  _initialized(HiringJobOfferFilters filters, Emitter<HiringJobOfferFilterSheetState> emit) async {
+    emit(state.copyWith(
+      contrattoSelectedOptions: filters.contratto,
+      teamSelectedOptions: filters.team,
+      senioritySelectedOptions: filters.seniority,
+    ));
+    await _optionsRequested(emit);
   }
 
   _optionsRequested(Emitter<HiringJobOfferFilterSheetState> emit) async {

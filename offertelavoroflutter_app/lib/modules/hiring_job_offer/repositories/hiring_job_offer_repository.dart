@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_options.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_db_hiring_job_offer/notion_db_hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer/notion_page_hiring_job_offer.dart';
@@ -31,25 +32,25 @@ class HiringJobOfferRepository {
 
   Future<PagedList<HiringJobOffer>> getHiringJobOffers({
     required int pageSize, String? startCursor,
-    List<String>? seniority, List<String>? team, List<String>? contratto,
+    required HiringJobOfferFilters filters,
     String? searchText
   }) async {
 
-    List<NotionFilter> filters = [];
-    if(seniority != null && seniority.isNotEmpty) {
-      filters.add(NotionFilter.or(seniority.map((value) =>
+    List<NotionFilter> notionFilters = [];
+    if(filters.seniority.isNotEmpty) {
+      notionFilters.add(NotionFilter.or(filters.seniority.map((value) =>
         NotionFilter.select('Seniority', NotionFilterCondition.equals(value))
       ).toList()));
     }
 
-    if(team != null && team.isNotEmpty) {
-      filters.add(NotionFilter.or(team.map((value) =>
+    if(filters.team.isNotEmpty) {
+      notionFilters.add(NotionFilter.or(filters.team.map((value) =>
         NotionFilter.select('Team', NotionFilterCondition.equals(value))
       ).toList()));
     }
 
-    if(contratto != null && contratto.isNotEmpty) {
-      filters.add(NotionFilter.or(contratto.map((value) =>
+    if(filters.contratto.isNotEmpty) {
+      notionFilters.add(NotionFilter.or(filters.contratto.map((value) =>
         NotionFilter.select('Contratto', NotionFilterCondition.equals(value))
       ).toList()));
     }
@@ -66,7 +67,7 @@ class HiringJobOfferRepository {
         'Stato di pubblicazione'
       ];
 
-      filters.add(NotionFilter.or(searchProperties.map((property) =>
+      notionFilters.add(NotionFilter.or(searchProperties.map((property) =>
         NotionFilter.richText(property, NotionFilterCondition.contains(searchText))
       ).toList()));
     }
@@ -74,7 +75,7 @@ class HiringJobOfferRepository {
     NotionDbQueryRequest notionDbQueryRequest = NotionDbQueryRequest(
       pageSize: pageSize,
       startCursor: startCursor,
-      filter: filters.isNotEmpty ? NotionFilter.and(filters) : null
+      filter: notionFilters.isNotEmpty ? NotionFilter.and(notionFilters) : null
     );
 
     Map<String, dynamic> body = await compute(notionDbQueryRequestToJson, notionDbQueryRequest);

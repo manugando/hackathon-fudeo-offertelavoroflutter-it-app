@@ -4,6 +4,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/helpers/rx_helper.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -23,6 +24,7 @@ class HiringJobOfferScreenBloc extends Bloc<HiringJobOfferScreenEvent, HiringJob
         pageRequested: (pageKey) => _pageRequested(pageKey, emit),
         searchQueryChanged: (searchQuery) => _searchQueryChanged(searchQuery, emit),
         refreshRequested: () => _refreshRequested(emit),
+        filtersChanged: (filters) => _filtersChanged(filters, emit)
       );
     }, transformer: (events, mapper) => RxHelper.maybeDebounceEvents(
         test: (event) => event.maybeMap(searchQueryChanged: (value) => true, orElse: () => false),
@@ -37,7 +39,8 @@ class HiringJobOfferScreenBloc extends Bloc<HiringJobOfferScreenEvent, HiringJob
       PagedList<HiringJobOffer> pagedList = await _hiringJobOfferRepository.getHiringJobOffers(
         pageSize: pageSize,
         startCursor: pageKey,
-        searchText: state.searchQuery
+        searchText: state.searchQuery,
+        filters: state.filters
       );
 
       emit(state.copyWith(pagingState: PagingState(
@@ -67,5 +70,12 @@ class HiringJobOfferScreenBloc extends Bloc<HiringJobOfferScreenEvent, HiringJob
     emit(state.copyWith(
       pagingState: const PagingState())
     );
+  }
+
+  _filtersChanged(HiringJobOfferFilters filters, Emitter<HiringJobOfferScreenState> emit) async {
+    emit(state.copyWith(
+      pagingState: const PagingState(),
+      filters: filters
+    ));
   }
 }

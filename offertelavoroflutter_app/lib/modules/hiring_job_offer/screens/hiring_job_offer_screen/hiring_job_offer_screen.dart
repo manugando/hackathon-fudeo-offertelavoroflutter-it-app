@@ -6,6 +6,7 @@ import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_screen/bloc/hiring_job_offer_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet/hiring_job_offer_filter_sheet.dart';
@@ -53,13 +54,16 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
     super.dispose();
   }
 
-  showFiltersSheet() {
-    showModalBottomSheet(
+  showFiltersSheet(HiringJobOfferFilters initialFilters) async {
+    HiringJobOfferFilters? filters = await showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) => const HiringJobOfferFilterSheet(),
+      builder: (context) => HiringJobOfferFilterSheet(initialFilters: initialFilters),
     );
+    
+    if(filters == null) return;
+    context.read<HiringJobOfferScreenBloc>().add(HiringJobOfferScreenEvent.filtersChanged(filters));
   }
 
   refresh() {
@@ -68,43 +72,43 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<HiringJobOfferScreenBloc, HiringJobOfferScreenState>(
+    return BlocConsumer<HiringJobOfferScreenBloc, HiringJobOfferScreenState>(
       listener: (context, state) {
         _pagingController.value = state.pagingState;
       },
-      child: Scaffold(
-          body: NestedScrollView(
-            headerSliverBuilder: (context, innerBoxIsScrolled) {
-              return [
-                HeaderWithSearch(
-                  forceElevated: innerBoxIsScrolled,
-                  title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
-                  switchListBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
-                  searchController: _searchFieldController,
-                  onSwitchList: () {
-                    // TODO
-                  },
-                  onShowFilters: showFiltersSheet,
-                )
-              ];
-            },
-            body: RefreshIndicator(
-              onRefresh: () => Future.sync(refresh),
-              child: PagedListView(
-                padding: const EdgeInsets.only(top: 20),
-                pagingController: _pagingController,
-                builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
-                  itemBuilder: (context, item, index) => HiringJobOfferItem(hiringJobOffer: item),
-                  firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
-                  newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
-                  noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
-                  firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
-                  newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
-                )
-              ),
+      builder: (context, state) => Scaffold(
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              HeaderWithSearch(
+                forceElevated: innerBoxIsScrolled,
+                title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
+                switchListBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
+                searchController: _searchFieldController,
+                onSwitchList: () {
+                  // TODO
+                },
+                onShowFilters: () => showFiltersSheet(state.filters),
+              )
+            ];
+          },
+          body: RefreshIndicator(
+            onRefresh: () => Future.sync(refresh),
+            child: PagedListView(
+              padding: const EdgeInsets.only(top: 20),
+              pagingController: _pagingController,
+              builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
+                itemBuilder: (context, item, index) => HiringJobOfferItem(hiringJobOffer: item),
+                firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
+                newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
+                noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
+                firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
+                newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
+              )
             ),
           ),
         ),
+      ),
     );
   }
 

@@ -6,18 +6,20 @@ import 'package:offertelavoroflutter_app/modules/common/widgets/center_circular_
 import 'package:offertelavoroflutter_app/modules/common/widgets/content_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/filter_buttons.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet/bloc/hiring_job_offer_filter_sheet_bloc.dart';
 
 class HiringJobOfferFilterSheet extends StatelessWidget {
-  const HiringJobOfferFilterSheet({Key? key}) : super(key: key);
+  final HiringJobOfferFilters initialFilters;
+  const HiringJobOfferFilterSheet({Key? key, required this.initialFilters}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HiringJobOfferFilterSheetBloc(
         hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)
-      )..add(const HiringJobOfferFilterSheetEvent.optionsRequested()),
+      )..add(HiringJobOfferFilterSheetEvent.initialized(initialFilters)),
       child: const _HiringJobOfferFilterView(),
     );
   }
@@ -104,7 +106,15 @@ class _HiringJobOfferFilterView extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop(
+              HiringJobOfferFilters(
+                contratto: state.contrattoSelectedOptions,
+                team: state.teamSelectedOptions,
+                seniority: state.senioritySelectedOptions
+              )
+            );
+          },
           child: Text(AppLocalizations.of(context)!.applyFilters)
         ),
         const SizedBox(height: 20),

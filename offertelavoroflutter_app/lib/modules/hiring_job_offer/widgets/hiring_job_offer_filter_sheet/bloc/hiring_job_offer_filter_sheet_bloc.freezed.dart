@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HiringJobOfferFilterSheetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(HiringJobOfferFilters initialFilters) initialized,
     required TResult Function() optionsRequested,
     required TResult Function(String optionName) contrattoOptionToggled,
     required TResult Function(String optionName) teamOptionToggled,
@@ -27,6 +28,7 @@ mixin _$HiringJobOfferFilterSheetEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult? Function()? optionsRequested,
     TResult? Function(String optionName)? contrattoOptionToggled,
     TResult? Function(String optionName)? teamOptionToggled,
@@ -36,6 +38,7 @@ mixin _$HiringJobOfferFilterSheetEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult Function()? optionsRequested,
     TResult Function(String optionName)? contrattoOptionToggled,
     TResult Function(String optionName)? teamOptionToggled,
@@ -46,6 +49,7 @@ mixin _$HiringJobOfferFilterSheetEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_OptionsRequested value) optionsRequested,
     required TResult Function(_ContrattoOptionToggled value)
         contrattoOptionToggled,
@@ -57,6 +61,7 @@ mixin _$HiringJobOfferFilterSheetEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_OptionsRequested value)? optionsRequested,
     TResult? Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult? Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -66,6 +71,7 @@ mixin _$HiringJobOfferFilterSheetEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_OptionsRequested value)? optionsRequested,
     TResult Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -98,6 +104,165 @@ class _$HiringJobOfferFilterSheetEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
+abstract class _$$_InitializedCopyWith<$Res> {
+  factory _$$_InitializedCopyWith(
+          _$_Initialized value, $Res Function(_$_Initialized) then) =
+      __$$_InitializedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({HiringJobOfferFilters initialFilters});
+
+  $HiringJobOfferFiltersCopyWith<$Res> get initialFilters;
+}
+
+/// @nodoc
+class __$$_InitializedCopyWithImpl<$Res>
+    extends _$HiringJobOfferFilterSheetEventCopyWithImpl<$Res, _$_Initialized>
+    implements _$$_InitializedCopyWith<$Res> {
+  __$$_InitializedCopyWithImpl(
+      _$_Initialized _value, $Res Function(_$_Initialized) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? initialFilters = null,
+  }) {
+    return _then(_$_Initialized(
+      null == initialFilters
+          ? _value.initialFilters
+          : initialFilters // ignore: cast_nullable_to_non_nullable
+              as HiringJobOfferFilters,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HiringJobOfferFiltersCopyWith<$Res> get initialFilters {
+    return $HiringJobOfferFiltersCopyWith<$Res>(_value.initialFilters, (value) {
+      return _then(_value.copyWith(initialFilters: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_Initialized implements _Initialized {
+  const _$_Initialized(this.initialFilters);
+
+  @override
+  final HiringJobOfferFilters initialFilters;
+
+  @override
+  String toString() {
+    return 'HiringJobOfferFilterSheetEvent.initialized(initialFilters: $initialFilters)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InitializedCopyWith<_$_Initialized> get copyWith =>
+      __$$_InitializedCopyWithImpl<_$_Initialized>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(HiringJobOfferFilters initialFilters) initialized,
+    required TResult Function() optionsRequested,
+    required TResult Function(String optionName) contrattoOptionToggled,
+    required TResult Function(String optionName) teamOptionToggled,
+    required TResult Function(String optionName) seniorityOptionToggled,
+    required TResult Function() filtersCleared,
+  }) {
+    return initialized(initialFilters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HiringJobOfferFilters initialFilters)? initialized,
+    TResult? Function()? optionsRequested,
+    TResult? Function(String optionName)? contrattoOptionToggled,
+    TResult? Function(String optionName)? teamOptionToggled,
+    TResult? Function(String optionName)? seniorityOptionToggled,
+    TResult? Function()? filtersCleared,
+  }) {
+    return initialized?.call(initialFilters);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HiringJobOfferFilters initialFilters)? initialized,
+    TResult Function()? optionsRequested,
+    TResult Function(String optionName)? contrattoOptionToggled,
+    TResult Function(String optionName)? teamOptionToggled,
+    TResult Function(String optionName)? seniorityOptionToggled,
+    TResult Function()? filtersCleared,
+    required TResult orElse(),
+  }) {
+    if (initialized != null) {
+      return initialized(initialFilters);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
+    required TResult Function(_OptionsRequested value) optionsRequested,
+    required TResult Function(_ContrattoOptionToggled value)
+        contrattoOptionToggled,
+    required TResult Function(_TeamOptionToggled value) teamOptionToggled,
+    required TResult Function(_SeniorityOptionToggled value)
+        seniorityOptionToggled,
+    required TResult Function(_FiltersCleared value) filtersCleared,
+  }) {
+    return initialized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
+    TResult? Function(_OptionsRequested value)? optionsRequested,
+    TResult? Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
+    TResult? Function(_TeamOptionToggled value)? teamOptionToggled,
+    TResult? Function(_SeniorityOptionToggled value)? seniorityOptionToggled,
+    TResult? Function(_FiltersCleared value)? filtersCleared,
+  }) {
+    return initialized?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
+    TResult Function(_OptionsRequested value)? optionsRequested,
+    TResult Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
+    TResult Function(_TeamOptionToggled value)? teamOptionToggled,
+    TResult Function(_SeniorityOptionToggled value)? seniorityOptionToggled,
+    TResult Function(_FiltersCleared value)? filtersCleared,
+    required TResult orElse(),
+  }) {
+    if (initialized != null) {
+      return initialized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initialized implements HiringJobOfferFilterSheetEvent {
+  const factory _Initialized(final HiringJobOfferFilters initialFilters) =
+      _$_Initialized;
+
+  HiringJobOfferFilters get initialFilters;
+  @JsonKey(ignore: true)
+  _$$_InitializedCopyWith<_$_Initialized> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$_OptionsRequestedCopyWith<$Res> {
   factory _$$_OptionsRequestedCopyWith(
           _$_OptionsRequested value, $Res Function(_$_OptionsRequested) then) =
@@ -126,6 +291,7 @@ class _$_OptionsRequested implements _OptionsRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(HiringJobOfferFilters initialFilters) initialized,
     required TResult Function() optionsRequested,
     required TResult Function(String optionName) contrattoOptionToggled,
     required TResult Function(String optionName) teamOptionToggled,
@@ -138,6 +304,7 @@ class _$_OptionsRequested implements _OptionsRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult? Function()? optionsRequested,
     TResult? Function(String optionName)? contrattoOptionToggled,
     TResult? Function(String optionName)? teamOptionToggled,
@@ -150,6 +317,7 @@ class _$_OptionsRequested implements _OptionsRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult Function()? optionsRequested,
     TResult Function(String optionName)? contrattoOptionToggled,
     TResult Function(String optionName)? teamOptionToggled,
@@ -166,6 +334,7 @@ class _$_OptionsRequested implements _OptionsRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_OptionsRequested value) optionsRequested,
     required TResult Function(_ContrattoOptionToggled value)
         contrattoOptionToggled,
@@ -180,6 +349,7 @@ class _$_OptionsRequested implements _OptionsRequested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_OptionsRequested value)? optionsRequested,
     TResult? Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult? Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -192,6 +362,7 @@ class _$_OptionsRequested implements _OptionsRequested {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_OptionsRequested value)? optionsRequested,
     TResult Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -265,6 +436,7 @@ class _$_ContrattoOptionToggled implements _ContrattoOptionToggled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(HiringJobOfferFilters initialFilters) initialized,
     required TResult Function() optionsRequested,
     required TResult Function(String optionName) contrattoOptionToggled,
     required TResult Function(String optionName) teamOptionToggled,
@@ -277,6 +449,7 @@ class _$_ContrattoOptionToggled implements _ContrattoOptionToggled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult? Function()? optionsRequested,
     TResult? Function(String optionName)? contrattoOptionToggled,
     TResult? Function(String optionName)? teamOptionToggled,
@@ -289,6 +462,7 @@ class _$_ContrattoOptionToggled implements _ContrattoOptionToggled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult Function()? optionsRequested,
     TResult Function(String optionName)? contrattoOptionToggled,
     TResult Function(String optionName)? teamOptionToggled,
@@ -305,6 +479,7 @@ class _$_ContrattoOptionToggled implements _ContrattoOptionToggled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_OptionsRequested value) optionsRequested,
     required TResult Function(_ContrattoOptionToggled value)
         contrattoOptionToggled,
@@ -319,6 +494,7 @@ class _$_ContrattoOptionToggled implements _ContrattoOptionToggled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_OptionsRequested value)? optionsRequested,
     TResult? Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult? Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -331,6 +507,7 @@ class _$_ContrattoOptionToggled implements _ContrattoOptionToggled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_OptionsRequested value)? optionsRequested,
     TResult Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -410,6 +587,7 @@ class _$_TeamOptionToggled implements _TeamOptionToggled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(HiringJobOfferFilters initialFilters) initialized,
     required TResult Function() optionsRequested,
     required TResult Function(String optionName) contrattoOptionToggled,
     required TResult Function(String optionName) teamOptionToggled,
@@ -422,6 +600,7 @@ class _$_TeamOptionToggled implements _TeamOptionToggled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult? Function()? optionsRequested,
     TResult? Function(String optionName)? contrattoOptionToggled,
     TResult? Function(String optionName)? teamOptionToggled,
@@ -434,6 +613,7 @@ class _$_TeamOptionToggled implements _TeamOptionToggled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult Function()? optionsRequested,
     TResult Function(String optionName)? contrattoOptionToggled,
     TResult Function(String optionName)? teamOptionToggled,
@@ -450,6 +630,7 @@ class _$_TeamOptionToggled implements _TeamOptionToggled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_OptionsRequested value) optionsRequested,
     required TResult Function(_ContrattoOptionToggled value)
         contrattoOptionToggled,
@@ -464,6 +645,7 @@ class _$_TeamOptionToggled implements _TeamOptionToggled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_OptionsRequested value)? optionsRequested,
     TResult? Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult? Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -476,6 +658,7 @@ class _$_TeamOptionToggled implements _TeamOptionToggled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_OptionsRequested value)? optionsRequested,
     TResult Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -555,6 +738,7 @@ class _$_SeniorityOptionToggled implements _SeniorityOptionToggled {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(HiringJobOfferFilters initialFilters) initialized,
     required TResult Function() optionsRequested,
     required TResult Function(String optionName) contrattoOptionToggled,
     required TResult Function(String optionName) teamOptionToggled,
@@ -567,6 +751,7 @@ class _$_SeniorityOptionToggled implements _SeniorityOptionToggled {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult? Function()? optionsRequested,
     TResult? Function(String optionName)? contrattoOptionToggled,
     TResult? Function(String optionName)? teamOptionToggled,
@@ -579,6 +764,7 @@ class _$_SeniorityOptionToggled implements _SeniorityOptionToggled {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult Function()? optionsRequested,
     TResult Function(String optionName)? contrattoOptionToggled,
     TResult Function(String optionName)? teamOptionToggled,
@@ -595,6 +781,7 @@ class _$_SeniorityOptionToggled implements _SeniorityOptionToggled {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_OptionsRequested value) optionsRequested,
     required TResult Function(_ContrattoOptionToggled value)
         contrattoOptionToggled,
@@ -609,6 +796,7 @@ class _$_SeniorityOptionToggled implements _SeniorityOptionToggled {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_OptionsRequested value)? optionsRequested,
     TResult? Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult? Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -621,6 +809,7 @@ class _$_SeniorityOptionToggled implements _SeniorityOptionToggled {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_OptionsRequested value)? optionsRequested,
     TResult Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -675,6 +864,7 @@ class _$_FiltersCleared implements _FiltersCleared {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(HiringJobOfferFilters initialFilters) initialized,
     required TResult Function() optionsRequested,
     required TResult Function(String optionName) contrattoOptionToggled,
     required TResult Function(String optionName) teamOptionToggled,
@@ -687,6 +877,7 @@ class _$_FiltersCleared implements _FiltersCleared {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult? Function()? optionsRequested,
     TResult? Function(String optionName)? contrattoOptionToggled,
     TResult? Function(String optionName)? teamOptionToggled,
@@ -699,6 +890,7 @@ class _$_FiltersCleared implements _FiltersCleared {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(HiringJobOfferFilters initialFilters)? initialized,
     TResult Function()? optionsRequested,
     TResult Function(String optionName)? contrattoOptionToggled,
     TResult Function(String optionName)? teamOptionToggled,
@@ -715,6 +907,7 @@ class _$_FiltersCleared implements _FiltersCleared {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialized value) initialized,
     required TResult Function(_OptionsRequested value) optionsRequested,
     required TResult Function(_ContrattoOptionToggled value)
         contrattoOptionToggled,
@@ -729,6 +922,7 @@ class _$_FiltersCleared implements _FiltersCleared {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialized value)? initialized,
     TResult? Function(_OptionsRequested value)? optionsRequested,
     TResult? Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult? Function(_TeamOptionToggled value)? teamOptionToggled,
@@ -741,6 +935,7 @@ class _$_FiltersCleared implements _FiltersCleared {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialized value)? initialized,
     TResult Function(_OptionsRequested value)? optionsRequested,
     TResult Function(_ContrattoOptionToggled value)? contrattoOptionToggled,
     TResult Function(_TeamOptionToggled value)? teamOptionToggled,

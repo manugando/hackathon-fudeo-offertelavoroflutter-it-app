@@ -7,5 +7,7 @@ class HiringJobOfferScreenState with _$HiringJobOfferScreenState {
     PagingState<String?, HiringJobOffer> pagingState,
     @Default('')
     String searchQuery,
+    @Default(HiringJobOfferFilters())
+    HiringJobOfferFilters filters
   }) = _HiringJobOfferScreenState;
 }
