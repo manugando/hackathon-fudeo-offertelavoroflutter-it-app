@@ -81,10 +81,12 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
             child: TextFormField(
               controller: searchController,
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.zero,
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset('assets/icons/search.svg'),
                 ),
+                suffixIcon: _buildClearSearchFieldIcon(),
                 label: Text(AppLocalizations.of(context)!.hiringJobOfferSearchPlaceholder, style: Theme.of(context).textTheme.bodySmall)
               ),
             )
@@ -99,6 +101,27 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
           )
         ],
       ),
+    );
+  }
+
+  _buildClearSearchFieldIcon() {
+    return ValueListenableBuilder(
+      valueListenable: searchController,
+      builder: (BuildContext context, TextEditingValue value, Widget? child) {
+        if(value.text.isEmpty) {
+          return const SizedBox();
+        } else {
+          return GestureDetector(
+            onTap: () {
+              searchController.clear();
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: SvgPicture.asset('assets/icons/close.svg'),
+            ),
+          );
+        }
+      },
     );
   }
 
