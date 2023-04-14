@@ -5,6 +5,7 @@ import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/select_option_badge.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/separated_row.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 
 class HiringJobOfferItem extends StatelessWidget {
@@ -104,31 +105,13 @@ class HiringJobOfferItem extends StatelessWidget {
   }
 
   Widget _buildBadges(BuildContext context) {
-    double spaceBetweenItems = 5;
-
-    List<Widget> badges = [];
-    if(hiringJobOffer.team != null) {
-      badges.add(Expanded(child: SelectOptionBadge(selectOption: hiringJobOffer.team!)));
-    }
-
-    if(hiringJobOffer.seniority != null) {
-      badges.add(Expanded(child: SelectOptionBadge(selectOption: hiringJobOffer.seniority!)));
-    }
-
-    if(hiringJobOffer.contratto != null) {
-      badges.add(Expanded(child: SelectOptionBadge(selectOption: hiringJobOffer.contratto!)));
-    }
-
-    if(badges.length > 2) {
-      badges.insert(2, SizedBox(width: spaceBetweenItems));
-    }
-
-    if(badges.length > 1) {
-      badges.insert(1, SizedBox(width: spaceBetweenItems));
-    }
-
-    return Row(
-      children: badges,
+    return SeparatedRow(
+      children: [
+        if(hiringJobOffer.team != null) Expanded(child: SelectOptionBadge(selectOption: hiringJobOffer.team!)),
+        if(hiringJobOffer.seniority != null) Expanded(child: SelectOptionBadge(selectOption: hiringJobOffer.seniority!)),
+        if(hiringJobOffer.contratto != null) Expanded(child: SelectOptionBadge(selectOption: hiringJobOffer.contratto!))
+      ],
+      separatorBuilder: (context) => const SizedBox(width: 5),
     );
   }
 

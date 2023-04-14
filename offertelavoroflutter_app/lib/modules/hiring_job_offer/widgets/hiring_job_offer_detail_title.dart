@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/separated_row.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 
 class HiringJobOfferDetailTitle extends StatelessWidget {
@@ -64,34 +65,18 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
   }
 
   Widget _buildMainInfoRow(BuildContext context) {
-    List<Widget> widgets = [];
-
     Widget? nomeAzienda = _buildNomeAzienda(context);
-    if(nomeAzienda != null) {
-      widgets.add(Expanded(child: nomeAzienda));
-    }
-
     Widget? localita = _buildLocalita(context);
-    if(localita != null) {
-      widgets.add(Expanded(child: localita));
-    }
-
     Widget? jobPosted = _buildJobPosted(context);
-    if(jobPosted != null) {
-      widgets.add(Expanded(child: jobPosted));
-    }
 
-    if(widgets.length > 2) {
-      widgets.insert(2, buildDot());
-    }
-
-    if(widgets.length > 1) {
-      widgets.insert(1, buildDot());
-    }
-
-    return Row(
+    return SeparatedRow(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: widgets,
+      separatorBuilder: (context) => buildDot(),
+      children: [
+        if(nomeAzienda != null) Expanded(child: nomeAzienda),
+        if(localita != null) Expanded(child: localita),
+        if(jobPosted != null) Expanded(child: jobPosted)
+      ],
     );
   }
 

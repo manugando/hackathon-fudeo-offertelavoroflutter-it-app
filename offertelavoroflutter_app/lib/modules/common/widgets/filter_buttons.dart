@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/separated_row.dart';
 
 class FilterButtons<T> extends StatelessWidget {
   final List<FilterButtonsOption<T>>? options;
@@ -26,8 +27,6 @@ class FilterButtons<T> extends StatelessWidget {
   }
 
   Widget _buildRow(List<FilterButtonsOption<T>> options) {
-    double spaceBetweenItems = 5;
-
     List<Widget> widgets = options.map<Widget>((option) => Expanded(
       child: _FilterButton(
         onTap: () => onSelected(option.value),
@@ -43,14 +42,12 @@ class FilterButtons<T> extends StatelessWidget {
       }
     }
 
-    // We add the spacing between each item
-    for(int i = optionsPerRow - 1 ; i > 0 ; i--) {
-      widgets.insert(i, SizedBox(width: spaceBetweenItems));
-    }
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
-      child: Row(children: widgets),
+      child: SeparatedRow(
+        children: widgets,
+        separatorBuilder: (context) => const SizedBox(width: 5),
+      ),
     );
   }
 }
