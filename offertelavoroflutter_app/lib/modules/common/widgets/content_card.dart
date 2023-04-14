@@ -28,6 +28,7 @@ class ContentCard extends StatelessWidget {
         bottom: 20
       ),
       child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: onTap,
         child: Padding(
           padding: padding ?? const EdgeInsets.all(20),

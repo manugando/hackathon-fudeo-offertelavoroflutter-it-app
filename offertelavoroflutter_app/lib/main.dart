@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
       titleMedium: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
       titleSmall: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
       bodyMedium: textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
-      bodySmall: textTheme.bodySmall?.copyWith(color: Styles.lightText),
+      bodySmall: textTheme.bodySmall?.copyWith(color: Styles.primaryDark),
     ));
   }
   

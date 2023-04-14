@@ -10,6 +10,21 @@
   "contrattoAttribute" : "Contratto",
   "seniorityAttribute" : "Seniority",
   "teamAttribute" : "Team",
+  "qualificaAttribute" : "Qualifica",
+  "retribuzioneAttribute" : "Retribuzione",
+  "descrizioneOffertaAttribute" : "Descrizione offerta",
+  "comeCandidarsiAttribute" : "Come candidarsi",
+  "statoDiPubblicazioneAttribute" : "Stato di pubblicazione",
+  "urlSitoWebAttribute" : "Sito web",
+
+  "jobOfferShareText": "Guarda questa offerta di lavoro: {url}",
+  "@jobOfferShareText" : {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
 
   "hiringJobOfferScreenTitle": "Offerte di lavoro per\nassunzione",
   "hiringJobOfferScreenSwitch": "Passa alle offerte per freelance",

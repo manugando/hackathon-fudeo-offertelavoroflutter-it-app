@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DetailAppBar extends StatelessWidget with PreferredSizeWidget {
-  final double appBarHeight = 50;
-  const DetailAppBar({Key? key}) : super(key: key);
+  final double appBarHeight = 60;
+  final List<Widget>? actions;
+  const DetailAppBar({Key? key, this.actions}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class DetailAppBar extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: Colors.white,
       elevation: 0,
       automaticallyImplyLeading: false,
+      actions: actions,
       leading: Navigator.of(context).canPop() ? IconButton(
         onPressed: Navigator.of(context).maybePop,
         icon: SvgPicture.asset('assets/icons/arrow-left.svg', width: 24),

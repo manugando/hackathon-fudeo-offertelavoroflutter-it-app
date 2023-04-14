@@ -14,34 +14,37 @@ class HiringJobOfferItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ContentCard(
-      onTap: onTap,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildEmoji(),
-              const SizedBox(width: 8),
-              Expanded(child: _buildMainInfo(context)),
-              const SizedBox(width: 8),
-              _buildBookmarkIcon(context)
-            ],
-          ),
-          const SizedBox(height: 20),
-          _buildBadges(context),
-          const SizedBox(height: 10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Expanded(child: _buildJobPosted(context)),
-              Expanded(child: _buildRetribuzione(context)),
-            ],
-          )
-        ],
+    return Hero(
+      tag: hiringJobOffer.id,
+      child: ContentCard(
+        onTap: onTap,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildEmoji(),
+                const SizedBox(width: 8),
+                Expanded(child: _buildMainInfo(context)),
+                const SizedBox(width: 8),
+                _buildBookmarkIcon(context)
+              ],
+            ),
+            const SizedBox(height: 20),
+            _buildBadges(context),
+            const SizedBox(height: 10),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(child: _buildJobPosted(context)),
+                Expanded(child: _buildRetribuzione(context)),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -132,7 +135,9 @@ class HiringJobOfferItem extends StatelessWidget {
   Widget _buildJobPosted(BuildContext context) {
     if(hiringJobOffer.jobPosted == null) return const SizedBox();
 
-    return Text(DateFormat.yMd().format(hiringJobOffer.jobPosted!), style: Theme.of(context).textTheme.bodySmall);
+    return Text(DateFormat.yMd().format(hiringJobOffer.jobPosted!),
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.lightText)
+    );
   }
 
   Widget _buildRetribuzione(BuildContext context) {
@@ -140,7 +145,7 @@ class HiringJobOfferItem extends StatelessWidget {
 
     return MultiStyleText(
       items: hiringJobOffer.retribuzione!,
-      baseStyle: Theme.of(context).textTheme.bodySmall,
+      baseStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.lightText),
       textAlign: TextAlign.end,
     );
   }
