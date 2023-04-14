@@ -9,11 +9,13 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_
 
 class HiringJobOfferItem extends StatelessWidget {
   final HiringJobOffer hiringJobOffer;
-  const HiringJobOfferItem({Key? key, required this.hiringJobOffer}) : super(key: key);
+  final Function() onTap;
+  const HiringJobOfferItem({Key? key, required this.hiringJobOffer, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ContentCard(
+      onTap: onTap,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,

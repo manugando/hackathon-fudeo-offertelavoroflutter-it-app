@@ -4,8 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/constants/styles.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_detail_screen/hiring_job_offer_detail_screen.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/hiring_job_offer_list_screen.dart';
 
 void main() async {
@@ -41,7 +44,19 @@ class MyApp extends StatelessWidget {
           inputDecorationTheme: _getInputDecoratorTheme(context),
           elevatedButtonTheme: _getElevatedBtnThemeData(context),
         ),
-        home: const HiringJobOfferListScreen(),
+        initialRoute: Routes.hiringJobOfferList,
+        onGenerateRoute: (settings) {
+          switch(settings.name) {
+            case Routes.hiringJobOfferList:
+              return MaterialPageRoute<void>(builder: (context) => const HiringJobOfferListScreen(), settings: settings);
+
+            case Routes.hiringJobOfferDetail:
+              return MaterialPageRoute<void>(builder: (context) => HiringJobOfferDetailScreen(hiringJobOffer: ModalRoute.of(context)?.settings.arguments as HiringJobOffer), settings: settings);
+
+            default:
+              throw Exception('Invalid route: ${settings.name}');
+          }
+        },
       ),
     );
   }

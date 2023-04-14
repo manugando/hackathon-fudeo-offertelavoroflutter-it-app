@@ -4,7 +4,8 @@ import 'package:offertelavoroflutter_app/constants/styles.dart';
 class ContentCard extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
-  const ContentCard({Key? key, required this.child, this.padding}) : super(key: key);
+  final Function()? onTap;
+  const ContentCard({Key? key, required this.child, this.padding, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +22,18 @@ class ContentCard extends StatelessWidget {
           )
         ]
       ),
-      padding: padding ?? const EdgeInsets.all(20),
       margin: const EdgeInsets.only(
         right: Styles.screenHorizPadding,
         left: Styles.screenHorizPadding,
         bottom: 20
       ),
-      child: child,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Padding(
+          padding: padding ?? const EdgeInsets.all(20),
+          child: child,
+        )
+      ),
     );
   }
 }
