@@ -45,11 +45,11 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
       width: 80,
       height: 80,
       decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Styles.lightBackground
+        shape: BoxShape.circle,
+        color: Styles.lightBackground
       ),
       child: Center(
-          child: Text(hiringJobOffer.emoji!, style: const TextStyle(fontSize: 32))
+        child: Text(hiringJobOffer.emoji!, style: const TextStyle(fontSize: 32))
       ),
     );
   }
