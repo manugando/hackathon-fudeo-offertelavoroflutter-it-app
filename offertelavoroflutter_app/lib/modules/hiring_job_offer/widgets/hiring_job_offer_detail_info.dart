@@ -17,7 +17,7 @@ class HiringJobofferDetailInfo extends StatelessWidget {
     Widget info = GestureDetector(
       onTap: () => AppUrlLauncher.openUrlInBrowser(url),
       child: Text(url,
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(decoration: TextDecoration.underline)
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(decoration: TextDecoration.underline)
       )
     );
 
@@ -27,7 +27,7 @@ class HiringJobofferDetailInfo extends StatelessWidget {
   Widget _buildSelectOptionInfo(String title, SelectOption? selectOption, BuildContext context) {
     if(selectOption == null) return const SizedBox();
 
-    Widget info = Text(selectOption.name, style: Theme.of(context).textTheme.bodySmall);
+    Widget info = Text(selectOption.name, style: Theme.of(context).textTheme.bodyMedium);
     return _buildInfo(title, info, context);
   }
 
@@ -36,7 +36,7 @@ class HiringJobofferDetailInfo extends StatelessWidget {
 
     Widget info = MultiStyleText(
       items: styledText,
-      baseStyle: Theme.of(context).textTheme.bodySmall
+      baseStyle: Theme.of(context).textTheme.bodyMedium
     );
     return _buildInfo(title, info, context);
   }

@@ -102,7 +102,9 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
                 suffixIcon: _buildClearSearchFieldIcon(),
                 label: Text(AppLocalizations.of(context)!.hiringJobOfferSearchPlaceholder,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.lightText)
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.lightText)
                 )
               ),
             )

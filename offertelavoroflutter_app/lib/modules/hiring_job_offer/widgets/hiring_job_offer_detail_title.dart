@@ -58,7 +58,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
 
     return MultiStyleText(
       items: hiringJobOffer.name!,
-      baseStyle: Theme.of(context).textTheme.titleMedium,
+      baseStyle: Theme.of(context).textTheme.titleLarge,
       textAlign: TextAlign.center
     );
   }
@@ -112,7 +112,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
 
     return MultiStyleText(
       items: hiringJobOffer.nomeAzienda!,
-      baseStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.primaryDark),
+      baseStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
       textAlign: TextAlign.center,
     );
   }
@@ -122,7 +122,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
 
     return MultiStyleText(
       items: hiringJobOffer.localita!,
-      baseStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.primaryDark),
+      baseStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
       textAlign: TextAlign.center,
     );
   }
@@ -131,7 +131,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
     if(hiringJobOffer.jobPosted == null) return null;
 
     return Text(DateFormat.yMd().format(hiringJobOffer.jobPosted!),
-      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.primaryDark),
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
       textAlign: TextAlign.center,
     );
   }
