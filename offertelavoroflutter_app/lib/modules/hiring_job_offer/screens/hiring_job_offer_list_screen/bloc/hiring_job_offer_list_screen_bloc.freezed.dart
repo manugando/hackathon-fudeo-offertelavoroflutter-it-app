@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'hiring_job_offer_screen_bloc.dart';
+part of 'hiring_job_offer_list_screen_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HiringJobOfferScreenEvent {
+mixin _$HiringJobOfferListScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? pageKey) pageRequested,
@@ -69,17 +69,19 @@ mixin _$HiringJobOfferScreenEvent {
 }
 
 /// @nodoc
-abstract class $HiringJobOfferScreenEventCopyWith<$Res> {
-  factory $HiringJobOfferScreenEventCopyWith(HiringJobOfferScreenEvent value,
-          $Res Function(HiringJobOfferScreenEvent) then) =
-      _$HiringJobOfferScreenEventCopyWithImpl<$Res, HiringJobOfferScreenEvent>;
+abstract class $HiringJobOfferListScreenEventCopyWith<$Res> {
+  factory $HiringJobOfferListScreenEventCopyWith(
+          HiringJobOfferListScreenEvent value,
+          $Res Function(HiringJobOfferListScreenEvent) then) =
+      _$HiringJobOfferListScreenEventCopyWithImpl<$Res,
+          HiringJobOfferListScreenEvent>;
 }
 
 /// @nodoc
-class _$HiringJobOfferScreenEventCopyWithImpl<$Res,
-        $Val extends HiringJobOfferScreenEvent>
-    implements $HiringJobOfferScreenEventCopyWith<$Res> {
-  _$HiringJobOfferScreenEventCopyWithImpl(this._value, this._then);
+class _$HiringJobOfferListScreenEventCopyWithImpl<$Res,
+        $Val extends HiringJobOfferListScreenEvent>
+    implements $HiringJobOfferListScreenEventCopyWith<$Res> {
+  _$HiringJobOfferListScreenEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -98,7 +100,7 @@ abstract class _$$_PageRequestedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PageRequestedCopyWithImpl<$Res>
-    extends _$HiringJobOfferScreenEventCopyWithImpl<$Res, _$_PageRequested>
+    extends _$HiringJobOfferListScreenEventCopyWithImpl<$Res, _$_PageRequested>
     implements _$$_PageRequestedCopyWith<$Res> {
   __$$_PageRequestedCopyWithImpl(
       _$_PageRequested _value, $Res Function(_$_PageRequested) _then)
@@ -128,7 +130,7 @@ class _$_PageRequested implements _PageRequested {
 
   @override
   String toString() {
-    return 'HiringJobOfferScreenEvent.pageRequested(pageKey: $pageKey)';
+    return 'HiringJobOfferListScreenEvent.pageRequested(pageKey: $pageKey)';
   }
 
   @JsonKey(ignore: true)
@@ -212,7 +214,7 @@ class _$_PageRequested implements _PageRequested {
   }
 }
 
-abstract class _PageRequested implements HiringJobOfferScreenEvent {
+abstract class _PageRequested implements HiringJobOfferListScreenEvent {
   const factory _PageRequested(final String? pageKey) = _$_PageRequested;
 
   String? get pageKey;
@@ -230,8 +232,8 @@ abstract class _$$_RefreshRequestedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_RefreshRequestedCopyWithImpl<$Res>
-    extends _$HiringJobOfferScreenEventCopyWithImpl<$Res, _$_RefreshRequested>
-    implements _$$_RefreshRequestedCopyWith<$Res> {
+    extends _$HiringJobOfferListScreenEventCopyWithImpl<$Res,
+        _$_RefreshRequested> implements _$$_RefreshRequestedCopyWith<$Res> {
   __$$_RefreshRequestedCopyWithImpl(
       _$_RefreshRequested _value, $Res Function(_$_RefreshRequested) _then)
       : super(_value, _then);
@@ -244,7 +246,7 @@ class _$_RefreshRequested implements _RefreshRequested {
 
   @override
   String toString() {
-    return 'HiringJobOfferScreenEvent.refreshRequested()';
+    return 'HiringJobOfferListScreenEvent.refreshRequested()';
   }
 
   @override
@@ -322,7 +324,7 @@ class _$_RefreshRequested implements _RefreshRequested {
   }
 }
 
-abstract class _RefreshRequested implements HiringJobOfferScreenEvent {
+abstract class _RefreshRequested implements HiringJobOfferListScreenEvent {
   const factory _RefreshRequested() = _$_RefreshRequested;
 }
 
@@ -337,8 +339,8 @@ abstract class _$$_SearchQueryChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SearchQueryChangedCopyWithImpl<$Res>
-    extends _$HiringJobOfferScreenEventCopyWithImpl<$Res, _$_SearchQueryChanged>
-    implements _$$_SearchQueryChangedCopyWith<$Res> {
+    extends _$HiringJobOfferListScreenEventCopyWithImpl<$Res,
+        _$_SearchQueryChanged> implements _$$_SearchQueryChangedCopyWith<$Res> {
   __$$_SearchQueryChangedCopyWithImpl(
       _$_SearchQueryChanged _value, $Res Function(_$_SearchQueryChanged) _then)
       : super(_value, _then);
@@ -367,7 +369,7 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
 
   @override
   String toString() {
-    return 'HiringJobOfferScreenEvent.searchQueryChanged(searchQuery: $searchQuery)';
+    return 'HiringJobOfferListScreenEvent.searchQueryChanged(searchQuery: $searchQuery)';
   }
 
   @JsonKey(ignore: true)
@@ -452,7 +454,7 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
   }
 }
 
-abstract class _SearchQueryChanged implements HiringJobOfferScreenEvent {
+abstract class _SearchQueryChanged implements HiringJobOfferListScreenEvent {
   const factory _SearchQueryChanged(final String searchQuery) =
       _$_SearchQueryChanged;
 
@@ -475,7 +477,7 @@ abstract class _$$_FiltersChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_FiltersChangedCopyWithImpl<$Res>
-    extends _$HiringJobOfferScreenEventCopyWithImpl<$Res, _$_FiltersChanged>
+    extends _$HiringJobOfferListScreenEventCopyWithImpl<$Res, _$_FiltersChanged>
     implements _$$_FiltersChangedCopyWith<$Res> {
   __$$_FiltersChangedCopyWithImpl(
       _$_FiltersChanged _value, $Res Function(_$_FiltersChanged) _then)
@@ -513,7 +515,7 @@ class _$_FiltersChanged implements _FiltersChanged {
 
   @override
   String toString() {
-    return 'HiringJobOfferScreenEvent.filtersChanged(filters: $filters)';
+    return 'HiringJobOfferListScreenEvent.filtersChanged(filters: $filters)';
   }
 
   @JsonKey(ignore: true)
@@ -597,7 +599,7 @@ class _$_FiltersChanged implements _FiltersChanged {
   }
 }
 
-abstract class _FiltersChanged implements HiringJobOfferScreenEvent {
+abstract class _FiltersChanged implements HiringJobOfferListScreenEvent {
   const factory _FiltersChanged(final HiringJobOfferFilters filters) =
       _$_FiltersChanged;
 
@@ -608,22 +610,24 @@ abstract class _FiltersChanged implements HiringJobOfferScreenEvent {
 }
 
 /// @nodoc
-mixin _$HiringJobOfferScreenState {
+mixin _$HiringJobOfferListScreenState {
   PagingState<String?, HiringJobOffer> get pagingState =>
       throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
   HiringJobOfferFilters get filters => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HiringJobOfferScreenStateCopyWith<HiringJobOfferScreenState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $HiringJobOfferListScreenStateCopyWith<HiringJobOfferListScreenState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HiringJobOfferScreenStateCopyWith<$Res> {
-  factory $HiringJobOfferScreenStateCopyWith(HiringJobOfferScreenState value,
-          $Res Function(HiringJobOfferScreenState) then) =
-      _$HiringJobOfferScreenStateCopyWithImpl<$Res, HiringJobOfferScreenState>;
+abstract class $HiringJobOfferListScreenStateCopyWith<$Res> {
+  factory $HiringJobOfferListScreenStateCopyWith(
+          HiringJobOfferListScreenState value,
+          $Res Function(HiringJobOfferListScreenState) then) =
+      _$HiringJobOfferListScreenStateCopyWithImpl<$Res,
+          HiringJobOfferListScreenState>;
   @useResult
   $Res call(
       {PagingState<String?, HiringJobOffer> pagingState,
@@ -634,10 +638,10 @@ abstract class $HiringJobOfferScreenStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HiringJobOfferScreenStateCopyWithImpl<$Res,
-        $Val extends HiringJobOfferScreenState>
-    implements $HiringJobOfferScreenStateCopyWith<$Res> {
-  _$HiringJobOfferScreenStateCopyWithImpl(this._value, this._then);
+class _$HiringJobOfferListScreenStateCopyWithImpl<$Res,
+        $Val extends HiringJobOfferListScreenState>
+    implements $HiringJobOfferListScreenStateCopyWith<$Res> {
+  _$HiringJobOfferListScreenStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -677,12 +681,12 @@ class _$HiringJobOfferScreenStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_HiringJobOfferScreenStateCopyWith<$Res>
-    implements $HiringJobOfferScreenStateCopyWith<$Res> {
-  factory _$$_HiringJobOfferScreenStateCopyWith(
-          _$_HiringJobOfferScreenState value,
-          $Res Function(_$_HiringJobOfferScreenState) then) =
-      __$$_HiringJobOfferScreenStateCopyWithImpl<$Res>;
+abstract class _$$_HiringJobOfferListScreenStateCopyWith<$Res>
+    implements $HiringJobOfferListScreenStateCopyWith<$Res> {
+  factory _$$_HiringJobOfferListScreenStateCopyWith(
+          _$_HiringJobOfferListScreenState value,
+          $Res Function(_$_HiringJobOfferListScreenState) then) =
+      __$$_HiringJobOfferListScreenStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -695,13 +699,13 @@ abstract class _$$_HiringJobOfferScreenStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HiringJobOfferScreenStateCopyWithImpl<$Res>
-    extends _$HiringJobOfferScreenStateCopyWithImpl<$Res,
-        _$_HiringJobOfferScreenState>
-    implements _$$_HiringJobOfferScreenStateCopyWith<$Res> {
-  __$$_HiringJobOfferScreenStateCopyWithImpl(
-      _$_HiringJobOfferScreenState _value,
-      $Res Function(_$_HiringJobOfferScreenState) _then)
+class __$$_HiringJobOfferListScreenStateCopyWithImpl<$Res>
+    extends _$HiringJobOfferListScreenStateCopyWithImpl<$Res,
+        _$_HiringJobOfferListScreenState>
+    implements _$$_HiringJobOfferListScreenStateCopyWith<$Res> {
+  __$$_HiringJobOfferListScreenStateCopyWithImpl(
+      _$_HiringJobOfferListScreenState _value,
+      $Res Function(_$_HiringJobOfferListScreenState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -711,7 +715,7 @@ class __$$_HiringJobOfferScreenStateCopyWithImpl<$Res>
     Object? searchQuery = null,
     Object? filters = null,
   }) {
-    return _then(_$_HiringJobOfferScreenState(
+    return _then(_$_HiringJobOfferListScreenState(
       pagingState: null == pagingState
           ? _value.pagingState
           : pagingState // ignore: cast_nullable_to_non_nullable
@@ -730,8 +734,9 @@ class __$$_HiringJobOfferScreenStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HiringJobOfferScreenState implements _HiringJobOfferScreenState {
-  const _$_HiringJobOfferScreenState(
+class _$_HiringJobOfferListScreenState
+    implements _HiringJobOfferListScreenState {
+  const _$_HiringJobOfferListScreenState(
       {this.pagingState = const PagingState(),
       this.searchQuery = '',
       this.filters = const HiringJobOfferFilters()});
@@ -748,22 +753,23 @@ class _$_HiringJobOfferScreenState implements _HiringJobOfferScreenState {
 
   @override
   String toString() {
-    return 'HiringJobOfferScreenState(pagingState: $pagingState, searchQuery: $searchQuery, filters: $filters)';
+    return 'HiringJobOfferListScreenState(pagingState: $pagingState, searchQuery: $searchQuery, filters: $filters)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HiringJobOfferScreenStateCopyWith<_$_HiringJobOfferScreenState>
-      get copyWith => __$$_HiringJobOfferScreenStateCopyWithImpl<
-          _$_HiringJobOfferScreenState>(this, _$identity);
+  _$$_HiringJobOfferListScreenStateCopyWith<_$_HiringJobOfferListScreenState>
+      get copyWith => __$$_HiringJobOfferListScreenStateCopyWithImpl<
+          _$_HiringJobOfferListScreenState>(this, _$identity);
 }
 
-abstract class _HiringJobOfferScreenState implements HiringJobOfferScreenState {
-  const factory _HiringJobOfferScreenState(
+abstract class _HiringJobOfferListScreenState
+    implements HiringJobOfferListScreenState {
+  const factory _HiringJobOfferListScreenState(
       {final PagingState<String?, HiringJobOffer> pagingState,
       final String searchQuery,
-      final HiringJobOfferFilters filters}) = _$_HiringJobOfferScreenState;
+      final HiringJobOfferFilters filters}) = _$_HiringJobOfferListScreenState;
 
   @override
   PagingState<String?, HiringJobOffer> get pagingState;
@@ -773,6 +779,6 @@ abstract class _HiringJobOfferScreenState implements HiringJobOfferScreenState {
   HiringJobOfferFilters get filters;
   @override
   @JsonKey(ignore: true)
-  _$$_HiringJobOfferScreenStateCopyWith<_$_HiringJobOfferScreenState>
+  _$$_HiringJobOfferListScreenStateCopyWith<_$_HiringJobOfferListScreenState>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -8,18 +8,18 @@ import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_in
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_screen/bloc/hiring_job_offer_screen_bloc.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/bloc/hiring_job_offer_list_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet/hiring_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
 
-class HiringJobOfferScreen extends StatelessWidget {
-  const HiringJobOfferScreen({Key? key}) : super(key: key);
+class HiringJobOfferListScreen extends StatelessWidget {
+  const HiringJobOfferListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HiringJobOfferScreenBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)),
+      create: (context) => HiringJobOfferListScreenBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)),
       child: const _HiringJobOfferView(),
     );
   }
@@ -39,10 +39,10 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
   @override
   void initState() {
     _pagingController.addPageRequestListener((pageKey) {
-      context.read<HiringJobOfferScreenBloc>().add(HiringJobOfferScreenEvent.pageRequested(pageKey));
+      context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.pageRequested(pageKey));
     });
     _searchFieldController.addListener(() {
-      context.read<HiringJobOfferScreenBloc>().add(HiringJobOfferScreenEvent.searchQueryChanged(_searchFieldController.text));
+      context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.searchQueryChanged(_searchFieldController.text));
     });
     super.initState();
   }
@@ -63,16 +63,16 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
     );
     
     if(filters == null) return;
-    context.read<HiringJobOfferScreenBloc>().add(HiringJobOfferScreenEvent.filtersChanged(filters));
+    context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.filtersChanged(filters));
   }
 
   refresh() {
-    context.read<HiringJobOfferScreenBloc>().add(const HiringJobOfferScreenEvent.refreshRequested());
+    context.read<HiringJobOfferListScreenBloc>().add(const HiringJobOfferListScreenEvent.refreshRequested());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HiringJobOfferScreenBloc, HiringJobOfferScreenState>(
+    return BlocConsumer<HiringJobOfferListScreenBloc, HiringJobOfferListScreenState>(
       listener: (context, state) {
         _pagingController.value = state.pagingState;
       },

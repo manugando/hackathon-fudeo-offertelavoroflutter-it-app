@@ -8,18 +8,18 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'hiring_job_offer_screen_event.dart';
-part 'hiring_job_offer_screen_state.dart';
-part 'hiring_job_offer_screen_bloc.freezed.dart';
+part 'hiring_job_offer_list_screen_event.dart';
+part 'hiring_job_offer_list_screen_state.dart';
+part 'hiring_job_offer_list_screen_bloc.freezed.dart';
 
-class HiringJobOfferScreenBloc extends Bloc<HiringJobOfferScreenEvent, HiringJobOfferScreenState> {
+class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, HiringJobOfferListScreenState> {
   final HiringJobOfferRepository _hiringJobOfferRepository;
   final int pageSize = 3;
 
-  HiringJobOfferScreenBloc({
+  HiringJobOfferListScreenBloc({
     required HiringJobOfferRepository hiringJobOfferRepository
-  }) : _hiringJobOfferRepository = hiringJobOfferRepository, super(const HiringJobOfferScreenState(pagingState: PagingState())) {
-    on<HiringJobOfferScreenEvent>((event, emit) async {
+  }) : _hiringJobOfferRepository = hiringJobOfferRepository, super(const HiringJobOfferListScreenState()) {
+    on<HiringJobOfferListScreenEvent>((event, emit) async {
       await event.when<Future>(
         pageRequested: (pageKey) => _pageRequested(pageKey, emit),
         searchQueryChanged: (searchQuery) => _searchQueryChanged(searchQuery, emit),
@@ -34,7 +34,7 @@ class HiringJobOfferScreenBloc extends Bloc<HiringJobOfferScreenEvent, HiringJob
     );
   }
 
-  _pageRequested(String? pageKey, Emitter<HiringJobOfferScreenState> emit) async {
+  _pageRequested(String? pageKey, Emitter<HiringJobOfferListScreenState> emit) async {
     try {
       PagedList<HiringJobOffer> pagedList = await _hiringJobOfferRepository.getHiringJobOffers(
         pageSize: pageSize,
@@ -57,7 +57,7 @@ class HiringJobOfferScreenBloc extends Bloc<HiringJobOfferScreenEvent, HiringJob
     }
   }
 
-  _searchQueryChanged(String searchQuery, Emitter<HiringJobOfferScreenState> emit) async {
+  _searchQueryChanged(String searchQuery, Emitter<HiringJobOfferListScreenState> emit) async {
     if(searchQuery == state.searchQuery) return;
 
     emit(state.copyWith(
@@ -66,13 +66,13 @@ class HiringJobOfferScreenBloc extends Bloc<HiringJobOfferScreenEvent, HiringJob
     );
   }
 
-  _refreshRequested(Emitter<HiringJobOfferScreenState> emit) async {
+  _refreshRequested(Emitter<HiringJobOfferListScreenState> emit) async {
     emit(state.copyWith(
       pagingState: const PagingState())
     );
   }
 
-  _filtersChanged(HiringJobOfferFilters filters, Emitter<HiringJobOfferScreenState> emit) async {
+  _filtersChanged(HiringJobOfferFilters filters, Emitter<HiringJobOfferListScreenState> emit) async {
     emit(state.copyWith(
       pagingState: const PagingState(),
       filters: filters

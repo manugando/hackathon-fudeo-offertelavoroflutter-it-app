@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:offertelavoroflutter_app/constants/styles.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_screen/hiring_job_offer_screen.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/hiring_job_offer_list_screen.dart';
 
 void main() async {
   await findSystemLocale();
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           inputDecorationTheme: _getInputDecoratorTheme(context),
           elevatedButtonTheme: _getElevatedBtnThemeData(context),
         ),
-        home: const HiringJobOfferScreen(),
+        home: const HiringJobOfferListScreen(),
       ),
     );
   }
