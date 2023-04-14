@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
             onPrimary: Colors.white,
             onSecondary: Colors.white,
           ),
-          scaffoldBackgroundColor: Styles.lightBackground,
+          scaffoldBackgroundColor: Colors.white,
           textTheme: _getTextTheme(context),
           cardTheme: _getCardTheme(context),
           inputDecorationTheme: _getInputDecoratorTheme(context),
