@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:offertelavoroflutter_app/constants/styles.dart';
+import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/select_option/select_option.dart';
 
 class SelectOptionBadge extends StatelessWidget {

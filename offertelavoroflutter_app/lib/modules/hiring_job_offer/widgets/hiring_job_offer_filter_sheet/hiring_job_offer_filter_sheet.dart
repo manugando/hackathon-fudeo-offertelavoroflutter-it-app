@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:offertelavoroflutter_app/constants/styles.dart';
+import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/center_circular_progress_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/content_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:offertelavoroflutter_app/constants/styles.dart';
+import 'package:offertelavoroflutter_app/helpers/styles.dart';
 
 class ContentCard extends StatelessWidget {
   final Widget child;

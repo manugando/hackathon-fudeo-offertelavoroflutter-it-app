@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:offertelavoroflutter_app/constants/styles.dart';
+import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/helpers/app_url_launcher.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/select_option/select_option.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/styled_text/styled_text.dart';
