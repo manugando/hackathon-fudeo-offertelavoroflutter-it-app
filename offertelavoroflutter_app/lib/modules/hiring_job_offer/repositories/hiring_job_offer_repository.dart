@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
 import 'package:http/http.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
@@ -25,6 +27,7 @@ NotionDbHiringJobOffer parseDbHiringJobOfferResponse(String responseBody) {
 }
 
 class HiringJobOfferRepository {
+  static const favoriteHiringJobOffersBox = 'favoriteHiringJobOffersBox';
 
   Future<PagedList<HiringJobOffer>> getHiringJobOffers({
     required int pageSize, String? startCursor,
@@ -86,5 +89,24 @@ class HiringJobOfferRepository {
     NotionDbHiringJobOffer notionDbHiringJobOffer = await compute(parseDbHiringJobOfferResponse, response.body);
 
     return HiringJobOfferOptions.fromNotion(notionDbHiringJobOffer);
+  }
+
+  Future<List<String>> toggleFavoriteHiringJobOffer(String hiringJobOfferId) async {
+    Box<String> box = await Hive.openBox(favoriteHiringJobOffersBox);
+    MapEntry<dynamic, String>? entry = box.toMap().entries
+      .firstWhereOrNull((entry) => entry.value == hiringJobOfferId);
+
+    if(entry != null) {
+      await box.delete(entry.key);
+    } else {
+      await box.add(hiringJobOfferId);
+    }
+
+    return getFavoriteHiringJobOfferIds();
+  }
+
+  Future<List<String>> getFavoriteHiringJobOfferIds() async {
+    Box<String> box = await Hive.openBox(favoriteHiringJobOffersBox);
+    return box.values.toList();
   }
 }

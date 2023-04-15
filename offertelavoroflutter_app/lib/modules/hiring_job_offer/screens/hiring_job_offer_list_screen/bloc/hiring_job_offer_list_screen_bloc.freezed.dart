@@ -22,6 +22,8 @@ mixin _$HiringJobOfferListScreenEvent {
     required TResult Function() refreshRequested,
     required TResult Function(String searchQuery) searchQueryChanged,
     required TResult Function(HiringJobOfferFilters filters) filtersChanged,
+    required TResult Function(String hiringJobOfferId)
+        favoriteHiringJobOfferToggled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,7 @@ mixin _$HiringJobOfferListScreenEvent {
     TResult? Function()? refreshRequested,
     TResult? Function(String searchQuery)? searchQueryChanged,
     TResult? Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +41,7 @@ mixin _$HiringJobOfferListScreenEvent {
     TResult Function()? refreshRequested,
     TResult Function(String searchQuery)? searchQueryChanged,
     TResult Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +51,8 @@ mixin _$HiringJobOfferListScreenEvent {
     required TResult Function(_RefreshRequested value) refreshRequested,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_FiltersChanged value) filtersChanged,
+    required TResult Function(_FavoriteHiringJobOfferToggled value)
+        favoriteHiringJobOfferToggled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +61,8 @@ mixin _$HiringJobOfferListScreenEvent {
     TResult? Function(_RefreshRequested value)? refreshRequested,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_FiltersChanged value)? filtersChanged,
+    TResult? Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +71,8 @@ mixin _$HiringJobOfferListScreenEvent {
     TResult Function(_RefreshRequested value)? refreshRequested,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_FiltersChanged value)? filtersChanged,
+    TResult Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +156,8 @@ class _$_PageRequested implements _PageRequested {
     required TResult Function() refreshRequested,
     required TResult Function(String searchQuery) searchQueryChanged,
     required TResult Function(HiringJobOfferFilters filters) filtersChanged,
+    required TResult Function(String hiringJobOfferId)
+        favoriteHiringJobOfferToggled,
   }) {
     return pageRequested(pageKey);
   }
@@ -157,6 +169,7 @@ class _$_PageRequested implements _PageRequested {
     TResult? Function()? refreshRequested,
     TResult? Function(String searchQuery)? searchQueryChanged,
     TResult? Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
   }) {
     return pageRequested?.call(pageKey);
   }
@@ -168,6 +181,7 @@ class _$_PageRequested implements _PageRequested {
     TResult Function()? refreshRequested,
     TResult Function(String searchQuery)? searchQueryChanged,
     TResult Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (pageRequested != null) {
@@ -183,6 +197,8 @@ class _$_PageRequested implements _PageRequested {
     required TResult Function(_RefreshRequested value) refreshRequested,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_FiltersChanged value) filtersChanged,
+    required TResult Function(_FavoriteHiringJobOfferToggled value)
+        favoriteHiringJobOfferToggled,
   }) {
     return pageRequested(this);
   }
@@ -194,6 +210,8 @@ class _$_PageRequested implements _PageRequested {
     TResult? Function(_RefreshRequested value)? refreshRequested,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_FiltersChanged value)? filtersChanged,
+    TResult? Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
   }) {
     return pageRequested?.call(this);
   }
@@ -205,6 +223,8 @@ class _$_PageRequested implements _PageRequested {
     TResult Function(_RefreshRequested value)? refreshRequested,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_FiltersChanged value)? filtersChanged,
+    TResult Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (pageRequested != null) {
@@ -256,6 +276,8 @@ class _$_RefreshRequested implements _RefreshRequested {
     required TResult Function() refreshRequested,
     required TResult Function(String searchQuery) searchQueryChanged,
     required TResult Function(HiringJobOfferFilters filters) filtersChanged,
+    required TResult Function(String hiringJobOfferId)
+        favoriteHiringJobOfferToggled,
   }) {
     return refreshRequested();
   }
@@ -267,6 +289,7 @@ class _$_RefreshRequested implements _RefreshRequested {
     TResult? Function()? refreshRequested,
     TResult? Function(String searchQuery)? searchQueryChanged,
     TResult? Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
   }) {
     return refreshRequested?.call();
   }
@@ -278,6 +301,7 @@ class _$_RefreshRequested implements _RefreshRequested {
     TResult Function()? refreshRequested,
     TResult Function(String searchQuery)? searchQueryChanged,
     TResult Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (refreshRequested != null) {
@@ -293,6 +317,8 @@ class _$_RefreshRequested implements _RefreshRequested {
     required TResult Function(_RefreshRequested value) refreshRequested,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_FiltersChanged value) filtersChanged,
+    required TResult Function(_FavoriteHiringJobOfferToggled value)
+        favoriteHiringJobOfferToggled,
   }) {
     return refreshRequested(this);
   }
@@ -304,6 +330,8 @@ class _$_RefreshRequested implements _RefreshRequested {
     TResult? Function(_RefreshRequested value)? refreshRequested,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_FiltersChanged value)? filtersChanged,
+    TResult? Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
   }) {
     return refreshRequested?.call(this);
   }
@@ -315,6 +343,8 @@ class _$_RefreshRequested implements _RefreshRequested {
     TResult Function(_RefreshRequested value)? refreshRequested,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_FiltersChanged value)? filtersChanged,
+    TResult Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (refreshRequested != null) {
@@ -386,6 +416,8 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
     required TResult Function() refreshRequested,
     required TResult Function(String searchQuery) searchQueryChanged,
     required TResult Function(HiringJobOfferFilters filters) filtersChanged,
+    required TResult Function(String hiringJobOfferId)
+        favoriteHiringJobOfferToggled,
   }) {
     return searchQueryChanged(searchQuery);
   }
@@ -397,6 +429,7 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
     TResult? Function()? refreshRequested,
     TResult? Function(String searchQuery)? searchQueryChanged,
     TResult? Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
   }) {
     return searchQueryChanged?.call(searchQuery);
   }
@@ -408,6 +441,7 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
     TResult Function()? refreshRequested,
     TResult Function(String searchQuery)? searchQueryChanged,
     TResult Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (searchQueryChanged != null) {
@@ -423,6 +457,8 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
     required TResult Function(_RefreshRequested value) refreshRequested,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_FiltersChanged value) filtersChanged,
+    required TResult Function(_FavoriteHiringJobOfferToggled value)
+        favoriteHiringJobOfferToggled,
   }) {
     return searchQueryChanged(this);
   }
@@ -434,6 +470,8 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
     TResult? Function(_RefreshRequested value)? refreshRequested,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_FiltersChanged value)? filtersChanged,
+    TResult? Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
   }) {
     return searchQueryChanged?.call(this);
   }
@@ -445,6 +483,8 @@ class _$_SearchQueryChanged implements _SearchQueryChanged {
     TResult Function(_RefreshRequested value)? refreshRequested,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_FiltersChanged value)? filtersChanged,
+    TResult Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (searchQueryChanged != null) {
@@ -531,6 +571,8 @@ class _$_FiltersChanged implements _FiltersChanged {
     required TResult Function() refreshRequested,
     required TResult Function(String searchQuery) searchQueryChanged,
     required TResult Function(HiringJobOfferFilters filters) filtersChanged,
+    required TResult Function(String hiringJobOfferId)
+        favoriteHiringJobOfferToggled,
   }) {
     return filtersChanged(filters);
   }
@@ -542,6 +584,7 @@ class _$_FiltersChanged implements _FiltersChanged {
     TResult? Function()? refreshRequested,
     TResult? Function(String searchQuery)? searchQueryChanged,
     TResult? Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
   }) {
     return filtersChanged?.call(filters);
   }
@@ -553,6 +596,7 @@ class _$_FiltersChanged implements _FiltersChanged {
     TResult Function()? refreshRequested,
     TResult Function(String searchQuery)? searchQueryChanged,
     TResult Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (filtersChanged != null) {
@@ -568,6 +612,8 @@ class _$_FiltersChanged implements _FiltersChanged {
     required TResult Function(_RefreshRequested value) refreshRequested,
     required TResult Function(_SearchQueryChanged value) searchQueryChanged,
     required TResult Function(_FiltersChanged value) filtersChanged,
+    required TResult Function(_FavoriteHiringJobOfferToggled value)
+        favoriteHiringJobOfferToggled,
   }) {
     return filtersChanged(this);
   }
@@ -579,6 +625,8 @@ class _$_FiltersChanged implements _FiltersChanged {
     TResult? Function(_RefreshRequested value)? refreshRequested,
     TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult? Function(_FiltersChanged value)? filtersChanged,
+    TResult? Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
   }) {
     return filtersChanged?.call(this);
   }
@@ -590,6 +638,8 @@ class _$_FiltersChanged implements _FiltersChanged {
     TResult Function(_RefreshRequested value)? refreshRequested,
     TResult Function(_SearchQueryChanged value)? searchQueryChanged,
     TResult Function(_FiltersChanged value)? filtersChanged,
+    TResult Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
     required TResult orElse(),
   }) {
     if (filtersChanged != null) {
@@ -610,11 +660,164 @@ abstract class _FiltersChanged implements HiringJobOfferListScreenEvent {
 }
 
 /// @nodoc
+abstract class _$$_FavoriteHiringJobOfferToggledCopyWith<$Res> {
+  factory _$$_FavoriteHiringJobOfferToggledCopyWith(
+          _$_FavoriteHiringJobOfferToggled value,
+          $Res Function(_$_FavoriteHiringJobOfferToggled) then) =
+      __$$_FavoriteHiringJobOfferToggledCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String hiringJobOfferId});
+}
+
+/// @nodoc
+class __$$_FavoriteHiringJobOfferToggledCopyWithImpl<$Res>
+    extends _$HiringJobOfferListScreenEventCopyWithImpl<$Res,
+        _$_FavoriteHiringJobOfferToggled>
+    implements _$$_FavoriteHiringJobOfferToggledCopyWith<$Res> {
+  __$$_FavoriteHiringJobOfferToggledCopyWithImpl(
+      _$_FavoriteHiringJobOfferToggled _value,
+      $Res Function(_$_FavoriteHiringJobOfferToggled) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hiringJobOfferId = null,
+  }) {
+    return _then(_$_FavoriteHiringJobOfferToggled(
+      null == hiringJobOfferId
+          ? _value.hiringJobOfferId
+          : hiringJobOfferId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FavoriteHiringJobOfferToggled
+    implements _FavoriteHiringJobOfferToggled {
+  const _$_FavoriteHiringJobOfferToggled(this.hiringJobOfferId);
+
+  @override
+  final String hiringJobOfferId;
+
+  @override
+  String toString() {
+    return 'HiringJobOfferListScreenEvent.favoriteHiringJobOfferToggled(hiringJobOfferId: $hiringJobOfferId)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FavoriteHiringJobOfferToggledCopyWith<_$_FavoriteHiringJobOfferToggled>
+      get copyWith => __$$_FavoriteHiringJobOfferToggledCopyWithImpl<
+          _$_FavoriteHiringJobOfferToggled>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? pageKey) pageRequested,
+    required TResult Function() refreshRequested,
+    required TResult Function(String searchQuery) searchQueryChanged,
+    required TResult Function(HiringJobOfferFilters filters) filtersChanged,
+    required TResult Function(String hiringJobOfferId)
+        favoriteHiringJobOfferToggled,
+  }) {
+    return favoriteHiringJobOfferToggled(hiringJobOfferId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? pageKey)? pageRequested,
+    TResult? Function()? refreshRequested,
+    TResult? Function(String searchQuery)? searchQueryChanged,
+    TResult? Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
+  }) {
+    return favoriteHiringJobOfferToggled?.call(hiringJobOfferId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? pageKey)? pageRequested,
+    TResult Function()? refreshRequested,
+    TResult Function(String searchQuery)? searchQueryChanged,
+    TResult Function(HiringJobOfferFilters filters)? filtersChanged,
+    TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
+    required TResult orElse(),
+  }) {
+    if (favoriteHiringJobOfferToggled != null) {
+      return favoriteHiringJobOfferToggled(hiringJobOfferId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PageRequested value) pageRequested,
+    required TResult Function(_RefreshRequested value) refreshRequested,
+    required TResult Function(_SearchQueryChanged value) searchQueryChanged,
+    required TResult Function(_FiltersChanged value) filtersChanged,
+    required TResult Function(_FavoriteHiringJobOfferToggled value)
+        favoriteHiringJobOfferToggled,
+  }) {
+    return favoriteHiringJobOfferToggled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PageRequested value)? pageRequested,
+    TResult? Function(_RefreshRequested value)? refreshRequested,
+    TResult? Function(_SearchQueryChanged value)? searchQueryChanged,
+    TResult? Function(_FiltersChanged value)? filtersChanged,
+    TResult? Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
+  }) {
+    return favoriteHiringJobOfferToggled?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PageRequested value)? pageRequested,
+    TResult Function(_RefreshRequested value)? refreshRequested,
+    TResult Function(_SearchQueryChanged value)? searchQueryChanged,
+    TResult Function(_FiltersChanged value)? filtersChanged,
+    TResult Function(_FavoriteHiringJobOfferToggled value)?
+        favoriteHiringJobOfferToggled,
+    required TResult orElse(),
+  }) {
+    if (favoriteHiringJobOfferToggled != null) {
+      return favoriteHiringJobOfferToggled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FavoriteHiringJobOfferToggled
+    implements HiringJobOfferListScreenEvent {
+  const factory _FavoriteHiringJobOfferToggled(final String hiringJobOfferId) =
+      _$_FavoriteHiringJobOfferToggled;
+
+  String get hiringJobOfferId;
+  @JsonKey(ignore: true)
+  _$$_FavoriteHiringJobOfferToggledCopyWith<_$_FavoriteHiringJobOfferToggled>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HiringJobOfferListScreenState {
   PagingState<String?, HiringJobOffer> get pagingState =>
       throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
   HiringJobOfferFilters get filters => throw _privateConstructorUsedError;
+  List<String> get favoriteHiringJobOfferIds =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HiringJobOfferListScreenStateCopyWith<HiringJobOfferListScreenState>
@@ -632,7 +835,8 @@ abstract class $HiringJobOfferListScreenStateCopyWith<$Res> {
   $Res call(
       {PagingState<String?, HiringJobOffer> pagingState,
       String searchQuery,
-      HiringJobOfferFilters filters});
+      HiringJobOfferFilters filters,
+      List<String> favoriteHiringJobOfferIds});
 
   $HiringJobOfferFiltersCopyWith<$Res> get filters;
 }
@@ -654,6 +858,7 @@ class _$HiringJobOfferListScreenStateCopyWithImpl<$Res,
     Object? pagingState = null,
     Object? searchQuery = null,
     Object? filters = null,
+    Object? favoriteHiringJobOfferIds = null,
   }) {
     return _then(_value.copyWith(
       pagingState: null == pagingState
@@ -668,6 +873,10 @@ class _$HiringJobOfferListScreenStateCopyWithImpl<$Res,
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as HiringJobOfferFilters,
+      favoriteHiringJobOfferIds: null == favoriteHiringJobOfferIds
+          ? _value.favoriteHiringJobOfferIds
+          : favoriteHiringJobOfferIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 
@@ -692,7 +901,8 @@ abstract class _$$_HiringJobOfferListScreenStateCopyWith<$Res>
   $Res call(
       {PagingState<String?, HiringJobOffer> pagingState,
       String searchQuery,
-      HiringJobOfferFilters filters});
+      HiringJobOfferFilters filters,
+      List<String> favoriteHiringJobOfferIds});
 
   @override
   $HiringJobOfferFiltersCopyWith<$Res> get filters;
@@ -714,6 +924,7 @@ class __$$_HiringJobOfferListScreenStateCopyWithImpl<$Res>
     Object? pagingState = null,
     Object? searchQuery = null,
     Object? filters = null,
+    Object? favoriteHiringJobOfferIds = null,
   }) {
     return _then(_$_HiringJobOfferListScreenState(
       pagingState: null == pagingState
@@ -728,6 +939,10 @@ class __$$_HiringJobOfferListScreenStateCopyWithImpl<$Res>
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as HiringJobOfferFilters,
+      favoriteHiringJobOfferIds: null == favoriteHiringJobOfferIds
+          ? _value._favoriteHiringJobOfferIds
+          : favoriteHiringJobOfferIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -739,7 +954,9 @@ class _$_HiringJobOfferListScreenState
   const _$_HiringJobOfferListScreenState(
       {this.pagingState = const PagingState(),
       this.searchQuery = '',
-      this.filters = const HiringJobOfferFilters()});
+      this.filters = const HiringJobOfferFilters(),
+      final List<String> favoriteHiringJobOfferIds = const []})
+      : _favoriteHiringJobOfferIds = favoriteHiringJobOfferIds;
 
   @override
   @JsonKey()
@@ -750,10 +967,19 @@ class _$_HiringJobOfferListScreenState
   @override
   @JsonKey()
   final HiringJobOfferFilters filters;
+  final List<String> _favoriteHiringJobOfferIds;
+  @override
+  @JsonKey()
+  List<String> get favoriteHiringJobOfferIds {
+    if (_favoriteHiringJobOfferIds is EqualUnmodifiableListView)
+      return _favoriteHiringJobOfferIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteHiringJobOfferIds);
+  }
 
   @override
   String toString() {
-    return 'HiringJobOfferListScreenState(pagingState: $pagingState, searchQuery: $searchQuery, filters: $filters)';
+    return 'HiringJobOfferListScreenState(pagingState: $pagingState, searchQuery: $searchQuery, filters: $filters, favoriteHiringJobOfferIds: $favoriteHiringJobOfferIds)';
   }
 
   @JsonKey(ignore: true)
@@ -767,9 +993,11 @@ class _$_HiringJobOfferListScreenState
 abstract class _HiringJobOfferListScreenState
     implements HiringJobOfferListScreenState {
   const factory _HiringJobOfferListScreenState(
-      {final PagingState<String?, HiringJobOffer> pagingState,
-      final String searchQuery,
-      final HiringJobOfferFilters filters}) = _$_HiringJobOfferListScreenState;
+          {final PagingState<String?, HiringJobOffer> pagingState,
+          final String searchQuery,
+          final HiringJobOfferFilters filters,
+          final List<String> favoriteHiringJobOfferIds}) =
+      _$_HiringJobOfferListScreenState;
 
   @override
   PagingState<String?, HiringJobOffer> get pagingState;
@@ -777,6 +1005,8 @@ abstract class _HiringJobOfferListScreenState
   String get searchQuery;
   @override
   HiringJobOfferFilters get filters;
+  @override
+  List<String> get favoriteHiringJobOfferIds;
   @override
   @JsonKey(ignore: true)
   _$$_HiringJobOfferListScreenStateCopyWith<_$_HiringJobOfferListScreenState>

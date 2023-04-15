@@ -28,5 +28,8 @@
 
   "hiringJobOfferScreenTitle": "Offerte di lavoro per\nassunzione",
   "hiringJobOfferScreenSwitch": "Passa alle offerte per freelance",
-  "hiringJobOfferSearchPlaceholder": "Cerca annunci per titolo, città..."
+  "hiringJobOfferSearchPlaceholder": "Cerca annunci per titolo, città...",
+
+  "jobOfferAddedToFavorites": "Annuncio aggiunto ai preferiti",
+  "jobOfferRemovedFromFavorites": "Annuncio rimosso dai preferiti"
 }

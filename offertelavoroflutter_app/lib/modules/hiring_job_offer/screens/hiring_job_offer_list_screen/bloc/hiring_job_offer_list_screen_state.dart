@@ -8,6 +8,8 @@ class HiringJobOfferListScreenState with _$HiringJobOfferListScreenState {
     @Default('')
     String searchQuery,
     @Default(HiringJobOfferFilters())
-    HiringJobOfferFilters filters
+    HiringJobOfferFilters filters,
+    @Default([])
+    List<String> favoriteHiringJobOfferIds
   }) = _HiringJobOfferListScreenState;
 }

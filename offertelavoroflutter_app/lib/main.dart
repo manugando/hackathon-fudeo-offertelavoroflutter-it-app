@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl_standalone.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -16,6 +17,7 @@ void main() async {
   await findSystemLocale();
   GoogleFonts.config.allowRuntimeFetching = false;
   await dotenv.load(fileName: 'environment/.env');
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
           cardTheme: _getCardTheme(context),
           inputDecorationTheme: _getInputDecoratorTheme(context),
           elevatedButtonTheme: _getElevatedBtnThemeData(context),
+          snackBarTheme: _getSnackBarThemeData(context)
         ),
         initialRoute: Routes.hiringJobOfferList,
         onGenerateRoute: (settings) {
@@ -101,6 +104,16 @@ class MyApp extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(10)),
         borderSide: BorderSide.none,
       )
+    );
+  }
+
+  SnackBarThemeData _getSnackBarThemeData(BuildContext context) {
+    return SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Styles.primaryDark,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10)
+      ),
     );
   }
 }

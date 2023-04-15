@@ -102,10 +102,7 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
               padding: const EdgeInsets.only(top: 20),
               pagingController: _pagingController,
               builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
-                itemBuilder: (context, item, index) => HiringJobOfferItem(
-                  hiringJobOffer: item,
-                  onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail, arguments: item)
-                ),
+                itemBuilder: (context, item, index) => _buildItem(item, state),
                 firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
                 newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
                 noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
@@ -116,6 +113,26 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildItem(HiringJobOffer hiringJobOffer, HiringJobOfferListScreenState state) {
+    bool isFavorite = state.favoriteHiringJobOfferIds.contains(hiringJobOffer.id);
+    return HiringJobOfferItem(
+      hiringJobOffer: hiringJobOffer,
+      onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail, arguments: hiringJobOffer),
+      isFavorite: isFavorite,
+      onFavoriteTap: () {
+        context.read<HiringJobOfferListScreenBloc>()
+          .add(HiringJobOfferListScreenEvent.favoriteHiringJobOfferToggled(hiringJobOffer.id));
+
+        SnackBar snackBar = SnackBar(
+          content: Text(isFavorite ? AppLocalizations.of(context)!.jobOfferRemovedFromFavorites : AppLocalizations.of(context)!.jobOfferAddedToFavorites,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary)
+          )
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
     );
   }
 

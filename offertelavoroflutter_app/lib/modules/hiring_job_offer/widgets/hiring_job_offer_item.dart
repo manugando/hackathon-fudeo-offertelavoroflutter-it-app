@@ -11,7 +11,10 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_
 class HiringJobOfferItem extends StatelessWidget {
   final HiringJobOffer hiringJobOffer;
   final Function() onTap;
-  const HiringJobOfferItem({Key? key, required this.hiringJobOffer, required this.onTap}) : super(key: key);
+  final Function() onFavoriteTap;
+  final bool isFavorite;
+  const HiringJobOfferItem({Key? key, required this.hiringJobOffer, required this.onTap,
+    required this.onFavoriteTap, required this.isFavorite}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class HiringJobOfferItem extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(child: _buildMainInfo(context)),
                 const SizedBox(width: 8),
-                _buildBookmarkIcon(context)
+                _buildFavoriteIcon(context)
               ],
             ),
             const SizedBox(height: 20),
@@ -95,12 +98,10 @@ class HiringJobOfferItem extends StatelessWidget {
     return MultiStyleText(items: hiringJobOffer.localita!, baseStyle: Theme.of(context).textTheme.bodyMedium);
   }
 
-  Widget _buildBookmarkIcon(BuildContext context) {
+  Widget _buildFavoriteIcon(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // TODO save for later
-      },
-      child: SvgPicture.asset('assets/icons/bookmark.svg'),
+      onTap: onFavoriteTap,
+      child: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg'),
     );
   }
 

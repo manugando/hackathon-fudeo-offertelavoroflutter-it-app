@@ -24,7 +24,8 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
         pageRequested: (pageKey) => _pageRequested(pageKey, emit),
         searchQueryChanged: (searchQuery) => _searchQueryChanged(searchQuery, emit),
         refreshRequested: () => _refreshRequested(emit),
-        filtersChanged: (filters) => _filtersChanged(filters, emit)
+        filtersChanged: (filters) => _filtersChanged(filters, emit),
+        favoriteHiringJobOfferToggled: (hiringJobOfferId) => _favoriteHiringJobOfferToggled(hiringJobOfferId, emit),
       );
     }, transformer: (events, mapper) => RxHelper.maybeDebounceEvents(
         test: (event) => event.maybeMap(searchQueryChanged: (value) => true, orElse: () => false),
@@ -43,11 +44,15 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
         filters: state.filters
       );
 
-      emit(state.copyWith(pagingState: PagingState(
-        nextPageKey: pagedList.nextPageKey,
-        itemList: (state.pagingState.itemList ?? [])..addAll(pagedList.results),
-        error: null,
-      )));
+      emit(state.copyWith(
+        pagingState: PagingState(
+          nextPageKey: pagedList.nextPageKey,
+          itemList: (state.pagingState.itemList ?? [])..addAll(pagedList.results),
+          error: null,
+        ),
+        // we fetch the favorites list only on first page load
+        favoriteHiringJobOfferIds: (pageKey == null) ? await _hiringJobOfferRepository.getFavoriteHiringJobOfferIds() : state.favoriteHiringJobOfferIds
+      ));
     } catch (err) {
       emit(state.copyWith(pagingState: PagingState(
         itemList: state.pagingState.itemList,
@@ -76,6 +81,13 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
     emit(state.copyWith(
       pagingState: const PagingState(),
       filters: filters
+    ));
+  }
+
+  _favoriteHiringJobOfferToggled(String hiringJobOfferId, Emitter<HiringJobOfferListScreenState> emit) async {
+    List<String> updatedFavoritesIds = await _hiringJobOfferRepository.toggleFavoriteHiringJobOffer(hiringJobOfferId);
+    emit(state.copyWith(
+      favoriteHiringJobOfferIds: updatedFavoritesIds
     ));
   }
 }
