@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/separated_row.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 
 class HiringJobOfferDetailTitle extends StatelessWidget {
   final HiringJobOffer hiringJobOffer;

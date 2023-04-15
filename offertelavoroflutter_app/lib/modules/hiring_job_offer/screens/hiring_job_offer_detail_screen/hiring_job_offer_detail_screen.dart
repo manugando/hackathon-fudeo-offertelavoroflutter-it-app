@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:offertelavoroflutter_app/helpers/app_share.dart';
 import 'package:offertelavoroflutter_app/modules/app_shell/widgets/detail_app_bar.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_detail_info.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_detail_title.dart';
 

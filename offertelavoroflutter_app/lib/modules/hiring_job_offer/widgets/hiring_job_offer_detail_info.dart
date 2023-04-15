@@ -5,7 +5,7 @@ import 'package:offertelavoroflutter_app/helpers/app_url_launcher.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/select_option/select_option.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/styled_text/styled_text.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 
 class HiringJobofferDetailInfo extends StatelessWidget {
   final HiringJobOffer hiringJobOffer;
