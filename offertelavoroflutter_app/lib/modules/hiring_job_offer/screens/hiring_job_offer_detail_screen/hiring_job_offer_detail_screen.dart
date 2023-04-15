@@ -17,15 +17,12 @@ class HiringJobOfferDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: hiringJobOffer.id,
-      child: BlocProvider(
-        create: (context) => HiringJobOfferDetailScreenBloc(
-          hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context),
-          hiringJobOffer: hiringJobOffer
-        )..add(const HiringJobOfferDetailScreenEvent.initialized()),
-        child: _HiringJobOfferDetailView(),
-      ),
+    return BlocProvider(
+      create: (context) => HiringJobOfferDetailScreenBloc(
+        hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context),
+        hiringJobOffer: hiringJobOffer
+      )..add(const HiringJobOfferDetailScreenEvent.initialized()),
+      child: _HiringJobOfferDetailView(),
     );
   }
 }
@@ -45,17 +42,20 @@ class _HiringJobOfferDetailView extends StatelessWidget {
             title: _buildAppBarTitle(state.hiringJobOffer, context),
             scrollController: scrollController,
           ),
-          body: SingleChildScrollView(
-            controller: scrollController,
-            child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  HiringJobOfferDetailTitle(hiringJobOffer: state.hiringJobOffer),
-                  HiringJobofferDetailInfo(hiringJobOffer: state.hiringJobOffer),
-                  const SizedBox(height: 20),
-                ],
-              )
+          body: Hero(
+            tag: state.hiringJobOffer.id,
+            child: SingleChildScrollView(
+              controller: scrollController,
+              child: SafeArea(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    HiringJobOfferDetailTitle(hiringJobOffer: state.hiringJobOffer),
+                    HiringJobofferDetailInfo(hiringJobOffer: state.hiringJobOffer),
+                    const SizedBox(height: 20),
+                  ],
+                )
+              ),
             ),
           ),
         );
