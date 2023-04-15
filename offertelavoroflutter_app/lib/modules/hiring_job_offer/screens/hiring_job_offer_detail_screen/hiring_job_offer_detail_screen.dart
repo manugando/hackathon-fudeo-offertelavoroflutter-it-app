@@ -3,13 +3,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:offertelavoroflutter_app/helpers/app_share.dart';
 import 'package:offertelavoroflutter_app/modules/app_shell/widgets/detail_app_bar.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_detail_info.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_detail_title.dart';
 
 class HiringJobOfferDetailScreen extends StatelessWidget {
+  final ScrollController scrollController = ScrollController();
   final HiringJobOffer hiringJobOffer;
-  const HiringJobOfferDetailScreen({Key? key, required this.hiringJobOffer}) : super(key: key);
+
+  HiringJobOfferDetailScreen({Key? key, required this.hiringJobOffer}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +21,11 @@ class HiringJobOfferDetailScreen extends StatelessWidget {
       child: Scaffold(
         appBar: DetailAppBar(
           actions: _buildActions(context),
+          title: _buildAppBarTitle(context),
+          scrollController: scrollController,
         ),
         body: SingleChildScrollView(
+          controller: scrollController,
           child: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,6 +38,18 @@ class HiringJobOfferDetailScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildAppBarTitle(BuildContext context) {
+    if(hiringJobOffer.name == null || hiringJobOffer.name!.isEmpty) return const SizedBox();
+
+    return MultiStyleText(
+      items: hiringJobOffer.name!,
+      baseStyle: Theme.of(context).textTheme.titleMedium,
+      textAlign: TextAlign.center,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
     );
   }
 
