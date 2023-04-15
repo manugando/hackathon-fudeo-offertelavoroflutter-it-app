@@ -120,7 +120,11 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
     bool isFavorite = state.favoriteHiringJobOfferIds.contains(hiringJobOffer.id);
     return HiringJobOfferItem(
       hiringJobOffer: hiringJobOffer,
-      onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail, arguments: hiringJobOffer),
+      onTap: () {
+        // we must remove the current snackbar to avoid problems related to the hero animation
+        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+        Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail, arguments: hiringJobOffer);
+      },
       isFavorite: isFavorite,
       onFavoriteTap: () {
         context.read<HiringJobOfferListScreenBloc>()

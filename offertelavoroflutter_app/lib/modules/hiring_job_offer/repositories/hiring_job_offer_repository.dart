@@ -15,6 +15,7 @@ import 'package:offertelavoroflutter_app/modules/notion_api/models/filter/filter
 import 'package:offertelavoroflutter_app/modules/notion_api/models/filter/notion_filter.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/paged_response/notion_paged_response.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/notion_api_client.dart';
+import 'package:rxdart/rxdart.dart';
 
 NotionPagedResponse<NotionPageHiringJobOffer> parseHiringJobOffersResponse(String responseBody) {
   Map<String, dynamic> response = json.decode(responseBody);
@@ -28,6 +29,10 @@ NotionDbHiringJobOffer parseDbHiringJobOfferResponse(String responseBody) {
 
 class HiringJobOfferRepository {
   static const favoriteHiringJobOffersBox = 'favoriteHiringJobOffersBox';
+
+  final _favoriteHiringJobOfferIdsSubject = PublishSubject<List<String>>();
+
+  Stream<List<String>> get favoriteHiringJobOfferIdsStream => _favoriteHiringJobOfferIdsSubject.stream;
 
   Future<PagedList<HiringJobOffer>> getHiringJobOffers({
     required int pageSize, String? startCursor,
@@ -91,7 +96,7 @@ class HiringJobOfferRepository {
     return HiringJobOfferOptions.fromNotion(notionDbHiringJobOffer);
   }
 
-  Future<List<String>> toggleFavoriteHiringJobOffer(String hiringJobOfferId) async {
+  Future<void> toggleFavoriteHiringJobOffer(String hiringJobOfferId) async {
     Box<String> box = await Hive.openBox(favoriteHiringJobOffersBox);
     MapEntry<dynamic, String>? entry = box.toMap().entries
       .firstWhereOrNull((entry) => entry.value == hiringJobOfferId);
@@ -102,7 +107,7 @@ class HiringJobOfferRepository {
       await box.add(hiringJobOfferId);
     }
 
-    return getFavoriteHiringJobOfferIds();
+    _favoriteHiringJobOfferIdsSubject.add(await getFavoriteHiringJobOfferIds());
   }
 
   Future<List<String>> getFavoriteHiringJobOfferIds() async {

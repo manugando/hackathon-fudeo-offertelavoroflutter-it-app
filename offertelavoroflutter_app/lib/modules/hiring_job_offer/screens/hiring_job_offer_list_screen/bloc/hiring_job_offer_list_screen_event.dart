@@ -7,4 +7,5 @@ class HiringJobOfferListScreenEvent with _$HiringJobOfferListScreenEvent {
   const factory HiringJobOfferListScreenEvent.searchQueryChanged(String searchQuery) = _SearchQueryChanged;
   const factory HiringJobOfferListScreenEvent.filtersChanged(HiringJobOfferFilters filters) = _FiltersChanged;
   const factory HiringJobOfferListScreenEvent.favoriteHiringJobOfferToggled(String hiringJobOfferId) = _FavoriteHiringJobOfferToggled;
+  const factory HiringJobOfferListScreenEvent.favoriteHiringJobOffersChanged(List<String> favoriteHiringJobOffersIds) = _FavoriteHiringJobOffersChanged;
 }

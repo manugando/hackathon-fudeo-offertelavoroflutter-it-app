@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -15,6 +17,7 @@ part 'hiring_job_offer_list_screen_bloc.freezed.dart';
 class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, HiringJobOfferListScreenState> {
   final HiringJobOfferRepository _hiringJobOfferRepository;
   final int pageSize = 3;
+  late StreamSubscription<List<String>> _favoriteHiringJobOfferIdsSub;
 
   HiringJobOfferListScreenBloc({
     required HiringJobOfferRepository hiringJobOfferRepository
@@ -26,6 +29,7 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
         refreshRequested: () => _refreshRequested(emit),
         filtersChanged: (filters) => _filtersChanged(filters, emit),
         favoriteHiringJobOfferToggled: (hiringJobOfferId) => _favoriteHiringJobOfferToggled(hiringJobOfferId, emit),
+        favoriteHiringJobOffersChanged: (favoriteHiringJobOffersIds) => _favoriteHiringJobOffersChanged(favoriteHiringJobOffersIds, emit),
       );
     }, transformer: (events, mapper) => RxHelper.maybeDebounceEvents(
         test: (event) => event.maybeMap(searchQueryChanged: (value) => true, orElse: () => false),
@@ -33,6 +37,16 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
         events: events,
       ).flatMap(mapper)
     );
+
+    _favoriteHiringJobOfferIdsSub = _hiringJobOfferRepository.favoriteHiringJobOfferIdsStream.listen((favoriteHiringJobOffersIds) {
+      add(HiringJobOfferListScreenEvent.favoriteHiringJobOffersChanged(favoriteHiringJobOffersIds));
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _favoriteHiringJobOfferIdsSub.cancel();
+    return super.close();
   }
 
   _pageRequested(String? pageKey, Emitter<HiringJobOfferListScreenState> emit) async {
@@ -85,9 +99,12 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
   }
 
   _favoriteHiringJobOfferToggled(String hiringJobOfferId, Emitter<HiringJobOfferListScreenState> emit) async {
-    List<String> updatedFavoritesIds = await _hiringJobOfferRepository.toggleFavoriteHiringJobOffer(hiringJobOfferId);
+    await _hiringJobOfferRepository.toggleFavoriteHiringJobOffer(hiringJobOfferId);
+  }
+
+  _favoriteHiringJobOffersChanged(List<String> favoriteHiringJobOfferIds, Emitter<HiringJobOfferListScreenState> emit) async {
     emit(state.copyWith(
-      favoriteHiringJobOfferIds: updatedFavoritesIds
+      favoriteHiringJobOfferIds: favoriteHiringJobOfferIds
     ));
   }
 }
