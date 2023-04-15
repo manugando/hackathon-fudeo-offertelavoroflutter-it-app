@@ -19,10 +19,6 @@ NotionPagedResponse<NotionPageHiringJobOffer> parseHiringJobOffersResponse(Strin
   return NotionPagedResponse.fromJson(response, (p) => NotionPageHiringJobOffer.fromJson(p));
 }
 
-Map<String, dynamic> notionDbQueryRequestToJson(NotionDbQueryRequest notionDbQueryRequest) {
-  return notionDbQueryRequest.toJson();
-}
-
 NotionDbHiringJobOffer parseDbHiringJobOfferResponse(String responseBody) {
   Map<String, dynamic> response = json.decode(responseBody);
   return NotionDbHiringJobOffer.fromJson(response);

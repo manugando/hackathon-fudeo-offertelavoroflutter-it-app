@@ -4,11 +4,17 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:offertelavoroflutter_app/constants/env.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/api_error/notion_api_error.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/models/db_query_request/notion_db_query_request.dart';
+
+Map<String, dynamic> notionDbQueryRequestToJson(NotionDbQueryRequest notionDbQueryRequest) {
+  return notionDbQueryRequest.toJson();
+}
 
 class NotionApiClient {
   static const notionApiEndpoint = 'https://api.notion.com/v1';
   static const notionApiVersion = '2022-06-28';
   static const hiringJobOffersDatabase = '283d2760f81548f0a7baca4b3e58d7d8';
+  static const freelanceJobOffersDatabase = 'e6a8a6760e3d4430b20a15d16f75f92e';
 
   Future<http.Response> makeRequest(HttpMethods method, String relativeUrl, {
     Map<String, dynamic>? body,
