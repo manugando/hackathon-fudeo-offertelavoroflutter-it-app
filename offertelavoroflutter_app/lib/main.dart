@@ -12,6 +12,7 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_detail_screen/hiring_job_offer_detail_screen.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/hiring_job_offer_list_screen.dart';
+import 'package:offertelavoroflutter_app/modules/home/screens/home_screen/home_screen.dart';
 
 void main() async {
   await findSystemLocale();
@@ -49,11 +50,11 @@ class MyApp extends StatelessWidget {
           elevatedButtonTheme: _getElevatedBtnThemeData(context),
           snackBarTheme: _getSnackBarThemeData(context)
         ),
-        initialRoute: Routes.hiringJobOfferList,
+        initialRoute: Routes.home,
         onGenerateRoute: (settings) {
           switch(settings.name) {
-            case Routes.hiringJobOfferList:
-              return MaterialPageRoute<void>(builder: (context) => const HiringJobOfferListScreen(), settings: settings);
+            case Routes.home:
+              return MaterialPageRoute<void>(builder: (context) => const HomeScreen(), settings: settings);
 
             case Routes.hiringJobOfferDetail:
               return MaterialPageRoute<void>(builder: (context) => HiringJobOfferDetailScreen(hiringJobOffer: ModalRoute.of(context)?.settings.arguments as HiringJobOffer), settings: settings);

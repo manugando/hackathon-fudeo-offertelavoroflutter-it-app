@@ -31,5 +31,10 @@
   "hiringJobOfferSearchPlaceholder": "Cerca annunci per titolo, città...",
 
   "jobOfferAddedToFavorites": "Offerta aggiunta ai preferiti",
-  "jobOfferRemovedFromFavorites": "Offerta rimossa dai preferiti"
+  "jobOfferRemovedFromFavorites": "Offerta rimossa dai preferiti",
+
+  "bottomNavItemJobOffers": "Annunci",
+  "bottomNavItemFavorites": "Preferiti",
+  "bottomNavItemCompanies": "Aziende",
+  "bottomNavItemResources": "Risorse"
 }
