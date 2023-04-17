@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/url/notion_url.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/url/notion_url.dart';
 
 part 'notion_rich_text_content_text.freezed.dart';
 part 'notion_rich_text_content_text.g.dart';

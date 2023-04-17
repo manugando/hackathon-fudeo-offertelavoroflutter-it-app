@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/filter/notion_filter.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/filter/notion_filter.dart';
 
 part 'notion_db_query_request.freezed.dart';
 part 'notion_db_query_request.g.dart';

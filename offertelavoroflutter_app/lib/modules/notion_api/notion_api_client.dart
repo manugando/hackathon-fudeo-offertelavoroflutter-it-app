@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:offertelavoroflutter_app/constants/env.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/api_error/notion_api_error.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/db_query_request/notion_db_query_request.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/api_error/notion_api_error.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/db_query_request/notion_db_query_request.dart';
 
 Map<String, dynamic> notionDbQueryRequestToJson(NotionDbQueryRequest notionDbQueryRequest) {
   return notionDbQueryRequest.toJson();

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/notion_page_property.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/rich_text/notion_rich_text.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/page_properties/notion_page_property.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/rich_text/notion_rich_text.dart';
 
 part 'notion_page_property_title.freezed.dart';
 part 'notion_page_property_title.g.dart';

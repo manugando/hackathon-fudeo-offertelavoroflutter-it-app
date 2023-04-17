@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/notion_page_property.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/page_properties/notion_page_property.dart';
 
 part 'notion_page_property_url.freezed.dart';
 part 'notion_page_property_url.g.dart';

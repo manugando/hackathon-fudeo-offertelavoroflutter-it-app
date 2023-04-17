@@ -1,9 +1,9 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/created_time/notion_page_property_created_time.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/rich_text/notion_page_property_rich_text.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/select/notion_page_property_select.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/models/page_properties/title/notion_page_property_title.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/page_properties/created_time/notion_page_property_created_time.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/page_properties/rich_text/notion_page_property_rich_text.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/page_properties/select/notion_page_property_select.dart';
+import 'package:offertelavoroflutter_app/modules/notion_api/dtos/page_properties/title/notion_page_property_title.dart';
 
 part 'notion_page_freelance_job_offer_properties.freezed.dart';
 part 'notion_page_freelance_job_offer_properties.g.dart';
