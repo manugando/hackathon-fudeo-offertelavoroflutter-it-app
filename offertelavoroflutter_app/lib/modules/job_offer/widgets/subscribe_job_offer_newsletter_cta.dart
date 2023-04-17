@@ -16,7 +16,7 @@ class SubscribeJobOfferNewsletterCta extends StatelessWidget {
       color: Styles.primaryDark.withAlpha(20),
       child: Row(
         children: [
-          SvgPicture.asset('assets/icons/bell.svg'),
+          SvgPicture.asset('assets/icons/mail.svg'),
           const SizedBox(width: 15),
           Expanded(child: Text(AppLocalizations.of(context)!.subscribeToJobOfferNewsletter, style: Theme.of(context).textTheme.bodySmall)),
           SvgPicture.asset('assets/icons/chevron-right.svg'),
