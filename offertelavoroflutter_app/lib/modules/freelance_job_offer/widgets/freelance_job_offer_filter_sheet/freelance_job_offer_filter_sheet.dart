@@ -54,7 +54,7 @@ class _FreelanceJobOfferFilterView extends StatelessWidget {
       children: [
         Text(AppLocalizations.of(context)!.advancedSearch, style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(
-          height: 480,
+          height: 380,
           child: CenterCircularProgressIndicator(),
         ),
       ],
@@ -67,7 +67,7 @@ class _FreelanceJobOfferFilterView extends StatelessWidget {
       children: [
         Text(AppLocalizations.of(context)!.advancedSearch, style: Theme.of(context).textTheme.titleLarge),
         SizedBox(
-          height: 480,
+          height: 380,
           child: ErrorIndicator(
             onRetry: () => context.read<FreelanceJobOfferFilterSheetBloc>().add(const FreelanceJobOfferFilterSheetEvent.optionsRequested())
           ),
@@ -118,6 +118,7 @@ class _FreelanceJobOfferFilterView extends StatelessWidget {
 
   Widget _buildNdaFilters(FreelanceJobOfferFilterSheetState state, BuildContext context) {
     return FilterButtons<String>(
+      optionsPerRow: 2,
       onSelected: (optionName) => context.read<FreelanceJobOfferFilterSheetBloc>()
         .add(FreelanceJobOfferFilterSheetEvent.ndaOptionToggled(optionName)),
       selectedOptionsValues: state.ndaSelectedOptions,
@@ -127,6 +128,7 @@ class _FreelanceJobOfferFilterView extends StatelessWidget {
 
   Widget _buildTipoDiRelazioneFilters(FreelanceJobOfferFilterSheetState state, BuildContext context) {
     return FilterButtons<String>(
+      optionsPerRow: 2,
       onSelected: (optionName) => context.read<FreelanceJobOfferFilterSheetBloc>()
         .add(FreelanceJobOfferFilterSheetEvent.tipoDiRelazioneOptionToggled(optionName)),
       selectedOptionsValues: state.tipoDiRelazioneSelectedOptions,

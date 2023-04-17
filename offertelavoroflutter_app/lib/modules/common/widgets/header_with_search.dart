@@ -101,7 +101,7 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
                   child: SvgPicture.asset('assets/icons/search.svg', colorFilter: const ColorFilter.mode(Styles.lightText, BlendMode.srcIn)),
                 ),
                 suffixIcon: _buildClearSearchFieldIcon(),
-                label: Text(AppLocalizations.of(context)!.hiringJobOfferSearchPlaceholder,
+                label: Text(AppLocalizations.of(context)!.jobOfferSearchPlaceholder,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.lightText)

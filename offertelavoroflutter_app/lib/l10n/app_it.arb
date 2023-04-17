@@ -6,6 +6,7 @@
   "advancedSearch" : "Ricerca avanzata",
   "applyFilters" : "Applica",
   "removeFilters" : "Rimuovi filtri",
+  "subscribe": "Iscriviti",
 
   "contrattoAttribute" : "Contratto",
   "seniorityAttribute" : "Seniority",
@@ -26,9 +27,10 @@
     }
   },
 
+  "jobOfferSearchPlaceholder": "Cerca annunci per nome...",
+
   "hiringJobOfferScreenTitle": "Offerte di lavoro per\nassunzione",
   "hiringJobOfferScreenSwitch": "Passa alle offerte per freelance",
-  "hiringJobOfferSearchPlaceholder": "Cerca annunci per titolo, città...",
 
   "jobOfferAddedToFavorites": "Offerta aggiunta ai preferiti",
   "jobOfferRemovedFromFavorites": "Offerta rimossa dai preferiti",
@@ -38,10 +40,17 @@
   "bottomNavItemCompanies": "Aziende",
   "bottomNavItemResources": "Risorse",
 
+  "subscribeToJobOfferNewsletter": "Resta aggiornato sugli ultimi annunci pubblicati",
+
   "hiringJobOfferSubscribeNewsletterTitle": "Ti aiutiamo a trovare lavoro",
   "hiringJobOfferSubscribeNewsletterText": "Ricevi gratuitamente le offerte di lavoro via email, filtrate in base alle tue preferenze e solo quando ci sono novità interessanti per te. Non cederemo a nessun terzo i dati raccolti dell'iscrizione senza il tuo esplicito consenso.",
-  "hiringJobOfferSubscribeNewsletterButton": "Iscriviti",
+
+  "freelanceJobOfferScreenTitle": "Offerte di lavoro per\nfreelance",
+  "freelanceJobOfferScreenSwitch": "Passa alle offerte per assunzione",
 
   "ndaAttribute" : "NDA",
-  "tipoDiRelazioneAttribute" : "Tipo di relazione"
+  "tipoDiRelazioneAttribute" : "Tipo di relazione",
+
+  "freelanceJobOfferSubscribeNewsletterTitle": "Ti aiutiamo a trovare nuovi clienti",
+  "freelanceJobOfferSubscribeNewsletterText": "Per te che sei uno sviluppatore Flutter in cerca di nuovi clienti per progetti freelance, iscriviti alla nostra newsletter per ricevere aggiornamenti quando un'azienda pubblica una nuova commessa. Non ti invieremo più di 4 email al mese e ti scriveremo solo se ci saranno proposte interessanti per te (in base ai filtri che selezionerai in fase di iscrizione). Non cederemo a nessun terzo i dati raccolti dell’iscrizione senza il tuo esplicito consenso."
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_list_screen/freelance_job_offer_list_screen.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/hiring_job_offer_list_screen.dart';
 import 'package:offertelavoroflutter_app/modules/home/screens/home_screen/bloc/home_screen_bloc.dart';
 
@@ -30,7 +31,8 @@ class _HomeView extends StatelessWidget {
     return BlocBuilder<HomeScreenBloc, HomeScreenState>(
       builder: (context, state) {
         return Scaffold(
-          body: const HiringJobOfferListScreen(),
+          // body: const HiringJobOfferListScreen(),
+          body: const FreelanceJobOfferListScreen(),
           bottomNavigationBar: _buildBottomNavBar(state.activeTabIndex, context),
         );
       },

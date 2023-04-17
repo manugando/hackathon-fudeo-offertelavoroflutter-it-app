@@ -8,46 +8,47 @@ import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters/hiring_job_offer_filters.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/bloc/hiring_job_offer_list_screen_bloc.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet/hiring_job_offer_filter_sheet.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_subscribe_newsletter_sheet.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_filters/freelance_job_offer_filters.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/repositories/freelance_job_offer_repository.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_list_screen/bloc/freelance_job_offer_list_screen_bloc.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freealnce_job_offer_item.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_filter_sheet/freelance_job_offer_filter_sheet.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_item_skeleton.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_subscribe_newsletter_sheet.dart';
 
-class HiringJobOfferListScreen extends StatelessWidget {
-  const HiringJobOfferListScreen({Key? key}) : super(key: key);
+class FreelanceJobOfferListScreen extends StatelessWidget {
+  const FreelanceJobOfferListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HiringJobOfferListScreenBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)),
-      child: const _HiringJobOfferListView(),
+      create: (context) => FreelanceJobOfferListScreenBloc(freelanceJobOfferRepository: RepositoryProvider.of<FreelanceJobOfferRepository>(context)),
+      child: const _FreelanceJobOfferListView(),
     );
   }
 }
 
-class _HiringJobOfferListView extends StatefulWidget {
-  const _HiringJobOfferListView({Key? key}) : super(key: key);
+class _FreelanceJobOfferListView extends StatefulWidget {
+  const _FreelanceJobOfferListView({Key? key}) : super(key: key);
 
   @override
-  State<_HiringJobOfferListView> createState() => _HiringJobOfferListViewState();
+  State<_FreelanceJobOfferListView> createState() => _FreelanceJobOfferListViewState();
 }
 
-class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
+class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> {
   final TextEditingController _searchFieldController = TextEditingController();
-  final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
+  final PagingController<String?, FreelanceJobOffer> _pagingController = PagingController(firstPageKey: null);
 
   @override
   void initState() {
     _pagingController.addPageRequestListener((pageKey) {
-      context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.pageRequested(pageKey));
+      context.read<FreelanceJobOfferListScreenBloc>().add(FreelanceJobOfferListScreenEvent.pageRequested(pageKey));
     });
     _searchFieldController.addListener(() {
-      context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.searchQueryChanged(_searchFieldController.text));
+      context.read<FreelanceJobOfferListScreenBloc>().add(FreelanceJobOfferListScreenEvent.searchQueryChanged(_searchFieldController.text));
     });
     super.initState();
   }
@@ -59,33 +60,33 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
     super.dispose();
   }
 
-  showFiltersSheet(HiringJobOfferFilters initialFilters) async {
-    HiringJobOfferFilters? filters = await showModalBottomSheet(
+  showFiltersSheet(FreelanceJobOfferFilters initialFilters) async {
+    FreelanceJobOfferFilters? filters = await showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) => HiringJobOfferFilterSheet(initialFilters: initialFilters),
+      builder: (context) => FreelanceJobOfferFilterSheet(initialFilters: initialFilters),
     );
     
     if(filters == null) return;
-    context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.filtersChanged(filters));
+    context.read<FreelanceJobOfferListScreenBloc>().add(FreelanceJobOfferListScreenEvent.filtersChanged(filters));
   }
 
   showSubscribeNewsletterSheet() {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
-      builder: (context) => const HiringJobOfferSubscribeNewsletterSheet(),
+      builder: (context) => const FreelanceJobOfferSubscribeNewsletterSheet(),
     );
   }
 
   refresh() {
-    context.read<HiringJobOfferListScreenBloc>().add(const HiringJobOfferListScreenEvent.refreshRequested());
+    context.read<FreelanceJobOfferListScreenBloc>().add(const FreelanceJobOfferListScreenEvent.refreshRequested());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HiringJobOfferListScreenBloc, HiringJobOfferListScreenState>(
+    return BlocConsumer<FreelanceJobOfferListScreenBloc, FreelanceJobOfferListScreenState>(
       listener: (context, state) {
         _pagingController.value = state.pagingState;
       },
@@ -96,8 +97,8 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
             return [
               HeaderWithSearch(
                 forceElevated: innerBoxIsScrolled,
-                title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
-                switchListBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
+                title: AppLocalizations.of(context)!.freelanceJobOfferScreenTitle,
+                switchListBtnTitle: AppLocalizations.of(context)!.freelanceJobOfferScreenSwitch,
                 searchController: _searchFieldController,
                 onSwitchList: () {
                   // TODO
@@ -119,10 +120,10 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
                 ),
                 PagedSliverList(
                   pagingController: _pagingController,
-                  builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
+                  builderDelegate: PagedChildBuilderDelegate<FreelanceJobOffer>(
                     itemBuilder: (context, item, index) => _buildItem(item, state),
                     firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
-                    newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
+                    newPageProgressIndicatorBuilder: (context) => const FreelanceJobOfferItemSkeleton(),
                     noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
                     firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
                     newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
@@ -152,15 +153,16 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
     );
   }
 
-  Widget _buildItem(HiringJobOffer hiringJobOffer, HiringJobOfferListScreenState state) {
-    bool isFavorite = state.favoriteHiringJobOfferIds.contains(hiringJobOffer.id);
-    return HiringJobOfferItem(
-      hiringJobOffer: hiringJobOffer,
-      onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail, arguments: hiringJobOffer),
+  Widget _buildItem(FreelanceJobOffer freelanceJobOffer, FreelanceJobOfferListScreenState state) {
+    bool isFavorite = state.favoriteFreelanceJobOfferIds.contains(freelanceJobOffer.id);
+
+    return FreelanceJobOfferItem(
+      freelanceJobOffer: freelanceJobOffer,
+      onTap: () => Navigator.of(context).pushNamed(Routes.freelanceJobOfferDetail, arguments: freelanceJobOffer),
       isFavorite: isFavorite,
       onFavoriteTap: () {
-        context.read<HiringJobOfferListScreenBloc>()
-          .add(HiringJobOfferListScreenEvent.favoriteHiringJobOfferToggled(hiringJobOffer.id));
+        context.read<FreelanceJobOfferListScreenBloc>()
+          .add(FreelanceJobOfferListScreenEvent.favoriteFreelanceJobOfferToggled(freelanceJobOffer.id));
 
         SnackBar snackBar = SnackBar(
           content: Text(isFavorite ? AppLocalizations.of(context)!.jobOfferRemovedFromFavorites : AppLocalizations.of(context)!.jobOfferAddedToFavorites,
@@ -175,12 +177,12 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
   Widget _buildFirstPageProgressIndicator() {
     return Column(
       children: const [
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
+        FreelanceJobOfferItemSkeleton(),
+        FreelanceJobOfferItemSkeleton(),
+        FreelanceJobOfferItemSkeleton(),
+        FreelanceJobOfferItemSkeleton(),
+        FreelanceJobOfferItemSkeleton(),
+        FreelanceJobOfferItemSkeleton(),
       ],
     );
   }
