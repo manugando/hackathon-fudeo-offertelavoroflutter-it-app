@@ -12,7 +12,7 @@ class SelectOptionBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: selectOption.color?.withAlpha(100) ?? Styles.primaryDark.withAlpha(100)
+        color: selectOption.color?.withAlpha(90) ?? Styles.primaryDark.withAlpha(30)
       ),
       child: Center(
         child: Text(selectOption.name, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.primaryDark)),

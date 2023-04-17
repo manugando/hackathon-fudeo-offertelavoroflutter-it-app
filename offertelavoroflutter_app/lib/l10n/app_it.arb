@@ -36,5 +36,9 @@
   "bottomNavItemJobOffers": "Annunci",
   "bottomNavItemFavorites": "Preferiti",
   "bottomNavItemCompanies": "Aziende",
-  "bottomNavItemResources": "Risorse"
+  "bottomNavItemResources": "Risorse",
+
+  "hiringJobOfferSubscribeNewsletterTitle": "Ti aiutiamo a trovare lavoro",
+  "hiringJobOfferSubscribeNewsletterText": "Ricevi gratuitamente le offerte di lavoro via email, filtrate in base alle tue preferenze e solo quando ci sono novità interessanti per te. Non cederemo a nessun terzo i dati raccolti dell'iscrizione senza il tuo esplicito consenso.",
+  "hiringJobOfferSubscribeNewsletterButton": "Iscriviti"
 }

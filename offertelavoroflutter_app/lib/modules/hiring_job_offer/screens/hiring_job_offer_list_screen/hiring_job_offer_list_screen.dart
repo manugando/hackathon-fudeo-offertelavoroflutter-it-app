@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
@@ -14,6 +16,7 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet/hiring_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_subscribe_newsletter_sheet.dart';
 
 class HiringJobOfferListScreen extends StatelessWidget {
   const HiringJobOfferListScreen({Key? key}) : super(key: key);
@@ -68,6 +71,14 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
     context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.filtersChanged(filters));
   }
 
+  showSubscribeNewsletterSheet() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) => const HiringJobOfferSubscribeNewsletterSheet(),
+    );
+  }
+
   refresh() {
     context.read<HiringJobOfferListScreenBloc>().add(const HiringJobOfferListScreenEvent.refreshRequested());
   }
@@ -98,20 +109,45 @@ class _HiringJobOfferViewState extends State<_HiringJobOfferView> {
           },
           body: RefreshIndicator(
             onRefresh: () => Future.sync(refresh),
-            child: PagedListView(
-              padding: const EdgeInsets.only(top: 20),
-              pagingController: _pagingController,
-              builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
-                itemBuilder: (context, item, index) => _buildItem(item, state),
-                firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
-                newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
-                noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
-                firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
-                newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
-              )
+            child: CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 16),
+                    child: _buildNewsletterCta(),
+                  ),
+                ),
+                PagedSliverList(
+                  pagingController: _pagingController,
+                  builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
+                    itemBuilder: (context, item, index) => _buildItem(item, state),
+                    firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
+                    newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
+                    noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
+                    firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
+                    newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
+                  )
+                )
+              ]
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildNewsletterCta() {
+    return ContentCard(
+      onTap: showSubscribeNewsletterSheet,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+      color: Styles.primaryDark.withAlpha(20),
+      child: Row(
+        children: [
+          SvgPicture.asset('assets/icons/bell.svg'),
+          const SizedBox(width: 15),
+          Expanded(child: Text('Resta aggiornato sugli ultimi annunci pubblicati', style: Theme.of(context).textTheme.bodySmall)),
+          SvgPicture.asset('assets/icons/chevron-right.svg'),
+        ],
       ),
     );
   }

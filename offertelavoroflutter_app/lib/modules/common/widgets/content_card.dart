@@ -5,14 +5,15 @@ class ContentCard extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
   final Function()? onTap;
-  const ContentCard({Key? key, required this.child, this.padding, this.onTap}) : super(key: key);
+  final Color color;
+  const ContentCard({Key? key, required this.child, this.padding, this.onTap, this.color = Colors.white}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: color,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -25,7 +26,7 @@ class ContentCard extends StatelessWidget {
       margin: const EdgeInsets.only(
         right: Styles.screenHorizPadding,
         left: Styles.screenHorizPadding,
-        bottom: 20
+        bottom: 16
       ),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
