@@ -7,7 +7,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/repositories/freelance_job_offer_repository.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_detail_screen/freelance_job_offer_detail_screen.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_detail_screen/hiring_job_offer_detail_screen.dart';
@@ -58,6 +60,9 @@ class MyApp extends StatelessWidget {
 
             case Routes.hiringJobOfferDetail:
               return MaterialPageRoute<void>(builder: (context) => HiringJobOfferDetailScreen(hiringJobOffer: ModalRoute.of(context)?.settings.arguments as HiringJobOffer), settings: settings);
+
+            case Routes.freelanceJobOfferDetail:
+              return MaterialPageRoute<void>(builder: (context) => FreelanceJobOfferDetailScreen(freelanceJobOffer: ModalRoute.of(context)?.settings.arguments as FreelanceJobOffer), settings: settings);
 
             default:
               throw Exception('Invalid route: ${settings.name}');
