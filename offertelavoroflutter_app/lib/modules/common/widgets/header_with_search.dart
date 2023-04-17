@@ -63,7 +63,7 @@ class HeaderWithSearch extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SvgPicture.asset('assets/icons/transaction-horizontal.svg', width: 16),
+                SvgPicture.asset('assets/icons/transaction-horizontal.svg', width: 16, colorFilter: const ColorFilter.mode(Styles.accent, BlendMode.srcIn)),
                 const SizedBox(width: 6),
                 Text(switchListBtnTitle,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.accent)
@@ -98,7 +98,7 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
                 contentPadding: EdgeInsets.zero,
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: SvgPicture.asset('assets/icons/search.svg'),
+                  child: SvgPicture.asset('assets/icons/search.svg', colorFilter: const ColorFilter.mode(Styles.lightText, BlendMode.srcIn)),
                 ),
                 suffixIcon: _buildClearSearchFieldIcon(),
                 label: Text(AppLocalizations.of(context)!.hiringJobOfferSearchPlaceholder,
@@ -117,7 +117,7 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
                 style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
                   backgroundColor: MaterialStateProperty.all(Styles.accent),
                 ),
-                child: SvgPicture.asset('assets/icons/slider.svg')
+                child: SvgPicture.asset('assets/icons/slider.svg', colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn))
               ),
               if(showActiveFiltersBadge) Positioned(
                 top: 5,
@@ -151,7 +151,7 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
             },
             child: Padding(
               padding: const EdgeInsets.all(12.0),
-              child: SvgPicture.asset('assets/icons/close.svg'),
+              child: SvgPicture.asset('assets/icons/close.svg', colorFilter: const ColorFilter.mode(Styles.lightText, BlendMode.srcIn)),
             ),
           );
         }
