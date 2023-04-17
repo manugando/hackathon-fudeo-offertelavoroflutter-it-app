@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
-import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
@@ -17,21 +15,24 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_subscribe_newsletter_sheet.dart';
+import 'package:offertelavoroflutter_app/modules/job_offer/widgets/subscribe_job_offer_newsletter_cta.dart';
 
 class HiringJobOfferListScreen extends StatelessWidget {
-  const HiringJobOfferListScreen({Key? key}) : super(key: key);
+  final Function() onSwitchList;
+  const HiringJobOfferListScreen({Key? key, required this.onSwitchList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HiringJobOfferListScreenBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)),
-      child: const _HiringJobOfferListView(),
+      child: _HiringJobOfferListView(onSwitchList: onSwitchList),
     );
   }
 }
 
 class _HiringJobOfferListView extends StatefulWidget {
-  const _HiringJobOfferListView({Key? key}) : super(key: key);
+  final Function() onSwitchList;
+  const _HiringJobOfferListView({Key? key, required this.onSwitchList}) : super(key: key);
 
   @override
   State<_HiringJobOfferListView> createState() => _HiringJobOfferListViewState();
@@ -99,9 +100,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
                 title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
                 switchListBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
                 searchController: _searchFieldController,
-                onSwitchList: () {
-                  // TODO
-                },
+                onSwitchList: widget.onSwitchList,
                 showActiveFiltersBadge: state.filters.active,
                 onShowFilters: () => showFiltersSheet(state.filters),
               )
@@ -114,7 +113,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 16),
-                    child: _buildNewsletterCta(),
+                    child: SubscribeJobOfferNewsletterCta(onTap: showSubscribeNewsletterSheet),
                   ),
                 ),
                 PagedSliverList(
@@ -132,22 +131,6 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildNewsletterCta() {
-    return ContentCard(
-      onTap: showSubscribeNewsletterSheet,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-      color: Styles.primaryDark.withAlpha(20),
-      child: Row(
-        children: [
-          SvgPicture.asset('assets/icons/bell.svg'),
-          const SizedBox(width: 15),
-          Expanded(child: Text(AppLocalizations.of(context)!.subscribeToJobOfferNewsletter, style: Theme.of(context).textTheme.bodySmall)),
-          SvgPicture.asset('assets/icons/chevron-right.svg'),
-        ],
       ),
     );
   }

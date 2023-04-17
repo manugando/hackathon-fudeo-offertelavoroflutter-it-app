@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
-import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
-import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_filters/freelance_job_offer_filters.dart';
@@ -18,21 +15,24 @@ import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/fre
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_filter_sheet/freelance_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_item_skeleton.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_subscribe_newsletter_sheet.dart';
+import 'package:offertelavoroflutter_app/modules/job_offer/widgets/subscribe_job_offer_newsletter_cta.dart';
 
 class FreelanceJobOfferListScreen extends StatelessWidget {
-  const FreelanceJobOfferListScreen({Key? key}) : super(key: key);
+  final Function() onSwitchList;
+  const FreelanceJobOfferListScreen({Key? key, required this.onSwitchList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FreelanceJobOfferListScreenBloc(freelanceJobOfferRepository: RepositoryProvider.of<FreelanceJobOfferRepository>(context)),
-      child: const _FreelanceJobOfferListView(),
+      child: _FreelanceJobOfferListView(onSwitchList: onSwitchList),
     );
   }
 }
 
 class _FreelanceJobOfferListView extends StatefulWidget {
-  const _FreelanceJobOfferListView({Key? key}) : super(key: key);
+  final Function() onSwitchList;
+  const _FreelanceJobOfferListView({Key? key, required this.onSwitchList}) : super(key: key);
 
   @override
   State<_FreelanceJobOfferListView> createState() => _FreelanceJobOfferListViewState();
@@ -100,9 +100,7 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
                 title: AppLocalizations.of(context)!.freelanceJobOfferScreenTitle,
                 switchListBtnTitle: AppLocalizations.of(context)!.freelanceJobOfferScreenSwitch,
                 searchController: _searchFieldController,
-                onSwitchList: () {
-                  // TODO
-                },
+                onSwitchList: widget.onSwitchList,
                 showActiveFiltersBadge: state.filters.active,
                 onShowFilters: () => showFiltersSheet(state.filters),
               )
@@ -115,7 +113,7 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 16),
-                    child: _buildNewsletterCta(),
+                    child: SubscribeJobOfferNewsletterCta(onTap: showSubscribeNewsletterSheet),
                   ),
                 ),
                 PagedSliverList(
@@ -133,22 +131,6 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildNewsletterCta() {
-    return ContentCard(
-      onTap: showSubscribeNewsletterSheet,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-      color: Styles.primaryDark.withAlpha(20),
-      child: Row(
-        children: [
-          SvgPicture.asset('assets/icons/bell.svg'),
-          const SizedBox(width: 15),
-          Expanded(child: Text(AppLocalizations.of(context)!.subscribeToJobOfferNewsletter, style: Theme.of(context).textTheme.bodySmall)),
-          SvgPicture.asset('assets/icons/chevron-right.svg'),
-        ],
       ),
     );
   }
