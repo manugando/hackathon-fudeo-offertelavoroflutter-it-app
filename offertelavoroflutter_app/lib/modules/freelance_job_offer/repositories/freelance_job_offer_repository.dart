@@ -9,8 +9,8 @@ import 'package:offertelavoroflutter_app/modules/freelance_job_offer/mappers/fre
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_filters/freelance_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_options/freelance_job_offer_options.dart';
-import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/notion/notion_db_freelance_job_offer/notion_db_freelance_job_offer.dart';
-import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/notion/notion_page_freelance_job_offer/notion_page_freelance_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/dtos/notion_db_freelance_job_offer/notion_db_freelance_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/dtos/notion_page_freelance_job_offer/notion_page_freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/db_query_request/notion_db_query_request.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/filter/filter_condition/notion_filter_condition.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/filter/notion_filter.dart';

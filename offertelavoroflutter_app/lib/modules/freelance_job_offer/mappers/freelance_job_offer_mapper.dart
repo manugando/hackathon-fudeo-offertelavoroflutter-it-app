@@ -2,7 +2,7 @@ import 'package:offertelavoroflutter_app/helpers/dto_mapper.dart';
 import 'package:offertelavoroflutter_app/modules/common/mappers/nullable_select_option_mapper.dart';
 import 'package:offertelavoroflutter_app/modules/common/mappers/styled_text_mapper.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
-import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/notion/notion_page_freelance_job_offer/notion_page_freelance_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/dtos/notion_page_freelance_job_offer/notion_page_freelance_job_offer.dart';
 
 class FreelanceJobOfferMapper extends DTOMapper<FreelanceJobOffer, NotionPageFreelanceJobOffer> {
   @override
