@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:offertelavoroflutter_app/helpers/app_share.dart';
+import 'package:offertelavoroflutter_app/helpers/flash_message.dart';
 import 'package:offertelavoroflutter_app/modules/app_shell/widgets/detail_app_bar.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
@@ -82,12 +83,7 @@ class _FreelanceJobOfferDetailView extends StatelessWidget {
           context.read<FreelanceJobOfferDetailScreenBloc>()
             .add(const FreelanceJobOfferDetailScreenEvent.favoriteFreelanceJobOfferToggled());
 
-          SnackBar snackBar = SnackBar(
-            content: Text(isFavorite ? AppLocalizations.of(context)!.jobOfferRemovedFromFavorites : AppLocalizations.of(context)!.jobOfferAddedToFavorites,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary)
-            )
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
         },
         icon: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg')
       ),

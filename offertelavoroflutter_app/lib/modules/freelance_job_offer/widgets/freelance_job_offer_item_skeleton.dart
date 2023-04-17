@@ -10,7 +10,7 @@ class FreelanceJobOfferItemSkeleton extends StatelessWidget {
     return ContentCard(
       padding: EdgeInsets.zero,
       child: AspectRatio(
-        aspectRatio: 2.11,
+        aspectRatio: 3.11,
         child: SkeletonAvatar(
           style: SkeletonAvatarStyle(
             borderRadius: BorderRadius.circular(0)

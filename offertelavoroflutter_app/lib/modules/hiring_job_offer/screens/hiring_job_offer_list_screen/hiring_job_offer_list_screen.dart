@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
+import 'package:offertelavoroflutter_app/helpers/flash_message.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
@@ -145,12 +146,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
         context.read<HiringJobOfferListScreenBloc>()
           .add(HiringJobOfferListScreenEvent.favoriteHiringJobOfferToggled(hiringJobOffer.id));
 
-        SnackBar snackBar = SnackBar(
-          content: Text(isFavorite ? AppLocalizations.of(context)!.jobOfferRemovedFromFavorites : AppLocalizations.of(context)!.jobOfferAddedToFavorites,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary)
-          )
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
       }
     );
   }

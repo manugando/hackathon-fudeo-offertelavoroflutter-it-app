@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
+import 'package:offertelavoroflutter_app/helpers/flash_message.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
@@ -11,7 +12,7 @@ import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/free
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_filters/freelance_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/repositories/freelance_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_list_screen/bloc/freelance_job_offer_list_screen_bloc.dart';
-import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freealnce_job_offer_item.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_filter_sheet/freelance_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_item_skeleton.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_subscribe_newsletter_sheet.dart';
@@ -146,12 +147,7 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
         context.read<FreelanceJobOfferListScreenBloc>()
           .add(FreelanceJobOfferListScreenEvent.favoriteFreelanceJobOfferToggled(freelanceJobOffer.id));
 
-        SnackBar snackBar = SnackBar(
-          content: Text(isFavorite ? AppLocalizations.of(context)!.jobOfferRemovedFromFavorites : AppLocalizations.of(context)!.jobOfferAddedToFavorites,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.onPrimary)
-          )
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
       }
     );
   }
