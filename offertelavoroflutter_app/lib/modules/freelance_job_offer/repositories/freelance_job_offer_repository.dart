@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
+import 'package:offertelavoroflutter_app/modules/common/mappers/paged_list_mapper.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/mappers/freelance_job_offer_mapper.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/mappers/freelance_job_offer_options_mapper.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_filters/freelance_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_options/freelance_job_offer_options.dart';
@@ -70,13 +73,14 @@ class FreelanceJobOfferRepository {
     Response response = await NotionApiClient().makeRequest(HttpMethods.post, '/databases/${NotionApiClient.freelanceJobOffersDatabase}/query', body: body);
     NotionPagedResponse<NotionPageFreelanceJobOffer> notionPageFreelanceJobOffers = await compute(parseFreelanceJobOffersResponse, response.body);
 
-    return PagedList.fromNotion(notionPageFreelanceJobOffers, (notionPageFreelanceJobOffer) => FreelanceJobOffer.fromNotion(notionPageFreelanceJobOffer));
+    FreelanceJobOfferMapper freelanceJobOfferMapper = FreelanceJobOfferMapper();
+    return PagedListMapper<FreelanceJobOffer>().fromDTO(notionPageFreelanceJobOffers, (notionPageFreelanceJobOffer) => freelanceJobOfferMapper.fromDTO(notionPageFreelanceJobOffer));
   }
 
   Future<FreelanceJobOfferOptions> getFreelanceJobOffersOptions() async {
     Response response = await NotionApiClient().makeRequest(HttpMethods.get, '/databases/${NotionApiClient.freelanceJobOffersDatabase}');
     NotionDbFreelanceJobOffer notionDbFreelanceJobOffer = await compute(parseDbFreelanceJobOfferResponse, response.body);
 
-    return FreelanceJobOfferOptions.fromNotion(notionDbFreelanceJobOffer);
+    return FreelanceJobOfferOptionsMapper().fromDTO(notionDbFreelanceJobOffer);
   }
 }

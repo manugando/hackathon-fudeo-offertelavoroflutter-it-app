@@ -11,12 +11,4 @@ class PagedList<T> with _$PagedList<T> {
     required String? nextPageKey,
     required bool hasMore,
   }) = _PagedList;
-
-  factory PagedList.fromNotion(NotionPagedResponse notionPagedResponse, T Function(dynamic) objectMapper)  {
-    return PagedList(
-      hasMore: notionPagedResponse.hasMore,
-      nextPageKey: notionPagedResponse.nextCursor,
-      results: notionPagedResponse.results.map(objectMapper).toList()
-    );
-  }
 }

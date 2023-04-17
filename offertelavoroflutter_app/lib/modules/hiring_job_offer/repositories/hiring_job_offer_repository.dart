@@ -4,12 +4,15 @@ import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart';
+import 'package:offertelavoroflutter_app/modules/common/mappers/paged_list_mapper.dart';
 import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/mappers/hiring_job_offer_mapper.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/mappers/hiring_job_offer_options_mapper.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_options/hiring_job_offer_options.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_db_hiring_job_offer/notion_db_hiring_job_offer.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/notion/notion_page_hiring_job_offer/notion_page_hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/dtos/notion_db_hiring_job_offer/notion_db_hiring_job_offer.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/dtos/notion_page_hiring_job_offer/notion_page_hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/db_query_request/notion_db_query_request.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/filter/filter_condition/notion_filter_condition.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/models/filter/notion_filter.dart';
@@ -86,14 +89,15 @@ class HiringJobOfferRepository {
     Response response = await NotionApiClient().makeRequest(HttpMethods.post, '/databases/${NotionApiClient.hiringJobOffersDatabase}/query', body: body);
     NotionPagedResponse<NotionPageHiringJobOffer> notionPageHiringJobOffers = await compute(parseHiringJobOffersResponse, response.body);
 
-    return PagedList.fromNotion(notionPageHiringJobOffers, (notionPageHiringJobOffer) => HiringJobOffer.fromNotion(notionPageHiringJobOffer));
+    HiringJobOfferMapper hiringJobOfferMapper = HiringJobOfferMapper();
+    return PagedListMapper<HiringJobOffer>().fromDTO(notionPageHiringJobOffers, (notionPageHiringJobOffer) => hiringJobOfferMapper.fromDTO(notionPageHiringJobOffer));
   }
 
   Future<HiringJobOfferOptions> getHiringJobOffersOptions() async {
     Response response = await NotionApiClient().makeRequest(HttpMethods.get, '/databases/${NotionApiClient.hiringJobOffersDatabase}');
     NotionDbHiringJobOffer notionDbHiringJobOffer = await compute(parseDbHiringJobOfferResponse, response.body);
 
-    return HiringJobOfferOptions.fromNotion(notionDbHiringJobOffer);
+    return HiringJobOfferOptionsMapper().fromDTO(notionDbHiringJobOffer);
   }
 
   Future<void> toggleFavoriteHiringJobOffer(String hiringJobOfferId) async {
