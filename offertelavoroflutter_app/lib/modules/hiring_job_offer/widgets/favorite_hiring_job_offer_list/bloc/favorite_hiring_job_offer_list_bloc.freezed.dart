@@ -18,8 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FavoriteHiringJobOfferListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? pageKey) pageRequested,
-    required TResult Function() refreshRequested,
+    required TResult Function() loadRequested,
     required TResult Function(String hiringJobOfferId)
         favoriteHiringJobOfferToggled,
     required TResult Function(List<String> favoriteHiringJobOffersIds)
@@ -28,8 +27,7 @@ mixin _$FavoriteHiringJobOfferListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? pageKey)? pageRequested,
-    TResult? Function()? refreshRequested,
+    TResult? Function()? loadRequested,
     TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult? Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
@@ -37,8 +35,7 @@ mixin _$FavoriteHiringJobOfferListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? pageKey)? pageRequested,
-    TResult Function()? refreshRequested,
+    TResult Function()? loadRequested,
     TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
@@ -47,8 +44,7 @@ mixin _$FavoriteHiringJobOfferListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PageRequested value) pageRequested,
-    required TResult Function(_RefreshRequested value) refreshRequested,
+    required TResult Function(_PageRequested value) loadRequested,
     required TResult Function(_FavoriteHiringJobOfferToggled value)
         favoriteHiringJobOfferToggled,
     required TResult Function(_FavoriteHiringJobOffersChanged value)
@@ -57,8 +53,7 @@ mixin _$FavoriteHiringJobOfferListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PageRequested value)? pageRequested,
-    TResult? Function(_RefreshRequested value)? refreshRequested,
+    TResult? Function(_PageRequested value)? loadRequested,
     TResult? Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult? Function(_FavoriteHiringJobOffersChanged value)?
@@ -67,8 +62,7 @@ mixin _$FavoriteHiringJobOfferListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PageRequested value)? pageRequested,
-    TResult Function(_RefreshRequested value)? refreshRequested,
+    TResult Function(_PageRequested value)? loadRequested,
     TResult Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult Function(_FavoriteHiringJobOffersChanged value)?
@@ -104,8 +98,6 @@ abstract class _$$_PageRequestedCopyWith<$Res> {
   factory _$$_PageRequestedCopyWith(
           _$_PageRequested value, $Res Function(_$_PageRequested) then) =
       __$$_PageRequestedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? pageKey});
 }
 
 /// @nodoc
@@ -115,77 +107,52 @@ class __$$_PageRequestedCopyWithImpl<$Res>
   __$$_PageRequestedCopyWithImpl(
       _$_PageRequested _value, $Res Function(_$_PageRequested) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pageKey = freezed,
-  }) {
-    return _then(_$_PageRequested(
-      freezed == pageKey
-          ? _value.pageKey
-          : pageKey // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_PageRequested implements _PageRequested {
-  const _$_PageRequested(this.pageKey);
-
-  @override
-  final String? pageKey;
+  const _$_PageRequested();
 
   @override
   String toString() {
-    return 'FavoriteHiringJobOfferListEvent.pageRequested(pageKey: $pageKey)';
+    return 'FavoriteHiringJobOfferListEvent.loadRequested()';
   }
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_PageRequestedCopyWith<_$_PageRequested> get copyWith =>
-      __$$_PageRequestedCopyWithImpl<_$_PageRequested>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? pageKey) pageRequested,
-    required TResult Function() refreshRequested,
+    required TResult Function() loadRequested,
     required TResult Function(String hiringJobOfferId)
         favoriteHiringJobOfferToggled,
     required TResult Function(List<String> favoriteHiringJobOffersIds)
         favoriteHiringJobOffersChanged,
   }) {
-    return pageRequested(pageKey);
+    return loadRequested();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? pageKey)? pageRequested,
-    TResult? Function()? refreshRequested,
+    TResult? Function()? loadRequested,
     TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult? Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
   }) {
-    return pageRequested?.call(pageKey);
+    return loadRequested?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? pageKey)? pageRequested,
-    TResult Function()? refreshRequested,
+    TResult Function()? loadRequested,
     TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
     required TResult orElse(),
   }) {
-    if (pageRequested != null) {
-      return pageRequested(pageKey);
+    if (loadRequested != null) {
+      return loadRequested();
     }
     return orElse();
   }
@@ -193,169 +160,46 @@ class _$_PageRequested implements _PageRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PageRequested value) pageRequested,
-    required TResult Function(_RefreshRequested value) refreshRequested,
+    required TResult Function(_PageRequested value) loadRequested,
     required TResult Function(_FavoriteHiringJobOfferToggled value)
         favoriteHiringJobOfferToggled,
     required TResult Function(_FavoriteHiringJobOffersChanged value)
         favoriteHiringJobOffersChanged,
   }) {
-    return pageRequested(this);
+    return loadRequested(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PageRequested value)? pageRequested,
-    TResult? Function(_RefreshRequested value)? refreshRequested,
+    TResult? Function(_PageRequested value)? loadRequested,
     TResult? Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult? Function(_FavoriteHiringJobOffersChanged value)?
         favoriteHiringJobOffersChanged,
   }) {
-    return pageRequested?.call(this);
+    return loadRequested?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PageRequested value)? pageRequested,
-    TResult Function(_RefreshRequested value)? refreshRequested,
+    TResult Function(_PageRequested value)? loadRequested,
     TResult Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult Function(_FavoriteHiringJobOffersChanged value)?
         favoriteHiringJobOffersChanged,
     required TResult orElse(),
   }) {
-    if (pageRequested != null) {
-      return pageRequested(this);
+    if (loadRequested != null) {
+      return loadRequested(this);
     }
     return orElse();
   }
 }
 
 abstract class _PageRequested implements FavoriteHiringJobOfferListEvent {
-  const factory _PageRequested(final String? pageKey) = _$_PageRequested;
-
-  String? get pageKey;
-  @JsonKey(ignore: true)
-  _$$_PageRequestedCopyWith<_$_PageRequested> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_RefreshRequestedCopyWith<$Res> {
-  factory _$$_RefreshRequestedCopyWith(
-          _$_RefreshRequested value, $Res Function(_$_RefreshRequested) then) =
-      __$$_RefreshRequestedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_RefreshRequestedCopyWithImpl<$Res>
-    extends _$FavoriteHiringJobOfferListEventCopyWithImpl<$Res,
-        _$_RefreshRequested> implements _$$_RefreshRequestedCopyWith<$Res> {
-  __$$_RefreshRequestedCopyWithImpl(
-      _$_RefreshRequested _value, $Res Function(_$_RefreshRequested) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_RefreshRequested implements _RefreshRequested {
-  const _$_RefreshRequested();
-
-  @override
-  String toString() {
-    return 'FavoriteHiringJobOfferListEvent.refreshRequested()';
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? pageKey) pageRequested,
-    required TResult Function() refreshRequested,
-    required TResult Function(String hiringJobOfferId)
-        favoriteHiringJobOfferToggled,
-    required TResult Function(List<String> favoriteHiringJobOffersIds)
-        favoriteHiringJobOffersChanged,
-  }) {
-    return refreshRequested();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? pageKey)? pageRequested,
-    TResult? Function()? refreshRequested,
-    TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
-    TResult? Function(List<String> favoriteHiringJobOffersIds)?
-        favoriteHiringJobOffersChanged,
-  }) {
-    return refreshRequested?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? pageKey)? pageRequested,
-    TResult Function()? refreshRequested,
-    TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
-    TResult Function(List<String> favoriteHiringJobOffersIds)?
-        favoriteHiringJobOffersChanged,
-    required TResult orElse(),
-  }) {
-    if (refreshRequested != null) {
-      return refreshRequested();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_PageRequested value) pageRequested,
-    required TResult Function(_RefreshRequested value) refreshRequested,
-    required TResult Function(_FavoriteHiringJobOfferToggled value)
-        favoriteHiringJobOfferToggled,
-    required TResult Function(_FavoriteHiringJobOffersChanged value)
-        favoriteHiringJobOffersChanged,
-  }) {
-    return refreshRequested(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PageRequested value)? pageRequested,
-    TResult? Function(_RefreshRequested value)? refreshRequested,
-    TResult? Function(_FavoriteHiringJobOfferToggled value)?
-        favoriteHiringJobOfferToggled,
-    TResult? Function(_FavoriteHiringJobOffersChanged value)?
-        favoriteHiringJobOffersChanged,
-  }) {
-    return refreshRequested?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PageRequested value)? pageRequested,
-    TResult Function(_RefreshRequested value)? refreshRequested,
-    TResult Function(_FavoriteHiringJobOfferToggled value)?
-        favoriteHiringJobOfferToggled,
-    TResult Function(_FavoriteHiringJobOffersChanged value)?
-        favoriteHiringJobOffersChanged,
-    required TResult orElse(),
-  }) {
-    if (refreshRequested != null) {
-      return refreshRequested(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RefreshRequested implements FavoriteHiringJobOfferListEvent {
-  const factory _RefreshRequested() = _$_RefreshRequested;
+  const factory _PageRequested() = _$_PageRequested;
 }
 
 /// @nodoc
@@ -416,8 +260,7 @@ class _$_FavoriteHiringJobOfferToggled
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? pageKey) pageRequested,
-    required TResult Function() refreshRequested,
+    required TResult Function() loadRequested,
     required TResult Function(String hiringJobOfferId)
         favoriteHiringJobOfferToggled,
     required TResult Function(List<String> favoriteHiringJobOffersIds)
@@ -429,8 +272,7 @@ class _$_FavoriteHiringJobOfferToggled
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? pageKey)? pageRequested,
-    TResult? Function()? refreshRequested,
+    TResult? Function()? loadRequested,
     TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult? Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
@@ -441,8 +283,7 @@ class _$_FavoriteHiringJobOfferToggled
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? pageKey)? pageRequested,
-    TResult Function()? refreshRequested,
+    TResult Function()? loadRequested,
     TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
@@ -457,8 +298,7 @@ class _$_FavoriteHiringJobOfferToggled
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PageRequested value) pageRequested,
-    required TResult Function(_RefreshRequested value) refreshRequested,
+    required TResult Function(_PageRequested value) loadRequested,
     required TResult Function(_FavoriteHiringJobOfferToggled value)
         favoriteHiringJobOfferToggled,
     required TResult Function(_FavoriteHiringJobOffersChanged value)
@@ -470,8 +310,7 @@ class _$_FavoriteHiringJobOfferToggled
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PageRequested value)? pageRequested,
-    TResult? Function(_RefreshRequested value)? refreshRequested,
+    TResult? Function(_PageRequested value)? loadRequested,
     TResult? Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult? Function(_FavoriteHiringJobOffersChanged value)?
@@ -483,8 +322,7 @@ class _$_FavoriteHiringJobOfferToggled
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PageRequested value)? pageRequested,
-    TResult Function(_RefreshRequested value)? refreshRequested,
+    TResult Function(_PageRequested value)? loadRequested,
     TResult Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult Function(_FavoriteHiringJobOffersChanged value)?
@@ -575,8 +413,7 @@ class _$_FavoriteHiringJobOffersChanged
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? pageKey) pageRequested,
-    required TResult Function() refreshRequested,
+    required TResult Function() loadRequested,
     required TResult Function(String hiringJobOfferId)
         favoriteHiringJobOfferToggled,
     required TResult Function(List<String> favoriteHiringJobOffersIds)
@@ -588,8 +425,7 @@ class _$_FavoriteHiringJobOffersChanged
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? pageKey)? pageRequested,
-    TResult? Function()? refreshRequested,
+    TResult? Function()? loadRequested,
     TResult? Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult? Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
@@ -600,8 +436,7 @@ class _$_FavoriteHiringJobOffersChanged
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? pageKey)? pageRequested,
-    TResult Function()? refreshRequested,
+    TResult Function()? loadRequested,
     TResult Function(String hiringJobOfferId)? favoriteHiringJobOfferToggled,
     TResult Function(List<String> favoriteHiringJobOffersIds)?
         favoriteHiringJobOffersChanged,
@@ -616,8 +451,7 @@ class _$_FavoriteHiringJobOffersChanged
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PageRequested value) pageRequested,
-    required TResult Function(_RefreshRequested value) refreshRequested,
+    required TResult Function(_PageRequested value) loadRequested,
     required TResult Function(_FavoriteHiringJobOfferToggled value)
         favoriteHiringJobOfferToggled,
     required TResult Function(_FavoriteHiringJobOffersChanged value)
@@ -629,8 +463,7 @@ class _$_FavoriteHiringJobOffersChanged
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_PageRequested value)? pageRequested,
-    TResult? Function(_RefreshRequested value)? refreshRequested,
+    TResult? Function(_PageRequested value)? loadRequested,
     TResult? Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult? Function(_FavoriteHiringJobOffersChanged value)?
@@ -642,8 +475,7 @@ class _$_FavoriteHiringJobOffersChanged
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PageRequested value)? pageRequested,
-    TResult Function(_RefreshRequested value)? refreshRequested,
+    TResult Function(_PageRequested value)? loadRequested,
     TResult Function(_FavoriteHiringJobOfferToggled value)?
         favoriteHiringJobOfferToggled,
     TResult Function(_FavoriteHiringJobOffersChanged value)?
@@ -671,7 +503,7 @@ abstract class _FavoriteHiringJobOffersChanged
 
 /// @nodoc
 mixin _$FavoriteHiringJobOfferListState {
-  PagingState<String?, HiringJobOffer> get pagingState =>
+  LoadingState<HiringJobOffer> get loadingState =>
       throw _privateConstructorUsedError;
   List<String> get favoriteHiringJobOfferIds =>
       throw _privateConstructorUsedError;
@@ -690,7 +522,7 @@ abstract class $FavoriteHiringJobOfferListStateCopyWith<$Res> {
           FavoriteHiringJobOfferListState>;
   @useResult
   $Res call(
-      {PagingState<String?, HiringJobOffer> pagingState,
+      {LoadingState<HiringJobOffer> loadingState,
       List<String> favoriteHiringJobOfferIds});
 }
 
@@ -708,14 +540,14 @@ class _$FavoriteHiringJobOfferListStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pagingState = null,
+    Object? loadingState = null,
     Object? favoriteHiringJobOfferIds = null,
   }) {
     return _then(_value.copyWith(
-      pagingState: null == pagingState
-          ? _value.pagingState
-          : pagingState // ignore: cast_nullable_to_non_nullable
-              as PagingState<String?, HiringJobOffer>,
+      loadingState: null == loadingState
+          ? _value.loadingState
+          : loadingState // ignore: cast_nullable_to_non_nullable
+              as LoadingState<HiringJobOffer>,
       favoriteHiringJobOfferIds: null == favoriteHiringJobOfferIds
           ? _value.favoriteHiringJobOfferIds
           : favoriteHiringJobOfferIds // ignore: cast_nullable_to_non_nullable
@@ -734,7 +566,7 @@ abstract class _$$_FavoriteHiringJobOfferListStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {PagingState<String?, HiringJobOffer> pagingState,
+      {LoadingState<HiringJobOffer> loadingState,
       List<String> favoriteHiringJobOfferIds});
 }
 
@@ -751,14 +583,14 @@ class __$$_FavoriteHiringJobOfferListStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pagingState = null,
+    Object? loadingState = null,
     Object? favoriteHiringJobOfferIds = null,
   }) {
     return _then(_$_FavoriteHiringJobOfferListState(
-      pagingState: null == pagingState
-          ? _value.pagingState
-          : pagingState // ignore: cast_nullable_to_non_nullable
-              as PagingState<String?, HiringJobOffer>,
+      loadingState: null == loadingState
+          ? _value.loadingState
+          : loadingState // ignore: cast_nullable_to_non_nullable
+              as LoadingState<HiringJobOffer>,
       favoriteHiringJobOfferIds: null == favoriteHiringJobOfferIds
           ? _value._favoriteHiringJobOfferIds
           : favoriteHiringJobOfferIds // ignore: cast_nullable_to_non_nullable
@@ -772,13 +604,13 @@ class __$$_FavoriteHiringJobOfferListStateCopyWithImpl<$Res>
 class _$_FavoriteHiringJobOfferListState
     implements _FavoriteHiringJobOfferListState {
   const _$_FavoriteHiringJobOfferListState(
-      {this.pagingState = const PagingState(),
+      {this.loadingState = const LoadingState<HiringJobOffer>(),
       final List<String> favoriteHiringJobOfferIds = const []})
       : _favoriteHiringJobOfferIds = favoriteHiringJobOfferIds;
 
   @override
   @JsonKey()
-  final PagingState<String?, HiringJobOffer> pagingState;
+  final LoadingState<HiringJobOffer> loadingState;
   final List<String> _favoriteHiringJobOfferIds;
   @override
   @JsonKey()
@@ -791,7 +623,7 @@ class _$_FavoriteHiringJobOfferListState
 
   @override
   String toString() {
-    return 'FavoriteHiringJobOfferListState(pagingState: $pagingState, favoriteHiringJobOfferIds: $favoriteHiringJobOfferIds)';
+    return 'FavoriteHiringJobOfferListState(loadingState: $loadingState, favoriteHiringJobOfferIds: $favoriteHiringJobOfferIds)';
   }
 
   @JsonKey(ignore: true)
@@ -806,12 +638,12 @@ class _$_FavoriteHiringJobOfferListState
 abstract class _FavoriteHiringJobOfferListState
     implements FavoriteHiringJobOfferListState {
   const factory _FavoriteHiringJobOfferListState(
-          {final PagingState<String?, HiringJobOffer> pagingState,
+          {final LoadingState<HiringJobOffer> loadingState,
           final List<String> favoriteHiringJobOfferIds}) =
       _$_FavoriteHiringJobOfferListState;
 
   @override
-  PagingState<String?, HiringJobOffer> get pagingState;
+  LoadingState<HiringJobOffer> get loadingState;
   @override
   List<String> get favoriteHiringJobOfferIds;
   @override

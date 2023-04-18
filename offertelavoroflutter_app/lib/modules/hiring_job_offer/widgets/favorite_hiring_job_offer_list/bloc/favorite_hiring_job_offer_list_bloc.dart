@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:offertelavoroflutter_app/modules/common/models/paged_list/paged_list.dart';
+import 'package:offertelavoroflutter_app/helpers/loading_state.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 
@@ -13,7 +12,6 @@ part 'favorite_hiring_job_offer_list_bloc.freezed.dart';
 
 class FavoriteHiringJobOfferListBloc extends Bloc<FavoriteHiringJobOfferListEvent, FavoriteHiringJobOfferListState> {
   final HiringJobOfferRepository _hiringJobOfferRepository;
-  final int pageSize = 5;
   late StreamSubscription<List<String>> _favoriteHiringJobOfferIdsSub;
 
   FavoriteHiringJobOfferListBloc({
@@ -21,8 +19,7 @@ class FavoriteHiringJobOfferListBloc extends Bloc<FavoriteHiringJobOfferListEven
   }) : _hiringJobOfferRepository = hiringJobOfferRepository, super(const FavoriteHiringJobOfferListState()) {
     on<FavoriteHiringJobOfferListEvent>((event, emit) async {
       await event.when<Future>(
-        pageRequested: (pageKey) => _pageRequested(pageKey, emit),
-        refreshRequested: () => _refreshRequested(emit),
+        loadRequested: () => _loadRequested(emit),
         favoriteHiringJobOfferToggled: (hiringJobOfferId) => _favoriteHiringJobOfferToggled(hiringJobOfferId, emit),
         favoriteHiringJobOffersChanged: (favoriteHiringJobOffersIds) => _favoriteHiringJobOffersChanged(favoriteHiringJobOffersIds, emit),
       );
@@ -39,36 +36,33 @@ class FavoriteHiringJobOfferListBloc extends Bloc<FavoriteHiringJobOfferListEven
     return super.close();
   }
 
-  _pageRequested(String? pageKey, Emitter<FavoriteHiringJobOfferListState> emit) async {
+  _loadRequested(Emitter<FavoriteHiringJobOfferListState> emit) async {
     try {
-      PagedList<HiringJobOffer> pagedList = await _hiringJobOfferRepository.getHiringJobOffers(
-        pageSize: pageSize,
-        startCursor: pageKey,
-        // TODO filter by fav ids
-      );
+      emit(state.copyWith(
+        loadingState: const LoadingState(
+          status: LoadingStatus.inProgress,
+        )
+      ));
+
+      List<HiringJobOffer> hiringJobOffers = await _hiringJobOfferRepository.getFavoriteHiringJobOffers();
 
       emit(state.copyWith(
-        pagingState: PagingState(
-          nextPageKey: pagedList.nextPageKey,
-          itemList: (state.pagingState.itemList ?? [])..addAll(pagedList.results),
+        loadingState: LoadingState(
+          status: LoadingStatus.done,
+          items: hiringJobOffers,
           error: null,
         ),
-        // we fetch the favorites list only on first page load
-        favoriteHiringJobOfferIds: (pageKey == null) ? await _hiringJobOfferRepository.getFavoriteHiringJobOfferIds() : state.favoriteHiringJobOfferIds
+        // we keep a list of the ids so that if the users removes a favorite offer it still will be visible in the list (but with the non-filled bookmark icon
+        favoriteHiringJobOfferIds: await _hiringJobOfferRepository.getFavoriteHiringJobOfferIds()
       ));
     } catch (err) {
-      emit(state.copyWith(pagingState: PagingState(
-        itemList: state.pagingState.itemList,
-        nextPageKey: state.pagingState.nextPageKey,
-        error: err
-      )));
+      emit(state.copyWith(
+        loadingState: LoadingState(
+          status: LoadingStatus.error,
+          error: err
+        )
+      ));
     }
-  }
-
-  _refreshRequested(Emitter<FavoriteHiringJobOfferListState> emit) async {
-    emit(state.copyWith(
-      pagingState: const PagingState())
-    );
   }
 
   _favoriteHiringJobOfferToggled(String hiringJobOfferId, Emitter<FavoriteHiringJobOfferListState> emit) async {
@@ -79,5 +73,10 @@ class FavoriteHiringJobOfferListBloc extends Bloc<FavoriteHiringJobOfferListEven
     emit(state.copyWith(
       favoriteHiringJobOfferIds: favoriteHiringJobOfferIds
     ));
+
+    if(state.loadingState.items != null && favoriteHiringJobOfferIds.length > state.loadingState.items!.length) {
+      // if there's a new favorite we refresh the list
+      add(const FavoriteHiringJobOfferListEvent.loadRequested());
+    }
   }
 }

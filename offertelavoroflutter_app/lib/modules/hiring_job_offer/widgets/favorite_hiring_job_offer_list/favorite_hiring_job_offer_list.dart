@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/flash_message.dart';
+import 'package:offertelavoroflutter_app/helpers/loading_state.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
@@ -17,64 +17,49 @@ class FavoriteHiringJobOfferList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FavoriteHiringJobOfferListBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)),
+      create: (context) => FavoriteHiringJobOfferListBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context))
+        ..add(const FavoriteHiringJobOfferListEvent.loadRequested()),
       child: const _FavoriteHiringJobOfferListView(),
     );
   }
 }
 
-class _FavoriteHiringJobOfferListView extends StatefulWidget {
+class _FavoriteHiringJobOfferListView extends StatelessWidget {
   const _FavoriteHiringJobOfferListView({Key? key}) : super(key: key);
 
-  @override
-  State<_FavoriteHiringJobOfferListView> createState() => _FavoriteHiringJobOfferListViewState();
-}
-
-class _FavoriteHiringJobOfferListViewState extends State<_FavoriteHiringJobOfferListView> {
-  final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
-
-  @override
-  void initState() {
-    _pagingController.addPageRequestListener((pageKey) {
-      context.read<FavoriteHiringJobOfferListBloc>().add(FavoriteHiringJobOfferListEvent.pageRequested(pageKey));
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pagingController.dispose();
-    super.dispose();
-  }
-
-  refresh() {
-    context.read<FavoriteHiringJobOfferListBloc>().add(const FavoriteHiringJobOfferListEvent.refreshRequested());
+  refresh(BuildContext context) {
+    context.read<FavoriteHiringJobOfferListBloc>().add(const FavoriteHiringJobOfferListEvent.loadRequested());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<FavoriteHiringJobOfferListBloc, FavoriteHiringJobOfferListState>(
-      listener: (context, state) {
-        _pagingController.value = state.pagingState;
+    return BlocBuilder<FavoriteHiringJobOfferListBloc, FavoriteHiringJobOfferListState>(
+      builder: (context, state) {
+        switch(state.loadingState.status) {
+          case LoadingStatus.initial:
+          case LoadingStatus.inProgress:
+            return _buildFirstPageProgressIndicator();
+
+          case LoadingStatus.error:
+            return ErrorIndicator(onRetry: () => refresh(context));
+
+          case LoadingStatus.done:
+            List<HiringJobOffer> items = state.loadingState.items!;
+            if(items.isEmpty) return const NoItemsFoundIndicator();
+
+            return RefreshIndicator(
+              onRefresh: () => Future.sync(() => refresh(context)),
+              child: ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (context, index) => _buildItem(items[index], state, context),
+              ),
+            );
+        }
       },
-      builder: (context, state) => RefreshIndicator(
-        onRefresh: () => Future.sync(refresh),
-        child: PagedListView(
-          pagingController: _pagingController,
-          builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
-            itemBuilder: (context, item, index) => _buildItem(item, state),
-            firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
-            newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
-            noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
-            firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
-            newPageErrorIndicatorBuilder: (context) => ErrorIndicator(onRetry: refresh),
-          )
-        ),
-      ),
     );
   }
 
-  Widget _buildItem(HiringJobOffer hiringJobOffer, FavoriteHiringJobOfferListState state) {
+  Widget _buildItem(HiringJobOffer hiringJobOffer, FavoriteHiringJobOfferListState state, BuildContext context) {
     bool isFavorite = state.favoriteHiringJobOfferIds.contains(hiringJobOffer.id);
     return HiringJobOfferItem(
       hiringJobOffer: hiringJobOffer,
@@ -90,15 +75,18 @@ class _FavoriteHiringJobOfferListViewState extends State<_FavoriteHiringJobOffer
   }
 
   Widget _buildFirstPageProgressIndicator() {
-    return Column(
-      children: const [
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-        HiringJobOfferItemSkeleton(),
-      ],
+    return SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
+      child: Column(
+        children: const [
+          HiringJobOfferItemSkeleton(),
+          HiringJobOfferItemSkeleton(),
+          HiringJobOfferItemSkeleton(),
+          HiringJobOfferItemSkeleton(),
+          HiringJobOfferItemSkeleton(),
+          HiringJobOfferItemSkeleton(),
+        ],
+      ),
     );
   }
 }
