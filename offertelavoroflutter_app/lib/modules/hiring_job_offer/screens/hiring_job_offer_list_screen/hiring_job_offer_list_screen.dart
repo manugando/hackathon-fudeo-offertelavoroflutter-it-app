@@ -11,6 +11,7 @@ import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_in
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters/hiring_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
+import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_detail_screen/hiring_job_offer_detail_screen.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/bloc/hiring_job_offer_list_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_filter_sheet/hiring_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
@@ -140,7 +141,9 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
     bool isFavorite = state.favoriteHiringJobOfferIds.contains(hiringJobOffer.id);
     return HiringJobOfferItem(
       hiringJobOffer: hiringJobOffer,
-      onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail, arguments: hiringJobOffer),
+      onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail,
+        arguments: HiringJobOfferDetailScreenArgs(hiringJobOffer: hiringJobOffer)
+      ),
       isFavorite: isFavorite,
       onFavoriteTap: () {
         context.read<HiringJobOfferListScreenBloc>()

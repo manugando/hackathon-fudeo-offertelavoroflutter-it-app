@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute<void>(builder: (context) => const HomeScreen(), settings: settings);
 
             case Routes.hiringJobOfferDetail:
-              return MaterialPageRoute<void>(builder: (context) => HiringJobOfferDetailScreen(hiringJobOffer: ModalRoute.of(context)?.settings.arguments as HiringJobOffer), settings: settings);
+              return MaterialPageRoute<void>(builder: (context) => HiringJobOfferDetailScreen(args: ModalRoute.of(context)?.settings.arguments as HiringJobOfferDetailScreenArgs), settings: settings);
 
             case Routes.freelanceJobOfferDetail:
               return MaterialPageRoute<void>(builder: (context) => FreelanceJobOfferDetailScreen(freelanceJobOffer: ModalRoute.of(context)?.settings.arguments as FreelanceJobOffer), settings: settings);

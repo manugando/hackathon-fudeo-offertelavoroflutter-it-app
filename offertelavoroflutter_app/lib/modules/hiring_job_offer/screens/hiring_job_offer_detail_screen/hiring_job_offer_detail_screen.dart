@@ -13,8 +13,10 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_detail_title.dart';
 
 class HiringJobOfferDetailScreen extends StatelessWidget {
-  final HiringJobOffer hiringJobOffer;
-  const HiringJobOfferDetailScreen({Key? key, required this.hiringJobOffer}) : super(key: key);
+  final HiringJobOfferDetailScreenArgs args;
+  const HiringJobOfferDetailScreen({Key? key, required this.args}) : super(key: key);
+
+  HiringJobOffer get hiringJobOffer => args.hiringJobOffer;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +25,16 @@ class HiringJobOfferDetailScreen extends StatelessWidget {
         hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context),
         hiringJobOffer: hiringJobOffer
       )..add(const HiringJobOfferDetailScreenEvent.initialized()),
-      child: _HiringJobOfferDetailView(),
+      child: _HiringJobOfferDetailView(heroTag: args.heroTag),
     );
   }
 }
 
 class _HiringJobOfferDetailView extends StatelessWidget {
+  final String? heroTag;
   final ScrollController scrollController = ScrollController();
 
-  _HiringJobOfferDetailView({Key? key}) : super(key: key);
+  _HiringJobOfferDetailView({Key? key, this.heroTag}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,7 @@ class _HiringJobOfferDetailView extends StatelessWidget {
             scrollController: scrollController,
           ),
           body: Hero(
-            tag: state.hiringJobOffer.id,
+            tag: heroTag ?? state.hiringJobOffer.id,
             child: SingleChildScrollView(
               controller: scrollController,
               child: SafeArea(
@@ -93,5 +96,12 @@ class _HiringJobOfferDetailView extends StatelessWidget {
       ),
     ];
   }
+}
+
+class HiringJobOfferDetailScreenArgs {
+  final HiringJobOffer hiringJobOffer;
+  final String? heroTag;
+
+  HiringJobOfferDetailScreenArgs({required this.hiringJobOffer, this.heroTag});
 }
 
