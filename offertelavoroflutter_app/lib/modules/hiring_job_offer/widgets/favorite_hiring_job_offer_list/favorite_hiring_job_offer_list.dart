@@ -51,6 +51,7 @@ class _FavoriteHiringJobOfferListView extends StatelessWidget {
             return RefreshIndicator(
               onRefresh: () => Future.sync(() => refresh(context)),
               child: ListView.builder(
+                padding: const EdgeInsets.only(top: 16),
                 itemCount: items.length,
                 itemBuilder: (context, index) => _buildItem(items[index], state, context),
               ),

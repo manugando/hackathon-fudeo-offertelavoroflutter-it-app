@@ -18,7 +18,7 @@ class ContentCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, 4),
-            blurRadius: 60,
+            blurRadius: 20,
             color: const Color(0xFF99ABC6).withAlpha(45)
           )
         ]
