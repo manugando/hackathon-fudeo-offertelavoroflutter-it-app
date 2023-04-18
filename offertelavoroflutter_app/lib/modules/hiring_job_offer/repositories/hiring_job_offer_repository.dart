@@ -20,7 +20,7 @@ import 'package:offertelavoroflutter_app/modules/notion_api/dtos/paged_response/
 import 'package:offertelavoroflutter_app/modules/notion_api/notion_api_client.dart';
 import 'package:rxdart/rxdart.dart';
 
-NotionPagedResponse<NotionPageHiringJobOffer> parseHiringJobOffersResponse(String responseBody) {
+NotionPagedResponse<NotionPageHiringJobOffer> parseHiringJobOffersPagedResponse(String responseBody) {
   Map<String, dynamic> response = json.decode(responseBody);
   return NotionPagedResponse.fromJson(response, (p) => NotionPageHiringJobOffer.fromJson(p));
 }
@@ -28,6 +28,11 @@ NotionPagedResponse<NotionPageHiringJobOffer> parseHiringJobOffersResponse(Strin
 NotionDbHiringJobOffer parseDbHiringJobOfferResponse(String responseBody) {
   Map<String, dynamic> response = json.decode(responseBody);
   return NotionDbHiringJobOffer.fromJson(response);
+}
+
+NotionPageHiringJobOffer parsePageHiringJobOfferResponse(String responseBody) {
+  Map<String, dynamic> response = json.decode(responseBody);
+  return NotionPageHiringJobOffer.fromJson(response);
 }
 
 class HiringJobOfferRepository {
@@ -87,7 +92,7 @@ class HiringJobOfferRepository {
 
     Map<String, dynamic> body = await compute(notionDbQueryRequestToJson, notionDbQueryRequest);
     Response response = await NotionApiClient().makeRequest(HttpMethods.post, '/databases/${NotionApiClient.hiringJobOffersDatabase}/query', body: body);
-    NotionPagedResponse<NotionPageHiringJobOffer> notionPageHiringJobOffers = await compute(parseHiringJobOffersResponse, response.body);
+    NotionPagedResponse<NotionPageHiringJobOffer> notionPageHiringJobOffers = await compute(parseHiringJobOffersPagedResponse, response.body);
 
     HiringJobOfferMapper hiringJobOfferMapper = HiringJobOfferMapper();
     return PagedListMapper<HiringJobOffer>().fromDTO(notionPageHiringJobOffers, (notionPageHiringJobOffer) => hiringJobOfferMapper.fromDTO(notionPageHiringJobOffer));
@@ -117,5 +122,18 @@ class HiringJobOfferRepository {
   Future<List<String>> getFavoriteHiringJobOfferIds() async {
     Box<String> box = await Hive.openBox(favoriteHiringJobOffersBox);
     return box.values.toList();
+  }
+
+  Future<List<HiringJobOffer>> getFavoriteHiringJobOffers() async {
+    List<String> favoriteHiringJobOfferIds = await getFavoriteHiringJobOfferIds();
+    // TODO I know, this isn't optimal, but the Notion Api doesn't allow to filter the database by page ID, so the only way is to make N separate API calls to the page detail endpoint
+    return Future.wait(favoriteHiringJobOfferIds.map(getHiringJobOffer));
+  }
+
+  Future<HiringJobOffer> getHiringJobOffer(String pageId) async {
+    Response response = await NotionApiClient().makeRequest(HttpMethods.get, '/pages/$pageId');
+    NotionPageHiringJobOffer notionPageHiringJobOffer = await compute(parsePageHiringJobOfferResponse, response.body);
+
+    return HiringJobOfferMapper().fromDTO(notionPageHiringJobOffer);
   }
 }
