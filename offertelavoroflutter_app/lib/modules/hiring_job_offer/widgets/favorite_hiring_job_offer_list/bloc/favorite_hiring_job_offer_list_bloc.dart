@@ -44,12 +44,12 @@ class FavoriteHiringJobOfferListBloc extends Bloc<FavoriteHiringJobOfferListEven
         )
       ));
 
-      List<HiringJobOffer> hiringJobOffers = await _hiringJobOfferRepository.getFavoriteHiringJobOffers();
+      List<HiringJobOffer> favoriteHiringJobOffers = await _hiringJobOfferRepository.getFavoriteHiringJobOffers();
 
       emit(state.copyWith(
         loadingState: LoadingState(
           status: LoadingStatus.done,
-          items: hiringJobOffers,
+          items: favoriteHiringJobOffers,
           error: null,
         ),
         // we keep a list of the ids so that if the users removes a favorite offer it still will be visible in the list (but with the non-filled bookmark icon

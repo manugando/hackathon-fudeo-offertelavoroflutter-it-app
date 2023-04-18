@@ -11,6 +11,7 @@ import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_in
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_filters/freelance_job_offer_filters.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/repositories/freelance_job_offer_repository.dart';
+import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_detail_screen/freelance_job_offer_detail_screen.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_list_screen/bloc/freelance_job_offer_list_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_filter_sheet/freelance_job_offer_filter_sheet.dart';
@@ -141,7 +142,9 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
 
     return FreelanceJobOfferItem(
       freelanceJobOffer: freelanceJobOffer,
-      onTap: () => Navigator.of(context).pushNamed(Routes.freelanceJobOfferDetail, arguments: freelanceJobOffer),
+      onTap: () => Navigator.of(context).pushNamed(Routes.freelanceJobOfferDetail,
+        arguments: FreelanceJobOfferDetailScreenArgs(freelanceJobOffer: freelanceJobOffer)
+      ),
       isFavorite: isFavorite,
       onFavoriteTap: () {
         context.read<FreelanceJobOfferListScreenBloc>()

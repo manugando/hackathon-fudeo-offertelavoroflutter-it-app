@@ -13,8 +13,10 @@ import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/fre
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_detail_title.dart';
 
 class FreelanceJobOfferDetailScreen extends StatelessWidget {
-  final FreelanceJobOffer freelanceJobOffer;
-  const FreelanceJobOfferDetailScreen({Key? key, required this.freelanceJobOffer}) : super(key: key);
+  final FreelanceJobOfferDetailScreenArgs args;
+  const FreelanceJobOfferDetailScreen({Key? key, required this.args}) : super(key: key);
+
+  FreelanceJobOffer get freelanceJobOffer => args.freelanceJobOffer;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +25,16 @@ class FreelanceJobOfferDetailScreen extends StatelessWidget {
         freelanceJobOfferRepository: RepositoryProvider.of<FreelanceJobOfferRepository>(context),
         freelanceJobOffer: freelanceJobOffer
       )..add(const FreelanceJobOfferDetailScreenEvent.initialized()),
-      child: _FreelanceJobOfferDetailView(),
+      child: _FreelanceJobOfferDetailView(heroTag: args.heroTag),
     );
   }
 }
 
 class _FreelanceJobOfferDetailView extends StatelessWidget {
+  final String? heroTag;
   final ScrollController scrollController = ScrollController();
 
-  _FreelanceJobOfferDetailView({Key? key}) : super(key: key);
+  _FreelanceJobOfferDetailView({Key? key, this.heroTag}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,7 @@ class _FreelanceJobOfferDetailView extends StatelessWidget {
             scrollController: scrollController,
           ),
           body: Hero(
-            tag: state.freelanceJobOffer.id,
+            tag: heroTag ?? state.freelanceJobOffer.id,
             child: SingleChildScrollView(
               controller: scrollController,
               child: SafeArea(
@@ -93,5 +96,12 @@ class _FreelanceJobOfferDetailView extends StatelessWidget {
       ),
     ];
   }
+}
+
+class FreelanceJobOfferDetailScreenArgs {
+  final FreelanceJobOffer freelanceJobOffer;
+  final String? heroTag;
+
+  FreelanceJobOfferDetailScreenArgs({required this.freelanceJobOffer, this.heroTag});
 }
 

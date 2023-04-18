@@ -14,13 +14,14 @@ class FreelanceJobOfferItem extends StatelessWidget {
   final Function() onTap;
   final Function() onFavoriteTap;
   final bool isFavorite;
+  final String? heroTag;
   const FreelanceJobOfferItem({Key? key, required this.freelanceJobOffer, required this.onTap,
-    required this.onFavoriteTap, required this.isFavorite}) : super(key: key);
+    required this.onFavoriteTap, required this.isFavorite, this.heroTag}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: freelanceJobOffer.id,
+      tag: heroTag ?? freelanceJobOffer.id,
       child: ContentCard(
         onTap: onTap,
         child: Column(
