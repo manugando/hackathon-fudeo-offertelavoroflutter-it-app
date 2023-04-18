@@ -16,7 +16,7 @@ part 'freelance_job_offer_list_screen_bloc.freezed.dart';
 
 class FreelanceJobOfferListScreenBloc extends Bloc<FreelanceJobOfferListScreenEvent, FreelanceJobOfferListScreenState> {
   final FreelanceJobOfferRepository _freelanceJobOfferRepository;
-  final int pageSize = 3;
+  final int pageSize = 5;
   late StreamSubscription<List<String>> _favoriteFreelanceJobOfferIdsSub;
 
   FreelanceJobOfferListScreenBloc({
