@@ -126,7 +126,7 @@ class HiringJobOfferRepository {
 
   Future<List<HiringJobOffer>> getFavoriteHiringJobOffers() async {
     List<String> favoriteHiringJobOfferIds = await getFavoriteHiringJobOfferIds();
-    // TODO I know, this isn't optimal, but the Notion Api doesn't allow to filter the database by page ID, so the only way is to make N separate API calls to the page detail endpoint
+    // I know, this isn't optimal, but the Notion Api doesn't allow to filter the database by page ID, so the only way is to make N separate API calls to the page detail endpoint
     return Future.wait(favoriteHiringJobOfferIds.map(getHiringJobOffer));
   }
 
