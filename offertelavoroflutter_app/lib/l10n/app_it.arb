@@ -7,6 +7,7 @@
   "applyFilters" : "Applica",
   "removeFilters" : "Rimuovi filtri",
   "subscribe": "Iscriviti",
+  "or": "oppure",
 
   "contrattoAttribute" : "Contratto",
   "seniorityAttribute" : "Seniority",
@@ -64,5 +65,10 @@
   "jobOfferTypeFreelance": "Freelance",
 
   "resourcesScreenTitle": "Risorse",
-  "publishJobOfferScreenTitle": "Pubblica offerta di lavoro"
+
+  "publishJobOfferScreenTitle": "Pubblica offerta di lavoro",
+  "publishJobOfferScreenSubTitle": "Ti aiutiamo a trovare sviluppatori Flutter",
+  "publishJobOfferScreenText": "Pubblica gratuitamente le offerte di lavoro sulla nostra app. Se la proposta è affine ad uno o più sviluppatori registrati al nostro database, la notificheremo ai possibili interessati. La pubblicazione avviene in ordine cronologico.",
+  "publishHiringJobOfferButton": "Pubblica proposta di lavoro per assunzione",
+  "publishFreelanceJobOfferButton": "Pubblica proposta di lavoro per freelance"
 }
