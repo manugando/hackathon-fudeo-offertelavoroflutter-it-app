@@ -7,6 +7,7 @@ import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/favorites/screens/favorites_screen/favorites_screen.dart';
 import 'package:offertelavoroflutter_app/modules/home/screens/home_screen/bloc/home_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/job_offer/screens/job_offers_screen/job_offers_screen.dart';
+import 'package:offertelavoroflutter_app/modules/publish_job_offer/screens/publish_job_offer_screen.dart';
 import 'package:offertelavoroflutter_app/modules/resources/screens/resources_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class _HomeView extends StatelessWidget {
             children: const [
               JobOffersScreen(),
               FavoritesScreen(),
-              Placeholder(),
+              PublishJobOfferScreen(),
               ResourcesScreen()
             ],
           ),
@@ -66,8 +67,8 @@ class _HomeView extends StatelessWidget {
           label: AppLocalizations.of(context)!.bottomNavItemFavorites
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset('assets/icons/company.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 2)),
-          label: AppLocalizations.of(context)!.bottomNavItemCompanies
+          icon: SvgPicture.asset('assets/icons/edit.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 2)),
+          label: AppLocalizations.of(context)!.bottomNavItemPublishJobOffer
         ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset('assets/icons/book.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 3)),

@@ -37,7 +37,7 @@
 
   "bottomNavItemJobOffers": "Annunci",
   "bottomNavItemFavorites": "Preferiti",
-  "bottomNavItemCompanies": "Aziende",
+  "bottomNavItemPublishJobOffer": "Pubblica",
   "bottomNavItemResources": "Risorse",
 
   "subscribeToJobOfferNewsletter": "Resta aggiornato sugli ultimi annunci pubblicati",
@@ -63,5 +63,6 @@
   "jobOfferTypeHiring": "Assunzione",
   "jobOfferTypeFreelance": "Freelance",
 
-  "resourcesScreenTitle": "Risorse"
+  "resourcesScreenTitle": "Risorse",
+  "publishJobOfferScreenTitle": "Pubblica offerta di lavoro"
 }

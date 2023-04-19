@@ -4,7 +4,8 @@ import 'package:offertelavoroflutter_app/helpers/styles.dart';
 
 class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
   final Widget title;
-  const BaseAppBar({Key? key, required this.title}) : super(key: key);
+  final Color backgroundColor;
+  const BaseAppBar({Key? key, required this.title, this.backgroundColor = Colors.white}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +13,18 @@ class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
       bottom: Radius.circular(30),
     );
 
-    return AppBar(
-      shape: RoundedRectangleBorder(borderRadius: borderRadius),
-      backgroundColor: Styles.primaryDark,
-      flexibleSpace: ClipRRect(
-        borderRadius: borderRadius,
-        child: SvgPicture.asset('assets/header-bg.svg', fit: BoxFit.cover)
+    return Container(
+      color: backgroundColor,
+      child: AppBar(
+        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        backgroundColor: Styles.primaryDark,
+        flexibleSpace: ClipRRect(
+          borderRadius: borderRadius,
+          child: SvgPicture.asset('assets/header-bg.svg', fit: BoxFit.cover)
+        ),
+        titleSpacing: 25,
+        title: title,
       ),
-      titleSpacing: 25,
-      title: title,
     );
   }
 

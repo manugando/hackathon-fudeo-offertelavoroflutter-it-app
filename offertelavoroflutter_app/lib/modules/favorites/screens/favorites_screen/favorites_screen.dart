@@ -44,7 +44,10 @@ class _FavoritesView extends StatelessWidget {
     return BlocBuilder<FavoritesScreenBloc, FavoritesScreenState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: BaseAppBar(title: Text(AppLocalizations.of(context)!.favoritesScreenTitle)),
+          appBar: BaseAppBar(
+            title: Text(AppLocalizations.of(context)!.favoritesScreenTitle),
+            backgroundColor: Styles.lightBackground
+          ),
           backgroundColor: Styles.lightBackground,
           body: Column(
             children: [
