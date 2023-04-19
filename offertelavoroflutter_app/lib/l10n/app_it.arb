@@ -61,5 +61,7 @@
 
   "favoritesScreenTitle": "Preferiti",
   "jobOfferTypeHiring": "Assunzione",
-  "jobOfferTypeFreelance": "Freelance"
+  "jobOfferTypeFreelance": "Freelance",
+
+  "resourcesScreenTitle": "Risorse"
 }

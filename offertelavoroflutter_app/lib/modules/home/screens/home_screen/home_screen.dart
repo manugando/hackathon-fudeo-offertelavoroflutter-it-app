@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lazy_load_indexed_stack/lazy_load_indexed_stack.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/favorites/screens/favorites_screen/favorites_screen.dart';
 import 'package:offertelavoroflutter_app/modules/home/screens/home_screen/bloc/home_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/job_offer/screens/job_offers_screen/job_offers_screen.dart';
+import 'package:offertelavoroflutter_app/modules/resources/screens/resources_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -31,11 +33,13 @@ class _HomeView extends StatelessWidget {
     return BlocBuilder<HomeScreenBloc, HomeScreenState>(
       builder: (context, state) {
         return Scaffold(
-          body: IndexedStack(
+          body: LazyLoadIndexedStack(
             index: state.activeTabIndex,
             children: const [
               JobOffersScreen(),
-              FavoritesScreen()
+              FavoritesScreen(),
+              Placeholder(),
+              ResourcesScreen()
             ],
           ),
           bottomNavigationBar: _buildBottomNavBar(state.activeTabIndex, context),
