@@ -109,6 +109,7 @@ class _FreelanceJobOfferFilterView extends StatelessWidget {
               )
             );
           },
+          style: Styles.getAccentButtonTheme(context),
           child: Text(AppLocalizations.of(context)!.applyFilters)
         ),
         const SizedBox(height: 20),

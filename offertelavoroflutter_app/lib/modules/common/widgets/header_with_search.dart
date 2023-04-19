@@ -115,9 +115,9 @@ class BottomAppBar extends StatelessWidget with PreferredSizeWidget {
               ElevatedButton(
                 onPressed: onShowFilters,
                 style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                  backgroundColor: MaterialStateProperty.all(Styles.accent),
+                  backgroundColor: const MaterialStatePropertyAll(Styles.accent),
                 ),
-                child: SvgPicture.asset('assets/icons/slider.svg', colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn))
+                child: SvgPicture.asset('assets/icons/slider.svg', colorFilter: const ColorFilter.mode(Styles.primaryDark, BlendMode.srcIn))
               ),
               if(showActiveFiltersBadge) Positioned(
                 top: 5,

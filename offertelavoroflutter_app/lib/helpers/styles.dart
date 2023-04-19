@@ -16,4 +16,9 @@ class Styles {
     backgroundColor: const MaterialStatePropertyAll(Styles.lightBackground),
     foregroundColor: const MaterialStatePropertyAll(Styles.primaryDark)
   );
+
+  static ButtonStyle? getAccentButtonTheme(BuildContext context) => Theme.of(context).elevatedButtonTheme.style?.copyWith(
+    backgroundColor: const MaterialStatePropertyAll(Styles.accent),
+    foregroundColor: const MaterialStatePropertyAll(Styles.primaryDark)
+  );
 }
