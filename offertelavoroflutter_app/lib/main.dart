@@ -7,14 +7,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
-import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/repositories/freelance_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_detail_screen/freelance_job_offer_detail_screen.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_detail_screen/hiring_job_offer_detail_screen.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/hiring_job_offer_list_screen.dart';
 import 'package:offertelavoroflutter_app/modules/home/screens/home_screen/home_screen.dart';
+import 'package:offertelavoroflutter_app/modules/onboarding/screens/onboarding_screen/onboarding_screen.dart';
 
 void main() async {
   await findSystemLocale();
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<FreelanceJobOfferRepository>(create: (context) => FreelanceJobOfferRepository()),
       ],
       child: MaterialApp(
-        title: 'Offerte Lavoro Flutter',
+        onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         theme: ThemeData(
@@ -52,9 +50,12 @@ class MyApp extends StatelessWidget {
           elevatedButtonTheme: _getElevatedBtnThemeData(context),
           snackBarTheme: _getSnackBarThemeData(context)
         ),
-        initialRoute: Routes.home,
+        initialRoute: Routes.onboarding,
         onGenerateRoute: (settings) {
           switch(settings.name) {
+            case Routes.onboarding:
+              return MaterialPageRoute<void>(builder: (context) => const OnboardingScreen(), settings: settings);
+
             case Routes.home:
               return MaterialPageRoute<void>(builder: (context) => const HomeScreen(), settings: settings);
 
@@ -75,6 +76,9 @@ class MyApp extends StatelessWidget {
   TextTheme _getTextTheme(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return GoogleFonts.montserratTextTheme(textTheme.copyWith(
+      headlineLarge: textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
+      headlineMedium: textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
+      headlineSmall: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
       titleLarge: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
       titleMedium: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
       titleSmall: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
