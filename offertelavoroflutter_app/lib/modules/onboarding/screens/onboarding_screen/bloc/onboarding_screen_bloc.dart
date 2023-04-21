@@ -14,16 +14,24 @@ class OnboardingScreenBloc extends Bloc<OnboardingScreenEvent, OnboardingScreenS
   }) : _appPreferencesRepository = appPreferencesRepository, super(const OnboardingScreenState()) {
     on<OnboardingScreenEvent>((event, emit) async {
       await event.when<Future>(
+        initialized: () => _initialized(emit),
         nextStepRequested: () => _nextStepRequested(emit)
       );
     });
+  }
+
+  _initialized(Emitter<OnboardingScreenState> emit) async {
+    bool isOnboardingDone = await _appPreferencesRepository.isOnboardingDone();
+    emit(state.copyWith(
+      status: isOnboardingDone ? OnboardingScreenStatus.alreadyDone : OnboardingScreenStatus.inProgress
+    ));
   }
 
   _nextStepRequested(Emitter<OnboardingScreenState> emit) async {
     if(state.activeStepIndex == state.totalSteps - 1) {
       await _appPreferencesRepository.setOnboardingDone(true);
       emit(state.copyWith(
-        status: OnboardingScreenStatus.done
+        status: OnboardingScreenStatus.finished
       ));
     } else {
       emit(state.copyWith(

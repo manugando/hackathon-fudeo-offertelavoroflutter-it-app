@@ -1,7 +1,7 @@
 part of 'onboarding_screen_bloc.dart';
 
 enum OnboardingScreenStatus {
-  initial, inProgress, done
+  initial, inProgress, finished, alreadyDone
 }
 
 @freezed

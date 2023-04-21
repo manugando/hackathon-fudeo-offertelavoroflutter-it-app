@@ -18,7 +18,7 @@ class OnboardingScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => OnboardingScreenBloc(
         appPreferencesRepository: RepositoryProvider.of<AppPreferencesRepository>(context)
-      ),
+      )..add(const OnboardingScreenEvent.initialized()),
       child: const _OnboardingView(),
     );
   }
@@ -35,10 +35,17 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
   late List<OnboardingStep> steps;
 
   @override
+  void dispose() {
+    for(OnboardingStep step in steps) {
+      step.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
     _initSteps();
-    steps[0].animateForward();
   }
 
   _initSteps() {
@@ -97,14 +104,20 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
         listener: (context, state) async {
           if(state.status == OnboardingScreenStatus.inProgress) {
             int activeStepIndex = state.activeStepIndex;
-            steps[activeStepIndex - 1].animateReverse();
-            await Future.delayed(const Duration(milliseconds: 450), () {});
+            if(activeStepIndex > 0) {
+              steps[activeStepIndex - 1].animateReverse();
+              await Future.delayed(const Duration(milliseconds: 450), () {});
+            }
             steps[activeStepIndex].animateForward();
-          } else if(state.status == OnboardingScreenStatus.done) {
+          } else if(state.status == OnboardingScreenStatus.finished || state.status == OnboardingScreenStatus.alreadyDone) {
             Navigator.of(context).pushReplacementNamed(Routes.home);
           }
         },
         builder: (context, state) {
+          if(state.status == OnboardingScreenStatus.initial || state.status == OnboardingScreenStatus.alreadyDone) {
+            return const SizedBox();
+          }
+
           return AnimatedContainer(
             color: steps[state.activeStepIndex].background,
             duration: const Duration(milliseconds: 1000),
@@ -234,6 +247,11 @@ class OnboardingStep {
   animateReverse() {
     imageAnimationController.reverse();
     contentAnimationController.reverse();
+  }
+
+  dispose() {
+    imageAnimationController.dispose();
+    contentAnimationController.dispose();
   }
 }
 
