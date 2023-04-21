@@ -70,5 +70,20 @@
   "publishJobOfferScreenSubTitle": "Ti aiutiamo a trovare sviluppatori Flutter",
   "publishJobOfferScreenText": "Pubblica gratuitamente le offerte di lavoro sulla nostra app. Se la proposta è affine ad uno o più sviluppatori registrati al nostro database, la notificheremo ai possibili interessati. La pubblicazione avviene in ordine cronologico.",
   "publishHiringJobOfferButton": "Pubblica proposta di lavoro per assunzione",
-  "publishFreelanceJobOfferButton": "Pubblica proposta di lavoro per freelance"
+  "publishFreelanceJobOfferButton": "Pubblica proposta di lavoro per freelance",
+
+  "onboardingButtonNext": "Avanti",
+  "onboardingButtonEnd": "Fine",
+
+  "onboardingStep1Title": "Ciao!",
+  "onboardingStep1Text": "Benvenuto nell'app di offertelavoroflutter.it, una bacheca di annunci di lavoro per assunzioni e progetti freelance dedicata agli sviluppatori Flutter.",
+
+  "onboardingStep2Title": "Cerca fra gli annunci",
+  "onboardingStep2Text": "Scopri tutti gli annunci pubblicati, trova quelli più adatti a te grazie ai filtri avanzati e aggiungi gli annunci di maggior interesse ai tuoi preferiti, così da averli sempre sott'occhio.",
+
+  "onboardingStep3Title": "Resta sempre aggiornato",
+  "onboardingStep3Text": "Iscriviti alla nostra newsletter per ricevere gratuitamente le offerte di lavoro via email, filtrate in base alle tue preferenze.",
+
+  "onboardingStep4Title": "Diventa sviluppatore Flutter",
+  "onboardingStep4Text": "Scopri tutte le risorse gratuite e a pagamento che offre l'ecosistema Flutter italiano."
 }

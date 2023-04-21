@@ -158,8 +158,9 @@ abstract class _NextStepRequested implements OnboardingScreenEvent {
 
 /// @nodoc
 mixin _$OnboardingScreenState {
+  OnboardingScreenStatus get status => throw _privateConstructorUsedError;
   int get activeStepIndex => throw _privateConstructorUsedError;
-  bool get hasMoreSteps => throw _privateConstructorUsedError;
+  int get totalSteps => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OnboardingScreenStateCopyWith<OnboardingScreenState> get copyWith =>
@@ -172,7 +173,8 @@ abstract class $OnboardingScreenStateCopyWith<$Res> {
           $Res Function(OnboardingScreenState) then) =
       _$OnboardingScreenStateCopyWithImpl<$Res, OnboardingScreenState>;
   @useResult
-  $Res call({int activeStepIndex, bool hasMoreSteps});
+  $Res call(
+      {OnboardingScreenStatus status, int activeStepIndex, int totalSteps});
 }
 
 /// @nodoc
@@ -189,18 +191,23 @@ class _$OnboardingScreenStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? activeStepIndex = null,
-    Object? hasMoreSteps = null,
+    Object? totalSteps = null,
   }) {
     return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OnboardingScreenStatus,
       activeStepIndex: null == activeStepIndex
           ? _value.activeStepIndex
           : activeStepIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      hasMoreSteps: null == hasMoreSteps
-          ? _value.hasMoreSteps
-          : hasMoreSteps // ignore: cast_nullable_to_non_nullable
-              as bool,
+      totalSteps: null == totalSteps
+          ? _value.totalSteps
+          : totalSteps // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -213,7 +220,8 @@ abstract class _$$_OnboardingScreenStateCopyWith<$Res>
       __$$_OnboardingScreenStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int activeStepIndex, bool hasMoreSteps});
+  $Res call(
+      {OnboardingScreenStatus status, int activeStepIndex, int totalSteps});
 }
 
 /// @nodoc
@@ -227,38 +235,49 @@ class __$$_OnboardingScreenStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = null,
     Object? activeStepIndex = null,
-    Object? hasMoreSteps = null,
+    Object? totalSteps = null,
   }) {
     return _then(_$_OnboardingScreenState(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as OnboardingScreenStatus,
       activeStepIndex: null == activeStepIndex
           ? _value.activeStepIndex
           : activeStepIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      hasMoreSteps: null == hasMoreSteps
-          ? _value.hasMoreSteps
-          : hasMoreSteps // ignore: cast_nullable_to_non_nullable
-              as bool,
+      totalSteps: null == totalSteps
+          ? _value.totalSteps
+          : totalSteps // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_OnboardingScreenState implements _OnboardingScreenState {
+class _$_OnboardingScreenState extends _OnboardingScreenState {
   const _$_OnboardingScreenState(
-      {this.activeStepIndex = 0, this.hasMoreSteps = true});
+      {this.status = OnboardingScreenStatus.initial,
+      this.activeStepIndex = 0,
+      this.totalSteps = 4})
+      : super._();
 
+  @override
+  @JsonKey()
+  final OnboardingScreenStatus status;
   @override
   @JsonKey()
   final int activeStepIndex;
   @override
   @JsonKey()
-  final bool hasMoreSteps;
+  final int totalSteps;
 
   @override
   String toString() {
-    return 'OnboardingScreenState(activeStepIndex: $activeStepIndex, hasMoreSteps: $hasMoreSteps)';
+    return 'OnboardingScreenState(status: $status, activeStepIndex: $activeStepIndex, totalSteps: $totalSteps)';
   }
 
   @JsonKey(ignore: true)
@@ -269,15 +288,19 @@ class _$_OnboardingScreenState implements _OnboardingScreenState {
           this, _$identity);
 }
 
-abstract class _OnboardingScreenState implements OnboardingScreenState {
+abstract class _OnboardingScreenState extends OnboardingScreenState {
   const factory _OnboardingScreenState(
-      {final int activeStepIndex,
-      final bool hasMoreSteps}) = _$_OnboardingScreenState;
+      {final OnboardingScreenStatus status,
+      final int activeStepIndex,
+      final int totalSteps}) = _$_OnboardingScreenState;
+  const _OnboardingScreenState._() : super._();
 
+  @override
+  OnboardingScreenStatus get status;
   @override
   int get activeStepIndex;
   @override
-  bool get hasMoreSteps;
+  int get totalSteps;
   @override
   @JsonKey(ignore: true)
   _$$_OnboardingScreenStateCopyWith<_$_OnboardingScreenState> get copyWith =>

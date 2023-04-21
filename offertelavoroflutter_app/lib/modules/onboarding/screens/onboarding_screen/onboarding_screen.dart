@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/app_preferences/repositories/app_preferences_repository.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_animation.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/progress_dots.dart';
 import 'package:offertelavoroflutter_app/modules/onboarding/screens/onboarding_screen/bloc/onboarding_screen_bloc.dart';
@@ -14,7 +16,9 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OnboardingScreenBloc(),
+      create: (context) => OnboardingScreenBloc(
+        appPreferencesRepository: RepositoryProvider.of<AppPreferencesRepository>(context)
+      ),
       child: const _OnboardingView(),
     );
   }
@@ -28,26 +32,61 @@ class _OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<_OnboardingView> with TickerProviderStateMixin {
-  final List<AnimationController> imagesAnimationController = [];
-  final List<AnimationController> contentsAnimationController = [];
-  final List<Color> backgroundColors = [
-    Styles.primaryDark,
-    Styles.accent,
-    Styles.primaryLight,
-    Styles.accent,
-    Styles.primaryDark,
-  ];
+  late List<OnboardingStep> steps;
 
   @override
   void initState() {
     super.initState();
-    for(int i = 0; i < 5 ; i++) {
-      imagesAnimationController.add(AnimationController(vsync: this, duration: const Duration(milliseconds: 500)));
-      contentsAnimationController.add(AnimationController(vsync: this, duration: const Duration(milliseconds: 400)));
-    }
+    _initSteps();
+    steps[0].animateForward();
+  }
 
-    imagesAnimationController[0].forward();
-    contentsAnimationController[0].forward();
+  _initSteps() {
+    steps = [];
+
+    steps.add(OnboardingStep(
+      getTitle: (context) => AppLocalizations.of(context)!.onboardingStep1Title,
+      getText: (context) => AppLocalizations.of(context)!.onboardingStep1Text,
+      background: Styles.primaryDark,
+      imageAsset: 'assets/onboarding/step-1.png',
+      contentAnimationController: _createContentAnimationController(),
+      imageAnimationController: _createImageAnimationController()
+    ));
+
+    steps.add(OnboardingStep(
+      getTitle: (context) => AppLocalizations.of(context)!.onboardingStep2Title,
+      getText: (context) => AppLocalizations.of(context)!.onboardingStep2Text,
+      background: Styles.accent,
+      imageAsset: 'assets/onboarding/step-2.png',
+      contentAnimationController: _createContentAnimationController(),
+      imageAnimationController: _createImageAnimationController()
+    ));
+
+    steps.add(OnboardingStep(
+      getTitle: (context) => AppLocalizations.of(context)!.onboardingStep3Title,
+      getText: (context) => AppLocalizations.of(context)!.onboardingStep3Text,
+      background: Styles.primaryLight,
+      imageAsset: 'assets/onboarding/step-3.png',
+      contentAnimationController: _createContentAnimationController(),
+      imageAnimationController: _createImageAnimationController()
+    ));
+
+    steps.add(OnboardingStep(
+      getTitle: (context) => AppLocalizations.of(context)!.onboardingStep4Title,
+      getText: (context) => AppLocalizations.of(context)!.onboardingStep4Text,
+      background: Styles.primaryDark,
+      imageAsset: 'assets/onboarding/step-4.png',
+      contentAnimationController: _createContentAnimationController(),
+      imageAnimationController: _createImageAnimationController()
+    ));
+  }
+
+  _createImageAnimationController() {
+    return AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
+  }
+
+  _createContentAnimationController() {
+    return AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
   }
 
   @override
@@ -56,17 +95,18 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
       backgroundColor: Styles.primaryDark,
       body: BlocConsumer<OnboardingScreenBloc, OnboardingScreenState>(
         listener: (context, state) async {
-          int activeStepIndex = state.activeStepIndex;
-
-          imagesAnimationController[activeStepIndex - 1].reverse();
-          contentsAnimationController[activeStepIndex - 1].reverse();
-          await Future.delayed(const Duration(milliseconds: 450), () {});
-          imagesAnimationController[activeStepIndex].forward();
-          contentsAnimationController[activeStepIndex].reverse();
+          if(state.status == OnboardingScreenStatus.inProgress) {
+            int activeStepIndex = state.activeStepIndex;
+            steps[activeStepIndex - 1].animateReverse();
+            await Future.delayed(const Duration(milliseconds: 450), () {});
+            steps[activeStepIndex].animateForward();
+          } else if(state.status == OnboardingScreenStatus.done) {
+            Navigator.of(context).pushReplacementNamed(Routes.home);
+          }
         },
         builder: (context, state) {
           return AnimatedContainer(
-            color: backgroundColors[state.activeStepIndex],
+            color: steps[state.activeStepIndex].background,
             duration: const Duration(milliseconds: 1000),
             child: SafeArea(
                 child: Column(
@@ -78,7 +118,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
                     _buildImages(),
                     Expanded(
                       flex: 5,
-                      child: _buildContentCard(state.activeStepIndex, context)
+                      child: _buildContentCard(state, context)
                     )
                   ],
                 ),
@@ -97,30 +137,27 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
   }
 
   Widget _buildImages() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
-      child: Stack(
-        clipBehavior: Clip.antiAlias,
-        children: [
-          buildImage(imagesAnimationController[0], 'assets/onboarding/temp.png'),
-          buildImage(imagesAnimationController[1], 'assets/onboarding/temp.png'),
-          buildImage(imagesAnimationController[2], 'assets/onboarding/temp.png'),
-          buildImage(imagesAnimationController[3], 'assets/onboarding/temp.png'),
-          buildImage(imagesAnimationController[4], 'assets/onboarding/temp.png'),
-        ],
+    return Transform.translate(
+      offset: const Offset(0, 2),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
+        child: Stack(
+          clipBehavior: Clip.antiAlias,
+          children: steps.map(_buildImage).toList(),
+        ),
       ),
     );
   }
 
-  Widget buildImage(AnimationController controller, String asset) {
+  Widget _buildImage(OnboardingStep step) {
     return MultiAnimation(
-      controller: controller,
+      controller: step.imageAnimationController,
       beginOffset: const Offset(-0.1, 0),
-      child: Image.asset(asset)
+      child: Image.asset(step.imageAsset)
     );
   }
 
-  Widget _buildContentCard(int activeStepIndex, BuildContext context) {
+  Widget _buildContentCard(OnboardingScreenState state, BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -131,22 +168,16 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 20),
-          ProgressDots(total: 5, activeIndex: activeStepIndex),
+          ProgressDots(total: state.totalSteps, activeIndex: state.activeStepIndex),
           const SizedBox(height: 20),
           Stack(
-            children: [
-              _buildContent(imagesAnimationController[0], 'Lorem ipsum', 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'),
-              _buildContent(imagesAnimationController[1], 'Lorem ipsum', 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'),
-              _buildContent(imagesAnimationController[2], 'Lorem ipsum', 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'),
-              _buildContent(imagesAnimationController[3], 'Lorem ipsum', 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'),
-              _buildContent(imagesAnimationController[4], 'Lorem ipsum', 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum'),
-            ],
+            children: steps.map(_buildContent).toList(),
           ),
           const Spacer(),
           ElevatedButton(
             onPressed: () => context.read<OnboardingScreenBloc>().add(const OnboardingScreenEvent.nextStepRequested()),
             style: Styles.getAccentButtonTheme(context),
-            child: Text('Avanti')
+            child: Text(state.hasMoreSteps ? AppLocalizations.of(context)!.onboardingButtonNext : AppLocalizations.of(context)!.onboardingButtonEnd)
           ),
           const SizedBox(height: 20),
         ],
@@ -154,33 +185,55 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
     );
   }
 
-  Widget _buildContent(AnimationController controller, String title, String text) {
+  Widget _buildContent(OnboardingStep step) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const SizedBox(height: 30),
         MultiAnimation(
-          controller: controller,
+          controller: step.contentAnimationController,
           beginOffset: const Offset(-0.05, 0),
           endInterval: 0.6,
-          child: Text(title,
-            style: Theme.of(context).textTheme.headlineMedium,
+          child: Text(step.getTitle(context),
+            style: Theme.of(context).textTheme.headlineSmall,
             textAlign: TextAlign.center,
           ),
         ),
         const SizedBox(height: 30),
         MultiAnimation(
-          controller: controller,
+          controller: step.contentAnimationController,
           beginOffset: const Offset(-0.05, 0),
           beginInterval: 0.4,
-          child: Text(text,
-            style: Theme.of(context).textTheme.bodyMedium,
+          child: Text(step.getText(context),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16),
             textAlign: TextAlign.center,
           ),
         ),
       ],
     );
+  }
+}
+
+class OnboardingStep {
+  final String Function(BuildContext context) getTitle;
+  final String Function(BuildContext context) getText;
+  final Color background;
+  final String imageAsset;
+  final AnimationController contentAnimationController;
+  final AnimationController imageAnimationController;
+
+  OnboardingStep({required this.getTitle, required this.getText, required this.background,
+    required this.imageAsset, required this.contentAnimationController, required this.imageAnimationController});
+
+  animateForward() {
+    imageAnimationController.forward();
+    contentAnimationController.forward();
+  }
+
+  animateReverse() {
+    imageAnimationController.reverse();
+    contentAnimationController.reverse();
   }
 }
 

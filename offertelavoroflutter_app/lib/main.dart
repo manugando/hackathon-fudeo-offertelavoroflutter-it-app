@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/app_preferences/repositories/app_preferences_repository.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/repositories/freelance_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_detail_screen/freelance_job_offer_detail_screen.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider<HiringJobOfferRepository>(create: (context) => HiringJobOfferRepository()),
         RepositoryProvider<FreelanceJobOfferRepository>(create: (context) => FreelanceJobOfferRepository()),
+        RepositoryProvider<AppPreferencesRepository>(create: (context) => AppPreferencesRepository()),
       ],
       child: MaterialApp(
         onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
@@ -82,6 +84,7 @@ class MyApp extends StatelessWidget {
       titleLarge: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
       titleMedium: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
       titleSmall: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Styles.primaryDark),
+      bodyLarge: textTheme.bodyLarge?.copyWith(color: Styles.primaryDark),
       bodyMedium: textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
       bodySmall: textTheme.bodySmall?.copyWith(color: Styles.primaryDark),
     ));
