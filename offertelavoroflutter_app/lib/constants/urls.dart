@@ -5,5 +5,5 @@ class Urls {
   static const String freelanceJobOfferNewsletterForm = 'https://forms.gle/Zv88pAV4H9MAPTb36';
   static const String publishFreelanceJobOfferForm = 'https://forms.gle/5PEWCuZAD5eHzHYt5';
 
-  static const String ecosistemaFlutterItalia = 'https://offertelavoroflutter.it/8b04bb0e6b2342209b5843aca9b3424f';
+  static const String ecosistemaFlutterItalia = 'https://offertelavoroflutter.it/ecosistema-flutter-italia';
 }

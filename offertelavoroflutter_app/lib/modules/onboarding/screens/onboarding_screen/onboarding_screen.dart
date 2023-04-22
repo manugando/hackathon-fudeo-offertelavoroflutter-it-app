@@ -122,20 +122,17 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
             color: steps[state.activeStepIndex].background,
             duration: const Duration(milliseconds: 1000),
             child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 20),
-                    _buildTitle(),
-                    const Spacer(),
-                    _buildImages(),
-                    Expanded(
-                      flex: 5,
-                      child: _buildContentCard(state, context)
-                    )
-                  ],
-                ),
+              bottom: false,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  _buildTitle(),
+                  Expanded(child: _buildImages()),
+                  _buildContentCard(state, context)
+                ],
               ),
+            ),
           );
         },
       ),
@@ -150,13 +147,16 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
   }
 
   Widget _buildImages() {
-    return Transform.translate(
-      offset: const Offset(0, 2),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
-        child: Stack(
-          clipBehavior: Clip.antiAlias,
-          children: steps.map(_buildImage).toList(),
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Transform.translate(
+        offset: const Offset(0, 2),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
+          child: Stack(
+            clipBehavior: Clip.antiAlias,
+            children: steps.map(_buildImage).toList(),
+          ),
         ),
       ),
     );
@@ -165,7 +165,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
   Widget _buildImage(OnboardingStep step) {
     return MultiAnimation(
       controller: step.imageAnimationController,
-      beginOffset: const Offset(-0.1, 0),
+      beginOffset: const Offset(0.1, 0),
       child: Image.asset(step.imageAsset)
     );
   }
@@ -176,24 +176,28 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(30))
       ),
+      constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height * 0.55),
       padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const SizedBox(height: 20),
-          ProgressDots(total: state.totalSteps, activeIndex: state.activeStepIndex),
-          const SizedBox(height: 20),
-          Stack(
-            children: steps.map(_buildContent).toList(),
-          ),
-          const Spacer(),
-          ElevatedButton(
-            onPressed: () => context.read<OnboardingScreenBloc>().add(const OnboardingScreenEvent.nextStepRequested()),
-            style: Styles.getAccentButtonTheme(context),
-            child: Text(state.hasMoreSteps ? AppLocalizations.of(context)!.onboardingButtonNext : AppLocalizations.of(context)!.onboardingButtonEnd)
-          ),
-          const SizedBox(height: 20),
-        ],
+      child: IntrinsicHeight(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 20),
+            ProgressDots(total: state.totalSteps, activeIndex: state.activeStepIndex),
+            const SizedBox(height: 20),
+            Stack(
+              children: steps.map(_buildContent).toList(),
+            ),
+            const SizedBox(height: 10),
+            const Spacer(),
+            ElevatedButton(
+              onPressed: () => context.read<OnboardingScreenBloc>().add(const OnboardingScreenEvent.nextStepRequested()),
+              style: Styles.getAccentButtonTheme(context),
+              child: Text(state.hasMoreSteps ? AppLocalizations.of(context)!.onboardingButtonNext : AppLocalizations.of(context)!.onboardingButtonEnd)
+            ),
+            SizedBox(height: MediaQuery.of(context).viewPadding.bottom + 20),
+          ],
+        ),
       ),
     );
   }
@@ -209,7 +213,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
           beginOffset: const Offset(-0.05, 0),
           endInterval: 0.6,
           child: Text(step.getTitle(context),
-            style: Theme.of(context).textTheme.headlineSmall,
+            style: Theme.of(context).textTheme.headlineMedium,
             textAlign: TextAlign.center,
           ),
         ),

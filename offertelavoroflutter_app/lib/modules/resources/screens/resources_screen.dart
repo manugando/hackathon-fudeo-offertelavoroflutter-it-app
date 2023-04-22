@@ -15,6 +15,7 @@ class ResourcesScreen extends StatefulWidget {
 class _ResourcesScreenState extends State<ResourcesScreen> {
   final String initialUrl = Urls.ecosistemaFlutterItalia;
   late WebViewController webViewController;
+  bool isPageLoaded = false;
 
   @override
   void initState() {
@@ -22,8 +23,11 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
     webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(NavigationDelegate(
+        onPageFinished: (url) {
+          isPageLoaded = true;
+        },
         onNavigationRequest: (NavigationRequest request) {
-          if(request.url == initialUrl) {
+          if(!isPageLoaded) {
             return NavigationDecision.navigate;
           } else {
             // We open external links in the browser

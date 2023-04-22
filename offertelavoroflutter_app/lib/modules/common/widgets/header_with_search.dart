@@ -27,6 +27,7 @@ class HeaderWithSearch extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: borderRadius),
       pinned: true,
       floating: true,
+      centerTitle: false,
       backgroundColor: Styles.primaryDark,
       bottom: BottomAppBar(
         searchController: searchController,
