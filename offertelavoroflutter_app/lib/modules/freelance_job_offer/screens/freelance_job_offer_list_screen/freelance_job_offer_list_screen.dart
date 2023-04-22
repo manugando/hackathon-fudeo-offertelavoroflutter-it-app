@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,6 +10,7 @@ import 'package:offertelavoroflutter_app/helpers/flash_message.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/multi_animation.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer_filters/freelance_job_offer_filters.dart';
@@ -19,11 +21,13 @@ import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/fre
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_filter_sheet/freelance_job_offer_filter_sheet.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_item_skeleton.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/widgets/freelance_job_offer_subscribe_newsletter_sheet.dart';
+import 'package:offertelavoroflutter_app/modules/job_offer/screens/job_offers_screen/job_offers_screen.dart';
 import 'package:offertelavoroflutter_app/modules/job_offer/widgets/subscribe_job_offer_newsletter_cta.dart';
+import 'package:rxdart/rxdart.dart';
 
 class FreelanceJobOfferListScreen extends StatelessWidget {
   final Function() onSwitchList;
-  final Stream<bool> animationStream;
+  final ValueStream<bool> animationStream;
   const FreelanceJobOfferListScreen({Key? key, required this.onSwitchList,
     required this.animationStream}) : super(key: key);
 
@@ -41,7 +45,7 @@ class FreelanceJobOfferListScreen extends StatelessWidget {
 
 class _FreelanceJobOfferListView extends StatefulWidget {
   final Function() onSwitchList;
-  final Stream<bool> animationStream;
+  final ValueStream<bool> animationStream;
   const _FreelanceJobOfferListView({Key? key, required this.onSwitchList,
     required this.animationStream}) : super(key: key);
 
@@ -53,13 +57,15 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
   final TextEditingController _searchFieldController = TextEditingController();
   final PagingController<String?, FreelanceJobOffer> _pagingController = PagingController(firstPageKey: null);
   late AnimationController _headerAnimController;
+  late AnimationController _listAnimController;
   late StreamSubscription<bool> _animationStreamSub;
 
   @override
   void initState() {
-    _headerAnimController = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
-    _animationStreamSub = widget.animationStream
-      .listen((event) => event ? _headerAnimController.forward() : _headerAnimController.reverse());
+    _headerAnimController = AnimationController(vsync: this, duration: JobOffersScreen.animationsDuration);
+    _listAnimController = AnimationController(vsync: this, duration: JobOffersScreen.animationsDuration);
+    _animationStreamSub = widget.animationStream.listen(_onAnimationEvent);
+    _pagingController.addStatusListener(_onPagingStatusChange);
     _pagingController.addPageRequestListener((pageKey) {
       context.read<FreelanceJobOfferListScreenBloc>().add(FreelanceJobOfferListScreenEvent.pageRequested(pageKey));
     });
@@ -72,9 +78,37 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
   @override
   void dispose() {
     _headerAnimController.dispose();
+    _listAnimController.dispose();
+    _animationStreamSub.cancel();
     _searchFieldController.dispose();
     _pagingController.dispose();
     super.dispose();
+  }
+
+  _onAnimationEvent(bool animateIn) {
+    if(animateIn) {
+      _headerAnimController.forward();
+      // we run the list animation only if it's not loading the first page
+      if(_pagingController.value.status != PagingStatus.loadingFirstPage) {
+        _listAnimController.forward();
+      }
+    } else {
+      _headerAnimController.reverse();
+      _listAnimController.reverse();
+    }
+  }
+
+  _onPagingStatusChange(PagingStatus pagingStatus) {
+    if(pagingStatus != PagingStatus.loadingFirstPage) {
+      // we check if we should animate-in the list by reading the current value of the animation stream
+      bool shouldAnimate = widget.animationStream.hasValue && widget.animationStream.value;
+      if(shouldAnimate) {
+        _listAnimController.forward();
+      }
+    } else {
+      // when we are loading the first page we reset the animation (useful for re-executing the animation on refresh)
+      _listAnimController.reset();
+    }
   }
 
   showFiltersSheet(FreelanceJobOfferFilters initialFilters) async {
@@ -104,9 +138,7 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FreelanceJobOfferListScreenBloc, FreelanceJobOfferListScreenState>(
-      listener: (context, state) {
-        _pagingController.value = state.pagingState;
-      },
+      listener: (context, state) => _pagingController.value = state.pagingState,
       builder: (context, state) => Scaffold(
         backgroundColor: Styles.lightBackground,
         body: NestedScrollView(
@@ -137,7 +169,7 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
                 PagedSliverList(
                   pagingController: _pagingController,
                   builderDelegate: PagedChildBuilderDelegate<FreelanceJobOffer>(
-                    itemBuilder: (context, item, index) => _buildItem(item, state),
+                    itemBuilder: (context, item, index) => _buildItem(index, item, state),
                     firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
                     newPageProgressIndicatorBuilder: (context) => const FreelanceJobOfferItemSkeleton(),
                     noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
@@ -153,21 +185,27 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
     );
   }
 
-  Widget _buildItem(FreelanceJobOffer freelanceJobOffer, FreelanceJobOfferListScreenState state) {
+  Widget _buildItem(int index, FreelanceJobOffer freelanceJobOffer, FreelanceJobOfferListScreenState state) {
     bool isFavorite = state.favoriteFreelanceJobOfferIds.contains(freelanceJobOffer.id);
+    double initialDelay = min(index, 2) * 0.1;
+    return MultiAnimation(
+      controller: _listAnimController,
+      beginOffset: const Offset(0, 0.2),
+      beginInterval: initialDelay,
+      endInterval: initialDelay + 0.5,
+      child: FreelanceJobOfferItem(
+        freelanceJobOffer: freelanceJobOffer,
+        onTap: () => Navigator.of(context).pushNamed(Routes.freelanceJobOfferDetail,
+          arguments: FreelanceJobOfferDetailScreenArgs(freelanceJobOffer: freelanceJobOffer)
+        ),
+        isFavorite: isFavorite,
+        onFavoriteTap: () {
+          context.read<FreelanceJobOfferListScreenBloc>()
+            .add(FreelanceJobOfferListScreenEvent.favoriteFreelanceJobOfferToggled(freelanceJobOffer.id));
 
-    return FreelanceJobOfferItem(
-      freelanceJobOffer: freelanceJobOffer,
-      onTap: () => Navigator.of(context).pushNamed(Routes.freelanceJobOfferDetail,
-        arguments: FreelanceJobOfferDetailScreenArgs(freelanceJobOffer: freelanceJobOffer)
+          FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
+        }
       ),
-      isFavorite: isFavorite,
-      onFavoriteTap: () {
-        context.read<FreelanceJobOfferListScreenBloc>()
-          .add(FreelanceJobOfferListScreenEvent.favoriteFreelanceJobOfferToggled(freelanceJobOffer.id));
-
-        FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
-      }
     );
   }
 

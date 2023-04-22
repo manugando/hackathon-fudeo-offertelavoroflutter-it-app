@@ -7,6 +7,7 @@ import 'package:offertelavoroflutter_app/modules/job_offer/screens/job_offers_sc
 import 'package:rxdart/rxdart.dart';
 
 class JobOffersScreen extends StatelessWidget {
+  static const animationsDuration = Duration(milliseconds: 700);
   const JobOffersScreen({Key? key}) : super(key: key);
 
   @override
@@ -33,7 +34,7 @@ class _JobOffersViewState extends State<_JobOffersView> {
   @override
   void initState() {
     super.initState();
-    activePageIndex = getPageIndex(JobOfferType.hiring);
+    activePageIndex = _getPageIndex(JobOfferType.hiring);
     hiringScreenAnimationSubject.add(true);
   }
 
@@ -44,7 +45,7 @@ class _JobOffersViewState extends State<_JobOffersView> {
     super.dispose();
   }
 
-  int getPageIndex(JobOfferType type) {
+  int _getPageIndex(JobOfferType type) {
     switch(type) {
       case JobOfferType.hiring:
         return 0;
@@ -58,14 +59,14 @@ class _JobOffersViewState extends State<_JobOffersView> {
     return BlocListener<JobOffersScreenBloc, JobOffersScreenState>(
       listener: (context, state) async {
         if(state.activeJobOfferType == JobOfferType.hiring) {
-          freelanceScreenAnimationSubject.add(false);
-          await Future.delayed(const Duration(milliseconds: 400), () {});
-          setState(() { activePageIndex = getPageIndex(state.activeJobOfferType); });
-          hiringScreenAnimationSubject.add(true);
+          freelanceScreenAnimationSubject.add(false); // hide the current list content
+          await Future.delayed(JobOffersScreen.animationsDuration, () {}); // wait for the animation to finish
+          setState(() { activePageIndex = _getPageIndex(state.activeJobOfferType); }); // switch current active list
+          hiringScreenAnimationSubject.add(true); // show the new list content
         } else {
           hiringScreenAnimationSubject.add(false);
-          await Future.delayed(const Duration(milliseconds: 400), () {});
-          setState(() { activePageIndex = getPageIndex(state.activeJobOfferType); });
+          await Future.delayed(JobOffersScreen.animationsDuration, () {});
+          setState(() { activePageIndex = _getPageIndex(state.activeJobOfferType); });
           freelanceScreenAnimationSubject.add(true);
         }
       },

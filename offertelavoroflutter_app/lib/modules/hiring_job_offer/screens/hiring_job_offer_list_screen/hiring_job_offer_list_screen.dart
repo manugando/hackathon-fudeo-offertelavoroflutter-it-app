@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,6 +10,7 @@ import 'package:offertelavoroflutter_app/helpers/flash_message.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/multi_animation.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/no_item_found_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer_filters/hiring_job_offer_filters.dart';
@@ -19,11 +21,13 @@ import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_item_skeleton.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/widgets/hiring_job_offer_subscribe_newsletter_sheet.dart';
+import 'package:offertelavoroflutter_app/modules/job_offer/screens/job_offers_screen/job_offers_screen.dart';
 import 'package:offertelavoroflutter_app/modules/job_offer/widgets/subscribe_job_offer_newsletter_cta.dart';
+import 'package:rxdart/rxdart.dart';
 
 class HiringJobOfferListScreen extends StatelessWidget {
   final Function() onSwitchList;
-  final Stream<bool> animationStream;
+  final ValueStream<bool> animationStream;
   const HiringJobOfferListScreen({Key? key, required this.onSwitchList,
     required this.animationStream}) : super(key: key);
 
@@ -41,7 +45,7 @@ class HiringJobOfferListScreen extends StatelessWidget {
 
 class _HiringJobOfferListView extends StatefulWidget {
   final Function() onSwitchList;
-  final Stream<bool> animationStream;
+  final ValueStream<bool> animationStream;
   const _HiringJobOfferListView({Key? key, required this.onSwitchList,
     required this.animationStream}) : super(key: key);
 
@@ -53,13 +57,15 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
   final TextEditingController _searchFieldController = TextEditingController();
   final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
   late AnimationController _headerAnimController;
+  late AnimationController _listAnimController;
   late StreamSubscription<bool> _animationStreamSub;
 
   @override
   void initState() {
-    _headerAnimController = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
-    _animationStreamSub = widget.animationStream
-      .listen((event) => event ? _headerAnimController.forward() : _headerAnimController.reverse());
+    _headerAnimController = AnimationController(vsync: this, duration: JobOffersScreen.animationsDuration);
+    _listAnimController = AnimationController(vsync: this, duration: JobOffersScreen.animationsDuration);
+    _animationStreamSub = widget.animationStream.listen(_onAnimationEvent);
+    _pagingController.addStatusListener(_onPagingStatusChange);
     _pagingController.addPageRequestListener((pageKey) {
       context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.pageRequested(pageKey));
     });
@@ -72,10 +78,37 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
   @override
   void dispose() {
     _headerAnimController.dispose();
+    _listAnimController.dispose();
     _animationStreamSub.cancel();
     _searchFieldController.dispose();
     _pagingController.dispose();
     super.dispose();
+  }
+
+  _onAnimationEvent(bool animateIn) {
+    if(animateIn) {
+      _headerAnimController.forward();
+      // we run the list animation only if it's not loading the first page
+      if(_pagingController.value.status != PagingStatus.loadingFirstPage) {
+        _listAnimController.forward();
+      }
+    } else {
+      _headerAnimController.reverse();
+      _listAnimController.reverse();
+    }
+  }
+
+  _onPagingStatusChange(PagingStatus pagingStatus) {
+    if(pagingStatus != PagingStatus.loadingFirstPage) {
+      // we check if we should animate-in the list by reading the current value of the animation stream
+      bool shouldAnimate = widget.animationStream.hasValue && widget.animationStream.value;
+      if(shouldAnimate) {
+        _listAnimController.forward();
+      }
+    } else {
+      // when we are loading the first page we reset the animation (useful for re-executing the animation on refresh)
+      _listAnimController.reset();
+    }
   }
 
   showFiltersSheet(HiringJobOfferFilters initialFilters) async {
@@ -85,7 +118,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
       context: context,
       builder: (context) => HiringJobOfferFilterSheet(initialFilters: initialFilters),
     );
-    
+
     if(filters == null) return;
     context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.filtersChanged(filters));
   }
@@ -105,9 +138,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HiringJobOfferListScreenBloc, HiringJobOfferListScreenState>(
-      listener: (context, state) {
-        _pagingController.value = state.pagingState;
-      },
+      listener: (context, state) => _pagingController.value = state.pagingState,
       builder: (context, state) => Scaffold(
         backgroundColor: Styles.lightBackground,
         body: NestedScrollView(
@@ -138,7 +169,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
                 PagedSliverList(
                   pagingController: _pagingController,
                   builderDelegate: PagedChildBuilderDelegate<HiringJobOffer>(
-                    itemBuilder: (context, item, index) => _buildItem(item, state),
+                    itemBuilder: (context, item, index) => _buildItem(index, item, state),
                     firstPageProgressIndicatorBuilder: (context) => _buildFirstPageProgressIndicator(),
                     newPageProgressIndicatorBuilder: (context) => const HiringJobOfferItemSkeleton(),
                     noItemsFoundIndicatorBuilder: (context) => const NoItemsFoundIndicator(),
@@ -154,20 +185,27 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
     );
   }
 
-  Widget _buildItem(HiringJobOffer hiringJobOffer, HiringJobOfferListScreenState state) {
+  Widget _buildItem(int index, HiringJobOffer hiringJobOffer, HiringJobOfferListScreenState state) {
     bool isFavorite = state.favoriteHiringJobOfferIds.contains(hiringJobOffer.id);
-    return HiringJobOfferItem(
-      hiringJobOffer: hiringJobOffer,
-      onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail,
-        arguments: HiringJobOfferDetailScreenArgs(hiringJobOffer: hiringJobOffer)
-      ),
-      isFavorite: isFavorite,
-      onFavoriteTap: () {
-        context.read<HiringJobOfferListScreenBloc>()
-          .add(HiringJobOfferListScreenEvent.favoriteHiringJobOfferToggled(hiringJobOffer.id));
+    double initialDelay = min(index, 2) * 0.1;
+    return MultiAnimation(
+      controller: _listAnimController,
+      beginOffset: const Offset(0, 0.2),
+      beginInterval: initialDelay,
+      endInterval: initialDelay + 0.5,
+      child: HiringJobOfferItem(
+        hiringJobOffer: hiringJobOffer,
+        onTap: () => Navigator.of(context).pushNamed(Routes.hiringJobOfferDetail,
+          arguments: HiringJobOfferDetailScreenArgs(hiringJobOffer: hiringJobOffer)
+        ),
+        isFavorite: isFavorite,
+        onFavoriteTap: () {
+          context.read<HiringJobOfferListScreenBloc>()
+            .add(HiringJobOfferListScreenEvent.favoriteHiringJobOfferToggled(hiringJobOffer.id));
 
-        FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
-      }
+          FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
+        }
+      ),
     );
   }
 
