@@ -176,7 +176,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(30))
       ),
-      constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height * 0.55),
+      constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height * 0.57),
       padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
       child: IntrinsicHeight(
         child: Column(

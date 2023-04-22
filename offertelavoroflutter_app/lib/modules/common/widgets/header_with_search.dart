@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/common/widgets/multi_animation.dart';
 
 class HeaderWithSearch extends StatelessWidget {
   final String title;
@@ -11,10 +12,12 @@ class HeaderWithSearch extends StatelessWidget {
   final bool showActiveFiltersBadge;
   final bool forceElevated;
   final TextEditingController searchController;
+  final AnimationController animationController;
 
   const HeaderWithSearch({Key? key, required this.forceElevated, required this.title,
     required this.switchListBtnTitle, required this.onSwitchList, required this.searchController,
-    required this.onShowFilters, required this.showActiveFiltersBadge }) : super(key: key);
+    required this.onShowFilters, required this.showActiveFiltersBadge,
+    required this.animationController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,20 +59,30 @@ class HeaderWithSearch extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white)
           ),
           const SizedBox(height: 14),
-          Text(title, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white)),
+          MultiAnimation(
+            controller: animationController,
+            endInterval: 0.6,
+            beginOffset: const Offset(-0.05, 0),
+            child: Text(title, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white))
+          ),
           const SizedBox(height: 14),
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onSwitchList,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset('assets/icons/transaction-horizontal.svg', width: 16, colorFilter: const ColorFilter.mode(Styles.accent, BlendMode.srcIn)),
-                const SizedBox(width: 6),
-                Text(switchListBtnTitle,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.accent)
-                ),
-              ],
+            child: MultiAnimation(
+              controller: animationController,
+              beginOffset: const Offset(0.05, 0),
+              beginInterval: 0.4,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset('assets/icons/transaction-horizontal.svg', width: 16, colorFilter: const ColorFilter.mode(Styles.accent, BlendMode.srcIn)),
+                  const SizedBox(width: 6),
+                  Text(switchListBtnTitle,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.accent)
+                  ),
+                ],
+              ),
             ),
           ),
         ],

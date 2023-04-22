@@ -4,6 +4,7 @@ import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/fre
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/screens/hiring_job_offer_list_screen/hiring_job_offer_list_screen.dart';
 import 'package:offertelavoroflutter_app/modules/job_offer/enums/job_offer_type.dart';
 import 'package:offertelavoroflutter_app/modules/job_offer/screens/job_offers_screen/bloc/job_offers_screen_bloc.dart';
+import 'package:rxdart/rxdart.dart';
 
 class JobOffersScreen extends StatelessWidget {
   const JobOffersScreen({Key? key}) : super(key: key);
@@ -25,17 +26,21 @@ class _JobOffersView extends StatefulWidget {
 }
 
 class _JobOffersViewState extends State<_JobOffersView> {
-  late PageController pageController;
+  BehaviorSubject<bool> hiringScreenAnimationSubject = BehaviorSubject();
+  BehaviorSubject<bool> freelanceScreenAnimationSubject = BehaviorSubject();
+  late int activePageIndex;
 
   @override
   void initState() {
     super.initState();
-    pageController = PageController(initialPage: getPageIndex(JobOfferType.hiring));
+    activePageIndex = getPageIndex(JobOfferType.hiring);
+    hiringScreenAnimationSubject.add(true);
   }
 
   @override
   void dispose() {
-    pageController.dispose();
+    hiringScreenAnimationSubject.close();
+    freelanceScreenAnimationSubject.close();
     super.dispose();
   }
 
@@ -51,20 +56,28 @@ class _JobOffersViewState extends State<_JobOffersView> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<JobOffersScreenBloc, JobOffersScreenState>(
-      listener: (context, state) {
-        pageController.animateToPage(getPageIndex(state.activeJobOfferType),
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.easeInOut
-        );
+      listener: (context, state) async {
+        if(state.activeJobOfferType == JobOfferType.hiring) {
+          freelanceScreenAnimationSubject.add(false);
+          await Future.delayed(const Duration(milliseconds: 400), () {});
+          setState(() { activePageIndex = getPageIndex(state.activeJobOfferType); });
+          hiringScreenAnimationSubject.add(true);
+        } else {
+          hiringScreenAnimationSubject.add(false);
+          await Future.delayed(const Duration(milliseconds: 400), () {});
+          setState(() { activePageIndex = getPageIndex(state.activeJobOfferType); });
+          freelanceScreenAnimationSubject.add(true);
+        }
       },
-      child: PageView(
-        controller: pageController,
-        physics: const NeverScrollableScrollPhysics(),
+      child: IndexedStack(
+        index: activePageIndex,
         children: [
           HiringJobOfferListScreen(
+            animationStream: hiringScreenAnimationSubject.stream,
             onSwitchList: () => context.read<JobOffersScreenBloc>().add(const JobOffersScreenEvent.jobOfferTypeChanged(JobOfferType.freelance))
           ),
           FreelanceJobOfferListScreen(
+            animationStream: freelanceScreenAnimationSubject.stream,
             onSwitchList: () => context.read<JobOffersScreenBloc>().add(const JobOffersScreenEvent.jobOfferTypeChanged(JobOfferType.hiring))
           )
         ],

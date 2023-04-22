@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,31 +23,43 @@ import 'package:offertelavoroflutter_app/modules/job_offer/widgets/subscribe_job
 
 class HiringJobOfferListScreen extends StatelessWidget {
   final Function() onSwitchList;
-  const HiringJobOfferListScreen({Key? key, required this.onSwitchList}) : super(key: key);
+  final Stream<bool> animationStream;
+  const HiringJobOfferListScreen({Key? key, required this.onSwitchList,
+    required this.animationStream}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HiringJobOfferListScreenBloc(hiringJobOfferRepository: RepositoryProvider.of<HiringJobOfferRepository>(context)),
-      child: _HiringJobOfferListView(onSwitchList: onSwitchList),
+      child: _HiringJobOfferListView(
+        onSwitchList: onSwitchList,
+        animationStream: animationStream,
+      ),
     );
   }
 }
 
 class _HiringJobOfferListView extends StatefulWidget {
   final Function() onSwitchList;
-  const _HiringJobOfferListView({Key? key, required this.onSwitchList}) : super(key: key);
+  final Stream<bool> animationStream;
+  const _HiringJobOfferListView({Key? key, required this.onSwitchList,
+    required this.animationStream}) : super(key: key);
 
   @override
   State<_HiringJobOfferListView> createState() => _HiringJobOfferListViewState();
 }
 
-class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
+class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with TickerProviderStateMixin {
   final TextEditingController _searchFieldController = TextEditingController();
   final PagingController<String?, HiringJobOffer> _pagingController = PagingController(firstPageKey: null);
+  late AnimationController _headerAnimController;
+  late StreamSubscription<bool> _animationStreamSub;
 
   @override
   void initState() {
+    _headerAnimController = AnimationController(vsync: this, duration: const Duration(milliseconds: 400));
+    _animationStreamSub = widget.animationStream
+      .listen((event) => event ? _headerAnimController.forward() : _headerAnimController.reverse());
     _pagingController.addPageRequestListener((pageKey) {
       context.read<HiringJobOfferListScreenBloc>().add(HiringJobOfferListScreenEvent.pageRequested(pageKey));
     });
@@ -57,6 +71,8 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
 
   @override
   void dispose() {
+    _headerAnimController.dispose();
+    _animationStreamSub.cancel();
     _searchFieldController.dispose();
     _pagingController.dispose();
     super.dispose();
@@ -102,6 +118,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> {
                 title: AppLocalizations.of(context)!.hiringJobOfferScreenTitle,
                 switchListBtnTitle: AppLocalizations.of(context)!.hiringJobOfferScreenSwitch,
                 searchController: _searchFieldController,
+                animationController: _headerAnimController,
                 onSwitchList: widget.onSwitchList,
                 showActiveFiltersBadge: state.filters.active,
                 onShowFilters: () => showFiltersSheet(state.filters),
