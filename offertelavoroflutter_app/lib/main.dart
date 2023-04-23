@@ -22,13 +22,20 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   // we remove the splash screen manually with the SplashScreenBloc
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
   await findSystemLocale();
   GoogleFonts.config.allowRuntimeFetching = false;
-  await dotenv.load(fileName: 'environment/.env');
+  await _loadEnv();
   await Hive.initFlutter();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   runApp(const MyApp());
+}
+
+_loadEnv() async {
+  try {
+    await dotenv.load(fileName: 'environment/.env');
+  } catch (err) {
+    print('ERROR: File environment/.env missing or empty, please follow the instructions in the README file to create it correctly');
+  }
 }
 
 class MyApp extends StatelessWidget {

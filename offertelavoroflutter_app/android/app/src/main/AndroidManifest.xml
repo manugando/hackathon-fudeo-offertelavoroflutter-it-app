@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.offertelavoroflutter.offertelavoroflutter_app">
    <application
-        android:label="offertelavoroflutter_app"
+        android:label="offertelavoroflutter.it"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
