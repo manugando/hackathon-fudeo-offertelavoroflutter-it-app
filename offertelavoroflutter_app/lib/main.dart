@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl_standalone.dart';
@@ -17,6 +18,10 @@ import 'package:offertelavoroflutter_app/modules/home/screens/home_screen/home_s
 import 'package:offertelavoroflutter_app/modules/onboarding/screens/onboarding_screen/onboarding_screen.dart';
 
 void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // we remove the splash screen manually in the onboarding screen
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   await findSystemLocale();
   GoogleFonts.config.allowRuntimeFetching = false;
   await dotenv.load(fileName: 'environment/.env');

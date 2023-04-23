@@ -1,8 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/app_preferences/repositories/app_preferences_repository.dart';
@@ -103,6 +102,9 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
       body: BlocConsumer<OnboardingScreenBloc, OnboardingScreenState>(
         listener: (context, state) async {
           if(state.status == OnboardingScreenStatus.inProgress) {
+            // when we receive the first event from the bloc, we remove the native splash
+            FlutterNativeSplash.remove();
+
             int activeStepIndex = state.activeStepIndex;
             if(activeStepIndex > 0) {
               steps[activeStepIndex - 1].animateReverse();
@@ -114,10 +116,6 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
           }
         },
         builder: (context, state) {
-          if(state.status == OnboardingScreenStatus.initial || state.status == OnboardingScreenStatus.alreadyDone) {
-            return const SizedBox();
-          }
-
           return AnimatedContainer(
             color: steps[state.activeStepIndex].background,
             duration: const Duration(milliseconds: 1000),
