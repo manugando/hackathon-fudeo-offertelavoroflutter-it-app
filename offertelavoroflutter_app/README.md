@@ -1,3 +1,5 @@
+<img src="launcher_icon/android.png" height="100px">
+
 # App Offertelavoroflutter.it
 App realizzata per l'Hackathon di Fudeo.
 
