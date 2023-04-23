@@ -34,7 +34,7 @@ _loadEnv() async {
   try {
     await dotenv.load(fileName: 'environment/.env');
   } catch (err) {
-    print('ERROR: File environment/.env missing or empty, please follow the instructions in the README file to create it correctly');
+    throw Exception('File environment/.env missing or empty, please follow the instructions in the README file to create it correctly');
   }
 }
 

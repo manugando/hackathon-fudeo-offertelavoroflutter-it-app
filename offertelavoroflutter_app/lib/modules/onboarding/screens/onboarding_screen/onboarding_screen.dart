@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/app_preferences/repositories/app_preferences_repository.dart';
@@ -55,6 +54,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
       getTitle: (context) => AppLocalizations.of(context)!.onboardingStep1Title,
       getText: (context) => AppLocalizations.of(context)!.onboardingStep1Text,
       background: Styles.primaryDark,
+      textColor: Colors.white,
       imageAsset: 'assets/onboarding/step-1.png',
       contentAnimationController: _createContentAnimationController(),
       imageAnimationController: _createImageAnimationController()
@@ -64,6 +64,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
       getTitle: (context) => AppLocalizations.of(context)!.onboardingStep2Title,
       getText: (context) => AppLocalizations.of(context)!.onboardingStep2Text,
       background: Styles.accent,
+      textColor: Styles.primaryDark,
       imageAsset: 'assets/onboarding/step-2.png',
       contentAnimationController: _createContentAnimationController(),
       imageAnimationController: _createImageAnimationController()
@@ -73,6 +74,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
       getTitle: (context) => AppLocalizations.of(context)!.onboardingStep3Title,
       getText: (context) => AppLocalizations.of(context)!.onboardingStep3Text,
       background: Styles.primaryLight,
+      textColor: Colors.white,
       imageAsset: 'assets/onboarding/step-3.png',
       contentAnimationController: _createContentAnimationController(),
       imageAnimationController: _createImageAnimationController()
@@ -82,6 +84,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
       getTitle: (context) => AppLocalizations.of(context)!.onboardingStep4Title,
       getText: (context) => AppLocalizations.of(context)!.onboardingStep4Text,
       background: Styles.primaryDark,
+      textColor: Colors.white,
       imageAsset: 'assets/onboarding/step-4.png',
       contentAnimationController: _createContentAnimationController(),
       imageAnimationController: _createImageAnimationController()
@@ -130,7 +133,7 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 20),
-                  _buildTitle(),
+                  _buildTitle(steps[state.activeStepIndex].textColor),
                   Expanded(child: _buildImages()),
                   _buildContentCard(state, context)
                 ],
@@ -142,10 +145,11 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
     );
   }
 
-  Widget _buildTitle() {
-    return Text(AppLocalizations.of(context)!.appName,
-      style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
-      textAlign: TextAlign.center,
+  Widget _buildTitle(Color textColor) {
+    return AnimatedDefaultTextStyle(
+      style: Theme.of(context).textTheme.titleMedium!.copyWith(color: textColor),
+      duration: const Duration(milliseconds: 1000),
+      child: Text(AppLocalizations.of(context)!.appName, textAlign: TextAlign.center)
     );
   }
 
@@ -239,12 +243,14 @@ class OnboardingStep {
   final String Function(BuildContext context) getTitle;
   final String Function(BuildContext context) getText;
   final Color background;
+  final Color textColor;
   final String imageAsset;
   final AnimationController contentAnimationController;
   final AnimationController imageAnimationController;
 
   OnboardingStep({required this.getTitle, required this.getText, required this.background,
-    required this.imageAsset, required this.contentAnimationController, required this.imageAnimationController});
+    required this.textColor, required this.imageAsset, required this.contentAnimationController,
+    required this.imageAnimationController});
 
   animateForward() {
     imageAnimationController.forward();
