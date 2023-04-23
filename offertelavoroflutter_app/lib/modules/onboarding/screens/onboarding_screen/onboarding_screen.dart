@@ -5,6 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/app_preferences/repositories/app_preferences_repository.dart';
+import 'package:offertelavoroflutter_app/modules/app_shell/blocs/splash_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_animation.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/progress_dots.dart';
 import 'package:offertelavoroflutter_app/modules/onboarding/screens/onboarding_screen/bloc/onboarding_screen_bloc.dart';
@@ -101,21 +102,25 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
       backgroundColor: Styles.primaryDark,
       body: BlocConsumer<OnboardingScreenBloc, OnboardingScreenState>(
         listener: (context, state) async {
-          if(state.status == OnboardingScreenStatus.inProgress) {
-            // when we receive the first event from the bloc, we remove the native splash
-            FlutterNativeSplash.remove();
+          // when we receive the first event from the bloc, we remove the splash screen
+          context.read<SplashScreenBloc>().add(const SplashScreenEvent.splashRemoved());
 
+          if(state.status == OnboardingScreenStatus.inProgress) {
             int activeStepIndex = state.activeStepIndex;
             if(activeStepIndex > 0) {
               steps[activeStepIndex - 1].animateReverse();
               await Future.delayed(const Duration(milliseconds: 450), () {});
             }
             steps[activeStepIndex].animateForward();
-          } else if(state.status == OnboardingScreenStatus.finished || state.status == OnboardingScreenStatus.alreadyDone) {
+          } else if([OnboardingScreenStatus.finished, OnboardingScreenStatus.alreadyDone].contains(state.status)) {
             Navigator.of(context).pushReplacementNamed(Routes.home);
           }
         },
         builder: (context, state) {
+          if([OnboardingScreenStatus.initial, OnboardingScreenStatus.alreadyDone].contains(state.status)) {
+            return const SizedBox();
+          }
+
           return AnimatedContainer(
             color: steps[state.activeStepIndex].background,
             duration: const Duration(milliseconds: 1000),

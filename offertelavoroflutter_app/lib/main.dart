@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/app_preferences/repositories/app_preferences_repository.dart';
+import 'package:offertelavoroflutter_app/modules/app_shell/blocs/splash_screen_bloc.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/repositories/freelance_job_offer_repository.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/screens/freelance_job_offer_detail_screen/freelance_job_offer_detail_screen.dart';
 import 'package:offertelavoroflutter_app/modules/hiring_job_offer/repositories/hiring_job_offer_repository.dart';
@@ -19,7 +20,7 @@ import 'package:offertelavoroflutter_app/modules/onboarding/screens/onboarding_s
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  // we remove the splash screen manually in the onboarding screen
+  // we remove the splash screen manually with the SplashScreenBloc
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await findSystemLocale();
@@ -41,43 +42,46 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<FreelanceJobOfferRepository>(create: (context) => FreelanceJobOfferRepository()),
         RepositoryProvider<AppPreferencesRepository>(create: (context) => AppPreferencesRepository()),
       ],
-      child: MaterialApp(
-        onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        theme: ThemeData(
-          colorScheme: const ColorScheme.light(
-            primary: Styles.primaryDark,
-            secondary: Styles.accent,
-            onPrimary: Colors.white,
-            onSecondary: Colors.white,
+      child: BlocProvider(
+        create: (context) => SplashScreenBloc(),
+        child: MaterialApp(
+          onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          theme: ThemeData(
+            colorScheme: const ColorScheme.light(
+              primary: Styles.primaryDark,
+              secondary: Styles.accent,
+              onPrimary: Colors.white,
+              onSecondary: Colors.white,
+            ),
+            scaffoldBackgroundColor: Colors.white,
+            textTheme: _getTextTheme(context),
+            cardTheme: _getCardTheme(context),
+            inputDecorationTheme: _getInputDecoratorTheme(context),
+            elevatedButtonTheme: _getElevatedBtnThemeData(context),
+            snackBarTheme: _getSnackBarThemeData(context)
           ),
-          scaffoldBackgroundColor: Colors.white,
-          textTheme: _getTextTheme(context),
-          cardTheme: _getCardTheme(context),
-          inputDecorationTheme: _getInputDecoratorTheme(context),
-          elevatedButtonTheme: _getElevatedBtnThemeData(context),
-          snackBarTheme: _getSnackBarThemeData(context)
+          initialRoute: Routes.onboarding,
+          onGenerateRoute: (settings) {
+            switch(settings.name) {
+              case Routes.onboarding:
+                return MaterialPageRoute<void>(builder: (context) => const OnboardingScreen(), settings: settings);
+
+              case Routes.home:
+                return MaterialPageRoute<void>(builder: (context) => const HomeScreen(), settings: settings);
+
+              case Routes.hiringJobOfferDetail:
+                return MaterialPageRoute<void>(builder: (context) => HiringJobOfferDetailScreen(args: ModalRoute.of(context)?.settings.arguments as HiringJobOfferDetailScreenArgs), settings: settings);
+
+              case Routes.freelanceJobOfferDetail:
+                return MaterialPageRoute<void>(builder: (context) => FreelanceJobOfferDetailScreen(args: ModalRoute.of(context)?.settings.arguments as FreelanceJobOfferDetailScreenArgs), settings: settings);
+
+              default:
+                throw Exception('Invalid route: ${settings.name}');
+            }
+          },
         ),
-        initialRoute: Routes.onboarding,
-        onGenerateRoute: (settings) {
-          switch(settings.name) {
-            case Routes.onboarding:
-              return MaterialPageRoute<void>(builder: (context) => const OnboardingScreen(), settings: settings);
-
-            case Routes.home:
-              return MaterialPageRoute<void>(builder: (context) => const HomeScreen(), settings: settings);
-
-            case Routes.hiringJobOfferDetail:
-              return MaterialPageRoute<void>(builder: (context) => HiringJobOfferDetailScreen(args: ModalRoute.of(context)?.settings.arguments as HiringJobOfferDetailScreenArgs), settings: settings);
-
-            case Routes.freelanceJobOfferDetail:
-              return MaterialPageRoute<void>(builder: (context) => FreelanceJobOfferDetailScreen(args: ModalRoute.of(context)?.settings.arguments as FreelanceJobOfferDetailScreenArgs), settings: settings);
-
-            default:
-              throw Exception('Invalid route: ${settings.name}');
-          }
-        },
       ),
     );
   }
