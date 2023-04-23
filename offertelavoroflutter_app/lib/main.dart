@@ -27,6 +27,7 @@ void main() async {
   await _loadEnv();
   await Hive.initFlutter();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 

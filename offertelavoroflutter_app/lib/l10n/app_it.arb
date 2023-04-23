@@ -1,5 +1,5 @@
 {
-  "appName": "offertelavoroflutter.it",
+  "appName": "Offertelavoroflutter.it",
   "genericErrorMessage" : "Sì è verificato un errore",
   "notItemsFoundMessage" : "Nessun elemento",
   "retry" : "Riprova",
@@ -76,7 +76,7 @@
   "onboardingButtonEnd": "Fine",
 
   "onboardingStep1Title": "Ciao!",
-  "onboardingStep1Text": "Benvenuto nell'app di offertelavoroflutter.it, una bacheca di annunci di lavoro per assunzioni e progetti freelance dedicata agli sviluppatori Flutter.",
+  "onboardingStep1Text": "Benvenuto nell'app di Offertelavoroflutter.it, una bacheca di annunci di lavoro per assunzioni e progetti freelance dedicata agli sviluppatori Flutter.",
 
   "onboardingStep2Title": "Cerca fra gli annunci",
   "onboardingStep2Text": "Scopri tutti gli annunci pubblicati, trova quelli più adatti a te grazie ai filtri avanzati e aggiungi gli annunci di maggior interesse ai tuoi preferiti, così da averli sempre sott'occhio.",
