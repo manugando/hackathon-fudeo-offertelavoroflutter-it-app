@@ -14,6 +14,31 @@ Una volta creato il file `.env` è necessario aprilo e popolarlo con la chiave p
 
 Fatto! L'app è pronta per essere eseguita 🚀
 
+## Funzionalità
+
+✅ Elenco annunci assunzioni e freelance con infinite scroll e paginazione
+
+✅ Ricerca testuale e filtri (server-side, implementati utilizzando le API di Notion)
+
+✅ Link ai form per iscriversi alla newsletter
+
+✅ Preferiti
+
+✅ Share
+
+✅ Onboarding
+
+✅ Sezione "Risorse" che rimanda all'Ecosistema Flutter in Italia
+
+✅ Sezione "Pubblica" che rimanda ai form per pubblicazione degli annunci
+
+✅ Animazioni
+
+✅ I18N ready
+
+## Architettura
+L'architettura utilizzata prende ispirazione dall'archietttura "Pine": https://angeloavv.medium.com/pine-a-lightweight-architecture-helper-for-your-flutter-projects-1ce69ac63f74
+
 ## Versione Flutter
 L'app si basa su FVM per gestire la versione di Flutter utilizzata:
 https://fvm.app/
