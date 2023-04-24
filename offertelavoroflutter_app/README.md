@@ -16,7 +16,7 @@ Fatto! L'app è pronta per essere eseguita 🚀
 
 ## Funzionalità
 
-✅ Elenco annunci assunzioni e freelance con infinite scroll e paginazione
+✅ Elenco annunci per assunzioni e per freelance con infinite scroll e paginazione
 
 ✅ Ricerca testuale e filtri (server-side, implementati utilizzando le API di Notion)
 
@@ -48,7 +48,7 @@ flowchart TD
     C-->E(Widgets)
     E-->C
     style A fill:#ef476f,stroke:#ef476f,color:#fff
-    style B fill:#ffd166,stroke:#ffd166,color:#fff
+    style B fill:#f48c06,stroke:#f48c06,color:#fff
     style C fill:#06d6a0,stroke:#06d6a0,color:#fff
     style D fill:#118ab2,stroke:#118ab2,color:#fff
     style E fill:#073b4c,stroke:#073b4c,color:#fff
@@ -65,7 +65,7 @@ flowchart TD
     C-->E(HiringJobOfferListScreen)
     E-->C
     style A fill:#ef476f,stroke:#ef476f,color:#fff
-    style B fill:#ffd166,stroke:#ffd166,color:#fff
+    style B fill:#f48c06,stroke:#f48c06,color:#fff
     style C fill:#06d6a0,stroke:#06d6a0,color:#fff
     style D fill:#118ab2,stroke:#118ab2,color:#fff
     style E fill:#073b4c,stroke:#073b4c,color:#fff
