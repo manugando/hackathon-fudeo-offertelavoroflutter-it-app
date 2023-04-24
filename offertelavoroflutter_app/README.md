@@ -39,6 +39,39 @@ Fatto! L'app è pronta per essere eseguita 🚀
 ## Architettura
 L'architettura utilizzata prende ispirazione dall'archietttura "Pine": https://angeloavv.medium.com/pine-a-lightweight-architecture-helper-for-your-flutter-projects-1ce69ac63f74
 
+```mermaid
+flowchart TD
+    A(Repositories)-->B(Providers) & C(Blocs) & D(Mappers)
+    B-->A
+    C-->A
+    D-->A
+    C-->E(Widgets)
+    E-->C
+    style A fill:#ef476f,stroke:#ef476f,color:#fff
+    style B fill:#ffd166,stroke:#ffd166,color:#fff
+    style C fill:#06d6a0,stroke:#06d6a0,color:#fff
+    style D fill:#118ab2,stroke:#118ab2,color:#fff
+    style E fill:#073b4c,stroke:#073b4c,color:#fff
+```
+
+Ecco un esempio concreto dell'architettura per quanto riguarda l'elenco degli annunci per assunzione:
+
+```mermaid
+flowchart TD
+    A(HiringJobOfferRepository)-->B(NotionApiClient) & C(HiringJobOfferListScreenBloc) & D(HiringJobOfferMapper)
+    B-->A
+    C-->A
+    D-->A
+    C-->E(HiringJobOfferListScreen)
+    E-->C
+    style A fill:#ef476f,stroke:#ef476f,color:#fff
+    style B fill:#ffd166,stroke:#ffd166,color:#fff
+    style C fill:#06d6a0,stroke:#06d6a0,color:#fff
+    style D fill:#118ab2,stroke:#118ab2,color:#fff
+    style E fill:#073b4c,stroke:#073b4c,color:#fff
+```
+
+
 ## Versione Flutter
 L'app si basa su FVM per gestire la versione di Flutter utilizzata:
 https://fvm.app/
