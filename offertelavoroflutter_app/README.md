@@ -18,6 +18,8 @@ Fatto! L'app è pronta per essere eseguita 🚀
 
 ✅ Elenco annunci per assunzioni e per freelance con infinite scroll e paginazione
 
+✅ Pull to refresh
+
 ✅ Ricerca testuale e filtri (server-side, implementati utilizzando le API di Notion)
 
 ✅ Link ai form per iscriversi alla newsletter
