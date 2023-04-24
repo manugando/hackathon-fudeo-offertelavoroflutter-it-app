@@ -37,7 +37,7 @@ Fatto! L'app è pronta per essere eseguita 🚀
 ✅ I18N ready
 
 ## Architettura
-L'architettura utilizzata prende ispirazione dall'archietttura "Pine": https://angeloavv.medium.com/pine-a-lightweight-architecture-helper-for-your-flutter-projects-1ce69ac63f74
+L'architettura utilizzata prende ispirazione dall'architettura "Pine": https://angeloavv.medium.com/pine-a-lightweight-architecture-helper-for-your-flutter-projects-1ce69ac63f74
 
 ```mermaid
 flowchart TD
