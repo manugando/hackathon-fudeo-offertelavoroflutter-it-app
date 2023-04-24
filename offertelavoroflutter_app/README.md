@@ -28,9 +28,9 @@ Fatto! L'app è pronta per essere eseguita 🚀
 
 ✅ Onboarding
 
-✅ Sezione "Risorse" che rimanda all'Ecosistema Flutter in Italia
+✅ Sezione "Risorse" con Webview che rimanda all'Ecosistema Flutter in Italia
 
-✅ Sezione "Pubblica" che rimanda ai form per pubblicazione degli annunci
+✅ Sezione "Pubblica" con link ai form per pubblicazione degli annunci
 
 ✅ Animazioni
 
