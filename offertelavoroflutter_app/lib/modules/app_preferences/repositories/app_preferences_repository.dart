@@ -4,17 +4,15 @@ class AppPreferencesRepository {
   static const appPreferencesBox = 'appPreferencesBox';
   static const onboardingDone = 'onboardingDone';
 
-  Future setOnboardingDone(bool done) async {
-    Box box = await _openBox();
-    await box.put(onboardingDone, done);
+  void setOnboardingDone(bool done) {
+    _getBox().put(onboardingDone, done);
   }
 
-  Future<bool> isOnboardingDone() async {
-    Box box = await _openBox();
-    return box.get(onboardingDone, defaultValue: false);
+  bool isOnboardingDone() {
+    return _getBox().get(onboardingDone, defaultValue: false);
   }
 
-  Future<Box> _openBox() {
-    return Hive.openBox(appPreferencesBox);
+  Box _getBox() {
+    return Hive.box(appPreferencesBox);
   }
 }

@@ -24,19 +24,26 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await findSystemLocale();
   GoogleFonts.config.allowRuntimeFetching = false;
-  await _loadEnv();
-  await Hive.initFlutter();
+  await loadEnv();
+  await initHive();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 
-_loadEnv() async {
+loadEnv() async {
   try {
     await dotenv.load(fileName: 'environment/.env');
   } catch (err) {
     throw Exception('File environment/.env missing or empty, please follow the instructions in the README file to create it correctly');
   }
+}
+
+initHive() async {
+  await Hive.initFlutter();
+  await Hive.openBox(HiringJobOfferRepository.favoriteHiringJobOffersBox);
+  await Hive.openBox(FreelanceJobOfferRepository.favoriteFreelanceJobOffersBox);
+  await Hive.openBox(AppPreferencesRepository.appPreferencesBox);
 }
 
 class MyApp extends StatelessWidget {
