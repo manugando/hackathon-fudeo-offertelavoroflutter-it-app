@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:offertelavoroflutter_app/modules/notion_api/dtos/db_properties/notion_db_property.dart';
 import 'package:offertelavoroflutter_app/modules/notion_api/dtos/select_option/notion_select_option.dart';
 
 part 'notion_db_property_select_options.freezed.dart';

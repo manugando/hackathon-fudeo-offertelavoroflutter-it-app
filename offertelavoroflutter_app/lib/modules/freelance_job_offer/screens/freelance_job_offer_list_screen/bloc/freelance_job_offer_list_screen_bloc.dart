@@ -65,7 +65,7 @@ class FreelanceJobOfferListScreenBloc extends Bloc<FreelanceJobOfferListScreenEv
           error: null,
         ),
         // we fetch the favorites list only on first page load
-        favoriteFreelanceJobOfferIds: (pageKey == null) ? await _freelanceJobOfferRepository.getFavoriteFreelanceJobOfferIds() : state.favoriteFreelanceJobOfferIds
+        favoriteFreelanceJobOfferIds: (pageKey == null) ? _freelanceJobOfferRepository.getFavoriteFreelanceJobOfferIds() : state.favoriteFreelanceJobOfferIds
       ));
     } catch (err) {
       emit(state.copyWith(pagingState: PagingState(
@@ -99,7 +99,7 @@ class FreelanceJobOfferListScreenBloc extends Bloc<FreelanceJobOfferListScreenEv
   }
 
   _favoriteFreelanceJobOfferToggled(String freelanceJobOfferId, Emitter<FreelanceJobOfferListScreenState> emit) async {
-    await _freelanceJobOfferRepository.toggleFavoriteFreelanceJobOffer(freelanceJobOfferId);
+    _freelanceJobOfferRepository.toggleFavoriteFreelanceJobOffer(freelanceJobOfferId);
   }
 
   _favoriteFreelanceJobOffersChanged(List<String> favoriteFreelanceJobOfferIds, Emitter<FreelanceJobOfferListScreenState> emit) async {

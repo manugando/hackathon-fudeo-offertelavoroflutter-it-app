@@ -13,7 +13,7 @@ class OnboardingScreenBloc extends Bloc<OnboardingScreenEvent, OnboardingScreenS
     required AppPreferencesRepository appPreferencesRepository
   }) : _appPreferencesRepository = appPreferencesRepository, super(const OnboardingScreenState()) {
     on<OnboardingScreenEvent>((event, emit) {
-      event.when<Future>(
+      event.when(
         initialized: () => _initialized(emit),
         nextStepRequested: () => _nextStepRequested(emit)
       );

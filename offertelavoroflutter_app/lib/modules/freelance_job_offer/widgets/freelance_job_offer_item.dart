@@ -3,11 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
-import 'package:offertelavoroflutter_app/modules/common/widgets/select_option_badge.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
-import 'package:offertelavoroflutter_app/modules/common/widgets/separated_row.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 
 class FreelanceJobOfferItem extends StatelessWidget {
   final FreelanceJobOffer freelanceJobOffer;

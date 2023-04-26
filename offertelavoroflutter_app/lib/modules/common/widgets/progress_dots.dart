@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:offertelavoroflutter_app/helpers/styles.dart';
 
 class ProgressDots extends StatelessWidget {
   final int total;

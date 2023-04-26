@@ -41,8 +41,8 @@ loadEnv() async {
 
 initHive() async {
   await Hive.initFlutter();
-  await Hive.openBox(HiringJobOfferRepository.favoriteHiringJobOffersBox);
-  await Hive.openBox(FreelanceJobOfferRepository.favoriteFreelanceJobOffersBox);
+  await Hive.openBox<String>(HiringJobOfferRepository.favoriteHiringJobOffersBox);
+  await Hive.openBox<String>(FreelanceJobOfferRepository.favoriteFreelanceJobOffersBox);
   await Hive.openBox(AppPreferencesRepository.appPreferencesBox);
 }
 

@@ -37,14 +37,14 @@ class HiringJobOfferDetailScreenBloc extends Bloc<HiringJobOfferDetailScreenEven
   }
 
   _initialized(Emitter<HiringJobOfferDetailScreenState> emit) async {
-    List<String> favoriteHiringJobOfferIds = await _hiringJobOfferRepository.getFavoriteHiringJobOfferIds();
+    List<String> favoriteHiringJobOfferIds = _hiringJobOfferRepository.getFavoriteHiringJobOfferIds();
     emit(state.copyWith(
       isFavorite: favoriteHiringJobOfferIds.contains(state.hiringJobOffer.id)
     ));
   }
 
   _favoriteHiringJobOfferToggled(Emitter<HiringJobOfferDetailScreenState> emit) async {
-    await _hiringJobOfferRepository.toggleFavoriteHiringJobOffer(state.hiringJobOffer.id);
+    _hiringJobOfferRepository.toggleFavoriteHiringJobOffer(state.hiringJobOffer.id);
   }
 
   _favoriteHiringJobOffersChanged(List<String> favoriteHiringJobOfferIds, Emitter<HiringJobOfferDetailScreenState> emit) async {
