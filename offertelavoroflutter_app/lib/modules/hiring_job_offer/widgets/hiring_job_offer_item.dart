@@ -21,34 +21,37 @@ class HiringJobOfferItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: heroTag ?? hiringJobOffer.id,
-      child: ContentCard(
-        onTap: onTap,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildEmoji(context),
-                const SizedBox(width: 8),
-                Expanded(child: _buildMainInfo(context)),
-                const SizedBox(width: 8),
-                _buildFavoriteIcon(context)
-              ],
-            ),
-            const SizedBox(height: 20),
-            _buildBadges(context),
-            const SizedBox(height: 10),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Expanded(child: _buildJobPosted(context)),
-                Expanded(child: _buildRetribuzione(context)),
-              ],
-            )
-          ],
+      child: Material( // needed for hero animation to work correctly
+        type: MaterialType.transparency,
+        child: ContentCard(
+          onTap: onTap,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildEmoji(context),
+                  const SizedBox(width: 8),
+                  Expanded(child: _buildMainInfo(context)),
+                  const SizedBox(width: 8),
+                  _buildFavoriteIcon(context)
+                ],
+              ),
+              const SizedBox(height: 20),
+              _buildBadges(context),
+              const SizedBox(height: 10),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: _buildJobPosted(context)),
+                  Expanded(child: _buildRetribuzione(context)),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -22,31 +22,34 @@ class FreelanceJobOfferItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: heroTag ?? freelanceJobOffer.id,
-      child: ContentCard(
-        onTap: onTap,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildEmoji(context),
-                const SizedBox(width: 8),
-                Expanded(child: _buildMainInfo(context)),
-                const SizedBox(width: 8),
-                _buildFavoriteIcon(context)
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Expanded(child: _buildJobPosted(context)),
-              ],
-            )
-          ],
+      child: Material( // needed for hero animation to work correctly
+        type: MaterialType.transparency,
+        child: ContentCard(
+          onTap: onTap,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildEmoji(context),
+                  const SizedBox(width: 8),
+                  Expanded(child: _buildMainInfo(context)),
+                  const SizedBox(width: 8),
+                  _buildFavoriteIcon(context)
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: _buildJobPosted(context)),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

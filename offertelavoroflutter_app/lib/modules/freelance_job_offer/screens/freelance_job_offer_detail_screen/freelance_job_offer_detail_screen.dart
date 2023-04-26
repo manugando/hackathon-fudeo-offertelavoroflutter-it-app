@@ -48,17 +48,20 @@ class _FreelanceJobOfferDetailView extends StatelessWidget {
           ),
           body: Hero(
             tag: heroTag ?? state.freelanceJobOffer.id,
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    FreelanceJobOfferDetailTitle(freelanceJobOffer: state.freelanceJobOffer),
-                    FreelanceJobOfferDetailInfo(freelanceJobOffer: state.freelanceJobOffer),
-                    const SizedBox(height: 20),
-                  ],
-                )
+            child: Material( // needed for hero animation to work correctly
+              type: MaterialType.transparency,
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      FreelanceJobOfferDetailTitle(freelanceJobOffer: state.freelanceJobOffer),
+                      FreelanceJobOfferDetailInfo(freelanceJobOffer: state.freelanceJobOffer),
+                      const SizedBox(height: 20),
+                    ],
+                  )
+                ),
               ),
             ),
           ),

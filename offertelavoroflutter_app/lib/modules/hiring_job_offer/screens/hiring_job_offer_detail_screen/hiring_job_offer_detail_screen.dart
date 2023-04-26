@@ -48,17 +48,20 @@ class _HiringJobOfferDetailView extends StatelessWidget {
           ),
           body: Hero(
             tag: heroTag ?? state.hiringJobOffer.id,
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    HiringJobOfferDetailTitle(hiringJobOffer: state.hiringJobOffer),
-                    HiringJobofferDetailInfo(hiringJobOffer: state.hiringJobOffer),
-                    const SizedBox(height: 20),
-                  ],
-                )
+            child: Material( // needed for hero animation to work correctly
+              type: MaterialType.transparency,
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      HiringJobOfferDetailTitle(hiringJobOffer: state.hiringJobOffer),
+                      HiringJobofferDetailInfo(hiringJobOffer: state.hiringJobOffer),
+                      const SizedBox(height: 20),
+                    ],
+                  )
+                ),
               ),
             ),
           ),
