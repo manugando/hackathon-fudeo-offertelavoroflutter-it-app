@@ -19,7 +19,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
           left: 0,
           right: 0,
           bottom: 0,
-          child: Container(color: Styles.lightBackground)
+          child: Container(color: Theme.of(context).colorScheme.tertiary)
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
@@ -44,9 +44,9 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
     return Container(
       width: 80,
       height: 80,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Styles.lightBackground
+        color: Theme.of(context).colorScheme.tertiary
       ),
       child: Center(
         child: Text(hiringJobOffer.emoji!, style: const TextStyle(fontSize: 32))
@@ -71,7 +71,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
 
     return SeparatedRow(
       crossAxisAlignment: CrossAxisAlignment.center,
-      separatorBuilder: (context) => buildDot(),
+      separatorBuilder: (context) => buildDot(context),
       children: [
         if(nomeAzienda != null) Expanded(child: nomeAzienda),
         if(localita != null) Expanded(child: localita),
@@ -80,14 +80,14 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
     );
   }
 
-  Widget buildDot() {
+  Widget buildDot(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
       width: 6,
       height: 6,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Styles.primaryDark
+        color: Theme.of(context).colorScheme.primary
       )
     );
   }
@@ -97,7 +97,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
 
     return MultiStyleText(
       items: hiringJobOffer.nomeAzienda!,
-      baseStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
+      baseStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.primary),
       textAlign: TextAlign.center,
     );
   }
@@ -107,7 +107,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
 
     return MultiStyleText(
       items: hiringJobOffer.localita!,
-      baseStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
+      baseStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.primary),
       textAlign: TextAlign.center,
     );
   }
@@ -116,7 +116,7 @@ class HiringJobOfferDetailTitle extends StatelessWidget {
     if(hiringJobOffer.jobPosted == null) return null;
 
     return Text(DateFormat.yMd().format(hiringJobOffer.jobPosted!),
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.primary),
       textAlign: TextAlign.center,
     );
   }

@@ -25,6 +25,9 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
       ..setNavigationDelegate(NavigationDelegate(
         onPageFinished: (url) {
           isPageLoaded = true;
+          if(Theme.of(context).brightness == Brightness.dark) {
+            webViewController.runJavaScript("document.getElementsByClassName('toggle-mode')[0].click()");
+          }
         },
         onNavigationRequest: (NavigationRequest request) {
           if(!isPageLoaded) {
@@ -41,7 +44,10 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: Text(AppLocalizations.of(context)!.resourcesScreenTitle)),
+      appBar: BaseAppBar(
+        title: Text(AppLocalizations.of(context)!.resourcesScreenTitle),
+        backgroundColor: Theme.of(context).colorScheme.surface,
+      ),
       body: WebViewWidget(
         controller: webViewController,
       ),

@@ -15,7 +15,7 @@ class SelectOptionBadge extends StatelessWidget {
         color: selectOption.color?.withAlpha(90) ?? Styles.primaryDark.withAlpha(30)
       ),
       child: Center(
-        child: Text(selectOption.name, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.primaryDark)),
+        child: Text(selectOption.name, style: Theme.of(context).textTheme.bodySmall),
       ),
     );
   }

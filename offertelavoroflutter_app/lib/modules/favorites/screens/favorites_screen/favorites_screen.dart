@@ -46,9 +46,9 @@ class _FavoritesView extends StatelessWidget {
         return Scaffold(
           appBar: BaseAppBar(
             title: Text(AppLocalizations.of(context)!.favoritesScreenTitle),
-            backgroundColor: Styles.lightBackground
+            backgroundColor: Theme.of(context).colorScheme.background,
           ),
-          backgroundColor: Styles.lightBackground,
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: Column(
             children: [
               _buildTabButtons(state, context),

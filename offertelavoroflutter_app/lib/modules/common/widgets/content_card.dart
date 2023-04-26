@@ -5,21 +5,21 @@ class ContentCard extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
   final Function()? onTap;
-  final Color color;
-  const ContentCard({Key? key, required this.child, this.padding, this.onTap, this.color = Colors.white}) : super(key: key);
+  final Color? color;
+  const ContentCard({Key? key, required this.child, this.padding, this.onTap, this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: color,
+        color: color ?? Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, 4),
             blurRadius: 20,
-            color: const Color(0xFF99ABC6).withAlpha(45)
+            color: Theme.of(context).colorScheme.shadow
           )
         ]
       ),

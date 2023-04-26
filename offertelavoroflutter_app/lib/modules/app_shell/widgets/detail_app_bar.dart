@@ -46,14 +46,16 @@ class _DetailAppBarState extends State<DetailAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: widget.appBarHeight,
-      backgroundColor: Colors.white,
       elevation: 0,
       automaticallyImplyLeading: false,
       actions: widget.actions,
       title: titleVisible ? widget.title : const SizedBox(),
       leading: Navigator.of(context).canPop() ? IconButton(
         onPressed: Navigator.of(context).maybePop,
-        icon: SvgPicture.asset('assets/icons/arrow-left.svg', width: 24),
+        icon: SvgPicture.asset('assets/icons/arrow-left.svg',
+          width: 24,
+          colorFilter: ColorFilter.mode(Theme.of(context).appBarTheme.iconTheme!.color!, BlendMode.srcIn)
+        ),
       ) : null,
     );
   }

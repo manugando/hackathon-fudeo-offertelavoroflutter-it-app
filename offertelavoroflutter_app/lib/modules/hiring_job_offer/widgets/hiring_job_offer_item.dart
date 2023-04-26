@@ -31,7 +31,7 @@ class HiringJobOfferItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildEmoji(),
+                _buildEmoji(context),
                 const SizedBox(width: 8),
                 Expanded(child: _buildMainInfo(context)),
                 const SizedBox(width: 8),
@@ -54,15 +54,15 @@ class HiringJobOfferItem extends StatelessWidget {
     );
   }
 
-  Widget _buildEmoji() {
+  Widget _buildEmoji(BuildContext context) {
     if(hiringJobOffer.emoji == null || hiringJobOffer.emoji!.isEmpty) return const SizedBox();
 
     return Container(
       width: 38,
       height: 38,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Styles.lightBackground
+        color: Theme.of(context).colorScheme.background
       ),
       child: Center(
         child: Text(hiringJobOffer.emoji!, style: const TextStyle(fontSize: 18))
@@ -102,7 +102,9 @@ class HiringJobOfferItem extends StatelessWidget {
   Widget _buildFavoriteIcon(BuildContext context) {
     return GestureDetector(
       onTap: onFavoriteTap,
-      child: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg'),
+      child: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg',
+        colorFilter: ColorFilter.mode(Theme.of(context).textTheme.bodyMedium!.color!, BlendMode.srcIn)
+      ),
     );
   }
 

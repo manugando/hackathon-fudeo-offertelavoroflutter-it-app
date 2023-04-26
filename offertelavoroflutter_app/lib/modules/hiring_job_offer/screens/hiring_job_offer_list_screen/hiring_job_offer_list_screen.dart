@@ -140,7 +140,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
     return BlocConsumer<HiringJobOfferListScreenBloc, HiringJobOfferListScreenState>(
       listener: (context, state) => _pagingController.value = state.pagingState,
       builder: (context, state) => Scaffold(
-        backgroundColor: Styles.lightBackground,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
