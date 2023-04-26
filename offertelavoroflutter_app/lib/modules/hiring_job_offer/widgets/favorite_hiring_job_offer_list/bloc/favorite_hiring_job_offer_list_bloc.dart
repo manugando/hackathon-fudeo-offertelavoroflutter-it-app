@@ -74,9 +74,7 @@ class FavoriteHiringJobOfferListBloc extends Bloc<FavoriteHiringJobOfferListEven
       favoriteHiringJobOfferIds: favoriteHiringJobOfferIds
     ));
 
-    if(state.loadingState.items != null && favoriteHiringJobOfferIds.length > state.loadingState.items!.length) {
-      // if there's a new favorite we refresh the list
-      add(const FavoriteHiringJobOfferListEvent.loadRequested());
-    }
+    // We wait a little to avoid that the offers disappears immediately when the users tap the icon
+    Future.delayed(const Duration(milliseconds: 500), () => add(const FavoriteHiringJobOfferListEvent.loadRequested()));
   }
 }

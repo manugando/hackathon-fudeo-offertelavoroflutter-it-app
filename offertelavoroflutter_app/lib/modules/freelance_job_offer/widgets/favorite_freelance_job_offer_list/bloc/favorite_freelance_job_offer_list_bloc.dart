@@ -74,9 +74,7 @@ class FavoriteFreelanceJobOfferListBloc extends Bloc<FavoriteFreelanceJobOfferLi
       favoriteFreelanceJobOfferIds: favoriteFreelanceJobOfferIds
     ));
 
-    if(state.loadingState.items != null && favoriteFreelanceJobOfferIds.length > state.loadingState.items!.length) {
-      // if there's a new favorite we refresh the list
-      add(const FavoriteFreelanceJobOfferListEvent.loadRequested());
-    }
+    // We wait a little to avoid that the offers disappears immediately when the users tap the icon
+    Future.delayed(const Duration(milliseconds: 500), () => add(const FavoriteFreelanceJobOfferListEvent.loadRequested()));
   }
 }
