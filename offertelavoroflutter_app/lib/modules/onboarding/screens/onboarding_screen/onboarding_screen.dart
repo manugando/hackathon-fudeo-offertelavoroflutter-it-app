@@ -179,9 +179,9 @@ class _OnboardingViewState extends State<_OnboardingView> with TickerProviderSta
 
   Widget _buildContentCard(OnboardingScreenState state, BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30))
+      decoration: BoxDecoration(
+        color: Theme.of(context).bottomSheetTheme.backgroundColor,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(30))
       ),
       constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height * 0.57),
       padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),

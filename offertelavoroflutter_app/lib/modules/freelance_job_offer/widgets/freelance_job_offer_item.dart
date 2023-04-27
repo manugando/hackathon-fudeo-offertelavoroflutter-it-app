@@ -3,11 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/content_card.dart';
-import 'package:offertelavoroflutter_app/modules/common/widgets/select_option_badge.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_style_text.dart';
-import 'package:offertelavoroflutter_app/modules/common/widgets/separated_row.dart';
 import 'package:offertelavoroflutter_app/modules/freelance_job_offer/models/freelance_job_offer/freelance_job_offer.dart';
-import 'package:offertelavoroflutter_app/modules/hiring_job_offer/models/hiring_job_offer/hiring_job_offer.dart';
 
 class FreelanceJobOfferItem extends StatelessWidget {
   final FreelanceJobOffer freelanceJobOffer;
@@ -22,45 +19,48 @@ class FreelanceJobOfferItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Hero(
       tag: heroTag ?? freelanceJobOffer.id,
-      child: ContentCard(
-        onTap: onTap,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildEmoji(),
-                const SizedBox(width: 8),
-                Expanded(child: _buildMainInfo(context)),
-                const SizedBox(width: 8),
-                _buildFavoriteIcon(context)
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Expanded(child: _buildJobPosted(context)),
-              ],
-            )
-          ],
+      child: Material( // needed for hero animation to work correctly
+        type: MaterialType.transparency,
+        child: ContentCard(
+          onTap: onTap,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildEmoji(context),
+                  const SizedBox(width: 8),
+                  Expanded(child: _buildMainInfo(context)),
+                  const SizedBox(width: 8),
+                  _buildFavoriteIcon(context)
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: _buildJobPosted(context)),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildEmoji() {
+  Widget _buildEmoji(BuildContext context) {
     if(freelanceJobOffer.emoji == null || freelanceJobOffer.emoji!.isEmpty) return const SizedBox();
 
     return Container(
       width: 38,
       height: 38,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Styles.lightBackground
+        color: Theme.of(context).colorScheme.background
       ),
       child: Center(
         child: Text(freelanceJobOffer.emoji!, style: const TextStyle(fontSize: 18))
@@ -92,7 +92,9 @@ class FreelanceJobOfferItem extends StatelessWidget {
   Widget _buildFavoriteIcon(BuildContext context) {
     return GestureDetector(
       onTap: onFavoriteTap,
-      child: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg'),
+      child: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg',
+        colorFilter: ColorFilter.mode(Theme.of(context).textTheme.bodyMedium!.color!, BlendMode.srcIn)
+      ),
     );
   }
 

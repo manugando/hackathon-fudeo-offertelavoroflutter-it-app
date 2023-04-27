@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:offertelavoroflutter_app/helpers/styles.dart';
 
 class ProgressDots extends StatelessWidget {
   final int total;
@@ -10,7 +9,7 @@ class ProgressDots extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
     for(int i = 0 ; i < total ; i++) {
-      widgets.add(_buildDots(activeIndex == i));
+      widgets.add(_buildDots(activeIndex == i, context));
     }
 
     return Row(
@@ -19,7 +18,8 @@ class ProgressDots extends StatelessWidget {
     );
   }
   
-  Widget _buildDots(bool active) {
+  Widget _buildDots(bool active, BuildContext context) {
+    Color primary = Theme.of(context).colorScheme.primary;
     return AnimatedContainer(
       width: 8,
       height: 8,
@@ -27,7 +27,7 @@ class ProgressDots extends StatelessWidget {
       duration: const Duration(milliseconds: 200),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: active ? Styles.primaryDark : Styles.primaryDark.withAlpha(100)
+        color: active ? primary : primary.withAlpha(100)
       ),
     );
   }

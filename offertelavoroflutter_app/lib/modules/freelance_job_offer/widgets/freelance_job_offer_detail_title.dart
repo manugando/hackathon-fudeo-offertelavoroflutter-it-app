@@ -19,7 +19,7 @@ class FreelanceJobOfferDetailTitle extends StatelessWidget {
           left: 0,
           right: 0,
           bottom: 0,
-          child: Container(color: Styles.lightBackground)
+          child: Container(color: Theme.of(context).colorScheme.tertiary)
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: Styles.screenHorizPadding),
@@ -44,9 +44,9 @@ class FreelanceJobOfferDetailTitle extends StatelessWidget {
     return Container(
       width: 80,
       height: 80,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Styles.lightBackground
+        color: Theme.of(context).colorScheme.tertiary
       ),
       child: Center(
         child: Text(freelanceJobOffer.emoji!, style: const TextStyle(fontSize: 32))
@@ -69,21 +69,21 @@ class FreelanceJobOfferDetailTitle extends StatelessWidget {
 
     return SeparatedRow(
       crossAxisAlignment: CrossAxisAlignment.center,
-      separatorBuilder: (context) => buildDot(),
+      separatorBuilder: (context) => buildDot(context),
       children: [
         if(jobPosted != null) Expanded(child: jobPosted)
       ],
     );
   }
 
-  Widget buildDot() {
+  Widget buildDot(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
       width: 6,
       height: 6,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Styles.primaryDark
+        color: Theme.of(context).colorScheme.primary
       )
     );
   }
@@ -92,7 +92,7 @@ class FreelanceJobOfferDetailTitle extends StatelessWidget {
     if(freelanceJobOffer.jobPosted == null) return null;
 
     return Text(DateFormat.yMd().format(freelanceJobOffer.jobPosted!),
-      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Styles.primaryDark),
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.primary),
       textAlign: TextAlign.center,
     );
   }

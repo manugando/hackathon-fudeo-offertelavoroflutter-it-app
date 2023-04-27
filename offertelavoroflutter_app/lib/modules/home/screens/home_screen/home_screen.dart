@@ -25,8 +25,8 @@ class HomeScreen extends StatelessWidget {
 class _HomeView extends StatelessWidget {
   const _HomeView({Key? key}) : super(key: key);
 
-  getBottomNavItemColorFilter(bool active) {
-    return ColorFilter.mode(active ? Styles.primaryDark : Styles.lightText, BlendMode.srcIn);
+  getBottomNavItemColorFilter(bool active, BuildContext context) {
+    return ColorFilter.mode(active ? Theme.of(context).bottomNavigationBarTheme.selectedItemColor! : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor!, BlendMode.srcIn);
   }
 
   @override
@@ -51,7 +51,6 @@ class _HomeView extends StatelessWidget {
 
   Widget _buildBottomNavBar(int activeTabIndex, BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.white,
       onTap: (index) => context.read<HomeScreenBloc>().add(HomeScreenEvent.activeTabChanged(index)),
       currentIndex: activeTabIndex,
       type: BottomNavigationBarType.fixed,
@@ -59,19 +58,19 @@ class _HomeView extends StatelessWidget {
       unselectedLabelStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Styles.lightText),
       items: [
         BottomNavigationBarItem(
-          icon: SvgPicture.asset('assets/icons/view-schedule.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 0)),
+          icon: SvgPicture.asset('assets/icons/view-schedule.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 0, context)),
           label: AppLocalizations.of(context)!.bottomNavItemJobOffers
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset('assets/icons/bookmark.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 1)),
+          icon: SvgPicture.asset('assets/icons/bookmark.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 1, context)),
           label: AppLocalizations.of(context)!.bottomNavItemFavorites
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset('assets/icons/edit.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 2)),
+          icon: SvgPicture.asset('assets/icons/edit.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 2, context)),
           label: AppLocalizations.of(context)!.bottomNavItemPublishJobOffer
         ),
         BottomNavigationBarItem(
-          icon: SvgPicture.asset('assets/icons/book.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 3)),
+          icon: SvgPicture.asset('assets/icons/book.svg', colorFilter: getBottomNavItemColorFilter(activeTabIndex == 3, context)),
           label: AppLocalizations.of(context)!.bottomNavItemResources
         ),
       ]

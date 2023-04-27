@@ -48,17 +48,20 @@ class _FreelanceJobOfferDetailView extends StatelessWidget {
           ),
           body: Hero(
             tag: heroTag ?? state.freelanceJobOffer.id,
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    FreelanceJobOfferDetailTitle(freelanceJobOffer: state.freelanceJobOffer),
-                    FreelanceJobOfferDetailInfo(freelanceJobOffer: state.freelanceJobOffer),
-                    const SizedBox(height: 20),
-                  ],
-                )
+            child: Material( // needed for hero animation to work correctly
+              type: MaterialType.transparency,
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      FreelanceJobOfferDetailTitle(freelanceJobOffer: state.freelanceJobOffer),
+                      FreelanceJobOfferDetailInfo(freelanceJobOffer: state.freelanceJobOffer),
+                      const SizedBox(height: 20),
+                    ],
+                  )
+                ),
               ),
             ),
           ),
@@ -80,6 +83,7 @@ class _FreelanceJobOfferDetailView extends StatelessWidget {
   }
 
   List<Widget> _buildActions(FreelanceJobOffer freelanceJobOffer, bool isFavorite, BuildContext context) {
+    Color iconColor = Theme.of(context).appBarTheme.iconTheme!.color!;
     return [
       IconButton(
         onPressed: () {
@@ -88,11 +92,15 @@ class _FreelanceJobOfferDetailView extends StatelessWidget {
 
           FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
         },
-        icon: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg')
+        icon: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg',
+          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn)
+        )
       ),
       IconButton(
         onPressed: () => AppShare.share(AppLocalizations.of(context)!.jobOfferShareText(freelanceJobOffer.url)),
-        icon: SvgPicture.asset('assets/icons/share.svg')
+        icon: SvgPicture.asset('assets/icons/share.svg',
+          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn)
+        )
       ),
     ];
   }

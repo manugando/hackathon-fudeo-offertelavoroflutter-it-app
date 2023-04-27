@@ -48,17 +48,20 @@ class _HiringJobOfferDetailView extends StatelessWidget {
           ),
           body: Hero(
             tag: heroTag ?? state.hiringJobOffer.id,
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    HiringJobOfferDetailTitle(hiringJobOffer: state.hiringJobOffer),
-                    HiringJobofferDetailInfo(hiringJobOffer: state.hiringJobOffer),
-                    const SizedBox(height: 20),
-                  ],
-                )
+            child: Material( // needed for hero animation to work correctly
+              type: MaterialType.transparency,
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: SafeArea(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      HiringJobOfferDetailTitle(hiringJobOffer: state.hiringJobOffer),
+                      HiringJobofferDetailInfo(hiringJobOffer: state.hiringJobOffer),
+                      const SizedBox(height: 20),
+                    ],
+                  )
+                ),
               ),
             ),
           ),
@@ -80,6 +83,7 @@ class _HiringJobOfferDetailView extends StatelessWidget {
   }
 
   List<Widget> _buildActions(HiringJobOffer hiringJobOffer, bool isFavorite, BuildContext context) {
+    Color iconColor = Theme.of(context).appBarTheme.iconTheme!.color!;
     return [
       IconButton(
         onPressed: () {
@@ -88,11 +92,15 @@ class _HiringJobOfferDetailView extends StatelessWidget {
 
           FlashMessage.showToggleFavoriteJobOffer(!isFavorite, context);
         },
-        icon: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg')
+        icon: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg',
+          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn)
+        )
       ),
       IconButton(
         onPressed: () => AppShare.share(AppLocalizations.of(context)!.jobOfferShareText(hiringJobOffer.url)),
-        icon: SvgPicture.asset('assets/icons/share.svg')
+        icon: SvgPicture.asset('assets/icons/share.svg',
+          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn)
+        )
       ),
     ];
   }

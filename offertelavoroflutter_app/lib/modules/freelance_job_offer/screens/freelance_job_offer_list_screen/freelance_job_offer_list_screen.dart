@@ -140,7 +140,7 @@ class _FreelanceJobOfferListViewState extends State<_FreelanceJobOfferListView> 
     return BlocConsumer<FreelanceJobOfferListScreenBloc, FreelanceJobOfferListScreenState>(
       listener: (context, state) => _pagingController.value = state.pagingState,
       builder: (context, state) => Scaffold(
-        backgroundColor: Styles.lightBackground,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [

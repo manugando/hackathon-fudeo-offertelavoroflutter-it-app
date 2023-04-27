@@ -52,8 +52,7 @@ class FavoriteFreelanceJobOfferListBloc extends Bloc<FavoriteFreelanceJobOfferLi
           items: favoriteFreelanceJobOffers,
           error: null,
         ),
-        // we keep a list of the ids so that if the users removes a favorite offer it still will be visible in the list (but with the non-filled bookmark icon
-        favoriteFreelanceJobOfferIds: await _freelanceJobOfferRepository.getFavoriteFreelanceJobOfferIds()
+        favoriteFreelanceJobOfferIds: _freelanceJobOfferRepository.getFavoriteFreelanceJobOfferIds()
       ));
     } catch (err) {
       emit(state.copyWith(
@@ -66,7 +65,7 @@ class FavoriteFreelanceJobOfferListBloc extends Bloc<FavoriteFreelanceJobOfferLi
   }
 
   _favoriteFreelanceJobOfferToggled(String freelanceJobOfferId, Emitter<FavoriteFreelanceJobOfferListState> emit) async {
-    await _freelanceJobOfferRepository.toggleFavoriteFreelanceJobOffer(freelanceJobOfferId);
+    _freelanceJobOfferRepository.toggleFavoriteFreelanceJobOffer(freelanceJobOfferId);
   }
 
   _favoriteFreelanceJobOffersChanged(List<String> favoriteFreelanceJobOfferIds, Emitter<FavoriteFreelanceJobOfferListState> emit) async {

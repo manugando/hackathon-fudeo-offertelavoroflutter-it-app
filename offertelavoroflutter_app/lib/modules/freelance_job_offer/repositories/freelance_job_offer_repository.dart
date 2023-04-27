@@ -98,27 +98,27 @@ class FreelanceJobOfferRepository {
     return FreelanceJobOfferOptionsMapper().fromDTO(notionDbFreelanceJobOffer);
   }
 
-  Future<void> toggleFavoriteFreelanceJobOffer(String freelanceJobOfferId) async {
-    Box<String> box = await Hive.openBox(favoriteFreelanceJobOffersBox);
+  void toggleFavoriteFreelanceJobOffer(String freelanceJobOfferId) {
+    Box<String> box = Hive.box(favoriteFreelanceJobOffersBox);
     MapEntry<dynamic, String>? entry = box.toMap().entries
       .firstWhereOrNull((entry) => entry.value == freelanceJobOfferId);
 
     if(entry != null) {
-      await box.delete(entry.key);
+      box.delete(entry.key);
     } else {
-      await box.add(freelanceJobOfferId);
+      box.add(freelanceJobOfferId);
     }
 
-    _favoriteFreelanceJobOfferIdsSubject.add(await getFavoriteFreelanceJobOfferIds());
+    _favoriteFreelanceJobOfferIdsSubject.add(getFavoriteFreelanceJobOfferIds());
   }
 
-  Future<List<String>> getFavoriteFreelanceJobOfferIds() async {
-    Box<String> box = await Hive.openBox(favoriteFreelanceJobOffersBox);
+  List<String> getFavoriteFreelanceJobOfferIds() {
+    Box<String> box = Hive.box(favoriteFreelanceJobOffersBox);
     return box.values.toList();
   }
 
   Future<List<FreelanceJobOffer>> getFavoriteFreelanceJobOffers() async {
-    List<String> favoriteFreelanceJobOfferIds = await getFavoriteFreelanceJobOfferIds();
+    List<String> favoriteFreelanceJobOfferIds = getFavoriteFreelanceJobOfferIds();
     // I know, this isn't optimal, but the Notion Api doesn't allow to filter the database by page ID, so the only way is to make N separate API calls to the page detail endpoint
     return Future.wait(favoriteFreelanceJobOfferIds.map(getFreelanceJobOffer));
   }

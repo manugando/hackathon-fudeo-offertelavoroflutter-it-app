@@ -4,8 +4,8 @@ import 'package:offertelavoroflutter_app/helpers/styles.dart';
 
 class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
   final Widget title;
-  final Color backgroundColor;
-  const BaseAppBar({Key? key, required this.title, this.backgroundColor = Colors.white}) : super(key: key);
+  final Color? backgroundColor;
+  const BaseAppBar({Key? key, required this.title, this.backgroundColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
     );
 
     return Container(
-      color: backgroundColor,
+      color: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
       child: AppBar(
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
         backgroundColor: Styles.primaryDark,

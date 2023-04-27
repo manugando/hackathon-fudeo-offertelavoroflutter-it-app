@@ -36,6 +36,8 @@ Fatto! L'app è pronta per essere eseguita 🚀
 
 ✅ Animazioni
 
+✅ Dark mode
+
 ✅ I18N ready
 
 ## Architettura

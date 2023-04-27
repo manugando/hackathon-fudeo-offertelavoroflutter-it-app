@@ -65,7 +65,7 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
           error: null,
         ),
         // we fetch the favorites list only on first page load
-        favoriteHiringJobOfferIds: (pageKey == null) ? await _hiringJobOfferRepository.getFavoriteHiringJobOfferIds() : state.favoriteHiringJobOfferIds
+        favoriteHiringJobOfferIds: (pageKey == null) ? _hiringJobOfferRepository.getFavoriteHiringJobOfferIds() : state.favoriteHiringJobOfferIds
       ));
     } catch (err) {
       emit(state.copyWith(pagingState: PagingState(
@@ -99,7 +99,7 @@ class HiringJobOfferListScreenBloc extends Bloc<HiringJobOfferListScreenEvent, H
   }
 
   _favoriteHiringJobOfferToggled(String hiringJobOfferId, Emitter<HiringJobOfferListScreenState> emit) async {
-    await _hiringJobOfferRepository.toggleFavoriteHiringJobOffer(hiringJobOfferId);
+    _hiringJobOfferRepository.toggleFavoriteHiringJobOffer(hiringJobOfferId);
   }
 
   _favoriteHiringJobOffersChanged(List<String> favoriteHiringJobOfferIds, Emitter<HiringJobOfferListScreenState> emit) async {

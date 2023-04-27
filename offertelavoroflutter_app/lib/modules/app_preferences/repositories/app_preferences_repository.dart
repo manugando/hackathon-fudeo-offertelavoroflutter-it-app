@@ -2,19 +2,26 @@ import 'package:hive/hive.dart';
 
 class AppPreferencesRepository {
   static const appPreferencesBox = 'appPreferencesBox';
-  static const onboardingDone = 'onboardingDone';
+  static const onboardingDoneKey = 'onboardingDone';
+  static const darkModeKey = 'darkMode';
 
-  Future setOnboardingDone(bool done) async {
-    Box box = await _openBox();
-    await box.put(onboardingDone, done);
+  void setOnboardingDone(bool done) {
+    _getBox().put(onboardingDoneKey, done);
   }
 
-  Future<bool> isOnboardingDone() async {
-    Box box = await _openBox();
-    return box.get(onboardingDone, defaultValue: false);
+  bool isOnboardingDone() {
+    return _getBox().get(onboardingDoneKey, defaultValue: false);
   }
 
-  Future<Box> _openBox() {
-    return Hive.openBox(appPreferencesBox);
+  void setDarkMode(bool darkMode) {
+    _getBox().put(darkModeKey, darkMode);
+  }
+
+  bool isDarkMode() {
+    return _getBox().get(darkModeKey, defaultValue: false);
+  }
+
+  Box _getBox() {
+    return Hive.box(appPreferencesBox);
   }
 }

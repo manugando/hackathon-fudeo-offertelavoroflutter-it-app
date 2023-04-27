@@ -37,14 +37,14 @@ class FreelanceJobOfferDetailScreenBloc extends Bloc<FreelanceJobOfferDetailScre
   }
 
   _initialized(Emitter<FreelanceJobOfferDetailScreenState> emit) async {
-    List<String> favoriteFreelanceJobOfferIds = await _freelanceJobOfferRepository.getFavoriteFreelanceJobOfferIds();
+    List<String> favoriteFreelanceJobOfferIds = _freelanceJobOfferRepository.getFavoriteFreelanceJobOfferIds();
     emit(state.copyWith(
       isFavorite: favoriteFreelanceJobOfferIds.contains(state.freelanceJobOffer.id)
     ));
   }
 
   _favoriteFreelanceJobOfferToggled(Emitter<FreelanceJobOfferDetailScreenState> emit) async {
-    await _freelanceJobOfferRepository.toggleFavoriteFreelanceJobOffer(state.freelanceJobOffer.id);
+    _freelanceJobOfferRepository.toggleFavoriteFreelanceJobOffer(state.freelanceJobOffer.id);
   }
 
   _favoriteFreelanceJobOffersChanged(List<String> favoriteFreelanceJobOfferIds, Emitter<FreelanceJobOfferDetailScreenState> emit) async {

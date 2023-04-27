@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:offertelavoroflutter_app/constants/routes.dart';
 import 'package:offertelavoroflutter_app/helpers/flash_message.dart';
-import 'package:offertelavoroflutter_app/helpers/styles.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/error_indicator.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/header_with_search.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_animation.dart';
@@ -140,7 +139,7 @@ class _HiringJobOfferListViewState extends State<_HiringJobOfferListView> with T
     return BlocConsumer<HiringJobOfferListScreenBloc, HiringJobOfferListScreenState>(
       listener: (context, state) => _pagingController.value = state.pagingState,
       builder: (context, state) => Scaffold(
-        backgroundColor: Styles.lightBackground,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
