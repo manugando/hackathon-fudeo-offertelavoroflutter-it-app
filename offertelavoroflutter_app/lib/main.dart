@@ -30,7 +30,7 @@ void main() async {
   await initHive();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 loadEnv() async {
@@ -49,7 +49,9 @@ initHive() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final GlobalKey appKey = GlobalKey(); // The key is important for the theme switching animation, without it the app gets recreated because it changes the position in the widget tree
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +68,7 @@ class MyApp extends StatelessWidget {
         ],
         child: ThemeModeSwitcher(
           builder: (themeMode) => MaterialApp(
+            key: appKey,
             debugShowCheckedModeBanner: false,
             onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
             localizationsDelegates: AppLocalizations.localizationsDelegates,

@@ -6,10 +6,21 @@ import 'package:offertelavoroflutter_app/modules/app_shell/widgets/theme_mode_sw
 class ThemeModeToggleButton extends StatelessWidget {
   const ThemeModeToggleButton({Key? key}) : super(key: key);
 
+  Offset _calculateClipOffset(BuildContext context) {
+    final renderObject = context.findRenderObject()! as RenderBox;
+    final size = renderObject.size;
+    return renderObject
+      .localToGlobal(Offset.zero)
+      .translate(size.width / 2, size.height / 2);
+  }
+
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => context.read<ThemeModeSwitcherBloc>().add(const ThemeModeSwitcherEvent.themeModeToggled()),
+      onPressed: () {
+        Offset clipOffset = _calculateClipOffset(context);
+        context.read<ThemeModeSwitcherBloc>().add(ThemeModeSwitcherEvent.themeModeToggled(clipOffset));
+      },
       icon: BlocBuilder<ThemeModeSwitcherBloc, ThemeModeSwitcherState>(
         builder: (context, state) {
          return SvgPicture.asset('assets/icons/${state.darkMode ? 'sunny' : 'moon'}.svg',

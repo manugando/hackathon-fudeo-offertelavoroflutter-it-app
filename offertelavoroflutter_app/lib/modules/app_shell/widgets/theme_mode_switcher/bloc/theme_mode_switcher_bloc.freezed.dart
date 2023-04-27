@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ThemeModeSwitcherEvent {
+  ui.Offset get clipOffset => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() themeModeToggled,
+    required TResult Function(ui.Offset clipOffset) themeModeToggled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? themeModeToggled,
+    TResult? Function(ui.Offset clipOffset)? themeModeToggled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? themeModeToggled,
+    TResult Function(ui.Offset clipOffset)? themeModeToggled,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,10 @@ mixin _$ThemeModeSwitcherEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ThemeModeSwitcherEventCopyWith<ThemeModeSwitcherEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +60,8 @@ abstract class $ThemeModeSwitcherEventCopyWith<$Res> {
   factory $ThemeModeSwitcherEventCopyWith(ThemeModeSwitcherEvent value,
           $Res Function(ThemeModeSwitcherEvent) then) =
       _$ThemeModeSwitcherEventCopyWithImpl<$Res, ThemeModeSwitcherEvent>;
+  @useResult
+  $Res call({ui.Offset clipOffset});
 }
 
 /// @nodoc
@@ -67,13 +74,30 @@ class _$ThemeModeSwitcherEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? clipOffset = null,
+  }) {
+    return _then(_value.copyWith(
+      clipOffset: null == clipOffset
+          ? _value.clipOffset
+          : clipOffset // ignore: cast_nullable_to_non_nullable
+              as ui.Offset,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_ThemeModeToggledCopyWith<$Res> {
+abstract class _$$_ThemeModeToggledCopyWith<$Res>
+    implements $ThemeModeSwitcherEventCopyWith<$Res> {
   factory _$$_ThemeModeToggledCopyWith(
           _$_ThemeModeToggled value, $Res Function(_$_ThemeModeToggled) then) =
       __$$_ThemeModeToggledCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ui.Offset clipOffset});
 }
 
 /// @nodoc
@@ -83,42 +107,64 @@ class __$$_ThemeModeToggledCopyWithImpl<$Res>
   __$$_ThemeModeToggledCopyWithImpl(
       _$_ThemeModeToggled _value, $Res Function(_$_ThemeModeToggled) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? clipOffset = null,
+  }) {
+    return _then(_$_ThemeModeToggled(
+      null == clipOffset
+          ? _value.clipOffset
+          : clipOffset // ignore: cast_nullable_to_non_nullable
+              as ui.Offset,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_ThemeModeToggled implements _ThemeModeToggled {
-  const _$_ThemeModeToggled();
+  const _$_ThemeModeToggled(this.clipOffset);
+
+  @override
+  final ui.Offset clipOffset;
 
   @override
   String toString() {
-    return 'ThemeModeSwitcherEvent.themeModeToggled()';
+    return 'ThemeModeSwitcherEvent.themeModeToggled(clipOffset: $clipOffset)';
   }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ThemeModeToggledCopyWith<_$_ThemeModeToggled> get copyWith =>
+      __$$_ThemeModeToggledCopyWithImpl<_$_ThemeModeToggled>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() themeModeToggled,
+    required TResult Function(ui.Offset clipOffset) themeModeToggled,
   }) {
-    return themeModeToggled();
+    return themeModeToggled(clipOffset);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? themeModeToggled,
+    TResult? Function(ui.Offset clipOffset)? themeModeToggled,
   }) {
-    return themeModeToggled?.call();
+    return themeModeToggled?.call(clipOffset);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? themeModeToggled,
+    TResult Function(ui.Offset clipOffset)? themeModeToggled,
     required TResult orElse(),
   }) {
     if (themeModeToggled != null) {
-      return themeModeToggled();
+      return themeModeToggled(clipOffset);
     }
     return orElse();
   }
@@ -153,12 +199,25 @@ class _$_ThemeModeToggled implements _ThemeModeToggled {
 }
 
 abstract class _ThemeModeToggled implements ThemeModeSwitcherEvent {
-  const factory _ThemeModeToggled() = _$_ThemeModeToggled;
+  const factory _ThemeModeToggled(final ui.Offset clipOffset) =
+      _$_ThemeModeToggled;
+
+  @override
+  ui.Offset get clipOffset;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ThemeModeToggledCopyWith<_$_ThemeModeToggled> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ThemeModeSwitcherState {
+  bool get isInitial => throw _privateConstructorUsedError;
   bool get darkMode => throw _privateConstructorUsedError;
+  GlobalKey<State<StatefulWidget>> get screenshotBoundaryKey =>
+      throw _privateConstructorUsedError;
+  ui.Offset get clipOffset => throw _privateConstructorUsedError;
+  ui.Image? get screenshot => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ThemeModeSwitcherStateCopyWith<ThemeModeSwitcherState> get copyWith =>
@@ -171,7 +230,12 @@ abstract class $ThemeModeSwitcherStateCopyWith<$Res> {
           $Res Function(ThemeModeSwitcherState) then) =
       _$ThemeModeSwitcherStateCopyWithImpl<$Res, ThemeModeSwitcherState>;
   @useResult
-  $Res call({bool darkMode});
+  $Res call(
+      {bool isInitial,
+      bool darkMode,
+      GlobalKey<State<StatefulWidget>> screenshotBoundaryKey,
+      ui.Offset clipOffset,
+      ui.Image? screenshot});
 }
 
 /// @nodoc
@@ -188,13 +252,33 @@ class _$ThemeModeSwitcherStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isInitial = null,
     Object? darkMode = null,
+    Object? screenshotBoundaryKey = null,
+    Object? clipOffset = null,
+    Object? screenshot = freezed,
   }) {
     return _then(_value.copyWith(
+      isInitial: null == isInitial
+          ? _value.isInitial
+          : isInitial // ignore: cast_nullable_to_non_nullable
+              as bool,
       darkMode: null == darkMode
           ? _value.darkMode
           : darkMode // ignore: cast_nullable_to_non_nullable
               as bool,
+      screenshotBoundaryKey: null == screenshotBoundaryKey
+          ? _value.screenshotBoundaryKey
+          : screenshotBoundaryKey // ignore: cast_nullable_to_non_nullable
+              as GlobalKey<State<StatefulWidget>>,
+      clipOffset: null == clipOffset
+          ? _value.clipOffset
+          : clipOffset // ignore: cast_nullable_to_non_nullable
+              as ui.Offset,
+      screenshot: freezed == screenshot
+          ? _value.screenshot
+          : screenshot // ignore: cast_nullable_to_non_nullable
+              as ui.Image?,
     ) as $Val);
   }
 }
@@ -207,7 +291,12 @@ abstract class _$$_ThemeModeSwitcherStateCopyWith<$Res>
       __$$_ThemeModeSwitcherStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool darkMode});
+  $Res call(
+      {bool isInitial,
+      bool darkMode,
+      GlobalKey<State<StatefulWidget>> screenshotBoundaryKey,
+      ui.Offset clipOffset,
+      ui.Image? screenshot});
 }
 
 /// @nodoc
@@ -222,29 +311,62 @@ class __$$_ThemeModeSwitcherStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isInitial = null,
     Object? darkMode = null,
+    Object? screenshotBoundaryKey = null,
+    Object? clipOffset = null,
+    Object? screenshot = freezed,
   }) {
     return _then(_$_ThemeModeSwitcherState(
+      isInitial: null == isInitial
+          ? _value.isInitial
+          : isInitial // ignore: cast_nullable_to_non_nullable
+              as bool,
       darkMode: null == darkMode
           ? _value.darkMode
           : darkMode // ignore: cast_nullable_to_non_nullable
               as bool,
+      screenshotBoundaryKey: null == screenshotBoundaryKey
+          ? _value.screenshotBoundaryKey
+          : screenshotBoundaryKey // ignore: cast_nullable_to_non_nullable
+              as GlobalKey<State<StatefulWidget>>,
+      clipOffset: null == clipOffset
+          ? _value.clipOffset
+          : clipOffset // ignore: cast_nullable_to_non_nullable
+              as ui.Offset,
+      screenshot: freezed == screenshot
+          ? _value.screenshot
+          : screenshot // ignore: cast_nullable_to_non_nullable
+              as ui.Image?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ThemeModeSwitcherState implements _ThemeModeSwitcherState {
-  const _$_ThemeModeSwitcherState({this.darkMode = false});
+class _$_ThemeModeSwitcherState extends _ThemeModeSwitcherState {
+  _$_ThemeModeSwitcherState(
+      {required this.isInitial,
+      required this.darkMode,
+      required this.screenshotBoundaryKey,
+      required this.clipOffset,
+      this.screenshot})
+      : super._();
 
   @override
-  @JsonKey()
+  final bool isInitial;
+  @override
   final bool darkMode;
+  @override
+  final GlobalKey<State<StatefulWidget>> screenshotBoundaryKey;
+  @override
+  final ui.Offset clipOffset;
+  @override
+  final ui.Image? screenshot;
 
   @override
   String toString() {
-    return 'ThemeModeSwitcherState(darkMode: $darkMode)';
+    return 'ThemeModeSwitcherState(isInitial: $isInitial, darkMode: $darkMode, screenshotBoundaryKey: $screenshotBoundaryKey, clipOffset: $clipOffset, screenshot: $screenshot)';
   }
 
   @JsonKey(ignore: true)
@@ -255,12 +377,25 @@ class _$_ThemeModeSwitcherState implements _ThemeModeSwitcherState {
           this, _$identity);
 }
 
-abstract class _ThemeModeSwitcherState implements ThemeModeSwitcherState {
-  const factory _ThemeModeSwitcherState({final bool darkMode}) =
-      _$_ThemeModeSwitcherState;
+abstract class _ThemeModeSwitcherState extends ThemeModeSwitcherState {
+  factory _ThemeModeSwitcherState(
+      {required final bool isInitial,
+      required final bool darkMode,
+      required final GlobalKey<State<StatefulWidget>> screenshotBoundaryKey,
+      required final ui.Offset clipOffset,
+      final ui.Image? screenshot}) = _$_ThemeModeSwitcherState;
+  _ThemeModeSwitcherState._() : super._();
 
   @override
+  bool get isInitial;
+  @override
   bool get darkMode;
+  @override
+  GlobalKey<State<StatefulWidget>> get screenshotBoundaryKey;
+  @override
+  ui.Offset get clipOffset;
+  @override
+  ui.Image? get screenshot;
   @override
   @JsonKey(ignore: true)
   _$$_ThemeModeSwitcherStateCopyWith<_$_ThemeModeSwitcherState> get copyWith =>
