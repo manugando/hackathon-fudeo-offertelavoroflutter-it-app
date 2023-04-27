@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => SplashScreenBloc()),
-          BlocProvider(create: (context) => ThemeModeSwitcherBloc()),
+          BlocProvider(create: (context) => ThemeModeSwitcherBloc(appPreferencesRepository: RepositoryProvider.of<AppPreferencesRepository>(context))),
         ],
         child: ThemeModeSwitcher(
           builder: (themeMode) => MaterialApp(
