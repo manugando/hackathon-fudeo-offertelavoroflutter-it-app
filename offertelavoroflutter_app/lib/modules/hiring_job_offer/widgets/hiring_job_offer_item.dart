@@ -23,35 +23,39 @@ class HiringJobOfferItem extends StatelessWidget {
       tag: heroTag ?? hiringJobOffer.id,
       child: Material( // needed for hero animation to work correctly
         type: MaterialType.transparency,
-        child: ContentCard(
-          onTap: onTap,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+        child: Stack(
+          children: [
+            ContentCard(
+              onTap: onTap,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  _buildEmoji(context),
-                  const SizedBox(width: 8),
-                  Expanded(child: _buildMainInfo(context)),
-                  const SizedBox(width: 8),
-                  _buildFavoriteIcon(context)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildEmoji(context),
+                      const SizedBox(width: 8),
+                      Expanded(child: _buildMainInfo(context)),
+                      const SizedBox(width: 24)
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  _buildBadges(context),
+                  const SizedBox(height: 10),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Expanded(child: _buildJobPosted(context)),
+                      Expanded(child: _buildRetribuzione(context)),
+                    ],
+                  )
                 ],
               ),
-              const SizedBox(height: 20),
-              _buildBadges(context),
-              const SizedBox(height: 10),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Expanded(child: _buildJobPosted(context)),
-                  Expanded(child: _buildRetribuzione(context)),
-                ],
-              )
-            ],
-          ),
+            ),
+            _buildFavoriteIcon(context)
+          ],
         ),
       ),
     );
@@ -103,10 +107,15 @@ class HiringJobOfferItem extends StatelessWidget {
   }
 
   Widget _buildFavoriteIcon(BuildContext context) {
-    return GestureDetector(
-      onTap: onFavoriteTap,
-      child: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg',
-        colorFilter: ColorFilter.mode(Theme.of(context).textTheme.bodyMedium!.color!, BlendMode.srcIn)
+    return Positioned(
+      top: 6,
+      right: 24,
+      child: IconButton(
+        splashColor: Colors.transparent,
+        onPressed: onFavoriteTap,
+        icon: SvgPicture.asset(isFavorite ? 'assets/icons/bookmark-filled.svg' : 'assets/icons/bookmark.svg',
+          colorFilter: ColorFilter.mode(Theme.of(context).textTheme.bodyMedium!.color!, BlendMode.srcIn)
+        ),
       ),
     );
   }
