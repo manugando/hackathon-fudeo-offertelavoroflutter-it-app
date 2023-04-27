@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:offertelavoroflutter_app/helpers/styles.dart';
+import 'package:offertelavoroflutter_app/modules/app_shell/widgets/theme_mode_toggle_button.dart';
 import 'package:offertelavoroflutter_app/modules/common/widgets/multi_animation.dart';
 
 class HeaderWithSearch extends StatelessWidget {
@@ -44,6 +45,15 @@ class HeaderWithSearch extends StatelessWidget {
       ),
       title: _buildContent(context),
       toolbarHeight: 120,
+      actions: const [
+        Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            height: 44,
+            child: ThemeModeToggleButton()
+          ),
+        )
+      ],
     );
   }
   

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:offertelavoroflutter_app/constants/urls.dart';
 import 'package:offertelavoroflutter_app/helpers/app_url_launcher.dart';
 import 'package:offertelavoroflutter_app/modules/app_shell/widgets/base_app_bar.dart';
+import 'package:offertelavoroflutter_app/modules/app_shell/widgets/theme_mode_switcher/bloc/theme_mode_switcher_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ResourcesScreen extends StatefulWidget {
@@ -21,13 +23,12 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
   void initState() {
     super.initState();
     webViewController = WebViewController()
+      ..setBackgroundColor(Colors.transparent)
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(NavigationDelegate(
         onPageFinished: (url) {
           isPageLoaded = true;
-          if(Theme.of(context).brightness == Brightness.dark) {
-            webViewController.runJavaScript("document.getElementsByClassName('toggle-mode')[0].click()");
-          }
+          _setWebPageBrightness(context.read<ThemeModeSwitcherBloc>().state.darkMode);
         },
         onNavigationRequest: (NavigationRequest request) {
           if(!isPageLoaded) {
@@ -41,6 +42,11 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
       ..loadRequest(Uri.parse(initialUrl));
   }
 
+  _setWebPageBrightness(bool darkMode) {
+    // we toggle only if the page is in the opposite state of the desired one
+    webViewController.runJavaScript('document.getElementsByClassName("notion-${darkMode ? 'light' : 'dark'}-theme").length ? document.getElementsByClassName("toggle-mode")[0].click() : null');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +54,11 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
         title: Text(AppLocalizations.of(context)!.resourcesScreenTitle),
         backgroundColor: Theme.of(context).colorScheme.surface,
       ),
-      body: WebViewWidget(
-        controller: webViewController,
+      body: BlocListener<ThemeModeSwitcherBloc, ThemeModeSwitcherState>(
+        listener: (context, state) => _setWebPageBrightness(state.darkMode),
+        child: WebViewWidget(
+          controller: webViewController,
+        ),
       ),
     );
   }
