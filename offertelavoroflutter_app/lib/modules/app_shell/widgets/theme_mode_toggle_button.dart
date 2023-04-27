@@ -7,6 +7,7 @@ class ThemeModeToggleButton extends StatelessWidget {
   const ThemeModeToggleButton({Key? key}) : super(key: key);
 
   Offset _calculateClipOffset(BuildContext context) {
+    // we make the clip start from the button itself
     final renderObject = context.findRenderObject()! as RenderBox;
     final size = renderObject.size;
     return renderObject

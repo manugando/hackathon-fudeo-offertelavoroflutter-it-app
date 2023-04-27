@@ -19,8 +19,12 @@ class _ThemeModeSwitcherState extends State<ThemeModeSwitcher> with SingleTicker
   void initState() {
     super.initState();
     animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
-    // We begin with the clipping in the final state
-    // animationController.value = 1.0;
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -35,7 +39,7 @@ class _ThemeModeSwitcherState extends State<ThemeModeSwitcher> with SingleTicker
           textDirection: TextDirection.ltr,
           child: Stack(
             children: [
-              RawImage(image: state.screenshot),
+              if(state.screenshot != null) RawImage(image: state.screenshot),
               RepaintBoundary(
                 key: state.screenshotBoundaryKey,
                 child: state.isInitial ? child : AnimatedBuilder(
