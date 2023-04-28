@@ -14,6 +14,10 @@ Una volta creato il file `.env` è necessario aprilo e popolarlo con la chiave p
 
 Fatto! L'app è pronta per essere eseguita 🚀
 
+### oppure
+
+Nelle release è presente l'APK pronto per essere installato su un device senza dover effettuare la build dell'app: https://github.com/manugando/hackathon-fudeo-offertelavoroflutter-it-app/releases
+
 ## Funzionalità
 
 ✅ Elenco annunci per assunzioni e per freelance con infinite scroll e paginazione
